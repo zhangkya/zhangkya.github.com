@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1、安装Ocserv123opkg updateopkg install ocserv luci-app-ocservreboot 安装完成，重启之后luci的服务界面就会出现“OpenConnect VPN”选项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenWrt搭建OpenConnect VPN">
+<meta property="og:url" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/index.html">
+<meta property="og:site_name" content="大象无形，大音希声">
+<meta property="og:description" content="1、安装Ocserv123opkg updateopkg install ocserv luci-app-ocservreboot 安装完成，重启之后luci的服务界面就会出现“OpenConnect VPN”选项">
+<meta property="og:locale">
+<meta property="og:image" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/1-1.PNG">
+<meta property="og:image" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/1-2.PNG">
+<meta property="og:image" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/1-3.jpg">
+<meta property="og:image" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/1-4.jpg">
+<meta property="article:published_time" content="2017-08-31T03:32:40.000Z">
+<meta property="article:modified_time" content="2021-05-17T05:43:38.221Z">
+<meta property="article:author" content="Zhang Tiki">
+<meta property="article:tag" content="OpenConnect">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/1-1.PNG">
+
+<link rel="canonical" href="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>OpenWrt搭建OpenConnect VPN | 大象无形，大音希声</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大象无形，大音希声</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">嘘......</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2017/08/31/Openvpn-OpenConnect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenWrt搭建OpenConnect VPN
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-08-31 11:32:40" itemprop="dateCreated datePublished" datetime="2017-08-31T11:32:40+08:00">2017-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-17 13:43:38" itemprop="dateModified" datetime="2021-05-17T13:43:38+08:00">2021-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenWrt/" itemprop="url" rel="index"><span itemprop="name">OpenWrt</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1、安装Ocserv"><a href="#1、安装Ocserv" class="headerlink" title="1、安装Ocserv"></a>1、安装Ocserv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ocserv luci-app-ocserv</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>安装完成，重启之后luci的服务界面就会出现“OpenConnect VPN”选项</p>
+<span id="more"></span>
+<h1 id="2、配置Server端"><a href="#2、配置Server端" class="headerlink" title="2、配置Server端"></a>2、配置Server端</h1><p>可以通过luci界面配置，比较直观和容易。<br>&emsp;&emsp;通过“服务”–“OpenConnect VPN”，进到“服务器设置”的“常规设置”，相关参数如下：</p>
+<ol>
+<li>Enable Server: 打钩表示启动服务</li>
+<li>User Authentication: 用户认证方式，选择plain，表示使用OpenWrt路由器上面定义的用户名和密码登录VPN</li>
+<li>Firewall Zone： 选择lan</li>
+<li>端口：默认是443，可以修改为其他端口</li>
+<li>最大连接数：默认为8，这里的值是设定有多少个VPN可以连进来</li>
+<li>Max same Clients：默认为2，这里的值会限定同一个账号能够登录几次</li>
+<li>Enable compression：打勾表示启用压缩</li>
+<li>Enable UDP：打勾表示启用UDP协议</li>
+<li>AnyConnect client compatibility：打勾表示允许Cisco的AnyConnect client作为VPN客户端软件连接。</li>
+<li>VPN IPv4-Network-Address：这里定义的是VPN客户端连到内网之后，获得的IP地址的网段范围。</li>
+<li>VPN-IPv4-Netmask：这里定义的是VPN客户端连到内网之后子网掩码范围</li>
+</ol>
+<p>客户端获取IP地址，有两种设置方法：</p>
+<ul>
+<li>VPN网段和OpenWrt所在的网段不同，用这种方法要在OpenWrt路由表里面添加2个路由网段。<br/>例如：OpenWrt的路由器IP地址为：192.168.111.1 子网掩码：255.255.255.0<br/>VPN的地址可以设置为：192.168.112.0 子网掩码：255.255.255.0</li>
+<li>VPN网段和OpenWrt所在的网段一样（使用其中某一段子网IP地址），这种情况下路由表里的路由只需要添加一个，但是启用所有接口上的ARP代理功能<br/>例如：OpenWrt的路由器IP地址为192.168.111.1 子网掩码255.255.255.0 <br/>VPN的地址可以设置为：192.168.111.16 子网掩码255.255.255.240<br/>（这里192.168.111.16/28其实是一个网络号，VPN服务器将会使用第一个地址，即192.168.111.17/29，VPN客户端将使用剩余的其中一个地址18-30，这里的参都配置可以供13个客户端使用。OpenWrt所在的网络的DHCP分配的地址要排除这段里面的IP不配给客户端16-31，防止IP地址冲突）</li>
+</ul>
+<h1 id="3、配置DNS-SERVER"><a href="#3、配置DNS-SERVER" class="headerlink" title="3、配置DNS SERVER"></a>3、配置DNS SERVER</h1><p>VPN线路连接成功之后，因为默认的模式“分离隧道”，所以客户羰的DNS SERVER将会被这里的配置所覆盖。一般情况下，家的的OpenWrt路由器也承担DNS功能，所以这里设置为OpenWrt的路由器地址即可。</p>
+<h1 id="4、配置路由表"><a href="#4、配置路由表" class="headerlink" title="4、配置路由表"></a>4、配置路由表</h1><p>这里的设置的路由表，将会分配给VPN客户端，告知VPN客户端，通过VPN线路访问这里定义的路由。一般情况下，这里只需要添加“VPN的IP网段”和“OpenWrt所在的网段”。</p>
+<p>&emsp;&emsp;具体说明，参看上面配雷超VPN IPv4-Network-Address和VPN IPv4-Netmask的两种情况，分别定义的路由表为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一对应的路由表为</span></span><br><span class="line">192.168.111.0 255.255.255.0</span><br><span class="line">192.168.112.0 255.255.255.0</span><br><span class="line"><span class="comment"># 方法二对应的路由表为</span></span><br><span class="line">192.168.111.0 255.255.255.0</span><br></pre></td></tr></table></figure>
+<div class="note success">
+            <ul><li>如果这里不填写任意网段，VPN Client将使用Tunnel all Traffice模式，即设置客户端所有的流量发往OpenWrt，即新增一条默认路由到OpenWrt访问所有网络。</li><li>如果填写网段，VPN Client将使用split tunnel的分离隧道模式，只有指定的网段流量才通过VPN防问流向OpenWrt</li></ul>
+          </div>
+
+<h1 id="5、配置拨号用户"><a href="#5、配置拨号用户" class="headerlink" title="5、配置拨号用户"></a>5、配置拨号用户</h1><p>当配置了用户认证方法为“plain”，并启用了OpenConnect服务之后，就可以新建用户了。新建用户很简单，只需要义用户名和密码即可。<br>&emsp;&emsp;在“服务”–“OpenConnect VPN”–“用户设置”–“Available users”<br><img src='1-1.PNG' style="margin : auto;" width="50%" height="50%" title="配置用户" /></p>
+<h1 id="6、配置防火墙，允许从WAN访问VPN端口"><a href="#6、配置防火墙，允许从WAN访问VPN端口" class="headerlink" title="6、配置防火墙，允许从WAN访问VPN端口"></a>6、配置防火墙，允许从WAN访问VPN端口</h1><p>前面定义的端口为4433，并且允许tcp和udp两种模式，所以这两个端口都需要允许。可以通过如下命令和luci进行配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config rule</span><br><span class="line">option enabled &#39;1&#39;</span><br><span class="line">option target &#39;ACCEPT&#39;</span><br><span class="line">option name &#39;Allow SSL vpn in&#39;</span><br><span class="line">option family &#39;ipv4&#39;</span><br><span class="line">option dest_port &#39;4443&#39;</span><br><span class="line">option src &#39;wan&#39;</span><br></pre></td></tr></table></figure>
+<p>luci的配置为：网络–防火墙–通信规则：<br><img src='1-2.PNG' style="margin : auto;" title="配置用户" /><br>此时，VPN可以正常连接进来了，如果只需要连进来配置OpenWrt路由器，到这里已经可以了。但是如果要访问其他的内网资源，就需要以下配置。</p>
+<h1 id="7、配置自定义防火墙，允许VPN的流量访问内网资源"><a href="#7、配置自定义防火墙，允许VPN的流量访问内网资源" class="headerlink" title="7、配置自定义防火墙，允许VPN的流量访问内网资源"></a>7、配置自定义防火墙，允许VPN的流量访问内网资源</h1><p>通过命令行，编辑/etc/firewall.user，添加如下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -A input_rule -i vpns+ -j ACCEPT</span><br><span class="line">iptables -A forwarding_rule -i vpns+ -j ACCEPT</span><br><span class="line">iptables -A forwarding_rule -o vpns+ -j ACCEPT</span><br><span class="line">iptables -A output_rule -o vpns+ -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>配置完毕之后需要重启防火墙生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/firewall restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="8、启用代理ARP"><a href="#8、启用代理ARP" class="headerlink" title="8、启用代理ARP"></a>8、启用代理ARP</h1><p>如果VPN网段和OpenWrt网段处于不同的IP网段，无需开启代理ARP。但是VPN网段和OpenWrt设置为同一网段IP的情况下，虽然我们从IP的角度看，我们客户端的VPN IP网段和资源网段处于同一网段，应该可以直接访问。但实际下面，有一个虚拟的VPN接口，这两个是不则的网段，所以路由其实是不可达的。所以必须启用代理ARP功能，以供VPN IP网段和资源网段可以进行互通。通过ssh登陆OpenWrt路由器，用vi编辑器<code>/etc/sysctl.conf</code>新增如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.conf.all.proxy_arp=1</span><br></pre></td></tr></table></figure>
+<p>然后重新加载配置，用下述命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning">
+            <p>代理ARP是有诸多风险，建议大家还是用不同的网段配置VPN IP与openwrt网段</p>
+          </div>
+<p>这样，open Connect VPN的服务器端就已经配置成功了。</p>
+<h1 id="9、Windows-PC连接VPN方法"><a href="#9、Windows-PC连接VPN方法" class="headerlink" title="9、Windows PC连接VPN方法"></a>9、Windows PC连接VPN方法</h1><p>客户端使用Cisco AnyConnect<br><img src="1-3.jpg" title="Cisco AnyConnect客户端" width="50%" height="50%" style="margin : auto;"/><br>安装完毕之后，因为我们的域名或是IP是不是CA信任的，所以必须要取消客户端对不信任的服务器的连接。点击械下角的齿轮，按照下图提示，取消打勾<br><img src="1-4.jpg" title="Cisco AnyConnect 配置" width="50%" height="50%" style="margin : auto;"/><br>然后就可以输入IP加端口进行连接了，连接成功之后，有个不信任的提示，点击“Connect Anyway”继续；输入用户名和密码，有了banner提示点击“Accept”接收，最后再一次弹出不信任服务器的是示，点击“Connect Anyway”，即可连接成功。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OpenConnect/" rel="tag"># OpenConnect</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="prev" title="JavaScript_DOM_编程艺术">
+      <i class="fa fa-chevron-left"></i> JavaScript_DOM_编程艺术
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/01/aliyunddns/" rel="next" title="通过阿里云实现DDNS解析">
+      通过阿里云实现DDNS解析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85Ocserv"><span class="nav-number">1.</span> <span class="nav-text">1、安装Ocserv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AEServer%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">2、配置Server端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AEDNS-SERVER"><span class="nav-number">3.</span> <span class="nav-text">3、配置DNS SERVER</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">4、配置路由表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E3%80%81%E9%85%8D%E7%BD%AE%E6%8B%A8%E5%8F%B7%E7%94%A8%E6%88%B7"><span class="nav-number">5.</span> <span class="nav-text">5、配置拨号用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E3%80%81%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%8C%E5%85%81%E8%AE%B8%E4%BB%8EWAN%E8%AE%BF%E9%97%AEVPN%E7%AB%AF%E5%8F%A3"><span class="nav-number">6.</span> <span class="nav-text">6、配置防火墙，允许从WAN访问VPN端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E3%80%81%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%8C%E5%85%81%E8%AE%B8VPN%E7%9A%84%E6%B5%81%E9%87%8F%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E8%B5%84%E6%BA%90"><span class="nav-number">7.</span> <span class="nav-text">7、配置自定义防火墙，允许VPN的流量访问内网资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8%E3%80%81%E5%90%AF%E7%94%A8%E4%BB%A3%E7%90%86ARP"><span class="nav-number">8.</span> <span class="nav-text">8、启用代理ARP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9%E3%80%81Windows-PC%E8%BF%9E%E6%8E%A5VPN%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">9、Windows PC连接VPN方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zhang Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

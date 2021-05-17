@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介是一个非常快的视频和音频转换器，它可以抓取音频&#x2F;视频源。它还可以在任意采样率之间转换，并利用高质量多相滤波器实时调整视频大小。 组成FFmpeg项目由以下几部分组成：  FFmpeg视频文件转换命令行工具,也支持经过实时电视卡抓取和编码成视频文件； ffserver基于HTTP、RTSP用于实时广播的多媒体服务器.也支持时间平移； ffplay用 SDL和FFmpeg库开发的一个简单的媒体播放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg用法">
+<meta property="og:url" content="http://zhangzr.com/2018/09/13/ffmpeg/index.html">
+<meta property="og:site_name" content="大象无形，大音希声">
+<meta property="og:description" content="简介是一个非常快的视频和音频转换器，它可以抓取音频&#x2F;视频源。它还可以在任意采样率之间转换，并利用高质量多相滤波器实时调整视频大小。 组成FFmpeg项目由以下几部分组成：  FFmpeg视频文件转换命令行工具,也支持经过实时电视卡抓取和编码成视频文件； ffserver基于HTTP、RTSP用于实时广播的多媒体服务器.也支持时间平移； ffplay用 SDL和FFmpeg库开发的一个简单的媒体播放">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-09-13T07:39:43.000Z">
+<meta property="article:modified_time" content="2021-05-17T05:43:38.217Z">
+<meta property="article:author" content="Zhang Tiki">
+<meta property="article:tag" content="ffmpeg">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zhangzr.com/2018/09/13/ffmpeg/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>ffmpeg用法 | 大象无形，大音希声</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大象无形，大音希声</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">嘘......</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/09/13/ffmpeg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ffmpeg用法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-09-13 15:39:43" itemprop="dateCreated datePublished" datetime="2018-09-13T15:39:43+08:00">2018-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-17 13:43:38" itemprop="dateModified" datetime="2021-05-17T13:43:38+08:00">2021-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>是一个非常快的视频和音频转换器，它可以抓取音频/视频源。它还可以在任意采样率之间转换，并利用高质量多相滤波器实时调整视频大小。</p>
+<h1 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h1><p>FFmpeg项目由以下几部分组成：</p>
+<ul>
+<li>FFmpeg视频文件转换命令行工具,也支持经过实时电视卡抓取和编码成视频文件；</li>
+<li>ffserver基于HTTP、RTSP用于实时广播的多媒体服务器.也支持时间平移；</li>
+<li>ffplay用 SDL和FFmpeg库开发的一个简单的媒体播放器；</li>
+<li>libavcodec一个包含了所有FFmpeg音视频编解码器的库。为了保证最优性能和高可复用性，大多数编解码器从头开发的；</li>
+<li>libavformat一个包含了所有的普通音视格式的解析器和产生器的库。</li>
+</ul>
+<span id="more"></span>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h2 id="MKV转MP4，音频部分只提取第2路音轨"><a href="#MKV转MP4，音频部分只提取第2路音轨" class="headerlink" title="MKV转MP4，音频部分只提取第2路音轨"></a>MKV转MP4，音频部分只提取第2路音轨</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:v -vcodec copy -map 0:a:1 -acodec copy -strict -2 output.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>0:v：代表提取所有视频流</li>
+<li>0:a:1：代表如果有多路音轨，只提取第2路音轨</li>
+<li>-strict -2：使用ffmpeg自带的aac音频编码</li>
+</ul>
+<h2 id="MKV转MP4，转换多路ac3音轨"><a href="#MKV转MP4，转换多路ac3音轨" class="headerlink" title="MKV转MP4，转换多路ac3音轨"></a>MKV转MP4，转换多路ac3音轨</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:0 -map 0:1 -map 0:2 -vcodec copy -acodec ac3 -disposition:a:0 default -y output.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-disposition:a:0 default：默认第一音轨</li>
+</ul>
+<h2 id="视频切割"><a href="#视频切割" class="headerlink" title="视频切割"></a>视频切割</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 剪切的同时，格式不变，音视频参数不变：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，音视频参数不变，只转换格式：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.flv</span><br><span class="line"><span class="comment"># 剪切的同时，格式不变，只转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，既转换格式又转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.flv</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-y：表示覆盖输出文件</li>
+<li>-ab：设置音频码率</li>
+<li>-ar：设置音频采样率</li>
+<li>-b:v：设置视频比特率为2200千比特/秒</li>
+<li>-r：设置帧频 缺省25</li>
+<li>-s：设置帧大小 格式为WXH 缺省160X128.下面的简写也可以直接使用：Sqcif 128X96 qcif 176X144 cif 252X288 4cif 704X576</li>
+<li>-ss：表示起始时间，格式为“小时:分钟:秒”</li>
+<li>-t：表示时长，格式为“小时：分钟：秒”</li>
+</ul>
+<h2 id="视频增加黑边"><a href="#视频增加黑边" class="headerlink" title="视频增加黑边"></a>视频增加黑边</h2><p>使用FFmpeg给视频增加黑边需要用到 pad 这个滤镜，具体用法如下：<br><code>-vf pad=1280:720:0:93:black</code><br>按照从左到右的顺序依次为:<br>​“宽”、“高”、“X坐标”和“Y坐标”，宽和高指的是输入视频尺寸（包含加黑边的尺寸），XY指的是视频所在位置。<br>​<br>比如一个输入视频尺寸是1280x534的源，想要加上黑边变成1280x720，那么用上边的语法可以实现，93是这样得来的，（720-534）/2。<br>​<br>如果视频原始1920x800的话，完整的语法应该是：<br>   -vf ‘scale=1280:534,pad=1280:720:0:93:black’</p>
+<p>先将视频缩小到1280x534，然后在加入黑边变成1280x720，将1280x534的视频放置在x=0，y=93的地方，<br>​FFmpeg会自动在上下增加93像素的黑边。<br>注：black可以不写，默认是黑色</p>
+<h2 id="字幕"><a href="#字幕" class="headerlink" title="字幕"></a>字幕</h2><p>字幕流跟其他媒体流一样，有各种编码，常见的编码有SubRip（作为独立文件时后缀名为.srt）和ASS（作为独立文件时后缀名为.ass）</p>
+<p>因为字幕流也是媒体流，也有各种编码，所以，我们可以通过-scodec或-c:s选项来指定字幕流的编码。</p>
+<p>例：提出字幕流<br><code>ffmpeg -i output.mkv -an -vn -scodec copy sub3.ass</code></p>
+<p>例：转换字幕格式<br><code>ffmpeg -i subtitle.srt subtitle.ass</code></p>
+<p>例：而将字幕流转换为 ass 编码：<br><code>ffmpeg -i Tor_Animation_en.mp4 -i Tor_animation.zh-CN.srt -c:v copy -c:a copy -c:s ass Tor_Animation_subtitled.mkv</code></p>
+<p>例：将srt字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf subtitles=Tor_animation.zh-CN.srt -c:a copy Tor_Animation_subtitled.mp4</code></p>
+<p>例：将ass字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf &quot;ass=subtitle.ass&quot; -c:a copy Tor_Animation_subtitled.mp4</code></p>
+<h2 id="字幕参数设置"><a href="#字幕参数设置" class="headerlink" title="字幕参数设置"></a>字幕参数设置</h2><h3 id="srt字幕流"><a href="#srt字幕流" class="headerlink" title="srt字幕流"></a>srt字幕流</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i **.mp4 -vf <span class="string">&quot;subtitles=**.src:force_style=&#x27;FontSize=20,Alignment=6&#x27;&quot;</span> output.mp4</span><br><span class="line"><span class="comment">#Alignment参数</span></span><br><span class="line">1： Bottom left</span><br><span class="line">2:  Bottom center</span><br><span class="line">3:  Bottom right</span><br><span class="line">5:  Top left</span><br><span class="line">6:  Top center</span><br><span class="line">7:  Top right</span><br><span class="line">9:  Middle left</span><br><span class="line">10: Middle center</span><br><span class="line">11: Middle right</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="ass字幕流"><a href="#ass字幕流" class="headerlink" title="ass字幕流"></a>ass字幕流</h3><p>最新版本的 ffmpeg 使用 ASS中的V4+ Styles</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&quot;[V4+ Styles]\r\n&quot;</span><br><span class="line">&#x2F;* ASSv4 header *&#x2F;</span><br><span class="line">&quot;Format: Name, &quot;</span><br><span class="line">&quot;Fontname, Fontsize, &quot;</span><br><span class="line">&quot;PrimaryColour, SecondaryColour, OutlineColour, BackColour, &quot;</span><br><span class="line">&quot;Bold, Italic, Underline, StrikeOut, &quot;</span><br><span class="line">&quot;ScaleX, ScaleY, &quot;</span><br><span class="line">&quot;Spacing, Angle, &quot;</span><br><span class="line">&quot;BorderStyle, Outline, Shadow, &quot;</span><br><span class="line">&quot;Alignment, MarginL, MarginR, MarginV, &quot;</span><br><span class="line">&quot;Encoding\r\n&quot;</span><br><span class="line"></span><br><span class="line">01.Name             风格(Style)的名称. 区分大小写. 不能包含逗号.</span><br><span class="line">02.Fontname         使用的字体名称, 区分大小写.</span><br><span class="line">03.Fontsize         字体的字号</span><br><span class="line">04.PrimaryColour    设置主要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 为字幕填充颜色</span><br><span class="line">05.SecondaryColour  设置次要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 在卡拉OK效果中由次要颜色变为主要颜色.</span><br><span class="line">06.OutlineColour    设置轮廓颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR.</span><br><span class="line">07.BackColour       设置阴影颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. ASS的这些字段还包含了alpha通道信息. (AABBGGRR), 注ASS的颜色代码要在前面加上&amp;H</span><br><span class="line">08.Bold             -1为粗体, 0为常规</span><br><span class="line">09.Italic           -1为斜体, 0为常规</span><br><span class="line">10.Underline       [-1 或者 0] 下划线</span><br><span class="line">11.Strikeout       [-1 或者 0] 中划线&#x2F;删除线</span><br><span class="line">12.ScaleX          修改文字的宽度. 为百分数</span><br><span class="line">13.ScaleY          修改文字的高度. 为百分数</span><br><span class="line">14.Spacing         文字间的额外间隙. 为像素数</span><br><span class="line">15.Angle           按Z轴进行旋转的度数, 原点由alignment进行了定义. 可以为小数</span><br><span class="line">16.BorderStyle     1&#x3D;边框+阴影, 3&#x3D;纯色背景. 当值为3时, 文字下方为轮廓颜色的背景, 最下方为阴影颜色背景.</span><br><span class="line">17.Outline         当BorderStyle为1时, 该值定义文字轮廓宽度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">18.Shadow          当BorderStyle为1时, 该值定义阴影的深度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">19.Alignment       定义字幕的位置. 字幕在下方时, 1&#x3D;左对齐, 2&#x3D;居中, 3&#x3D;右对齐. 1, 2, 3加上4后字幕出现在屏幕上方. 1, 2, 3加上8后字幕出现在屏幕中间. 例: 11&#x3D;屏幕中间右对齐. Alignment对于ASS字幕而言, 字幕的位置与小键盘数字对应的位置相同.</span><br><span class="line">20.MarginL         字幕可出现区域与左边缘的距离, 为像素数</span><br><span class="line">21.MarginR         字幕可出现区域与右边缘的距离, 为像素数</span><br><span class="line">22.MarginV         垂直距离</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ffmpeg/" rel="tag"># ffmpeg</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/04/DD-WRT/" rel="prev" title="DD-WRT安装与配置">
+      <i class="fa fa-chevron-left"></i> DD-WRT安装与配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/09/17/Python%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B-3/" rel="next" title="Python核心编程(第3版)">
+      Python核心编程(第3版) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MKV%E8%BD%ACMP4%EF%BC%8C%E9%9F%B3%E9%A2%91%E9%83%A8%E5%88%86%E5%8F%AA%E6%8F%90%E5%8F%96%E7%AC%AC2%E8%B7%AF%E9%9F%B3%E8%BD%A8"><span class="nav-number">3.1.</span> <span class="nav-text">MKV转MP4，音频部分只提取第2路音轨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MKV%E8%BD%ACMP4%EF%BC%8C%E8%BD%AC%E6%8D%A2%E5%A4%9A%E8%B7%AFac3%E9%9F%B3%E8%BD%A8"><span class="nav-number">3.2.</span> <span class="nav-text">MKV转MP4，转换多路ac3音轨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E5%88%87%E5%89%B2"><span class="nav-number">3.3.</span> <span class="nav-text">视频切割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E5%A2%9E%E5%8A%A0%E9%BB%91%E8%BE%B9"><span class="nav-number">3.4.</span> <span class="nav-text">视频增加黑边</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%B9%95"><span class="nav-number">3.5.</span> <span class="nav-text">字幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%B9%95%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.6.</span> <span class="nav-text">字幕参数设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#srt%E5%AD%97%E5%B9%95%E6%B5%81"><span class="nav-number">3.6.1.</span> <span class="nav-text">srt字幕流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ass%E5%AD%97%E5%B9%95%E6%B5%81"><span class="nav-number">3.6.2.</span> <span class="nav-text">ass字幕流</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zhang Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Samba除了提供文件共享之外，也可以像windows下的共享一样提供打印机共享。CUPS是Linux系统下管理打印的服务应用程序，其支持IPP、LPD、SMB和JetDirect接口。CUPS服务本身也可以实现打印共享，不过在windows下增加cups共享打印机的步骤相对麻烦，可以利用Samba先连接本地CUPS服务，再由Samba提供打印共享服务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7系统CUPS+SAMBA打印服务安装与配置">
+<meta property="og:url" content="http://zhangzr.com/2017/09/12/centos-cups/index.html">
+<meta property="og:site_name" content="大象无形，大音希声">
+<meta property="og:description" content="Samba除了提供文件共享之外，也可以像windows下的共享一样提供打印机共享。CUPS是Linux系统下管理打印的服务应用程序，其支持IPP、LPD、SMB和JetDirect接口。CUPS服务本身也可以实现打印共享，不过在windows下增加cups共享打印机的步骤相对麻烦，可以利用Samba先连接本地CUPS服务，再由Samba提供打印共享服务。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-12T01:56:41.000Z">
+<meta property="article:modified_time" content="2021-05-17T05:43:38.215Z">
+<meta property="article:author" content="Zhang Tiki">
+<meta property="article:tag" content="centos">
+<meta property="article:tag" content="cups">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zhangzr.com/2017/09/12/centos-cups/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Centos7系统CUPS+SAMBA打印服务安装与配置 | 大象无形，大音希声</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大象无形，大音希声</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">嘘......</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2017/09/12/centos-cups/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Centos7系统CUPS+SAMBA打印服务安装与配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-09-12 09:56:41" itemprop="dateCreated datePublished" datetime="2017-09-12T09:56:41+08:00">2017-09-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-17 13:43:38" itemprop="dateModified" datetime="2021-05-17T13:43:38+08:00">2021-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Samba除了提供文件共享之外，也可以像windows下的共享一样提供打印机共享。CUPS是Linux系统下管理打印的服务应用程序，其支持IPP、LPD、SMB和JetDirect接口。CUPS服务本身也可以实现打印共享，不过在windows下增加cups共享打印机的步骤相对麻烦，可以利用Samba先连接本地CUPS服务，再由Samba提供打印共享服务。</p>
+<span id="more"></span>
+
+<h2 id="1、CUPS服务配置"><a href="#1、CUPS服务配置" class="headerlink" title="1、CUPS服务配置"></a>1、CUPS服务配置</h2><h3 id="1-1、安装CUPS相关软件包"><a href="#1-1、安装CUPS相关软件包" class="headerlink" title="1.1、安装CUPS相关软件包"></a>1.1、安装CUPS相关软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install cups</span><br></pre></td></tr></table></figure>
+<h3 id="1-2、cups配置文件"><a href="#1-2、cups配置文件" class="headerlink" title="1.2、cups配置文件"></a>1.2、cups配置文件</h3><p>编辑cups配置文件<code>vi /etc/cups/cupsd.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将Listen localhost:631修改为</span></span><br><span class="line"></span><br><span class="line">Listen 0.0.0.0:631           //监听所有IP</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认是不允许远程主机浏览器打开访问的，这里将allow、deny顺序对调下，或者后面加allow from *</span></span><br><span class="line"></span><br><span class="line">&lt;Location /&gt;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#Order allow,deny   //默认配置部分</span></span><br><span class="line"></span><br><span class="line">  Order deny,allow     //修改后的内容</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置admin项只允许某台主机或某段主机访问</span></span><br><span class="line"></span><br><span class="line">&lt;Location /admin&gt;</span><br><span class="line"></span><br><span class="line">  Order deny,allow</span><br><span class="line"></span><br><span class="line">  deny from all</span><br><span class="line"></span><br><span class="line">  allow from  192.168.1.*</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3、防火墙设置"><a href="#1-3、防火墙设置" class="headerlink" title="1.3、防火墙设置"></a>1.3、防火墙设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=631/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h3 id="1-4、浏览配置新增打印机"><a href="#1-4、浏览配置新增打印机" class="headerlink" title="1.4、浏览配置新增打印机"></a>1.4、浏览配置新增打印机</h3><p>可以通过lpadmin命令新增打印机，也可以通过浏览器输入<code>http://IP:631</code> 后访问，如下图：<br>通过add printer增加打印机后（增加时会让输入主机的root用户名和密码），可以通过最上面的prints项，查看当前打列机列表：</p>
+<h2 id="2、Samba服务配置"><a href="#2、Samba服务配置" class="headerlink" title="2、Samba服务配置"></a>2、Samba服务配置</h2><p>Samba除了可以分享文件系统外，也可以分享打印机。Samba这个文件系统是架构在NetBIOS这个通讯协议上面所开发出来的。既然如此，我们先了解一下NetBIOS</p>
+<h2 id="2-1-NetBIOS通讯协议"><a href="#2-1-NetBIOS通讯协议" class="headerlink" title="2.1 NetBIOS通讯协议"></a>2.1 NetBIOS通讯协议</h2><p>最早IBM发展出NetBIOS的目的仅是要让局域网络内少数计算机进行网络链接的一个通讯协议而已，所以考虑的角度并不是针对大型网络，因此，这个NetBIOS是无法跨路由的。这个NetBIOS在局域网络内实在是很好用，所以微软的网络架构就使用了它进行沟通。而Samba最早发展的时候，其实是想要让Linux系统可以加入Windows的系统当中来分享使用彼此的档案数据的，所以当然Samba就架构在NetBIOS发展出来。<br>&emsp;&emsp;不过NetBIOS是无法跨路由的，因此使用NetBIOS发展起来的服务器理论上也是无法跨越路由的。那么该服务器的使用范围就受限很多，好在出现了所谓的NetBIOS over TCP/IP技术。它是个什么样的技术呢？举个例子，我们知道TCP/IP是目前网络连接的基本协议，现在我们将NetBIOS想成是一封明信片，这个明信片只能让自己欣赏而已，如果今天我们要将这个明信片送到远方的朋友那边时！就需要透过邮件系统（例如邮局、快递等）来传送了！这个TCP/IP就可以视为邮件传递系统了！透过NetBIOS over TCP/IP的技术，我们就可以跨路由使用Samba服务器所提供的功能了！</p>
+<div class="note success">
+            <p>提示：或许你会发现在Windows网络设定里面常常看到NetBEUI这个协议，那是什么呢？那是个NetBIOS Extened User Interface的简写，也是IBM在NetBIOS发展出来之后的改良版本。</p>
+          </div>
+<h2 id="2-2-Samba使用的daemons（守护进程）"><a href="#2-2-Samba使用的daemons（守护进程）" class="headerlink" title="2.2 Samba使用的daemons（守护进程）"></a>2.2 Samba使用的daemons（守护进程）</h2><p>NetBIOS当初发展时就着眼在局域网络内的快速数据交流，而因为是定义在局域网络内，因此他并没有使用类似TCP/IP之类的传输协议，也就不需要IP的设定。如此一来数据如何在两部主机之间交流呢？其实主机在NetBIOS协议中使用NetBIOS Name，每一部主机必须要有不同的NetBIOS Name才行，而档案数据就是在不同的NetBIOS Name之间沟通。<br>&emsp;&emsp;Windows环境下，如何实现两台计算机相互通信通常要做到两步：（1） Windows的工作组要一致，并且两台计算机的主机名不一致，因为它是架构在NetBIOS协议上的，我们可以简单的称呼他为NetBIOS Name。(2) 利用对方给予的权限存取可用资源<br>&emsp;&emsp;在Linux环境下Samba则是透过两支服务来控制这两个步骤，分别是：（1）<b>nmbd</b>，这个daemon是用来管理工作组、NetBIOS name等等解析的。主要利用UDP协议开启port 137、138来负责名称解析的任务；（2）<b>smbd</b>，这个daemon的主要功能就是用来管理samba主机分享的目录、档案与打印机等等。主要是利用可靠的TCP协议来传输数据，开放的端口为139及445。<br>&emsp;&emsp;所以，Samba每次启动至少都需要这两个daemon，这两个daemon启动时会启用137、138两个UDP端口和139一个TCP端口。后面设定防火墙的时候会用到这三个端口。</p>
+<h2 id="2-3-Samba所需软件及其软件结构"><a href="#2-3-Samba所需软件及其软件结构" class="headerlink" title="2.3 Samba所需软件及其软件结构"></a>2.3 Samba所需软件及其软件结构</h2><ul>
+<li>samba：这个软件主要提供了SMB服务器所需的各项服务程序（smbd和nmbd）等</li>
+<li>samba-client：这个软件则提供了当Linux做为Samba Client端时，所需要的工具指令，例如挂载SAMBA文件格式的mount.cifs、取得类似windows网络邻居树形图的smbtree等</li>
+<li>samba-common：这个软件堤供的则是服务器与客户端都会使用到的数据，包括SAMBA的主要配置文件（sab.conf）、语法检验指令（testparm）等</li>
+</ul>
+<p>相关配置文件有如下：</p>
+<ul>
+<li><code>/etc/samba/smb.conf</code>：这个Samba的主要配置文件</li>
+<li><code>/etc/samba/lmhosts</code>：早期的NetBIOS Name发额外设定，因此需要这个lmhosts的NetBIOS name对应IP地址。事实上它有点像是<code>/etc/hosts</code>的功能。目前Samba预设会去使用你的本机名称（hostname）作为你的NetBIOS name，因此这个档案不设定也无所谓</li>
+<li><code>/etc/sysconfig/samba</code>：提供启动smbd、nmbd时，你还想要加入的相关服务参数。</li>
+<li><code>/etc/samba/smbusers</code>：由于Windows与Linux在管理员与访客的账号名称不一致，例如：administrator(windows)及root(linux)，为了对应这两者这间的关系，可使用这个档案来设定</li>
+<li><code>/var/lib/samba/private/&#123;passdb.tdb,secrets.tdb&#125;</code>：管理Samba的用户账号与密码时，会用到的数据库档案</li>
+<li><code>/usr/share/doc/samba&lt;版本&gt;</code>：这个目录包含了SAMBA的所有相关的技术手册</li>
+</ul>
+<p>至于常用的脚本文件案方面，若分为服务器与客户端功能，则主要有底下几个数据：</p>
+<ul>
+<li><code>/usr/sbin/&#123;smbd,nmbd&#125;</code>：服务器功能，就是最重要的权限管理（smbd）以及NetBIOS Name查询（nmbd）两个重要的服务程序；</li>
+<li><code>/usr/bin/&#123;tdbdump,tdbtool&#125;</code>：服务器功能，在Samba 3.0以后的版本中，用户的账号与密码参数已经转为使用数据库了，Samba使用的数据库名称为TDB（Trivial Database）。tdbdump可以查看数据库的内容，tdbtool则可以进入数据库操作接口直接手动修改账密参数。不过，你得安装tdb-tool这个软件才可以。</li>
+<li><code>/usr/bin/smbstatus</code>：服务器功能，可以列出目前Samba的联机状况，包括每一条Samba联机的PID，分享资源，使用的用户来源等等，让你轻轮台管理Samba</li>
+<li><code>/usr/bin/&#123;smbpasswd,pdbedit&#125;</code>：服务器功能，在管理Samba的用户账号密码时，早期是使用smbpasswd这个指令，不过因为后来使用了TDB数据库了，因此建议使用新的pdbedit指令来管理用户数据</li>
+<li><code>/usr/bin/testparm</code>：服务器功能，这个指令主要在检验配置文件sam.conf的语法正确与否，当你编辑过smb.conf时，请务必使用这个指令来检查一次，避免因为打字错引起困扰！</li>
+<li><code>/sbin/mount.cifs</code>：客哀悼端功能，在 Windows 上面我们可以设定『网络驱动器机』来连接<br>到自己的主机上面。在 Linux 上面，我们则是透过 mount (mount.cifs) 来将远程主机分享<br>的档案与目录挂载到自己的 Linux 主机上面哪！</li>
+<li><code>/usr/bin/smbclient</code>：客户端功能，当你的 Linux 主机想要藉由『网络邻居』的功能来<br>查看别台计算机所分享出来的目录与装置时，就可以使用 smbclient 来查看啦！这个指令<br>也可以使用在自己的 SAMBA 主机上面，用来查看是否设定成功哩！</li>
+<li><code>/usr/bin/nmblookup</code>：客户端功能，有点类似nslookup，重点在查出NetBIOS name</li>
+<li><code>/usr/bin/smbtree</code>：客户端功能，能够查到工作组与计算机名称的树状目录分布图</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/centos/" rel="tag"># centos</a>
+              <a href="/tags/cups/" rel="tag"># cups</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/09/11/git/" rel="prev" title="git管理">
+      <i class="fa fa-chevron-left"></i> git管理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/26/html/" rel="next" title="HTML前端技术学习">
+      HTML前端技术学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81CUPS%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">1、CUPS服务配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E3%80%81%E5%AE%89%E8%A3%85CUPS%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、安装CUPS相关软件包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%E3%80%81cups%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、cups配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3%E3%80%81%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、防火墙设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4%E3%80%81%E6%B5%8F%E8%A7%88%E9%85%8D%E7%BD%AE%E6%96%B0%E5%A2%9E%E6%89%93%E5%8D%B0%E6%9C%BA"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、浏览配置新增打印机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81Samba%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">2、Samba服务配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-NetBIOS%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.</span> <span class="nav-text">2.1 NetBIOS通讯协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Samba%E4%BD%BF%E7%94%A8%E7%9A%84daemons%EF%BC%88%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">2.2 Samba使用的daemons（守护进程）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Samba%E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%85%B6%E8%BD%AF%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">2.3 Samba所需软件及其软件结构</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zhang Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
