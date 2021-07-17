@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -13,11 +13,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="1. Samba服务器1.1 创建samba用户123$ sudo smbpasswd -a smbuser">
@@ -26,9 +26,9 @@
 <meta property="og:url" content="http://zhangzr.com/2020/05/14/Samba%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="大象无形，大音希声">
 <meta property="og:description" content="1. Samba服务器1.1 创建samba用户123$ sudo smbpasswd -a smbuser">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-14T04:37:56.000Z">
-<meta property="article:modified_time" content="2021-05-24T05:48:01.208Z">
+<meta property="article:modified_time" content="2021-05-25T02:54:57.000Z">
 <meta property="article:author" content="Zhang Tiki">
 <meta property="article:tag" content="samba">
 <meta name="twitter:card" content="summary">
@@ -42,7 +42,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-Hans'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -86,7 +86,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -113,25 +113,25 @@
 
 
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
   </ul>
@@ -161,7 +161,7 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2020/05/14/Samba%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,24 +181,24 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2020-05-14 12:37:56" itemprop="dateCreated datePublished" datetime="2020-05-14T12:37:56+08:00">2020-05-14</time>
+              <time title="创建时间：2020-05-14 12:37:56" itemprop="dateCreated datePublished" datetime="2020-05-14T12:37:56+08:00">2020-05-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-24 13:48:01" itemprop="dateModified" datetime="2021-05-24T13:48:01+08:00">2021-05-24</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-25 10:54:57" itemprop="dateModified" datetime="2021-05-25T10:54:57+08:00">2021-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
                 </span>
@@ -226,7 +226,7 @@
 
 
 <h1 id="2-‘smb-conf’配置文件"><a href="#2-‘smb-conf’配置文件" class="headerlink" title="2. ‘smb.conf’配置文件"></a>2. ‘smb.conf’配置文件</h1><h2 id="2-1-共享文件夹举例"><a href="#2-1-共享文件夹举例" class="headerlink" title="2.1 共享文件夹举例"></a>2.1 共享文件夹举例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[home] <span class="comment"># 这个使用者资源共享部分：也就是用户家目录</span></span><br><span class="line"></span><br><span class="line">[share]</span><br><span class="line">    path=/home/share <span class="comment"># 共享路径</span></span><br><span class="line">    browseable = yes <span class="comment"># 设置该共享目录是否可显示</span></span><br><span class="line">    writable = yes|no  <span class="comment"># 指定了这个目录缺省是否可写，也可以用readonly=no来设置可写</span></span><br><span class="line">    comment = smb share <span class="built_in">test</span> <span class="comment"># 该共享的备注</span></span><br><span class="line">    allow hosts = host(subnet) <span class="comment"># 设置该Samba服务器允许的工作组或者域</span></span><br><span class="line">    deny hosts = host(subnet) <span class="comment"># 设置该Sambe服务器拒绝的工作组或者域</span></span><br><span class="line">    available = yes|no <span class="comment"># 设置该共享目录是否可用</span></span><br><span class="line">    public = yes|no <span class="comment"># 指明该共享资源是否能给游客账号访问, guest ok = yes其实和public = yes是一样的</span></span><br><span class="line">    user = user, @group <span class="comment"># user设置所有可能使用该共享资源的用户，也可以用@group代表group这个组的所有成员，不同的项目之间用空格或者逗号隔开</span></span><br><span class="line">    valid user = user, @group <span class="comment"># 指定能够使用该共享资源的用户和组</span></span><br><span class="line">    invalid user = user, @group <span class="comment"># 指定不能够使用该共享资源的用户和组</span></span><br><span class="line">    <span class="built_in">read</span> list = user, @group <span class="comment"># 指定只能读取该共享资源的用户和组</span></span><br><span class="line">    write list = user, @group <span class="comment"># 指定能读取和写该共享资源的用户和组</span></span><br><span class="line">    admin list = user, @group <span class="comment"># 指定能管理该共享资源（包括读写和权限赋予等）的用户和组</span></span><br><span class="line">    hide dot files = yes|no <span class="comment"># 指明是否像UNIX那样隐藏以“.”号开头的文件</span></span><br><span class="line">    create mode = 0755 <span class="comment"># 指明新建立的文件属性，一般是0755</span></span><br><span class="line">    directory mode = 0755 <span class="comment"># 指明新建立目录的属性，一般是0755</span></span><br><span class="line">    sync always = yes|no <span class="comment"># 指明对该共享资源进行写操作后是否进行同步操作，Samba默认为异步写入。smbd写入内存缓冲区，稍后将缓冲区刷新到磁盘。</span></span><br><span class="line">    short preserve <span class="keyword">case</span> = yes|no <span class="comment"># 指明是否区分文件名大小写</span></span><br><span class="line">    preserve <span class="keyword">case</span> = yes|no <span class="comment"># 指明是否保持大小写</span></span><br><span class="line">    <span class="keyword">case</span> sensitive = yes|no <span class="comment"># 指明是否对大小写敏感，一般选no，不然可能引起错误</span></span><br><span class="line">    mangle <span class="keyword">case</span> = yes|no <span class="comment"># 指明混合大小写</span></span><br><span class="line">    default <span class="keyword">case</span> = upper|lower <span class="comment"># 指明缺省文件名是全部大写还是小写</span></span><br><span class="line">    force user = testuser <span class="comment"># 强制把建立文件的属主是谁。如果我有一个目录，让guest可以写那么它就可以删除，如果我用force user=testuser强制建立文件的属主是testuser,同时限制create mask = 0755，这样guest就不能删除了</span></span><br><span class="line">    wide links = yes|no <span class="comment"># 指明是否允许共享外符号连接</span></span><br><span class="line">    max connections = 100 <span class="comment"># 设定最大同时连接数</span></span><br><span class="line">    delete <span class="built_in">readonly</span> <span class="comment"># 指明能否删除共享资源里面已经被定义为只读的文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<p>%S = 当前服务名（如果有的话）<br>%P = 当前服务的根目录（如果有的话）<br>%u = 当前服务的用户名（如果有的话）<br>%g = 当前用户说在的主工作组<br>%U = 当前对话的用户名<br>%G = 当前对话的用户的主工作组<br>%H = 当前服务的用户的Home目录<br>%v = Samba服务的版本号。<br>%h = 运行Samba服务机器的主机名<br>%m = 客户机的NETBIOS名称<br>%L = 服务器的NETBIOS名称<br>%M = 客户机的主机名<br>%N = NIS服务器名<br>%p = NIS服务的Home目录<br>%R = 说采用的协议等级(值可以是CORE, COREPLUS, LANMAN1, LANMAN2，NT1)<br>%d = 当前服务进程的ID<br>%a = 客户机的结构（只能识别几项：Samba，WfWg，WinNT，Win95）<br>%I = 客户机的IP<br>%T = 当前日期和时间<br>hosts allow = 网络或者主机</p>
 <h1 id="3-针对指定有权限的可用可见目录"><a href="#3-针对指定有权限的可用可见目录" class="headerlink" title="3. 针对指定有权限的可用可见目录"></a>3. 针对指定有权限的可用可见目录</h1><p>引用子配置文件，在引用子配置文件有二种方法：</p>
 <ul>
 <li>在[global]标签下加入参数：config file=/etc/samba/smb.conf.%U</li>
@@ -304,10 +304,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -328,20 +328,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">24</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">21</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -369,11 +369,11 @@
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
