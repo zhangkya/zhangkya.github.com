@@ -28,7 +28,7 @@
 <meta property="og:description" content="1、HEXO平台1.1、目录结构及含义 scaffolds是模板文件夹，它用于预先定义创建新文单所用的布局 source文件夹内_drafts文件夹用于放置草稿，使用hexo --draft可查看草稿文章 资源文件夹：资源（Asset）代表source文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-08-16T07:45:44.000Z">
-<meta property="article:modified_time" content="2021-05-17T05:43:38.218Z">
+<meta property="article:modified_time" content="2021-11-25T02:47:28.910Z">
 <meta property="article:author" content="Zhang Tiki">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-17 13:43:38" itemprop="dateModified" datetime="2021-05-17T13:43:38+08:00">2021-05-17</time>
+                <time title="修改时间：2021-11-25 10:47:28" itemprop="dateModified" datetime="2021-11-25T10:47:28+08:00">2021-11-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -200,7 +200,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" itemprop="url" rel="index"><span itemprop="name">技术积累</span></a>
                 </span>
             </span>
 
@@ -256,7 +256,7 @@
 <li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
 <li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
 效果如下：<div class="note ">
-            <blockquote class="blockquote-center">            <i class="fa fa-quote-left"></i>            <p>大象无形，大音希声<p><b>出自《道德经》</b></p></p><pre><code>        &lt;i class=&quot;fa fa-quote-right&quot;&gt;&lt;/i&gt;      &lt;/blockquote&gt;</code></pre><p>出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。<br>白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</p>
+            <blockquote class="blockquote-center">            <p>大象无形，大音希声<p><b>出自《道德经》</b></p></p><pre><code>      &lt;/blockquote&gt;</code></pre><p>出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。<br>白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</p>
           </div>
 <h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -354,20 +354,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
