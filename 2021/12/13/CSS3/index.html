@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="CSS样式单的功能及历史背景HTML5规范推荐把页面外观交给CSS去控制，而HTML标签则负责标签、语议部分。HTML5删除了传统的专门控制页面外观的标签，而把页面外观的控制交给了CSS负责。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3样式表手册">
+<meta property="og:url" content="http://zhangzr.com/2021/12/13/CSS3/index.html">
+<meta property="og:site_name" content="大象无形，大音希声">
+<meta property="og:description" content="CSS样式单的功能及历史背景HTML5规范推荐把页面外观交给CSS去控制，而HTML标签则负责标签、语议部分。HTML5删除了传统的专门控制页面外观的标签，而把页面外观的控制交给了CSS负责。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-13T02:04:37.000Z">
+<meta property="article:modified_time" content="2021-12-15T03:40:40.875Z">
+<meta property="article:author" content="Zhang Tiki">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zhangzr.com/2021/12/13/CSS3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS3样式表手册 | 大象无形，大音希声</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大象无形，大音希声</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">嘘......</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2021/12/13/CSS3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS3样式表手册
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-13 10:04:37" itemprop="dateCreated datePublished" datetime="2021-12-13T10:04:37+08:00">2021-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-15 11:40:40" itemprop="dateModified" datetime="2021-12-15T11:40:40+08:00">2021-12-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E6%A1%A3%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">文档手册</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="CSS样式单的功能及历史背景"><a href="#CSS样式单的功能及历史背景" class="headerlink" title="CSS样式单的功能及历史背景"></a>CSS样式单的功能及历史背景</h1><p>HTML5规范推荐把页面外观交给CSS去控制，而HTML标签则负责标签、语议部分。HTML5删除了传统的专门控制页面外观的标签，而把页面外观的控制交给了CSS负责。</p>
+<span id="more"></span>
+
+<h2 id="1-1-CSS的主要功能"><a href="#1-1-CSS的主要功能" class="headerlink" title="1.1 CSS的主要功能"></a>1.1 CSS的主要功能</h2><ul>
+<li>对页面的字体、颜色控制更加细腻，让页面内容更富表现力，CSS的表现效果远远超出传统HTML页面的color、bgcolor等属性的表现力。</li>
+<li>通过CSS控制整站风格，CSS样式单可以同时控制整个站点所有页面的风格，如果整个站点所有的页面效果都需要改变，则可以直接通过CSS样式单控制，避免逐个修改每个页面文件。</li>
+</ul>
+<h2 id="1-2-CSS的发展历史"><a href="#1-2-CSS的发展历史" class="headerlink" title="1.2 CSS的发展历史"></a>1.2 CSS的发展历史</h2><ul>
+<li>CSS 1.0：1996年12月，CSS1.0作为第一个正式规范面世，其中已经加入了字体、颜色等相关属性。</li>
+<li>CSS 2.0：1998年5月，CSS2.0规范正式推出。这个版本的CSS也是最广为人知的一个版本。</li>
+<li>CSS 2.1：2004年2月，CSS2.1对原来的CSS2.0进行了一些小范围的修改，删除了一些浏览器不成熟的属性。CSS2.1可认为是CSS2.0的修订版。</li>
+<li>CSS 3.0：2010年，CSS3规范推出，这个版本的CSS完善了前面CSS存在的一些不足，例如，颜色模块增加了色彩校正、透明度等功能；字体模块则增加了文字效果、服务器字体支持等；还增加了变形和动画模块等。</li>
+</ul>
+<h1 id="使用外部CSS样式单的两种方式"><a href="#使用外部CSS样式单的两种方式" class="headerlink" title="使用外部CSS样式单的两种方式"></a>使用外部CSS样式单的两种方式</h1><h2 id="2-1-引入外部样式文件"><a href="#2-1-引入外部样式文件" class="headerlink" title="2.1 引入外部样式文件"></a>2.1 引入外部样式文件</h2><p>HTML文档中使用<code>&lt;link.../&gt;</code>元素来引用外部样式文件，引入外部样式文件应在<code>&lt;head.../&gt;</code>元素中增加如下<code>&lt;link.../&gt;</code>子元素：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;CSS样式文件的URL&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-导入外部样式单"><a href="#2-2-导入外部样式单" class="headerlink" title="2.2. 导入外部样式单"></a>2.2. 导入外部样式单</h2><p>导入外部样式单的功能与链接外部样式单的功能差不多，只是语法上存在差别。导入外部样式单需要在<code>&lt;style.../&gt;</code>元素中使用@import来执行导入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="keyword">@import</span> <span class="string">&quot;outer.css&quot;</span>;</span></span><br><span class="line"><span class="css">	<span class="keyword">@import</span> url(<span class="string">&quot;mycss.css&quot;</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以前的很多浏览器不支持@import导入，因此一些CSS开发人员会把一些浏览器可能不支持的高级CSS属性放在外部样式单中导入，这样保证只有支持@import导入的浏览器才会导入这些高级CSS属性。但实际上，由于某些浏览器（例如：IE浏览器）会在导入外部样式单时导致“屏闪”，因此开发者谨慎使用。</p>
+<h1 id="使用内部样式单的方式"><a href="#使用内部样式单的方式" class="headerlink" title="使用内部样式单的方式"></a>使用内部样式单的方式</h1><p>如果想让某些CSS样式仅对某个页面有效，而不会影响整个站点，则应该选择使用内部CSS样式定义。</p>
+<p>内部CSS样式需要放在<code>&lt;style.../&gt;</code>元素中定义</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="xml">	<span class="comment">&lt;!-- 样式单文件定义--&gt;</span></span></span><br><span class="line"><span class="css">  <span class="selector-tag">table</span> &#123;</span></span><br><span class="line"><span class="css">    backgroud-<span class="attribute">color</span>: <span class="number">#003366</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="css">  <span class="selector-tag">td</span> &#123;</span></span><br><span class="line"><span class="css">    backgroud-<span class="attribute">color</span>: <span class="number">#FFFFFF</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">font-family</span>: <span class="string">&quot;楷体_GB2312&quot;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">font-size</span>: <span class="number">20pt</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">text-shadow</span>: -<span class="number">8px</span> <span class="number">6px</span> <span class="number">2px</span> <span class="number">#333</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="使用内联样式单的方式"><a href="#使用内联样式单的方式" class="headerlink" title="使用内联样式单的方式"></a>使用内联样式单的方式</h1><p>内联CSS样式只对单个标签有效，它甚至不会影响整个文件。内联样式定义可以精确控制某个HTML元素的外观表现，并且允许通过JavaScript动态修改XHTML元素的CSS样式，从而改变该元素的外观。</p>
+<p>为了使用内联样式，CSS扩展了HTML元素，几乎所有的HTML元素都增加了一个style通过卂性，该属性是一个或多个CSS样式定义，多个CSS样式定义之间以英文逗号隔开。简单地说，使用内联样式定义时，style属性值就是由一个或多个property:value组成的，此处的property:value与前面CSS样式单文件中的完全相同。</p>
+<p>定义内联CSS样式的语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style&#x3D;&quot;property1:value1;property2:value2...&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS的元素选择器"><a href="#CSS的元素选择器" class="headerlink" title="CSS的元素选择器"></a>CSS的元素选择器</h1><p>正如前面看到的，除了内联样式之外，定义CSS样式的语法总遵守如下格式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Selector &#123;</span><br><span class="line">    property1: values1;</span><br><span class="line">    property1: values2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的语法格式分为两个部分：</p>
+<ul>
+<li>Selector（选择器）：选择器决定该样式定义对哪些元素起作用。</li>
+<li>{property1: value1; property2:value2}（属性定义）：属性定义部分决定这些样式起怎样的作用（字体、颜色、布局）等。</li>
+</ul>
+<p>因此不难看出掌握CSS需要两部分：选择器的定义方法与CSS属性的定义</p>
+<h2 id="5-1-元素选择器"><a href="#5-1-元素选择器" class="headerlink" title="5.1 元素选择器"></a>5.1 元素选择器</h2><p>元素选择器是最简单的选择器，其语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E &#123; ... &#125;  &#x2F;* 其中E代表有效的HTML元素名 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2-属性选择器"><a href="#5-2-属性选择器" class="headerlink" title="5.2 属性选择器"></a>5.2 属性选择器</h2><p>属性选择器一共有如下几种语法格式：</p>
+<ul>
+<li><code>E &#123;....&#125;</code> ：指定该CSS样式对所有E元素起作用。</li>
+<li><code>E[attr] &#123; ... &#125;</code> ：指定该CSS样式对具有attr属性的E元素起作用</li>
+<li><code>E[attr=value] &#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性为value的E元素起作用。</li>
+<li><code>E[attr~=value]&#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性的值为以空格隔开的系列值，其中某个值为value的E元素起作用。</li>
+<li><code>E[attr|=value]&#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性的值为以连字符分隔的系列值，其中第一个值为value的Tag元素起作用。</li>
+<li><code>E[attr^=&quot;value&quot;]&#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性的值以value开头的字符串的E元素起作用。</li>
+<li><code>E[attr$=&quot;value&quot;]&#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性的值以value结尾的字符串的E元素起作用。</li>
+<li><code>E[attr*=&quot;value&quot;]&#123; ... &#125;</code> ：指定该CSS样式对所有包含attr属性，且attr属性的值包含value的字符串的E元素起作用。</li>
+</ul>
+<div class="note primary">
+            <p>上面和个属性选择器并没有得到所有浏览器的广泛支持，只有第一种形式可以在所有浏览器中运行良好，最后3种CSS选择器是CSS 3.0新增的选择器。 </p>
+          </div>
+
+<h2 id="5-3-ID选择器"><a href="#5-3-ID选择器" class="headerlink" title="5.3 ID选择器"></a>5.3 ID选择器</h2><p>八、class选择器</p>
+<p>九、包含选择器</p>
+<p>十、子选择器</p>
+<p>十一、CSS3.0新增的兄弟选择器</p>
+<p>十二、 选择器组合</p>
+<p>十三、伪选择器</p>
+<p>十四、 使用伪元素选择器插入内容</p>
+<p>十五、配置counter-increment属性添加编号</p>
+<p>十六、插入自定义编号</p>
+<p>十七、插入多级编号</p>
+<p>十八、CSS3新增的结构性伪类选择器</p>
+<p>十九、 CSS3新增的UI元素状态伪类选择器</p>
+<p>二十、 CSS3新增的:not和:target伪类选择器</p>
+<p>二十一、 在脚本中修改CSS样式</p>
+<!-- more --> 分隔符不要忘了！！！！！！！！！
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/25/ffmpeg%E7%A0%81%E7%8E%87%E6%8E%A7%E5%88%B6/" rel="prev" title="ffmpeg码率控制">
+      <i class="fa fa-chevron-left"></i> ffmpeg码率控制
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E6%A0%B7%E5%BC%8F%E5%8D%95%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%8E%86%E5%8F%B2%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">CSS样式单的功能及历史背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-CSS%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 CSS的主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-CSS%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 CSS的发展历史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8CSS%E6%A0%B7%E5%BC%8F%E5%8D%95%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">使用外部CSS样式单的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%BC%95%E5%85%A5%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 引入外部样式文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E5%8D%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 导入外部样式单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8%E6%A0%B7%E5%BC%8F%E5%8D%95%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">使用内部样式单的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F%E5%8D%95%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">使用内联样式单的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E7%9A%84%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">CSS的元素选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 元素选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-ID%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 ID选择器</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zhang Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
