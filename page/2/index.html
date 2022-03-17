@@ -158,6 +158,197 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/12/05/AppleHDA%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/05/AppleHDA%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/" class="post-title-link" itemprop="url">AppleHDA声卡修补</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-05 16:14:45" itemprop="dateCreated datePublished" datetime="2018-12-05T16:14:45+08:00">2018-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 10:50:12" itemprop="dateModified" datetime="2021-11-25T10:50:12+08:00">2021-11-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-计算编解码器命令和路径"><a href="#1-计算编解码器命令和路径" class="headerlink" title="1 计算编解码器命令和路径"></a>1 计算编解码器命令和路径</h1><h2 id="1-1-获取解码器"><a href="#1-1-获取解码器" class="headerlink" title="1.1 获取解码器"></a>1.1 获取解码器</h2><p>首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/asound/card0/codec<span class="comment">#0 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">cat /proc/asound/card0/codec<span class="comment">#1 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">cat /proc/asound/card0/codec<span class="comment">#2 &gt; ~/Desktop/codec_dump.txt </span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/05/AppleHDA%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/11/08/rclone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/08/rclone/" class="post-title-link" itemprop="url">如何使用rclone同步远程云盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-08 11:21:48" itemprop="dateCreated datePublished" datetime="2018-11-08T11:21:48+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 10:44:16" itemprop="dateModified" datetime="2021-11-25T10:44:16+08:00">2021-11-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" itemprop="url" rel="index"><span itemprop="name">技术积累</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>rclone是一个命令行程序，用于同步文件和目录，并支持网盘同步，可同步网盘包括如下：</p>
+<ul>
+<li>Amazon Drive</li>
+<li>Amazon S3</li>
+<li>Backblaze B2</li>
+<li>Box</li>
+<li>Ceph</li>
+<li>DigitalOcean Spaces</li>
+<li>Dreamhost</li>
+<li>Dropbox</li>
+<li>FTP</li>
+<li>Google Cloud Storage</li>
+<li>Google Drive</li>
+<li>HTTP</li>
+<li>Hubic</li>
+<li>Jottacloud</li>
+<li>IBM COS S3</li>
+<li>Memset Memstore</li>
+<li>Mega</li>
+<li>Microsoft Azure Blob Storage</li>
+<li>Microsoft OneDrive</li>
+<li>Minio</li>
+<li>Nextcloud</li>
+<li>OVH</li>
+<li>OpenDrive</li>
+<li>Openstack Swift</li>
+<li>Oracle Cloud Storage</li>
+<li>ownCloud</li>
+<li>pCloud</li>
+<li>put.io</li>
+<li>QingStor</li>
+<li>Rackspace Cloud Files</li>
+<li>SFTP</li>
+<li>Wasabi</li>
+<li>WebDAV</li>
+<li>Yandex Disk</li>
+<li>The local filesystem</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/11/08/rclone/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/11/07/%E4%B8%BAUSBInjectAll-kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89SSDT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -812,172 +1003,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/05/15/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhang Tiki">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大象无形，大音希声">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/15/Docker/" class="post-title-link" itemprop="url">学习Docker</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-15 15:18:53" itemprop="dateCreated datePublished" datetime="2018-05-15T15:18:53+08:00">2018-05-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:49:32" itemprop="dateModified" datetime="2021-11-25T10:49:32+08:00">2021-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>Docker自开源以来受到了各大公司的广泛关注，或许现在互联网公司的运维体系不承载在Docker之上都不好意思说自己是互联网公司。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/05/15/Docker/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhang Tiki">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大象无形，大音希声">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/" class="post-title-link" itemprop="url">python基础52道题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-07 09:37:11" itemprop="dateCreated datePublished" datetime="2018-05-07T09:37:11+08:00">2018-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:41:15" itemprop="dateModified" datetime="2021-11-25T10:41:15+08:00">2021-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="习题1"><a href="#习题1" class="headerlink" title="习题1"></a>习题1</h1><h2 id="文件名：ex1-py"><a href="#文件名：ex1-py" class="headerlink" title="文件名：ex1.py"></a>文件名：ex1.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;Hello Again&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;I like typing this.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;This is fun.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Yay!Printing.&#x27;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;I&#x27;d much rather you &#x27;not&#x27;.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;I &quot;said&quot; do not touch this.&#x27;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1043,20 +1072,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1083,7 +1112,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
