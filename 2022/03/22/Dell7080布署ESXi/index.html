@@ -20,30 +20,39 @@
     var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="个人技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大象无形，大音希声">
-<meta property="og:url" content="http://zhangzr.com/page/4/index.html">
+  <meta name="description" content="本篇文章只在记录Dell小主机Optiplex 7080 micro上安装ESXi的过程，主机配置表如下： CPU：Intel Core i5-10500T 显示：IntelUHD 630 有线网卡：Intel i210 无线网卡：Intel Wi-Fi AX201双频2*2 802.11.ax MU-MIMO +  蓝牙5.0含内置天线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dell7080-布署ESXi">
+<meta property="og:url" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/index.html">
 <meta property="og:site_name" content="大象无形，大音希声">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="本篇文章只在记录Dell小主机Optiplex 7080 micro上安装ESXi的过程，主机配置表如下： CPU：Intel Core i5-10500T 显示：IntelUHD 630 有线网卡：Intel i210 无线网卡：Intel Wi-Fi AX201双频2*2 802.11.ax MU-MIMO +  蓝牙5.0含内置天线">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/Dell7080%E5%B8%83%E7%BD%B2ESXi/1.png">
+<meta property="og:image" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/Dell7080%E5%B8%83%E7%BD%B2ESXi/2.png">
+<meta property="og:image" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/Dell7080%E5%B8%83%E7%BD%B2ESXi/3.png">
+<meta property="og:image" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/Dell7080%E5%B8%83%E7%BD%B2ESXi/4.png">
+<meta property="article:published_time" content="2022-03-21T16:22:17.000Z">
+<meta property="article:modified_time" content="2022-03-22T06:07:23.598Z">
 <meta property="article:author" content="Zhang Tiki">
+<meta property="article:tag" content="Dell7080">
+<meta property="article:tag" content="ESXi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/Dell7080%E5%B8%83%E7%BD%B2ESXi/1.png">
 
-<link rel="canonical" href="http://zhangzr.com/page/4/">
+<link rel="canonical" href="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>大象无形，大音希声</title>
+  <title>Dell7080-布署ESXi | 大象无形，大音希声</title>
   
 
 
@@ -152,13 +161,14 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2017/08/17/jquery/">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,10 +180,9 @@
       <meta itemprop="name" content="大象无形，大音希声">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/08/17/jquery/" class="post-title-link" itemprop="url">锋利的jquery</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Dell7080-布署ESXi
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -181,23 +190,17 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2017-08-17 15:30:15" itemprop="dateCreated datePublished" datetime="2017-08-17T15:30:15+08:00">2017-08-17</time>
+              <time title="创建时间：2022-03-22 00:22:17 / 修改时间：14:07:23" itemprop="dateCreated datePublished" datetime="2022-03-22T00:22:17+08:00">2022-03-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:51:12" itemprop="dateModified" datetime="2021-11-25T10:51:12+08:00">2021-11-25</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%B4%AF%E7%A7%AF/" itemprop="url" rel="index"><span itemprop="name">技术累积</span></a>
                 </span>
             </span>
 
@@ -212,138 +215,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1、认识jQuery"><a href="#1、认识jQuery" class="headerlink" title="1、认识jQuery"></a>1、认识jQuery</h1><h2 id="1-1、jQuery库类型说明"><a href="#1-1、jQuery库类型说明" class="headerlink" title="1.1、jQuery库类型说明"></a>1.1、jQuery库类型说明</h2><p>jQuery库的类型分为两种版本，如下：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>大小</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>jquery-1.3.1.js</td>
-<td>114KB</td>
-<td>完整无压缩版本，主要用于测试、学习和开发</td>
-</tr>
-<tr>
-<td>jquery-1.3.1.min.js</td>
-<td>54KB/18KB</td>
-<td>经过JSMin等工具压缩后的版本，大小为54KB。如果服务器开启Gzip压缩后，大小将变为只有18KB，成为体积最小的版本。主要应用于产品和项目</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/08/17/jquery/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>本篇文章只在记录Dell小主机Optiplex 7080 micro上安装ESXi的过程，主机配置表如下：</p>
+<p>CPU：Intel Core i5-10500T</p>
+<p>显示：IntelUHD 630</p>
+<p>有线网卡：Intel i210</p>
+<p>无线网卡：Intel Wi-Fi AX201双频2*2 802.11.ax MU-MIMO +  蓝牙5.0含内置天线</p>
+<span id="more"></span> 
+
+<h2 id="难点一"><a href="#难点一" class="headerlink" title="难点一"></a>难点一</h2><h3 id="ESXi无法识别主机的以太网卡Intel-i210"><a href="#ESXi无法识别主机的以太网卡Intel-i210" class="headerlink" title="ESXi无法识别主机的以太网卡Intel i210"></a>ESXi无法识别主机的以太网卡Intel i210</h3><h4 id="首先到官网下载ESXi离线安装包"><a href="#首先到官网下载ESXi离线安装包" class="headerlink" title="首先到官网下载ESXi离线安装包"></a>首先到官网下载ESXi离线安装包</h4><p><img src="Dell7080%E5%B8%83%E7%BD%B2ESXi/1.png" alt="1"></p>
+<h4 id="下载ESXi-Customizer-PS最新版本工具"><a href="#下载ESXi-Customizer-PS最新版本工具" class="headerlink" title="下载ESXi-Customizer-PS最新版本工具"></a>下载ESXi-Customizer-PS最新版本工具</h4><p>官网下载：<a target="_blank" rel="noopener" href="https://www.v-front.de/p/exsi-customizer-ps.html">https://www.v-front.de/p/exsi-customizer-ps.html</a></p>
+<h4 id="下载需要的驱动"><a href="#下载需要的驱动" class="headerlink" title="下载需要的驱动"></a>下载需要的驱动</h4><p>i210驱动：igb-4.2.16.8-offline_bundle-1242301.zip</p>
+<h4 id="封装网卡驱动"><a href="#封装网卡驱动" class="headerlink" title="封装网卡驱动"></a>封装网卡驱动</h4><p>需要在Windows操作系统下完成，建立文件夹将网卡驱动放到pkg文件夹下</p>
+<p><img src="Dell7080%E5%B8%83%E7%BD%B2ESXi/2.png" alt="2"></p>
+<p><img src="Dell7080%E5%B8%83%E7%BD%B2ESXi/3.png" alt="3"></p>
+<p><strong>使用管理员权限运行Windows PowerShell</strong>，安装依赖</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> VMware.PowerCLI</span><br></pre></td></tr></table></figure>
+
+<p><img src="Dell7080%E5%B8%83%E7%BD%B2ESXi/4.png" alt="4"></p>
+<p>调整PowerShell的执行策略来让脚本可以正常运行。默认的执行策略无法运行脚本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> Unrestricted</span><br></pre></td></tr></table></figure>
+
+<p>开始打驱动补丁并自动封装为ISO</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\ESXi<span class="literal">-Customizer</span><span class="literal">-PS</span><span class="literal">-v2</span>.<span class="number">6.0</span>.ps1 <span class="literal">-izip</span> .\VMware<span class="literal">-ESXi</span><span class="literal">-7</span>.<span class="number">0</span>U3c<span class="literal">-19193900</span><span class="literal">-depot</span>.zip <span class="literal">-pkgDir</span> D:\Dell7080\nic\pkg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ESXi-Customizer-PS-v2.6.0.ps1：为最新的工具命令</span><br><span class="line">VMware-ESXi-7.0U3c-19193900-depot.zip：为最新的ESXI7.0的离线包</span><br><span class="line">D:\Dell7080\nic\pkg：为VIB驱动的路径</span><br></pre></td></tr></table></figure>
+
+
+
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Dell7080/" rel="tag"># Dell7080</a>
+              <a href="/tags/ESXi/" rel="tag"># ESXi</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2017/08/16/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhang Tiki">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大象无形，大音希声">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/08/16/hexo/" class="post-title-link" itemprop="url">搭建HEXO平台+Next主题的相关问题汇总</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-08-16 15:45:44" itemprop="dateCreated datePublished" datetime="2017-08-16T15:45:44+08:00">2017-08-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:47:28" itemprop="dateModified" datetime="2021-11-25T10:47:28+08:00">2021-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" itemprop="url" rel="index"><span itemprop="name">技术积累</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
-<li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
-<li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
-<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
-<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用`hexo new命令生成新文章时，会自动添加一个资源文件夹。<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/08/16/hexo/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/17/PVE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9AUSB/" rel="prev" title="PVE虚拟机直通USB">
+      <i class="fa fa-chevron-left"></i> PVE虚拟机直通USB
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
-  </nav>
 
 
 
@@ -395,6 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%BE%E7%82%B9%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">难点一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ESXi%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E4%B8%BB%E6%9C%BA%E7%9A%84%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8D%A1Intel-i210"><span class="nav-number">1.1.</span> <span class="nav-text">ESXi无法识别主机的以太网卡Intel i210</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E5%88%B0%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BDESXi%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">首先到官网下载ESXi离线安装包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDESXi-Customizer-PS%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.2.</span> <span class="nav-text">下载ESXi-Customizer-PS最新版本工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%9C%80%E8%A6%81%E7%9A%84%E9%A9%B1%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">下载需要的驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="nav-number">1.1.4.</span> <span class="nav-text">封装网卡驱动</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
