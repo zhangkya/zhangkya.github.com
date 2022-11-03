@@ -158,6 +158,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhang Tiki">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/" class="post-title-link" itemprop="url">Linux防火墙</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-04 00:27:24 / 修改时间：01:19:20" itemprop="dateCreated datePublished" datetime="2022-11-04T00:27:24+08:00">2022-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" itemprop="url" rel="index"><span itemprop="name">技术积累</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙"><a href="#Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙" class="headerlink" title="Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙"></a>Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开放所有端口</span></span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment">#删除防火墙</span></span><br><span class="line">apt purge netfilter-persistent &amp;&amp; reboot</span><br><span class="line">或 rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2022/03/26/PorxyChains/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -884,118 +955,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2021/08/21/lychee/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhang Tiki">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大象无形，大音希声">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/21/lychee/" class="post-title-link" itemprop="url">lychee说明文档</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-21 13:43:04" itemprop="dateCreated datePublished" datetime="2021-08-21T13:43:04+08:00">2021-08-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:34:52" itemprop="dateModified" datetime="2021-11-25T10:34:52+08:00">2021-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E6%A1%A3%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">文档手册</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-服务器要求"><a href="#1-1-服务器要求" class="headerlink" title="1.1. 服务器要求"></a>1.1. 服务器要求</h3><ul>
-<li><p>一个Web服务器，如Apache或nginx</p>
-</li>
-<li><p>数据库</p>
-<ul>
-<li>MySQL (版本&gt;5.7.8) / MariaDB(版本&gt;10.2)</li>
-<li>PostgreSQL (版本&gt;9.2)</li>
-<li>Lyche的内置SQLite3支持</li>
-</ul>
-</li>
-<li><p>PHP&gt;=7.4带有这此扩展：</p>
-<ul>
-<li>BCMath</li>
-<li>Ctype</li>
-<li>Exif</li>
-<li>Ffmpeg（可选 - 可以生成视频缩略图）</li>
-<li>Fileinfo</li>
-<li>GD</li>
-<li>Imagick (可选 - 可以生成更好的缩略图)</li>
-<li>JSON</li>
-<li>Mbstring</li>
-<li>OpenSSL</li>
-<li>PDO</li>
-<li>Tokenizer</li>
-<li>XML</li>
-<li>ZIP</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Lychee强烈建议使用64位操作系统，虽然它可以在32位系统上工作</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/21/lychee/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1065,7 +1024,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
