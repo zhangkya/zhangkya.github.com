@@ -7,6 +7,8 @@
 <p>通过CodeFormer项目可以实现人像的面部修复（需要裁剪和对齐面部）、整体图像增强与视频增强，实现效果如下：</p>
 <img src="color_enhancement_result1.png" style="zoom:50%;" />
 
+
+
 <span id="more"></span> 
 
 <h2 id="依赖关系安装"><a href="#依赖关系安装" class="headerlink" title="依赖关系安装"></a>依赖关系安装</h2><p>CodeFormer项目是以Python为编码的基础的开源项目，如果电脑没有安装Conda，那么先下载安装<a href="https://www.anaconda.com/products/distribution">官网链接</a>，anaconda环境可以帮助用户管理不同版本的Python和其他第三方库，以及提供一个独立的工作空间，以便在不影响其他环境的情况下进行开发与测试。</p>
