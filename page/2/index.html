@@ -246,7 +246,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="一、-Jellyfin硬件加速的问题"><a href="#一、-Jellyfin硬件加速的问题" class="headerlink" title="一、  Jellyfin硬件加速的问题"></a>一、  Jellyfin硬件加速的问题</h3><p>首先，Jellyfin是支持使用FFMpeg进行视频编码/解码的硬件加速（HWA）的。FFMpeg和Jellyfin可以通过视频加速API支持多种硬件加速实现，例如：</p>
+          <h3 id="一、-Jellyfin硬件加速的问题"><a href="#一、-Jellyfin硬件加速的问题" class="headerlink" title="一、  Jellyfin硬件加速的问题"></a>一、  Jellyfin硬件加速的问题</h3><p>首先，Jellyfin是支持使用FFMpeg进行视频编码&#x2F;解码的硬件加速（HWA）的。FFMpeg和Jellyfin可以通过视频加速API支持多种硬件加速实现，例如：</p>
 <ul>
 <li>VA-API是一个视频加速API，它使用libva与本地驱动程序接口用以提供HWA的支持</li>
 <li>QSV使用VA-API的修改（分支）版本，并将其与libmfx及其专有驱动程序连接</li>
@@ -342,7 +342,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="Daphile/1.png" alt="1"></p>
+          <p><img src="/Daphile/1.png" alt="1"></p>
 <h3 id="快速入门指南"><a href="#快速入门指南" class="headerlink" title="快速入门指南"></a>快速入门指南</h3><ul>
 <li>下载Daphile ISO文件</li>
 <li>使用USBWriter或者类似工具将其写入U盘</li>
@@ -541,12 +541,12 @@
 </li>
 <li><p>数据库</p>
 <ul>
-<li>MySQL (版本&gt;5.7.8) / MariaDB(版本&gt;10.2)</li>
+<li>MySQL (版本&gt;5.7.8) &#x2F; MariaDB(版本&gt;10.2)</li>
 <li>PostgreSQL (版本&gt;9.2)</li>
 <li>Lyche的内置SQLite3支持</li>
 </ul>
 </li>
-<li><p>PHP&gt;=7.4带有这此扩展：</p>
+<li><p>PHP&gt;&#x3D;7.4带有这此扩展：</p>
 <ul>
 <li>BCMath</li>
 <li>Ctype</li>
@@ -754,7 +754,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1-Samba服务器"><a href="#1-Samba服务器" class="headerlink" title="1. Samba服务器"></a>1. Samba服务器</h1><h2 id="1-1-创建samba用户"><a href="#1-1-创建samba用户" class="headerlink" title="1.1 创建samba用户"></a>1.1 创建samba用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$ sudo smbpasswd -a smbuser</span><br></pre></td></tr></table></figure>
+          <h1 id="1-Samba服务器"><a href="#1-Samba服务器" class="headerlink" title="1. Samba服务器"></a>1. Samba服务器</h1><h2 id="1-1-创建samba用户"><a href="#1-1-创建samba用户" class="headerlink" title="1.1 创建samba用户"></a>1.1 创建samba用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$ sudo smbpasswd -a smbuser</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/14/Samba%E9%85%8D%E7%BD%AE/#more" rel="contents">
@@ -837,8 +837,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1-计算编解码器命令和路径"><a href="#1-计算编解码器命令和路径" class="headerlink" title="1 计算编解码器命令和路径"></a>1 计算编解码器命令和路径</h1><h2 id="1-1-获取解码器"><a href="#1-1-获取解码器" class="headerlink" title="1.1 获取解码器"></a>1.1 获取解码器</h2><p>首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/asound/card0/codec<span class="comment">#0 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">cat /proc/asound/card0/codec<span class="comment">#1 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">cat /proc/asound/card0/codec<span class="comment">#2 &gt; ~/Desktop/codec_dump.txt </span></span><br></pre></td></tr></table></figure>
+          <h1 id="1-计算编解码器命令和路径"><a href="#1-计算编解码器命令和路径" class="headerlink" title="1 计算编解码器命令和路径"></a>1 计算编解码器命令和路径</h1><h2 id="1-1-获取解码器"><a href="#1-1-获取解码器" class="headerlink" title="1.1 获取解码器"></a>1.1 获取解码器</h2><p>首先，我们需要从linux获取音频编码器的转储。因此，进入USB&#x2F;CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/asound/card0/codec<span class="comment">#0 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="built_in">cat</span> /proc/asound/card0/codec<span class="comment">#1 &gt; ~/Desktop/codec_dump.txt</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="built_in">cat</span> /proc/asound/card0/codec<span class="comment">#2 &gt; ~/Desktop/codec_dump.txt </span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/12/05/AppleHDA%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/#more" rel="contents">
@@ -1053,7 +1053,7 @@
           <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在10.11版本中，Apple完全重写了USB驱动程序。新驱动程序似乎在很大程序上使用了ACPI，比以前的驱动程序更大。这给ACPI（DSDT)的正确性带来了更多的压力。如果不正确，存在的端口可能不会被新的驱动程序启用。</p>
 <p>事实上，即使是Apple自己的产品也被发现是不正确的，因此Apple公司发明了一种方法用来一个端口注入器来覆盖DSDT。在事件属性被注入来定义可用端口时，这些属性将被使用而不是ACPI。</p>
 <p>内置的端口注入器也可以干扰USB接口，因为一个给定型号的Mac的USB拓朴不太可能与你的PC相同。要解决这些问题，可能需要采取一些步骤。</p>
-<p>注意本指南适用于英特尔USB3。第三方USB3，例如Asmedia，NEC/Renasas还是有问题的。这些控制器没有解决方案。对于不支持的USB3控制器（例如，不是英特尔生产的，不是睿思科技生产的）可以试试最新的<a target="_blank" rel="noopener" href="https://github.com/RehabMan/OS-X-Generic-USB3">GenericUSBXHCI.kext</a></p>
+<p>注意本指南适用于英特尔USB3。第三方USB3，例如Asmedia，NEC&#x2F;Renasas还是有问题的。这些控制器没有解决方案。对于不支持的USB3控制器（例如，不是英特尔生产的，不是睿思科技生产的）可以试试最新的<a target="_blank" rel="noopener" href="https://github.com/RehabMan/OS-X-Generic-USB3">GenericUSBXHCI.kext</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/11/07/%E4%B8%BAUSBInjectAll-kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89SSDT/#more" rel="contents">
@@ -1136,9 +1136,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="1-AppleTV伪装预告片证书"><a href="#1-AppleTV伪装预告片证书" class="headerlink" title="1. AppleTV伪装预告片证书"></a>1. AppleTV伪装预告片证书</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl req -new -nodes -newkey rsa:2048 -out ~&#x2F;Desktop&#x2F;trailers.pem -keyout ~&#x2F;Desktop&#x2F;trailers.key -x509 -days 7300 -subj &quot;&#x2F;C&#x3D;US&#x2F;CN&#x3D;trailers.apple.com&quot;</span><br></pre></td></tr></table></figure>
+          <h2 id="1-AppleTV伪装预告片证书"><a href="#1-AppleTV伪装预告片证书" class="headerlink" title="1. AppleTV伪装预告片证书"></a>1. AppleTV伪装预告片证书</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &quot;/C=US/CN=trailers.apple.com&quot;</span><br></pre></td></tr></table></figure>
 <p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl x509 -in ~&#x2F;Desktop&#x2F;trailers.pem -outform der -out ~&#x2F;Desktop&#x2F;trailers.cer &amp;&amp; cat ~&#x2F;Desktop&#x2F;trailers.key &gt;&gt; ~&#x2F;Desktop&#x2F;trailers.pem</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem</span><br></pre></td></tr></table></figure>
 <p>执行完上面的命令，您将得到3个证书文件</p>
           <!--noindex-->
             <div class="post-button">

@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhangzr.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1、HEXO平台1.1、目录结构及含义 scaffolds是模板文件夹，它用于预先定义创建新文单所用的布局 source文件夹内_drafts文件夹用于放置草稿，使用hexo --draft可查看草稿文章 资源文件夹：资源（Asset）代表source文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;">
+    <meta name="description" content="1、HEXO平台1.1、目录结构及含义 scaffolds是模板文件夹，它用于预先定义创建新文单所用的布局 source文件夹内_drafts文件夹用于放置草稿，使用hexo --draft可查看草稿文章 资源文件夹：资源（Asset）代表source文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建HEXO平台+Next主题的相关问题汇总">
 <meta property="og:url" content="http://zhangzr.com/2017/08/16/hexo/index.html">
 <meta property="og:site_name" content="大象无形，大音希声">
-<meta property="og:description" content="1、HEXO平台1.1、目录结构及含义 scaffolds是模板文件夹，它用于预先定义创建新文单所用的布局 source文件夹内_drafts文件夹用于放置草稿，使用hexo --draft可查看草稿文章 资源文件夹：资源（Asset）代表source文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;">
+<meta property="og:description" content="1、HEXO平台1.1、目录结构及含义 scaffolds是模板文件夹，它用于预先定义创建新文单所用的布局 source文件夹内_drafts文件夹用于放置草稿，使用hexo --draft可查看草稿文章 资源文件夹：资源（Asset）代表source文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-08-16T07:45:44.000Z">
 <meta property="article:modified_time" content="2021-11-25T02:47:28.000Z">
@@ -254,48 +254,60 @@
         <h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
 <li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
 <li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
-<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
-<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用`hexo new命令生成新文章时，会自动添加一个资源文件夹。<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
+<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用&#96;hexo new命令生成新文章时，会自动添加一个资源文件夹。</li>
+</ul>
+<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</li>
+<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2><p>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</p>
+<ul>
 <li>在文章中使用<code>&lt;!-- more --&gt;</code>手动进行截断，Hexo提供的方式</li>
 <li>在文章的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</li>
-<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure>
-<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings &#x3D; Georgia, sans</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 修改成你期望的字体族</span><br><span class="line">$font-family-base &#x3D; &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 代码字体</span><br><span class="line">$code-font-family &#x3D; &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 正文字体的大小</span><br><span class="line">$font-size-base &#x3D; 16px</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 代码字体的大小</span><br><span class="line">$code-font-size &#x3D; 13px</span><br></pre></td></tr></table></figure>
-<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2>使用方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-其中，class_name可以是以下列表中的一个值：</li>
+<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2><p>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings = Georgia, sans</span><br><span class="line"></span><br><span class="line">// 修改成你期望的字体族</span><br><span class="line">$font-family-base = &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">// 代码字体</span><br><span class="line">$code-font-family = &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">// 正文字体的大小</span><br><span class="line">$font-size-base = 16px</span><br><span class="line"></span><br><span class="line">// 代码字体的大小</span><br><span class="line">$code-font-size = 13px</span><br></pre></td></tr></table></figure>
+<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2><p>使用方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，class_name可以是以下列表中的一个值：</p>
+<ul>
 <li>dafault</li>
 <li>primary</li>
 <li>success</li>
 <li>info</li>
 <li>warning</li>
-<li>danger<br>效果如下<div class="note dafault">
-            <p>class_name值为default</p>
-          </div>
-<div class="note primary">
-            <p>class_name值为primary</p>
-          </div>
-<div class="note success">
-            <p>class_name值为success</p>
-          </div>
-<div class="note info">
-            <p>class_name值为info</p>
-          </div>
-<div class="note warning">
-            <p>class_name值为warning</p>
-          </div>
-<div class="note danger">
-            <p>class_name值为danger</p>
-          </div>
-<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</li>
-<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
-<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
-效果如下：<div class="note ">
-            <blockquote class="blockquote-center">            <p>大象无形，大音希声<p><b>出自《道德经》</b></p></p><pre><code>      &lt;/blockquote&gt;</code></pre><p>出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。<br>白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</p>
-          </div>
-<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure></li>
+<li>danger<br>效果如下<details class="note "><summary><p>dafault</p>
+</summary>
+<p>class_name值为default</p>
+
+</details>
+<div class="note primary"><p>class_name值为primary</p>
+</div>
+<div class="note success"><p>class_name值为success</p>
+</div>
+<div class="note info"><p>class_name值为info</p>
+</div>
+<div class="note warning"><p>class_name值为warning</p>
+</div>
+<div class="note danger"><p>class_name值为danger</p>
+</div></li>
 </ul>
+<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</p>
+<ul>
+<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
+<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
+效果如下：<div class="note "><blockquote class="blockquote-center">
+<p>大象无形，大音希声<p><b>出自《道德经》</b></p></p>
+
+</blockquote>
+出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。
+白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</div></li>
+</ul>
+<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2><p>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure>
 
     </div>
 

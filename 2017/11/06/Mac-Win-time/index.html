@@ -255,7 +255,7 @@
         <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。</p>
 <h3 id="解决方法：（修改Windows注册表）"><a href="#解决方法：（修改Windows注册表）" class="headerlink" title="解决方法：（修改Windows注册表）"></a>解决方法：（修改Windows注册表）</h3><p>将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致</p>
 <p>修改Windows的注册表，定位到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
 <p>添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。<br>这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。</p>
 
     </div>

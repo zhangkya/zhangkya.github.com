@@ -264,7 +264,7 @@
 </ul>
 </li>
 <li><h4 id="不需要密码的情况"><a href="#不需要密码的情况" class="headerlink" title="不需要密码的情况"></a>不需要密码的情况</h4><ul>
-<li><p>root执行sudo时不需要输入密码（sudoers文件中有配置root ALL=(ALL)ALL这样一条规则）</p>
+<li><p>root执行sudo时不需要输入密码（sudoers文件中有配置root ALL&#x3D;(ALL)ALL这样一条规则）</p>
 </li>
 <li><p>要切换的身份与执行者的身份相同，不需要输入密码</p>
 </li>
@@ -283,7 +283,7 @@
 <p>考虑下这种情况：输入密码后你刚刚运行了几个sudo命令。现在，如你所知，sudo会话默认保持15分钟。假设在这会话期间，你需要让某些人访问你的终端，但你不想让他们可以使用sudo，你将会怎么做？</p>
 <p><code>-k</code>的参数，就是允许用户取消sudo权限。</p>
 <ol start="2">
-<li><h4 id="s参数"><a href="#s参数" class="headerlink" title="-s参数"></a><code>-s</code>参数</h4><p>有时你的工作要求你运行一堆需要root权限的命令，你不想每次都输入密码。你也不想通过改变/etc/sudoers文件调整sudo会话的过期时限。这种情况可以使用<code>sudo -s</code></p>
+<li><h4 id="s参数"><a href="#s参数" class="headerlink" title="-s参数"></a><code>-s</code>参数</h4><p>有时你的工作要求你运行一堆需要root权限的命令，你不想每次都输入密码。你也不想通过改变&#x2F;etc&#x2F;sudoers文件调整sudo会话的过期时限。这种情况可以使用<code>sudo -s</code></p>
 <p><code>-s</code>命令行参数给你一个有root权限的shell，但那不是root环境，还是执行的你自己的<code>.bashrc</code></p>
 </li>
 <li><h4 id="i参数"><a href="#i参数" class="headerlink" title="-i参数"></a><code>-i</code>参数</h4><p><code>-i</code>参数跟我们讨论过的<code>-s</code>参数相像。然而，还是有点区别。一个重要的区别是<code>-i</code>给你的是root环境，意味着你的（用户的）<code>.bashrc</code>被忽略。这就像没有显式地用root登录也能成为root。此外，你也不用输入root用户密码。</p>

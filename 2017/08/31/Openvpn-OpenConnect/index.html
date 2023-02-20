@@ -260,7 +260,7 @@
         <h1 id="1、安装Ocserv"><a href="#1、安装Ocserv" class="headerlink" title="1、安装Ocserv"></a>1、安装Ocserv</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ocserv luci-app-ocserv</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p>安装完成，重启之后luci的服务界面就会出现“OpenConnect VPN”选项</p>
 <span id="more"></span>
-<h1 id="2、配置Server端"><a href="#2、配置Server端" class="headerlink" title="2、配置Server端"></a>2、配置Server端</h1><p>可以通过luci界面配置，比较直观和容易。<br>&emsp;&emsp;通过“服务”–“OpenConnect VPN”，进到“服务器设置”的“常规设置”，相关参数如下：</p>
+<h1 id="2、配置Server端"><a href="#2、配置Server端" class="headerlink" title="2、配置Server端"></a>2、配置Server端</h1><p>可以通过luci界面配置，比较直观和容易。<br>&amp;emsp;&amp;emsp;通过“服务”–“OpenConnect VPN”，进到“服务器设置”的“常规设置”，相关参数如下：</p>
 <ol>
 <li>Enable Server: 打钩表示启动服务</li>
 <li>User Authentication: 用户认证方式，选择plain，表示使用OpenWrt路由器上面定义的用户名和密码登录VPN</li>
@@ -277,21 +277,23 @@
 <p>客户端获取IP地址，有两种设置方法：</p>
 <ul>
 <li>VPN网段和OpenWrt所在的网段不同，用这种方法要在OpenWrt路由表里面添加2个路由网段。<br/>例如：OpenWrt的路由器IP地址为：192.168.111.1 子网掩码：255.255.255.0<br/>VPN的地址可以设置为：192.168.112.0 子网掩码：255.255.255.0</li>
-<li>VPN网段和OpenWrt所在的网段一样（使用其中某一段子网IP地址），这种情况下路由表里的路由只需要添加一个，但是启用所有接口上的ARP代理功能<br/>例如：OpenWrt的路由器IP地址为192.168.111.1 子网掩码255.255.255.0 <br/>VPN的地址可以设置为：192.168.111.16 子网掩码255.255.255.240<br/>（这里192.168.111.16/28其实是一个网络号，VPN服务器将会使用第一个地址，即192.168.111.17/29，VPN客户端将使用剩余的其中一个地址18-30，这里的参都配置可以供13个客户端使用。OpenWrt所在的网络的DHCP分配的地址要排除这段里面的IP不配给客户端16-31，防止IP地址冲突）</li>
+<li>VPN网段和OpenWrt所在的网段一样（使用其中某一段子网IP地址），这种情况下路由表里的路由只需要添加一个，但是启用所有接口上的ARP代理功能<br/>例如：OpenWrt的路由器IP地址为192.168.111.1 子网掩码255.255.255.0 <br/>VPN的地址可以设置为：192.168.111.16 子网掩码255.255.255.240<br/>（这里192.168.111.16&#x2F;28其实是一个网络号，VPN服务器将会使用第一个地址，即192.168.111.17&#x2F;29，VPN客户端将使用剩余的其中一个地址18-30，这里的参都配置可以供13个客户端使用。OpenWrt所在的网络的DHCP分配的地址要排除这段里面的IP不配给客户端16-31，防止IP地址冲突）</li>
 </ul>
 <h1 id="3、配置DNS-SERVER"><a href="#3、配置DNS-SERVER" class="headerlink" title="3、配置DNS SERVER"></a>3、配置DNS SERVER</h1><p>VPN线路连接成功之后，因为默认的模式“分离隧道”，所以客户羰的DNS SERVER将会被这里的配置所覆盖。一般情况下，家的的OpenWrt路由器也承担DNS功能，所以这里设置为OpenWrt的路由器地址即可。</p>
 <h1 id="4、配置路由表"><a href="#4、配置路由表" class="headerlink" title="4、配置路由表"></a>4、配置路由表</h1><p>这里的设置的路由表，将会分配给VPN客户端，告知VPN客户端，通过VPN线路访问这里定义的路由。一般情况下，这里只需要添加“VPN的IP网段”和“OpenWrt所在的网段”。</p>
-<p>&emsp;&emsp;具体说明，参看上面配雷超VPN IPv4-Network-Address和VPN IPv4-Netmask的两种情况，分别定义的路由表为：</p>
+<p>&amp;emsp;&amp;emsp;具体说明，参看上面配雷超VPN IPv4-Network-Address和VPN IPv4-Netmask的两种情况，分别定义的路由表为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一对应的路由表为</span></span><br><span class="line">192.168.111.0 255.255.255.0</span><br><span class="line">192.168.112.0 255.255.255.0</span><br><span class="line"><span class="comment"># 方法二对应的路由表为</span></span><br><span class="line">192.168.111.0 255.255.255.0</span><br></pre></td></tr></table></figure>
-<div class="note success">
-            <ul><li>如果这里不填写任意网段，VPN Client将使用Tunnel all Traffice模式，即设置客户端所有的流量发往OpenWrt，即新增一条默认路由到OpenWrt访问所有网络。</li><li>如果填写网段，VPN Client将使用split tunnel的分离隧道模式，只有指定的网段流量才通过VPN防问流向OpenWrt</li></ul>
-          </div>
+<div class="note success"><ul>
+<li>如果这里不填写任意网段，VPN Client将使用Tunnel all Traffice模式，即设置客户端所有的流量发往OpenWrt，即新增一条默认路由到OpenWrt访问所有网络。</li>
+<li>如果填写网段，VPN Client将使用split tunnel的分离隧道模式，只有指定的网段流量才通过VPN防问流向OpenWrt</li>
+</ul>
+</div>
 
-<h1 id="5、配置拨号用户"><a href="#5、配置拨号用户" class="headerlink" title="5、配置拨号用户"></a>5、配置拨号用户</h1><p>当配置了用户认证方法为“plain”，并启用了OpenConnect服务之后，就可以新建用户了。新建用户很简单，只需要义用户名和密码即可。<br>&emsp;&emsp;在“服务”–“OpenConnect VPN”–“用户设置”–“Available users”<br><img src='1-1.PNG' style="margin : auto;" width="50%" height="50%" title="配置用户" /></p>
+<h1 id="5、配置拨号用户"><a href="#5、配置拨号用户" class="headerlink" title="5、配置拨号用户"></a>5、配置拨号用户</h1><p>当配置了用户认证方法为“plain”，并启用了OpenConnect服务之后，就可以新建用户了。新建用户很简单，只需要义用户名和密码即可。<br>&amp;emsp;&amp;emsp;在“服务”–“OpenConnect VPN”–“用户设置”–“Available users”<br><img src='1-1.PNG' style="margin : auto;" width="50%" height="50%" title="配置用户" /></p>
 <h1 id="6、配置防火墙，允许从WAN访问VPN端口"><a href="#6、配置防火墙，允许从WAN访问VPN端口" class="headerlink" title="6、配置防火墙，允许从WAN访问VPN端口"></a>6、配置防火墙，允许从WAN访问VPN端口</h1><p>前面定义的端口为4433，并且允许tcp和udp两种模式，所以这两个端口都需要允许。可以通过如下命令和luci进行配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config rule</span><br><span class="line">option enabled &#39;1&#39;</span><br><span class="line">option target &#39;ACCEPT&#39;</span><br><span class="line">option name &#39;Allow SSL vpn in&#39;</span><br><span class="line">option family &#39;ipv4&#39;</span><br><span class="line">option dest_port &#39;4443&#39;</span><br><span class="line">option src &#39;wan&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config rule</span><br><span class="line">option enabled &#x27;1&#x27;</span><br><span class="line">option target &#x27;ACCEPT&#x27;</span><br><span class="line">option name &#x27;Allow SSL vpn in&#x27;</span><br><span class="line">option family &#x27;ipv4&#x27;</span><br><span class="line">option dest_port &#x27;4443&#x27;</span><br><span class="line">option src &#x27;wan&#x27;</span><br></pre></td></tr></table></figure>
 <p>luci的配置为：网络–防火墙–通信规则：<br><img src='1-2.PNG' style="margin : auto;" title="配置用户" /><br>此时，VPN可以正常连接进来了，如果只需要连进来配置OpenWrt路由器，到这里已经可以了。但是如果要访问其他的内网资源，就需要以下配置。</p>
-<h1 id="7、配置自定义防火墙，允许VPN的流量访问内网资源"><a href="#7、配置自定义防火墙，允许VPN的流量访问内网资源" class="headerlink" title="7、配置自定义防火墙，允许VPN的流量访问内网资源"></a>7、配置自定义防火墙，允许VPN的流量访问内网资源</h1><p>通过命令行，编辑/etc/firewall.user，添加如下内容：</p>
+<h1 id="7、配置自定义防火墙，允许VPN的流量访问内网资源"><a href="#7、配置自定义防火墙，允许VPN的流量访问内网资源" class="headerlink" title="7、配置自定义防火墙，允许VPN的流量访问内网资源"></a>7、配置自定义防火墙，允许VPN的流量访问内网资源</h1><p>通过命令行，编辑&#x2F;etc&#x2F;firewall.user，添加如下内容：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -A input_rule -i vpns+ -j ACCEPT</span><br><span class="line">iptables -A forwarding_rule -i vpns+ -j ACCEPT</span><br><span class="line">iptables -A forwarding_rule -o vpns+ -j ACCEPT</span><br><span class="line">iptables -A output_rule -o vpns+ -j ACCEPT</span><br></pre></td></tr></table></figure>
 <p>配置完毕之后需要重启防火墙生效。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/firewall restart</span><br></pre></td></tr></table></figure>
@@ -300,9 +302,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.conf.all.proxy_arp=1</span><br></pre></td></tr></table></figure>
 <p>然后重新加载配置，用下述命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning">
-            <p>代理ARP是有诸多风险，建议大家还是用不同的网段配置VPN IP与openwrt网段</p>
-          </div>
+<div class="note warning"><p>代理ARP是有诸多风险，建议大家还是用不同的网段配置VPN IP与openwrt网段</p>
+</div>
 <p>这样，open Connect VPN的服务器端就已经配置成功了。</p>
 <h1 id="9、Windows-PC连接VPN方法"><a href="#9、Windows-PC连接VPN方法" class="headerlink" title="9、Windows PC连接VPN方法"></a>9、Windows PC连接VPN方法</h1><p>客户端使用Cisco AnyConnect<br><img src="1-3.jpg" title="Cisco AnyConnect客户端" width="50%" height="50%" style="margin : auto;"/><br>安装完毕之后，因为我们的域名或是IP是不是CA信任的，所以必须要取消客户端对不信任的服务器的连接。点击械下角的齿轮，按照下图提示，取消打勾<br><img src="1-4.jpg" title="Cisco AnyConnect 配置" width="50%" height="50%" style="margin : auto;"/><br>然后就可以输入IP加端口进行连接了，连接成功之后，有个不信任的提示，点击“Connect Anyway”继续；输入用户名和密码，有了banner提示点击“Accept”接收，最后再一次弹出不信任服务器的是示，点击“Connect Anyway”，即可连接成功。</p>
 

@@ -254,16 +254,14 @@
 <h2 id="固定QP（Constant-QP-CQP）"><a href="#固定QP（Constant-QP-CQP）" class="headerlink" title="固定QP（Constant QP, CQP）"></a>固定QP（Constant QP, CQP）</h2><p>QP控制着文件压缩的大小，H.264与H.265中QP值在0-51之间的整数范围内，QP值越大压缩率越高同时质量越低，但有的编码器并没有QP值例如：libvpx编码器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -qp 20 &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -x265-params qp=20 &lt;output&gt;</span><br></pre></td></tr></table></figure>
 
-<div class="note danger">
-            <p>非必要不要使用QP模式，采用QP模式会导致根据场景复杂度不同比特率的波动很大，你无法控制实际的比特率 </p>
-          </div>
+<div class="note danger"><p>非必要不要使用QP模式，采用QP模式会导致根据场景复杂度不同比特率的波动很大，你无法控制实际的比特率 </p>
+</div>
 
 <h2 id="平均比特率（Average-Bitrate-ABR）"><a href="#平均比特率（Average-Bitrate-ABR）" class="headerlink" title="平均比特率（Average Bitrate, ABR）"></a>平均比特率（Average Bitrate, ABR）</h2><p>给定编码器一个目标的码率，编码器计算如可达到这个码率：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libvpx-vp9 -b:v 1M &lt;output&gt;</span><br></pre></td></tr></table></figure>
 
-<div class="note danger">
-            <p>ABR不是一种恒定码率模式，而是一种可变的码率模式。所以避免使用这个模式，因为它会在短时间内质量波动比较大 </p>
-          </div>
+<div class="note danger"><p>ABR不是一种恒定码率模式，而是一种可变的码率模式。所以避免使用这个模式，因为它会在短时间内质量波动比较大 </p>
+</div>
 
 <h2 id="恒定码率（Constant-Bitrate-CBR）"><a href="#恒定码率（Constant-Bitrate-CBR）" class="headerlink" title="恒定码率（Constant Bitrate, CBR）"></a>恒定码率（Constant Bitrate, CBR）</h2><p>可以通过设置nal-hrd使编码器强制在特定码率</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 x264-params <span class="string">&quot;nal-hrd=cbr:force-cfr=1&quot;</span> -b:v 1M </span><br></pre></td></tr></table></figure>

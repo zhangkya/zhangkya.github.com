@@ -252,18 +252,18 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="python后台运行方式"><a href="#python后台运行方式" class="headerlink" title="python后台运行方式"></a>python后台运行方式</h1><p>在linux中执行python程序的时候，我们通常会用python xx.py命令来执行，但这样执行的程序在关闭linux的控制台后，执行的程序就会退出，要让程序关闭后继续执行该怎么办？<br>要让python程序在关闭控制台后继续执行，我们需要使用nohub命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup python -u xx.py &gt; log.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">nohup</span> python -u xx.py &gt; log.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 <p>1 <code>1</code>是标准输出（STDOUT）的文件描述符，<code>2</code>是标准错误（STDERR）的文件描述符<code>1&gt;log.out</code>简化为<code>&gt;log.out</code>，表示把标准输出重定向到log.out这个文件<br>2 <code>2&gt;&amp;1</code>表示把标准错误重定向到标准输出，这里<code>&amp;1</code>表示标准输出，为什么需要将标准错误重向到标准输出？这是因为标准错误没有缓冲区，而STOUT有，这就会导致log.out文件被两次打开，而STDOUT和STDERR将会竞争覆盖。</p>
 <span id="more"></span>
 <h1 id="方法一：脚本后加-amp"><a href="#方法一：脚本后加-amp" class="headerlink" title="方法一：脚本后加&amp;"></a>方法一：脚本后加&amp;</h1><p>加了&amp;以后可以使脚本在后台运行，这样的话你就可以继续工作了，但是有一个问题就是你关闭终端连接后，脚本就会停止运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python updatetest &amp;</span><br></pre></td></tr></table></figure>
 <h1 id="方法二：使用nohup在后台执行命令"><a href="#方法二：使用nohup在后台执行命令" class="headerlink" title="方法二：使用nohup在后台执行命令"></a>方法二：使用nohup在后台执行命令</h1><p>使用&amp;符号在后台执行命令或脚本后，如果你退出登录，这个命令就会被自动终止掉。要避免这种情况，你可以使用nohup命令，如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup ./my-shell-script.sh &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">nohup</span> ./my-shell-script.sh &amp;</span><br></pre></td></tr></table></figure>
 <h1 id="方法三：使用screen执行命令"><a href="#方法三：使用screen执行命令" class="headerlink" title="方法三：使用screen执行命令"></a>方法三：使用screen执行命令</h1><p>通过nohup和&amp;符号在后台执行命令后，即使你退出登录，这个命令也会一直执行。但是，你无法重新连接到这个会话，要想重新连接到这个会话，你可以使用screen命令。<br>linux和screen命令提供了分离和重新连接一个会话的功能。当你重新连接这个会话的时候，你的终端和你分离的时候一模一样。</p>
 <h1 id="方法四：使用at将一个命令作为批处理执行"><a href="#方法四：使用at将一个命令作为批处理执行" class="headerlink" title="方法四：使用at将一个命令作为批处理执行"></a>方法四：使用at将一个命令作为批处理执行</h1><p>使用at命令，你可让一个命令在指定的日期和时间运行，使用要在明天上午10点在后台执行备份脚本，执行下面的命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ at -f backup.sh 10 am tomorrow</span><br></pre></td></tr></table></figure>
 <h1 id="方法五：使用watch连续地执行一个命令"><a href="#方法五：使用watch连续地执行一个命令" class="headerlink" title="方法五：使用watch连续地执行一个命令"></a>方法五：使用watch连续地执行一个命令</h1><p>要想按一个固定的间隔不停地执行一个命令，可以使用watch命令，如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch df -h</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch <span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
 <p>另外查看进程确认脚本是否在继续运行的命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps -ef | grep 脚本名</span><br></pre></td></tr></table></figure>
 

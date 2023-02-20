@@ -260,7 +260,7 @@
 <li>Repository：Docker的仓库和git仓库比较相似</li>
 </ul>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h2><ul>
-<li>计算机BIOS开机虚拟化支持（VT-x/AMD-V）</li>
+<li>计算机BIOS开机虚拟化支持（VT-x&#x2F;AMD-V）</li>
 <li>启用Hyper-V</li>
 <li>安装docker for Windows</li>
 </ul>
@@ -287,7 +287,7 @@
 <li>自己制作</li>
 <li>从registry拉取，比如docker hub</li>
 </ul>
-<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker container ls</span><br><span class="line">docker container run nginx</span><br><span class="line">docker container ps</span><br><span class="line">docker ls</span><br><span class="line">docker ps -a</span><br><span class="line">docker container logs 容器ID</span><br><span class="line">docker container logs -f 容器ID</span><br><span class="line">docker container run -it ubuntu sh</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID sh</span><br><span class="line">docker container run -it busybox sh</span><br><span class="line"><span class="comment">#显示docker运行容器程序所使用的进程</span></span><br><span class="line">docker container top 容器ID</span><br></pre></td></tr></table></figure>
+<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker container <span class="built_in">ls</span></span><br><span class="line">docker container run nginx</span><br><span class="line">docker container ps</span><br><span class="line">docker <span class="built_in">ls</span></span><br><span class="line">docker ps -a</span><br><span class="line">docker container logs 容器ID</span><br><span class="line">docker container logs -f 容器ID</span><br><span class="line">docker container run -it ubuntu sh</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID sh</span><br><span class="line">docker container run -it busybox sh</span><br><span class="line"><span class="comment">#显示docker运行容器程序所使用的进程</span></span><br><span class="line">docker container top 容器ID</span><br></pre></td></tr></table></figure>
 
 <h2 id="如何批量的停止所有的容器"><a href="#如何批量的停止所有的容器" class="headerlink" title="如何批量的停止所有的容器"></a>如何批量的停止所有的容器</h2><p>停止多个容器可以通过命令<code>docker container stop 容器id1 容器id2....</code>来完成，前提是需要知道容器的ID，如果几十个ID要一个一个写，如何简便操作呢</p>
 <ul>
