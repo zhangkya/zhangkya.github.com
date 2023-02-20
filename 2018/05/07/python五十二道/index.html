@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +13,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="习题1文件名：ex1.py1234567print &quot;Hello World!&quot;print &quot;Hello Again&quot;print &quot;I like typing this.&quot;print &quot;This is fun.&quot;print &amp;#x27;Yay!Printing.&amp;#x27;print &quot;I&amp;#x27;d mu">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhangzr.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="习题1文件名：ex1.py1234567print &quot;Hello World!&quot;print &quot;Hello Again&quot;print &quot;I like typing this.&quot;print &quot;This is fun.&quot;print &amp;#x27;Yay!Printing.&amp;#x27;print &quot;I&amp;#x27;d mu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础52道题">
 <meta property="og:url" content="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/index.html">
@@ -52,26 +51,23 @@
 <meta property="og:image" content="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/ex24.PNG">
 <meta property="article:published_time" content="2018-05-07T01:37:11.000Z">
 <meta property="article:modified_time" content="2021-11-25T02:41:15.000Z">
-<meta property="article:author" content="Zhang Tiki">
+<meta property="article:author" content="Tiki">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/ex1.PNG">
 
+
 <link rel="canonical" href="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>python基础52道题 | 大象无形，大音希声</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/","path":"2018/05/07/python五十二道/","title":"python基础52道题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python基础52道题 | 大象无形，大音希声</title>
   
+
+
 
 
 
@@ -79,156 +75,198 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">大象无形，大音希声</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">大象无形，大音希声</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">嘘......</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
-
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
-    </header>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+    </div>
   </div>
 
+</header>
+        
+  
+  <aside class="sidebar">
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="content post posts-expand">
-            
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%981"><span class="nav-number">1.</span> <span class="nav-text">习题1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex1-py"><span class="nav-number">1.1.</span> <span class="nav-text">文件名：ex1.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%983%EF%BC%9A%E6%95%B0%E5%AD%97%E5%92%8C%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">习题3：数字和数学计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex3-py"><span class="nav-number">2.1.</span> <span class="nav-text">文件名：ex3.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-1"><span class="nav-number">2.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%984%EF%BC%9A%E5%8F%98%E9%87%8F%EF%BC%88variable%EF%BC%89%E5%92%8C%E5%91%BD%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">习题4：变量（variable）和命名</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex4-py"><span class="nav-number">3.1.</span> <span class="nav-text">文件名：ex4.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-2"><span class="nav-number">3.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%985%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E6%89%93%E5%8D%B0"><span class="nav-number">4.</span> <span class="nav-text">习题5：更多的变量和打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex5-py"><span class="nav-number">4.1.</span> <span class="nav-text">文件名：ex5.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-3"><span class="nav-number">4.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%986%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E5%92%8C%E6%96%87%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">习题6：字符串（string）和文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex6-py"><span class="nav-number">5.1.</span> <span class="nav-text">文件名：ex6.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-4"><span class="nav-number">5.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%987%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%89%93%E5%8D%B0"><span class="nav-number">6.</span> <span class="nav-text">习题7：更多打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-5"><span class="nav-number">6.1.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%988%EF%BC%9A%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0"><span class="nav-number">7.</span> <span class="nav-text">习题8：打印，打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex8-py"><span class="nav-number">7.1.</span> <span class="nav-text">文件名：ex8.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-6"><span class="nav-number">7.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%989%EF%BC%9A%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0"><span class="nav-number">8.</span> <span class="nav-text">习题9：打印，打印，打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex9-py"><span class="nav-number">8.1.</span> <span class="nav-text">文件名：ex9.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-7"><span class="nav-number">8.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9810%EF%BC%9A%E9%82%A3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">习题10：那是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D-ex10-py"><span class="nav-number">9.1.</span> <span class="nav-text">文件名:ex10.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-8"><span class="nav-number">9.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9811%EF%BC%9A%E6%8F%90%E9%97%AE"><span class="nav-number">10.</span> <span class="nav-text">习题11：提问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex11-py"><span class="nav-number">10.1.</span> <span class="nav-text">文件名：ex11.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-9"><span class="nav-number">10.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9812%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%88%AB%E4%BA%BA"><span class="nav-number">11.</span> <span class="nav-text">习题12：提示别人</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex12-ppy"><span class="nav-number">11.1.</span> <span class="nav-text">文件名：ex12.ppy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-10"><span class="nav-number">11.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9813%EF%BC%9A%E5%8F%82%E6%95%B0%E3%80%81%E8%A7%A3%E5%8C%85%E3%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">12.</span> <span class="nav-text">习题13：参数、解包、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex13-py"><span class="nav-number">12.1.</span> <span class="nav-text">文件名：ex13.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-11"><span class="nav-number">12.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9814%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%92%8C%E4%BC%A0%E9%80%92"><span class="nav-number">13.</span> <span class="nav-text">习题14：提示和传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex14-py"><span class="nav-number">13.1.</span> <span class="nav-text">文件名：ex14.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-12"><span class="nav-number">13.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9815%EF%BC%9A%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-number">14.</span> <span class="nav-text">习题15：读取文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex15-py"><span class="nav-number">14.1.</span> <span class="nav-text">文件名：ex15.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-13"><span class="nav-number">14.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9816%EF%BC%9A%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-number">15.</span> <span class="nav-text">习题16：读写文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9A-ex16-py"><span class="nav-number">15.1.</span> <span class="nav-text">文件名： ex16.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-number">15.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9817%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">16.</span> <span class="nav-text">习题17：更多文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex17-py"><span class="nav-number">16.1.</span> <span class="nav-text">文件名：ex17.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-1"><span class="nav-number">16.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9818%EF%BC%9A%E5%91%BD%E5%90%8D%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E4%BB%A3%E7%A0%81%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">17.</span> <span class="nav-text">习题18：命名、变量、代码、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex18-py"><span class="nav-number">17.1.</span> <span class="nav-text">文件名：ex18.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-2"><span class="nav-number">17.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9819%EF%BC%9A%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">18.</span> <span class="nav-text">习题19：函数和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex19-py"><span class="nav-number">18.1.</span> <span class="nav-text">文件名：ex19.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-3"><span class="nav-number">18.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9820%EF%BC%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6"><span class="nav-number">19.</span> <span class="nav-text">习题20：函数和文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex20-py"><span class="nav-number">19.1.</span> <span class="nav-text">文件名：ex20.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-4"><span class="nav-number">19.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9821%EF%BC%9A%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E8%BF%94%E5%9B%9E%E4%B8%9C%E8%A5%BF"><span class="nav-number">20.</span> <span class="nav-text">习题21：函数可以返回东西</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex21-py"><span class="nav-number">20.1.</span> <span class="nav-text">文件名：ex21.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-5"><span class="nav-number">20.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9824%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%BB%83%E4%B9%A0"><span class="nav-number">21.</span> <span class="nav-text">习题24：更多练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex24-py"><span class="nav-number">21.1.</span> <span class="nav-text">文件名：ex24.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-6"><span class="nav-number">21.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9825%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%83%E4%B9%A0"><span class="nav-number">22.</span> <span class="nav-text">习题25：更多更多的练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex25-py"><span class="nav-number">22.1.</span> <span class="nav-text">文件名：ex25.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9827%EF%BC%9A%E8%AE%B0%E4%BD%8F%E9%80%BB%E8%BE%91%E5%85%B3%E7%B3%BB"><span class="nav-number">23.</span> <span class="nav-text">习题27：记住逻辑关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex27-py"><span class="nav-number">23.1.</span> <span class="nav-text">文件名：ex27.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9829%EF%BC%9A%E5%A6%82%E6%9E%9Cif"><span class="nav-number">24.</span> <span class="nav-text">习题29：如果if</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex29-py"><span class="nav-number">24.1.</span> <span class="nav-text">文件名：ex29.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9830%EF%BC%9AElse-%E5%92%8C-if"><span class="nav-number">25.</span> <span class="nav-text">习题30：Else 和 if</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex30-py"><span class="nav-number">25.1.</span> <span class="nav-text">文件名：ex30.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9831%EF%BC%9A%E4%BD%9C%E5%87%BA%E5%86%B3%E5%AE%9A"><span class="nav-number">26.</span> <span class="nav-text">习题31：作出决定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex31-py"><span class="nav-number">26.1.</span> <span class="nav-text">文件名：ex31.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9831%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%88%97%E8%A1%A8"><span class="nav-number">27.</span> <span class="nav-text">习题31：循环和列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex32-py"><span class="nav-number">27.1.</span> <span class="nav-text">文件名：ex32.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9833%EF%BC%9Awhile%E5%BE%AA%E7%8E%AF"><span class="nav-number">28.</span> <span class="nav-text">习题33：while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex33-py"><span class="nav-number">28.1.</span> <span class="nav-text">文件名：ex33.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9834%EF%BC%9A%E8%AE%BF%E9%97%AE%E5%88%97%E8%A1%A8%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">29.</span> <span class="nav-text">习题34：访问列表的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex34-py"><span class="nav-number">29.1.</span> <span class="nav-text">文件名：ex34.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9835%EF%BC%9A%E5%88%86%E6%94%AF%E5%92%8C%E5%87%BD%E6%95%B0"><span class="nav-number">30.</span> <span class="nav-text">习题35：分支和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex35-py"><span class="nav-number">30.1.</span> <span class="nav-text">文件名：ex35.py</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiki"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2018/05/07/python%E4%BA%94%E5%8D%81%E4%BA%8C%E9%81%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhang Tiki">
-      <meta itemprop="description" content="个人技术博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Tiki">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="大象无形，大音希声">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python基础52道题 | 大象无形，大音希声">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           python基础52道题
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-07 09:37:11" itemprop="dateCreated datePublished" datetime="2018-05-07T09:37:11+08:00">2018-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-25 10:41:15" itemprop="dateModified" datetime="2021-11-25T10:41:15+08:00">2021-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
+      <time title="创建时间：2018-05-07 09:37:11" itemprop="dateCreated datePublished" datetime="2018-05-07T09:37:11+08:00">2018-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-25 10:41:15" itemprop="dateModified" datetime="2021-11-25T10:41:15+08:00">2021-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -237,8 +275,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <h1 id="习题1"><a href="#习题1" class="headerlink" title="习题1"></a>习题1</h1><h2 id="文件名：ex1-py"><a href="#文件名：ex1-py" class="headerlink" title="文件名：ex1.py"></a>文件名：ex1.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;Hello Again&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;I like typing this.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;This is fun.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Yay!Printing.&#x27;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;I&#x27;d much rather you &#x27;not&#x27;.&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;I &quot;said&quot; do not touch this.&#x27;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="你应该看到的结果："><a href="#你应该看到的结果：" class="headerlink" title="你应该看到的结果："></a>你应该看到的结果：</h2><img src="ex1.PNG"  title="[习题1]" />
@@ -377,172 +413,79 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Python/" rel="tag"># Python</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2017/11/06/clover/" rel="prev" title="clover">
-      <i class="fa fa-chevron-left"></i> clover
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/05/15/Docker/" rel="next" title="学习Docker">
-      学习Docker <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/11/06/clover/" rel="prev" title="clover">
+                  <i class="fa fa-chevron-left"></i> clover
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/15/Docker/" rel="next" title="学习Docker">
+                  学习Docker <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%981"><span class="nav-number">1.</span> <span class="nav-text">习题1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex1-py"><span class="nav-number">1.1.</span> <span class="nav-text">文件名：ex1.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%983%EF%BC%9A%E6%95%B0%E5%AD%97%E5%92%8C%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">习题3：数字和数学计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex3-py"><span class="nav-number">2.1.</span> <span class="nav-text">文件名：ex3.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-1"><span class="nav-number">2.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%984%EF%BC%9A%E5%8F%98%E9%87%8F%EF%BC%88variable%EF%BC%89%E5%92%8C%E5%91%BD%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">习题4：变量（variable）和命名</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex4-py"><span class="nav-number">3.1.</span> <span class="nav-text">文件名：ex4.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-2"><span class="nav-number">3.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%985%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E6%89%93%E5%8D%B0"><span class="nav-number">4.</span> <span class="nav-text">习题5：更多的变量和打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex5-py"><span class="nav-number">4.1.</span> <span class="nav-text">文件名：ex5.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-3"><span class="nav-number">4.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%986%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E5%92%8C%E6%96%87%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">习题6：字符串（string）和文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex6-py"><span class="nav-number">5.1.</span> <span class="nav-text">文件名：ex6.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-4"><span class="nav-number">5.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%987%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%89%93%E5%8D%B0"><span class="nav-number">6.</span> <span class="nav-text">习题7：更多打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-5"><span class="nav-number">6.1.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%988%EF%BC%9A%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0"><span class="nav-number">7.</span> <span class="nav-text">习题8：打印，打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex8-py"><span class="nav-number">7.1.</span> <span class="nav-text">文件名：ex8.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-6"><span class="nav-number">7.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%989%EF%BC%9A%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0%EF%BC%8C%E6%89%93%E5%8D%B0"><span class="nav-number">8.</span> <span class="nav-text">习题9：打印，打印，打印</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex9-py"><span class="nav-number">8.1.</span> <span class="nav-text">文件名：ex9.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-7"><span class="nav-number">8.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9810%EF%BC%9A%E9%82%A3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">习题10：那是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D-ex10-py"><span class="nav-number">9.1.</span> <span class="nav-text">文件名:ex10.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-8"><span class="nav-number">9.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9811%EF%BC%9A%E6%8F%90%E9%97%AE"><span class="nav-number">10.</span> <span class="nav-text">习题11：提问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex11-py"><span class="nav-number">10.1.</span> <span class="nav-text">文件名：ex11.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-9"><span class="nav-number">10.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9812%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%88%AB%E4%BA%BA"><span class="nav-number">11.</span> <span class="nav-text">习题12：提示别人</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex12-ppy"><span class="nav-number">11.1.</span> <span class="nav-text">文件名：ex12.ppy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-10"><span class="nav-number">11.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9813%EF%BC%9A%E5%8F%82%E6%95%B0%E3%80%81%E8%A7%A3%E5%8C%85%E3%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">12.</span> <span class="nav-text">习题13：参数、解包、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex13-py"><span class="nav-number">12.1.</span> <span class="nav-text">文件名：ex13.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-11"><span class="nav-number">12.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9814%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%92%8C%E4%BC%A0%E9%80%92"><span class="nav-number">13.</span> <span class="nav-text">习题14：提示和传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex14-py"><span class="nav-number">13.1.</span> <span class="nav-text">文件名：ex14.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-12"><span class="nav-number">13.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9815%EF%BC%9A%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-number">14.</span> <span class="nav-text">习题15：读取文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex15-py"><span class="nav-number">14.1.</span> <span class="nav-text">文件名：ex15.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9A-13"><span class="nav-number">14.2.</span> <span class="nav-text">你应该看到的结果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9816%EF%BC%9A%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-number">15.</span> <span class="nav-text">习题16：读写文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9A-ex16-py"><span class="nav-number">15.1.</span> <span class="nav-text">文件名： ex16.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-number">15.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9817%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">16.</span> <span class="nav-text">习题17：更多文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex17-py"><span class="nav-number">16.1.</span> <span class="nav-text">文件名：ex17.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-1"><span class="nav-number">16.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9818%EF%BC%9A%E5%91%BD%E5%90%8D%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E4%BB%A3%E7%A0%81%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">17.</span> <span class="nav-text">习题18：命名、变量、代码、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex18-py"><span class="nav-number">17.1.</span> <span class="nav-text">文件名：ex18.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-2"><span class="nav-number">17.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9819%EF%BC%9A%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">18.</span> <span class="nav-text">习题19：函数和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex19-py"><span class="nav-number">18.1.</span> <span class="nav-text">文件名：ex19.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-3"><span class="nav-number">18.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9820%EF%BC%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6"><span class="nav-number">19.</span> <span class="nav-text">习题20：函数和文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex20-py"><span class="nav-number">19.1.</span> <span class="nav-text">文件名：ex20.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-4"><span class="nav-number">19.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9821%EF%BC%9A%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E8%BF%94%E5%9B%9E%E4%B8%9C%E8%A5%BF"><span class="nav-number">20.</span> <span class="nav-text">习题21：函数可以返回东西</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex21-py"><span class="nav-number">20.1.</span> <span class="nav-text">文件名：ex21.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-5"><span class="nav-number">20.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9824%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%BB%83%E4%B9%A0"><span class="nav-number">21.</span> <span class="nav-text">习题24：更多练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex24-py"><span class="nav-number">21.1.</span> <span class="nav-text">文件名：ex24.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%90%E8%A1%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F-6"><span class="nav-number">21.2.</span> <span class="nav-text">用下面的方法运行你的程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9825%EF%BC%9A%E6%9B%B4%E5%A4%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%83%E4%B9%A0"><span class="nav-number">22.</span> <span class="nav-text">习题25：更多更多的练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex25-py"><span class="nav-number">22.1.</span> <span class="nav-text">文件名：ex25.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9827%EF%BC%9A%E8%AE%B0%E4%BD%8F%E9%80%BB%E8%BE%91%E5%85%B3%E7%B3%BB"><span class="nav-number">23.</span> <span class="nav-text">习题27：记住逻辑关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex27-py"><span class="nav-number">23.1.</span> <span class="nav-text">文件名：ex27.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9829%EF%BC%9A%E5%A6%82%E6%9E%9Cif"><span class="nav-number">24.</span> <span class="nav-text">习题29：如果if</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex29-py"><span class="nav-number">24.1.</span> <span class="nav-text">文件名：ex29.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9830%EF%BC%9AElse-%E5%92%8C-if"><span class="nav-number">25.</span> <span class="nav-text">习题30：Else 和 if</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex30-py"><span class="nav-number">25.1.</span> <span class="nav-text">文件名：ex30.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9831%EF%BC%9A%E4%BD%9C%E5%87%BA%E5%86%B3%E5%AE%9A"><span class="nav-number">26.</span> <span class="nav-text">习题31：作出决定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex31-py"><span class="nav-number">26.1.</span> <span class="nav-text">文件名：ex31.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9831%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%88%97%E8%A1%A8"><span class="nav-number">27.</span> <span class="nav-text">习题31：循环和列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex32-py"><span class="nav-number">27.1.</span> <span class="nav-text">文件名：ex32.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9833%EF%BC%9Awhile%E5%BE%AA%E7%8E%AF"><span class="nav-number">28.</span> <span class="nav-text">习题33：while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex33-py"><span class="nav-number">28.1.</span> <span class="nav-text">文件名：ex33.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9834%EF%BC%9A%E8%AE%BF%E9%97%AE%E5%88%97%E8%A1%A8%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">29.</span> <span class="nav-text">习题34：访问列表的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex34-py"><span class="nav-number">29.1.</span> <span class="nav-text">文件名：ex34.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%9835%EF%BC%9A%E5%88%86%E6%94%AF%E5%92%8C%E5%87%BD%E6%95%B0"><span class="nav-number">30.</span> <span class="nav-text">习题35：分支和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%9Aex35-py"><span class="nav-number">30.1.</span> <span class="nav-text">文件名：ex35.py</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Zhang Tiki</p>
-  <div class="site-description" itemprop="description">个人技术博客</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">37</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">32</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Zhang Tiki</span>
+  <span class="author" itemprop="copyrightHolder">Tiki</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
+    </div>
+  </footer>
 
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -552,20 +495,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>
