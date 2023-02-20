@@ -5,7 +5,7 @@
     <url>/2023/02/20/AI%E8%A7%86%E9%A2%91%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<h1 id="CodeFormer-AI-开源视频、图片修复软件安装及设置"><a href="#CodeFormer-AI-开源视频、图片修复软件安装及设置" class="headerlink" title="CodeFormer AI 开源视频、图片修复软件安装及设置"></a>CodeFormer AI 开源视频、图片修复软件安装及设置</h1><p>项目地址：<a href="https://github.com/sczhou/CodeFormer">CodeFormer项目</a></p>
 <p>通过CodeFormer项目可以实现人像的面部修复（需要裁剪和对齐面部）、整体图像增强与视频增强，实现效果如下：</p>
-<img src="AI视频与图片修复/color_enhancement_result1.png" style="zoom:50%;" />
+<img src="color_enhancement_result1.png" style="zoom:50%;" />
 
 <span id="more"></span> 
 
@@ -286,71 +286,6 @@
       </categories>
       <tags>
         <tag>Daphile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习Docker</title>
-    <url>/2018/05/15/Docker/</url>
-    <content><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>Docker自开源以来受到了各大公司的广泛关注，或许现在互联网公司的运维体系不承载在Docker之上都不好意思说自己是互联网公司。</p>
-<span id="more"></span>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>对Docker最简单并且带有一定错误的认知就是“Docker是一种性能非常好的虚拟机”。<br>正如上面所说，这是有一定错误的说法。Docker相比于传统虚拟机的技术来说先进了不少，具体表现在Docker不是在宿主机上虚拟出一套硬件后再虚拟出一个操作系统，而是让Docker容器里面的进程直接运行在宿主机上（Docker会做文件、网络等的隔离），这样一来Docker会“体积更轻、跑的更快、同宿主机下可创建的个数更多”。<br>Docker中有三个核心概念：Image、Container、Repository</p>
-<ul>
-<li>Image：Docker中的镜像是分层的，可复用的，而非简单的一堆文件迭在一起（类似于一个压缩包的源码和一个git仓库的区别）。</li>
-<li>Container：容器的存在离不开镜像的支持，他是镜像运行时的一个载体（类似于实例与类的关系）。依托Docker的虚拟化技术，给容器创建了独立的端口、进程、文件等“空间，Containner就是一个与宿机隔离“容器”。容器可宿主机之间可以进行port、volumer、network等的通信。</li>
-<li>Repository：Docker的仓库和git仓库比较相似</li>
-</ul>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h2><ul>
-<li>计算机BIOS开机虚拟化支持（VT-x&#x2F;AMD-V）</li>
-<li>启用Hyper-V</li>
-<li>安装docker for Windows</li>
-</ul>
-<p><a href="https://www.docker.com下载docker/">https://www.docker.com下载Docker</a> Desktop</p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><ul>
-<li>获取安装脚本<a href="https://get.docker.com/">https://get.docker.com</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sh get-docker.sh</span><br><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p><strong>需要开启sudo</strong>，验证安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br></pre></td></tr></table></figure>
-
-<h1 id="Image-vs-container-镜像与容器"><a href="#Image-vs-container-镜像与容器" class="headerlink" title="Image vs container 镜像与容器"></a>Image vs container 镜像与容器</h1><h2 id="image"><a href="#image" class="headerlink" title="image"></a>image</h2><ul>
-<li>docker image是一个只读文件</li>
-<li>这个文件包含文件系统，源码，库文件，依赖，工具等一些运行application所需要的文件</li>
-<li>docker image具有分层的概念</li>
-</ul>
-<h2 id="Container容器"><a href="#Container容器" class="headerlink" title="Container容器"></a>Container容器</h2><ul>
-<li>一个运行中的docker image</li>
-<li>实质是复制image最上层加上一层read-write（称之为container layer容器层）</li>
-<li>基于同一个image可以创建多个container</li>
-</ul>
-<h2 id="docker-image获取"><a href="#docker-image获取" class="headerlink" title="docker image获取"></a>docker image获取</h2><ul>
-<li>自己制作</li>
-<li>从registry拉取，比如docker hub</li>
-</ul>
-<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker container <span class="built_in">ls</span></span><br><span class="line">docker container run nginx</span><br><span class="line">docker container ps</span><br><span class="line">docker <span class="built_in">ls</span></span><br><span class="line">docker ps -a</span><br><span class="line">docker container logs 容器ID</span><br><span class="line">docker container logs -f 容器ID</span><br><span class="line">docker container run -it ubuntu sh</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID sh</span><br><span class="line">docker container run -it busybox sh</span><br><span class="line"><span class="comment">#显示docker运行容器程序所使用的进程</span></span><br><span class="line">docker container top 容器ID</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何批量的停止所有的容器"><a href="#如何批量的停止所有的容器" class="headerlink" title="如何批量的停止所有的容器"></a>如何批量的停止所有的容器</h2><p>停止多个容器可以通过命令<code>docker container stop 容器id1 容器id2....</code>来完成，前提是需要知道容器的ID，如果几十个ID要一个一个写，如何简便操作呢</p>
-<ul>
-<li>批量获取容器ID，可以通过命令<code>docker container ps -qa</code>来完成</li>
-<li>把上面获取的参数传递给<code>docker container stop</code>命令</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker container stop $(docker container ps -qa)</span><br></pre></td></tr></table></figure>
-
-<h1 id="镜像的获取"><a href="#镜像的获取" class="headerlink" title="镜像的获取"></a>镜像的获取</h1><ul>
-<li>从registry拉取<ul>
-<li>public 公有</li>
-<li>private 私有（内部搭建）</li>
-</ul>
-</li>
-<li>从Dockerfile构建</li>
-<li>文件导入（离线）</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -693,6 +628,71 @@
       </tags>
   </entry>
   <entry>
+    <title>学习Docker</title>
+    <url>/2018/05/15/Docker/</url>
+    <content><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>Docker自开源以来受到了各大公司的广泛关注，或许现在互联网公司的运维体系不承载在Docker之上都不好意思说自己是互联网公司。</p>
+<span id="more"></span>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>对Docker最简单并且带有一定错误的认知就是“Docker是一种性能非常好的虚拟机”。<br>正如上面所说，这是有一定错误的说法。Docker相比于传统虚拟机的技术来说先进了不少，具体表现在Docker不是在宿主机上虚拟出一套硬件后再虚拟出一个操作系统，而是让Docker容器里面的进程直接运行在宿主机上（Docker会做文件、网络等的隔离），这样一来Docker会“体积更轻、跑的更快、同宿主机下可创建的个数更多”。<br>Docker中有三个核心概念：Image、Container、Repository</p>
+<ul>
+<li>Image：Docker中的镜像是分层的，可复用的，而非简单的一堆文件迭在一起（类似于一个压缩包的源码和一个git仓库的区别）。</li>
+<li>Container：容器的存在离不开镜像的支持，他是镜像运行时的一个载体（类似于实例与类的关系）。依托Docker的虚拟化技术，给容器创建了独立的端口、进程、文件等“空间，Containner就是一个与宿机隔离“容器”。容器可宿主机之间可以进行port、volumer、network等的通信。</li>
+<li>Repository：Docker的仓库和git仓库比较相似</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h2><ul>
+<li>计算机BIOS开机虚拟化支持（VT-x&#x2F;AMD-V）</li>
+<li>启用Hyper-V</li>
+<li>安装docker for Windows</li>
+</ul>
+<p><a href="https://www.docker.com下载docker/">https://www.docker.com下载Docker</a> Desktop</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><ul>
+<li>获取安装脚本<a href="https://get.docker.com/">https://get.docker.com</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sh get-docker.sh</span><br><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p><strong>需要开启sudo</strong>，验证安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo docker version</span><br></pre></td></tr></table></figure>
+
+<h1 id="Image-vs-container-镜像与容器"><a href="#Image-vs-container-镜像与容器" class="headerlink" title="Image vs container 镜像与容器"></a>Image vs container 镜像与容器</h1><h2 id="image"><a href="#image" class="headerlink" title="image"></a>image</h2><ul>
+<li>docker image是一个只读文件</li>
+<li>这个文件包含文件系统，源码，库文件，依赖，工具等一些运行application所需要的文件</li>
+<li>docker image具有分层的概念</li>
+</ul>
+<h2 id="Container容器"><a href="#Container容器" class="headerlink" title="Container容器"></a>Container容器</h2><ul>
+<li>一个运行中的docker image</li>
+<li>实质是复制image最上层加上一层read-write（称之为container layer容器层）</li>
+<li>基于同一个image可以创建多个container</li>
+</ul>
+<h2 id="docker-image获取"><a href="#docker-image获取" class="headerlink" title="docker image获取"></a>docker image获取</h2><ul>
+<li>自己制作</li>
+<li>从registry拉取，比如docker hub</li>
+</ul>
+<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker container <span class="built_in">ls</span></span><br><span class="line">docker container run nginx</span><br><span class="line">docker container ps</span><br><span class="line">docker <span class="built_in">ls</span></span><br><span class="line">docker ps -a</span><br><span class="line">docker container logs 容器ID</span><br><span class="line">docker container logs -f 容器ID</span><br><span class="line">docker container run -it ubuntu sh</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID sh</span><br><span class="line">docker container run -it busybox sh</span><br><span class="line"><span class="comment">#显示docker运行容器程序所使用的进程</span></span><br><span class="line">docker container top 容器ID</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何批量的停止所有的容器"><a href="#如何批量的停止所有的容器" class="headerlink" title="如何批量的停止所有的容器"></a>如何批量的停止所有的容器</h2><p>停止多个容器可以通过命令<code>docker container stop 容器id1 容器id2....</code>来完成，前提是需要知道容器的ID，如果几十个ID要一个一个写，如何简便操作呢</p>
+<ul>
+<li>批量获取容器ID，可以通过命令<code>docker container ps -qa</code>来完成</li>
+<li>把上面获取的参数传递给<code>docker container stop</code>命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker container stop $(docker container ps -qa)</span><br></pre></td></tr></table></figure>
+
+<h1 id="镜像的获取"><a href="#镜像的获取" class="headerlink" title="镜像的获取"></a>镜像的获取</h1><ul>
+<li>从registry拉取<ul>
+<li>public 公有</li>
+<li>private 私有（内部搭建）</li>
+</ul>
+</li>
+<li>从Dockerfile构建</li>
+<li>文件导入（离线）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vmware ESXi连接iSCSI</title>
     <url>/2021/08/06/ESXi%E8%BF%9E%E6%8E%A5iSCSI/</url>
     <content><![CDATA[<h3 id="一、-设定VMkernal-NIC"><a href="#一、-设定VMkernal-NIC" class="headerlink" title="一、 设定VMkernal NIC"></a>一、 设定VMkernal NIC</h3><ol>
@@ -937,6 +937,108 @@
       </categories>
       <tags>
         <tag>cert</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux防火墙</title>
+    <url>/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <content><![CDATA[<h2 id="Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙"><a href="#Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙" class="headerlink" title="Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙"></a>Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开放所有端口</span></span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment">#删除防火墙</span></span><br><span class="line">apt purge netfilter-persistent &amp;&amp; reboot</span><br><span class="line">或 <span class="built_in">rm</span> -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac双系统时间不同步的问题解决</title>
+    <url>/2017/11/06/Mac-Win-time/</url>
+    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。</p>
+<h3 id="解决方法：（修改Windows注册表）"><a href="#解决方法：（修改Windows注册表）" class="headerlink" title="解决方法：（修改Windows注册表）"></a>解决方法：（修改Windows注册表）</h3><p>将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致</p>
+<p>修改Windows的注册表，定位到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
+<p>添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。<br>这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。</p>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>Mac OS</tag>
+        <tag>排错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacOS brew国内源</title>
+    <url>/2022/03/26/MacOSbrew%E5%9B%BD%E5%86%85%E6%BA%90/</url>
+    <content><![CDATA[<p>MacOS中更改为国内源</p>
+<ul>
+<li>清华大学源</li>
+<li>中科大源</li>
+<li>阿里云</li>
+<li>腾讯源</li>
+</ul>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">brew</td>
+<td align="center">Homebew源代码仓库</td>
+</tr>
+<tr>
+<td align="center">home-brew-core</td>
+<td align="center">Homebrew核心软件仓库</td>
+</tr>
+<tr>
+<td align="center">homebrew-bottles</td>
+<td align="center">Homebre预编译二进制软件包</td>
+</tr>
+<tr>
+<td align="center">homebrew-cask</td>
+<td align="center">提供macOS应用和大型二进制文件</td>
+</tr>
+</tbody></table>
+<h1 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+<h1 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看 brew.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (push)</span><br><span class="line"></span><br><span class="line"># 查看 homebrew-core.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (push)</span><br><span class="line"></span><br><span class="line"># 修改 brew.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 修改 homebrew-core.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+<h1 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">替换brew.git:</span><br><span class="line">cd &quot;$(brew --repo)&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">替换homebrew-core.git:</span><br><span class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Homebrew-Bottles源"><a href="#Homebrew-Bottles源" class="headerlink" title="Homebrew Bottles源"></a>Homebrew Bottles源</h1><p>Homebrew预编译二进制软件包</p>
+<h2 id="临时替换"><a href="#临时替换" class="headerlink" title="临时替换"></a>临时替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="永久替换"><a href="#永久替换" class="headerlink" title="永久替换"></a>永久替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Homebrew-Cask源"><a href="#Homebrew-Cask源" class="headerlink" title="Homebrew Cask源"></a>Homebrew Cask源</h1><p> Homebrew cask软件仓库，提供MacOS应用和大型二进制文件，请先运行<code>brew update</code>将<code>brew</code>更新至3.2.17或以上版本</p>
+<h2 id="重置为官方地址"><a href="#重置为官方地址" class="headerlink" title="重置为官方地址"></a>重置为官方地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap --custom-remote --force-auto-update homebrew/cask https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="重置为官方源"><a href="#重置为官方源" class="headerlink" title="重置为官方源"></a>重置为官方源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重置 brew.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-core.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-cask.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br><span class="line"></span><br><span class="line"># zsh 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.zshrc</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># bash 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.bash_profile</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
       </tags>
   </entry>
   <entry>
@@ -1354,108 +1456,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux防火墙</title>
-    <url>/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/</url>
-    <content><![CDATA[<h2 id="Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙"><a href="#Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙" class="headerlink" title="Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙"></a>Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开放所有端口</span></span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment">#删除防火墙</span></span><br><span class="line">apt purge netfilter-persistent &amp;&amp; reboot</span><br><span class="line">或 <span class="built_in">rm</span> -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac双系统时间不同步的问题解决</title>
-    <url>/2017/11/06/Mac-Win-time/</url>
-    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。</p>
-<h3 id="解决方法：（修改Windows注册表）"><a href="#解决方法：（修改Windows注册表）" class="headerlink" title="解决方法：（修改Windows注册表）"></a>解决方法：（修改Windows注册表）</h3><p>将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致</p>
-<p>修改Windows的注册表，定位到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
-<p>添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。<br>这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。</p>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>Mac OS</tag>
-        <tag>排错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MacOS brew国内源</title>
-    <url>/2022/03/26/MacOSbrew%E5%9B%BD%E5%86%85%E6%BA%90/</url>
-    <content><![CDATA[<p>MacOS中更改为国内源</p>
-<ul>
-<li>清华大学源</li>
-<li>中科大源</li>
-<li>阿里云</li>
-<li>腾讯源</li>
-</ul>
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">brew</td>
-<td align="center">Homebew源代码仓库</td>
-</tr>
-<tr>
-<td align="center">home-brew-core</td>
-<td align="center">Homebrew核心软件仓库</td>
-</tr>
-<tr>
-<td align="center">homebrew-bottles</td>
-<td align="center">Homebre预编译二进制软件包</td>
-</tr>
-<tr>
-<td align="center">homebrew-cask</td>
-<td align="center">提供macOS应用和大型二进制文件</td>
-</tr>
-</tbody></table>
-<h1 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-<h1 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看 brew.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (push)</span><br><span class="line"></span><br><span class="line"># 查看 homebrew-core.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (push)</span><br><span class="line"></span><br><span class="line"># 修改 brew.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 修改 homebrew-core.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-<h1 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">替换brew.git:</span><br><span class="line">cd &quot;$(brew --repo)&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">替换homebrew-core.git:</span><br><span class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Homebrew-Bottles源"><a href="#Homebrew-Bottles源" class="headerlink" title="Homebrew Bottles源"></a>Homebrew Bottles源</h1><p>Homebrew预编译二进制软件包</p>
-<h2 id="临时替换"><a href="#临时替换" class="headerlink" title="临时替换"></a>临时替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="永久替换"><a href="#永久替换" class="headerlink" title="永久替换"></a>永久替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Homebrew-Cask源"><a href="#Homebrew-Cask源" class="headerlink" title="Homebrew Cask源"></a>Homebrew Cask源</h1><p> Homebrew cask软件仓库，提供MacOS应用和大型二进制文件，请先运行<code>brew update</code>将<code>brew</code>更新至3.2.17或以上版本</p>
-<h2 id="重置为官方地址"><a href="#重置为官方地址" class="headerlink" title="重置为官方地址"></a>重置为官方地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap --custom-remote --force-auto-update homebrew/cask https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="重置为官方源"><a href="#重置为官方源" class="headerlink" title="重置为官方源"></a>重置为官方源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重置 brew.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-core.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-cask.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br><span class="line"></span><br><span class="line"># zsh 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.zshrc</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># bash 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.bash_profile</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>brew</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OpenWrt搭建OpenConnect VPN</title>
     <url>/2017/08/31/Openvpn-OpenConnect/</url>
     <content><![CDATA[<h1 id="1、安装Ocserv"><a href="#1、安装Ocserv" class="headerlink" title="1、安装Ocserv"></a>1、安装Ocserv</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ocserv luci-app-ocserv</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
@@ -1556,6 +1556,38 @@
       </tags>
   </entry>
   <entry>
+    <title>PorxyChains</title>
+    <url>/2022/03/26/PorxyChains/</url>
+    <content><![CDATA[<p>MacOS系统下使用Proxychains-ng进行命令行下代理</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install proxychains-ng</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/rofl0r/proxychains-ng</span><br><span class="line">cd proxychains-ng</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">sudo make install-config  # 安装proxychains.conf配置文件</span><br></pre></td></tr></table></figure>
+
+<p>使用普通用户make install需要改变configure文件再进行编译安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd configure </span><br><span class="line">vi config.mak</span><br><span class="line">将：</span><br><span class="line">bindir = /usr/bin</span><br><span class="line">libdir = /usr/lib</span><br><span class="line">修改为：</span><br><span class="line">bindir=/usr/local/bin</span><br><span class="line">libdir=/usr/local/lib</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span> 分隔符不要忘了！！！！！！！！！
+
+<h2 id="关闭SIP"><a href="#关闭SIP" class="headerlink" title="关闭SIP"></a>关闭SIP</h2><p>macOS 10.11 后下由于开启了 SIP（System Integrity Protection） 会导致命令行下 proxychains-ng 代理的模式失效，如果使用 proxychains-ng 这种简单的方法，就需要先关闭 SIP。</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/proxychains.conf</span><br><span class="line">vi proxychains.conf</span><br></pre></td></tr></table></figure>
+
+<p>在[ProxyList]下添加socks5代理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 代理端口一定要和shadowsocks中的保持一致</span><br><span class="line"># 如果有不明白的可以查看93～110</span><br><span class="line">[ProxyList]</span><br><span class="line">socks5 127.0.0.1 1080</span><br><span class="line"># http 127.0.0.1 1235 (me)</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line"># socks4        127.0.0.1 9050</span><br></pre></td></tr></table></figure>
+
+<h1 id="Proxychains-ng使用"><a href="#Proxychains-ng使用" class="headerlink" title="Proxychains-ng使用"></a>Proxychains-ng使用</h1><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 curl cip.cc</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>例如，Homebrew更新</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 brew update</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python脚本后台运行的几种方式</title>
     <url>/2018/05/17/Python%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<h1 id="python后台运行方式"><a href="#python后台运行方式" class="headerlink" title="python后台运行方式"></a>python后台运行方式</h1><p>在linux中执行python程序的时候，我们通常会用python xx.py命令来执行，但这样执行的程序在关闭linux的控制台后，执行的程序就会退出，要让程序关闭后继续执行该怎么办？<br>要让python程序在关闭控制台后继续执行，我们需要使用nohub命令。</p>
@@ -1579,6 +1611,35 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Samba配置</title>
+    <url>/2020/05/14/Samba%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="1-Samba服务器"><a href="#1-Samba服务器" class="headerlink" title="1. Samba服务器"></a>1. Samba服务器</h1><h2 id="1-1-创建samba用户"><a href="#1-1-创建samba用户" class="headerlink" title="1.1 创建samba用户"></a>1.1 创建samba用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$ sudo smbpasswd -a smbuser</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="1-2-重启samba服务"><a href="#1-2-重启samba服务" class="headerlink" title="1.2. 重启samba服务"></a>1.2. 重启samba服务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl restart smbd # 提供文件和打印服务、授权与被授权服务</span><br><span class="line">$ sudo systemctl restart nmbd # 提供名字解析、浏览服务</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-客户端访问测试"><a href="#1-3-客户端访问测试" class="headerlink" title="1.3. 客户端访问测试"></a>1.3. 客户端访问测试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ smbclient -L //localhose/share</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-远程挂载共享目录"><a href="#1-4-远程挂载共享目录" class="headerlink" title="1.4 远程挂载共享目录"></a>1.4 远程挂载共享目录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo mount.cifs //server-ip/sharename ./mnt/filename -o username=XXX,password=XXX,vers=1.0</span><br><span class="line"></span><br><span class="line">$ sudo umount /mnt/filename   # 取消挂载</span><br><span class="line">$ sudo tail -f /var/log/kern.log # 查看错误日志</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-‘smb-conf’配置文件"><a href="#2-‘smb-conf’配置文件" class="headerlink" title="2. ‘smb.conf’配置文件"></a>2. ‘smb.conf’配置文件</h1><h2 id="2-1-共享文件夹举例"><a href="#2-1-共享文件夹举例" class="headerlink" title="2.1 共享文件夹举例"></a>2.1 共享文件夹举例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[home] <span class="comment"># 这个使用者资源共享部分：也就是用户家目录</span></span><br><span class="line"></span><br><span class="line">[share]</span><br><span class="line">    path=/home/share <span class="comment"># 共享路径</span></span><br><span class="line">    browseable = <span class="built_in">yes</span> <span class="comment"># 设置该共享目录是否可显示</span></span><br><span class="line">    writable = <span class="built_in">yes</span>|no  <span class="comment"># 指定了这个目录缺省是否可写，也可以用readonly=no来设置可写</span></span><br><span class="line">    comment = smb share <span class="built_in">test</span> <span class="comment"># 该共享的备注</span></span><br><span class="line">    allow hosts = host(subnet) <span class="comment"># 设置该Samba服务器允许的工作组或者域</span></span><br><span class="line">    deny hosts = host(subnet) <span class="comment"># 设置该Sambe服务器拒绝的工作组或者域</span></span><br><span class="line">    available = <span class="built_in">yes</span>|no <span class="comment"># 设置该共享目录是否可用</span></span><br><span class="line">    public = <span class="built_in">yes</span>|no <span class="comment"># 指明该共享资源是否能给游客账号访问, guest ok = yes其实和public = yes是一样的</span></span><br><span class="line">    user = user, @group <span class="comment"># user设置所有可能使用该共享资源的用户，也可以用@group代表group这个组的所有成员，不同的项目之间用空格或者逗号隔开</span></span><br><span class="line">    valid user = user, @group <span class="comment"># 指定能够使用该共享资源的用户和组</span></span><br><span class="line">    invalid user = user, @group <span class="comment"># 指定不能够使用该共享资源的用户和组</span></span><br><span class="line">    <span class="built_in">read</span> list = user, @group <span class="comment"># 指定只能读取该共享资源的用户和组</span></span><br><span class="line">    write list = user, @group <span class="comment"># 指定能读取和写该共享资源的用户和组</span></span><br><span class="line">    admin list = user, @group <span class="comment"># 指定能管理该共享资源（包括读写和权限赋予等）的用户和组</span></span><br><span class="line">    hide dot files = <span class="built_in">yes</span>|no <span class="comment"># 指明是否像UNIX那样隐藏以“.”号开头的文件</span></span><br><span class="line">    create mode = 0755 <span class="comment"># 指明新建立的文件属性，一般是0755</span></span><br><span class="line">    directory mode = 0755 <span class="comment"># 指明新建立目录的属性，一般是0755</span></span><br><span class="line">    <span class="built_in">sync</span> always = <span class="built_in">yes</span>|no <span class="comment"># 指明对该共享资源进行写操作后是否进行同步操作，Samba默认为异步写入。smbd写入内存缓冲区，稍后将缓冲区刷新到磁盘。</span></span><br><span class="line">    short preserve <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明是否区分文件名大小写</span></span><br><span class="line">    preserve <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明是否保持大小写</span></span><br><span class="line">    <span class="keyword">case</span> sensitive = <span class="built_in">yes</span>|no <span class="comment"># 指明是否对大小写敏感，一般选no，不然可能引起错误</span></span><br><span class="line">    mangle <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明混合大小写</span></span><br><span class="line">    default <span class="keyword">case</span> = upper|lower <span class="comment"># 指明缺省文件名是全部大写还是小写</span></span><br><span class="line">    force user = testuser <span class="comment"># 强制把建立文件的属主是谁。如果我有一个目录，让guest可以写那么它就可以删除，如果我用force user=testuser强制建立文件的属主是testuser,同时限制create mask = 0755，这样guest就不能删除了</span></span><br><span class="line">    wide links = <span class="built_in">yes</span>|no <span class="comment"># 指明是否允许共享外符号连接</span></span><br><span class="line">    max connections = 100 <span class="comment"># 设定最大同时连接数</span></span><br><span class="line">    delete <span class="built_in">readonly</span> <span class="comment"># 指明能否删除共享资源里面已经被定义为只读的文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>%S &#x3D; 当前服务名（如果有的话）<br>%P &#x3D; 当前服务的根目录（如果有的话）<br>%u &#x3D; 当前服务的用户名（如果有的话）<br>%g &#x3D; 当前用户说在的主工作组<br>%U &#x3D; 当前对话的用户名<br>%G &#x3D; 当前对话的用户的主工作组<br>%H &#x3D; 当前服务的用户的Home目录<br>%v &#x3D; Samba服务的版本号。<br>%h &#x3D; 运行Samba服务机器的主机名<br>%m &#x3D; 客户机的NETBIOS名称<br>%L &#x3D; 服务器的NETBIOS名称<br>%M &#x3D; 客户机的主机名<br>%N &#x3D; NIS服务器名<br>%p &#x3D; NIS服务的Home目录<br>%R &#x3D; 说采用的协议等级(值可以是CORE, COREPLUS, LANMAN1, LANMAN2，NT1)<br>%d &#x3D; 当前服务进程的ID<br>%a &#x3D; 客户机的结构（只能识别几项：Samba，WfWg，WinNT，Win95）<br>%I &#x3D; 客户机的IP<br>%T &#x3D; 当前日期和时间<br>hosts allow &#x3D; 网络或者主机</p>
+<h1 id="3-针对指定有权限的可用可见目录"><a href="#3-针对指定有权限的可用可见目录" class="headerlink" title="3. 针对指定有权限的可用可见目录"></a>3. 针对指定有权限的可用可见目录</h1><p>引用子配置文件，在引用子配置文件有二种方法：</p>
+<ul>
+<li>在[global]标签下加入参数：config file&#x3D;&#x2F;etc&#x2F;samba&#x2F;smb.conf.%U</li>
+<li>在[include]标签下加入参数：include&#x3D;&#x2F;etc&#x2F;samba&#x2F;smb.conf.%U</li>
+</ul>
+<p>他们的区别是：使用config file时，当以aa身份访问samba服务器，只能看到aa，其他在smb.conf中定义的共享资源都无法看到；使用include时，当以aa身份访问samba服务器，除了可以看到aa，其它在sam.conf中定义的共享也可以看到。</p>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>samba</tag>
       </tags>
   </entry>
   <entry>
@@ -1989,7 +2050,7 @@
 </tr>
 <tr>
 <td><code>\w+@\w+\.com</code></td>
-<td>以<a href="mailto:&#88;&#x58;&#x58;&#64;&#x79;&#121;&#x79;&#x2e;&#99;&#x6f;&#x6d;">&#88;&#x58;&#x58;&#64;&#x79;&#121;&#x79;&#x2e;&#99;&#x6f;&#x6d;</a>格式表示的简单电子邮件地址</td>
+<td>以<a href="mailto:&#88;&#x58;&#88;&#x40;&#121;&#121;&#x79;&#x2e;&#99;&#111;&#x6d;">&#88;&#x58;&#88;&#x40;&#121;&#121;&#x79;&#x2e;&#99;&#111;&#x6d;</a>格式表示的简单电子邮件地址</td>
 </tr>
 </tbody></table>
 <h3 id="1-2-8-使用圆括号指定分组"><a href="#1-2-8-使用圆括号指定分组" class="headerlink" title="1.2.8 使用圆括号指定分组"></a>1.2.8 使用圆括号指定分组</h3><p>现在，我们已经可以实现匹配某个字符串以及丢弃不匹配的字符串，但有些时候，我们可能会对之前匹配成功的数据更感兴趣。我们不仅想要知道整个字符串是否匹配我们的标准，而且想要知道能否提取任何已经成功匹配的特定字符串或者子字符串。答案是可以，要实现这个目标，只要用一对圆括号包裹任何正则表达式。</p>
@@ -2349,7 +2410,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+\d+-\d+-\d+&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group()</span><br><span class="line"><span class="string">&#x27;Thu Feb 15 17:46:04 2007::uzifzf@dpyivihw.gov::1171590364-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>该正则表达式效果非常好，但是我们只想要末尾的数字字段，而并不是整个字符串，因些不得不使用圆括号对想要的内容进行分组。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+(\d+-\d+-\d+)&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group()        <span class="comment"># subgroup 1</span></span><br><span class="line"><span class="string">&#x27;4-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>发生了什么？我们将提取1171590364－6－8，而不仅仅是4－6－8.第一个整数的其余部分在哪儿？问题在于正则表达式本质上实现贪婪匹配。这就意味说对于该通配符模式，将对正则表达式从左至右按顺序求值，而且试图获取匹配该模式的尽可能多的字符。在之前的示例中，使用“.+”获取从字符串起始位置开始的全部单个字符，包括所期望的每一个整数字段。\d＋仅本一个数字，因此将得到“4”，其中.+匹配了从字符串起始部分到所期望的第一个数字的全部内容：“Thu Feb 15 17:46:04 2007::<a href="mailto:&#x75;&#x7a;&#105;&#x66;&#122;&#x66;&#64;&#100;&#112;&#x79;&#105;&#x76;&#x69;&#x68;&#x77;&#x2e;&#x67;&#x6f;&#x76;">&#x75;&#x7a;&#105;&#x66;&#122;&#x66;&#64;&#100;&#112;&#x79;&#105;&#x76;&#x69;&#x68;&#x77;&#x2e;&#x67;&#x6f;&#x76;</a>:117159036”，如图1－2所示。<br><img src="/1-2.jpg" alt="图 1-2　为什么匹配出错了: +是一个贪婪操作符" title="图　1－2"><br>其中的一个方案是使用“非贪婪”操作符“？”。读者可以在“*”、“＋”或者“?”之后使用该操作符。该操作符将要求正则表达式引擎匹配尽可能少的字符。因此，如果在“.+”之后放置一个“？”，我们将获得所期望的结果，如图1-3所示。</p>
+<p>发生了什么？我们将提取1171590364－6－8，而不仅仅是4－6－8.第一个整数的其余部分在哪儿？问题在于正则表达式本质上实现贪婪匹配。这就意味说对于该通配符模式，将对正则表达式从左至右按顺序求值，而且试图获取匹配该模式的尽可能多的字符。在之前的示例中，使用“.+”获取从字符串起始位置开始的全部单个字符，包括所期望的每一个整数字段。\d＋仅本一个数字，因此将得到“4”，其中.+匹配了从字符串起始部分到所期望的第一个数字的全部内容：“Thu Feb 15 17:46:04 2007::<a href="mailto:&#x75;&#122;&#105;&#x66;&#x7a;&#x66;&#x40;&#100;&#x70;&#121;&#105;&#x76;&#105;&#x68;&#119;&#46;&#103;&#111;&#118;">&#x75;&#122;&#105;&#x66;&#x7a;&#x66;&#x40;&#100;&#x70;&#121;&#105;&#x76;&#105;&#x68;&#119;&#46;&#103;&#111;&#118;</a>:117159036”，如图1－2所示。<br><img src="/1-2.jpg" alt="图 1-2　为什么匹配出错了: +是一个贪婪操作符" title="图　1－2"><br>其中的一个方案是使用“非贪婪”操作符“？”。读者可以在“*”、“＋”或者“?”之后使用该操作符。该操作符将要求正则表达式引擎匹配尽可能少的字符。因此，如果在“.+”之后放置一个“？”，我们将获得所期望的结果，如图1-3所示。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+?(\d+-\d+-\d+)&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group(<span class="number">1</span>)        <span class="comment"># subgroup 1</span></span><br><span class="line"><span class="string">&#x27;1171590364-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/1-3.jpg" alt="图 1-3 解决贪婪匹配的问题：“?”表示非贪婪匹配" title="图 1-3"><br>另一个实际情况下更简单的方案，就是把“::”作为字段分隔符。读者可以仅仅使用正则字符串strip(‘::’)方法获取所有的部分，然后使用strip(‘-‘)作为另一个横线分隔符，就能够获取最初想要查询的三个整数。现在，我们不想先选择该方案，因为这就是我们如何将字符串放在一起，以使用gendata.py作为开始！</p>
 <p>最后一个示例：假定我们仅想取出三个整数字段中间的那个整数。如下所示，这就是实现的方法（使用一个搜索，这样就不必匹配整个字符串）: -(\d+)-。尝试该模式，将得到以下内容。</p>
@@ -2590,67 +2651,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PorxyChains</title>
-    <url>/2022/03/26/PorxyChains/</url>
-    <content><![CDATA[<p>MacOS系统下使用Proxychains-ng进行命令行下代理</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install proxychains-ng</span><br></pre></td></tr></table></figure>
-
-<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/rofl0r/proxychains-ng</span><br><span class="line">cd proxychains-ng</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">sudo make install-config  # 安装proxychains.conf配置文件</span><br></pre></td></tr></table></figure>
-
-<p>使用普通用户make install需要改变configure文件再进行编译安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd configure </span><br><span class="line">vi config.mak</span><br><span class="line">将：</span><br><span class="line">bindir = /usr/bin</span><br><span class="line">libdir = /usr/lib</span><br><span class="line">修改为：</span><br><span class="line">bindir=/usr/local/bin</span><br><span class="line">libdir=/usr/local/lib</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span> 分隔符不要忘了！！！！！！！！！
-
-<h2 id="关闭SIP"><a href="#关闭SIP" class="headerlink" title="关闭SIP"></a>关闭SIP</h2><p>macOS 10.11 后下由于开启了 SIP（System Integrity Protection） 会导致命令行下 proxychains-ng 代理的模式失效，如果使用 proxychains-ng 这种简单的方法，就需要先关闭 SIP。</p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/proxychains.conf</span><br><span class="line">vi proxychains.conf</span><br></pre></td></tr></table></figure>
-
-<p>在[ProxyList]下添加socks5代理</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 代理端口一定要和shadowsocks中的保持一致</span><br><span class="line"># 如果有不明白的可以查看93～110</span><br><span class="line">[ProxyList]</span><br><span class="line">socks5 127.0.0.1 1080</span><br><span class="line"># http 127.0.0.1 1235 (me)</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line"># socks4        127.0.0.1 9050</span><br></pre></td></tr></table></figure>
-
-<h1 id="Proxychains-ng使用"><a href="#Proxychains-ng使用" class="headerlink" title="Proxychains-ng使用"></a>Proxychains-ng使用</h1><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 curl cip.cc</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>例如，Homebrew更新</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 brew update</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>proxy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Samba配置</title>
-    <url>/2020/05/14/Samba%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="1-Samba服务器"><a href="#1-Samba服务器" class="headerlink" title="1. Samba服务器"></a>1. Samba服务器</h1><h2 id="1-1-创建samba用户"><a href="#1-1-创建samba用户" class="headerlink" title="1.1 创建samba用户"></a>1.1 创建samba用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$ sudo smbpasswd -a smbuser</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="1-2-重启samba服务"><a href="#1-2-重启samba服务" class="headerlink" title="1.2. 重启samba服务"></a>1.2. 重启samba服务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl restart smbd # 提供文件和打印服务、授权与被授权服务</span><br><span class="line">$ sudo systemctl restart nmbd # 提供名字解析、浏览服务</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-客户端访问测试"><a href="#1-3-客户端访问测试" class="headerlink" title="1.3. 客户端访问测试"></a>1.3. 客户端访问测试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ smbclient -L //localhose/share</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-远程挂载共享目录"><a href="#1-4-远程挂载共享目录" class="headerlink" title="1.4 远程挂载共享目录"></a>1.4 远程挂载共享目录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo mount.cifs //server-ip/sharename ./mnt/filename -o username=XXX,password=XXX,vers=1.0</span><br><span class="line"></span><br><span class="line">$ sudo umount /mnt/filename   # 取消挂载</span><br><span class="line">$ sudo tail -f /var/log/kern.log # 查看错误日志</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="2-‘smb-conf’配置文件"><a href="#2-‘smb-conf’配置文件" class="headerlink" title="2. ‘smb.conf’配置文件"></a>2. ‘smb.conf’配置文件</h1><h2 id="2-1-共享文件夹举例"><a href="#2-1-共享文件夹举例" class="headerlink" title="2.1 共享文件夹举例"></a>2.1 共享文件夹举例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[home] <span class="comment"># 这个使用者资源共享部分：也就是用户家目录</span></span><br><span class="line"></span><br><span class="line">[share]</span><br><span class="line">    path=/home/share <span class="comment"># 共享路径</span></span><br><span class="line">    browseable = <span class="built_in">yes</span> <span class="comment"># 设置该共享目录是否可显示</span></span><br><span class="line">    writable = <span class="built_in">yes</span>|no  <span class="comment"># 指定了这个目录缺省是否可写，也可以用readonly=no来设置可写</span></span><br><span class="line">    comment = smb share <span class="built_in">test</span> <span class="comment"># 该共享的备注</span></span><br><span class="line">    allow hosts = host(subnet) <span class="comment"># 设置该Samba服务器允许的工作组或者域</span></span><br><span class="line">    deny hosts = host(subnet) <span class="comment"># 设置该Sambe服务器拒绝的工作组或者域</span></span><br><span class="line">    available = <span class="built_in">yes</span>|no <span class="comment"># 设置该共享目录是否可用</span></span><br><span class="line">    public = <span class="built_in">yes</span>|no <span class="comment"># 指明该共享资源是否能给游客账号访问, guest ok = yes其实和public = yes是一样的</span></span><br><span class="line">    user = user, @group <span class="comment"># user设置所有可能使用该共享资源的用户，也可以用@group代表group这个组的所有成员，不同的项目之间用空格或者逗号隔开</span></span><br><span class="line">    valid user = user, @group <span class="comment"># 指定能够使用该共享资源的用户和组</span></span><br><span class="line">    invalid user = user, @group <span class="comment"># 指定不能够使用该共享资源的用户和组</span></span><br><span class="line">    <span class="built_in">read</span> list = user, @group <span class="comment"># 指定只能读取该共享资源的用户和组</span></span><br><span class="line">    write list = user, @group <span class="comment"># 指定能读取和写该共享资源的用户和组</span></span><br><span class="line">    admin list = user, @group <span class="comment"># 指定能管理该共享资源（包括读写和权限赋予等）的用户和组</span></span><br><span class="line">    hide dot files = <span class="built_in">yes</span>|no <span class="comment"># 指明是否像UNIX那样隐藏以“.”号开头的文件</span></span><br><span class="line">    create mode = 0755 <span class="comment"># 指明新建立的文件属性，一般是0755</span></span><br><span class="line">    directory mode = 0755 <span class="comment"># 指明新建立目录的属性，一般是0755</span></span><br><span class="line">    <span class="built_in">sync</span> always = <span class="built_in">yes</span>|no <span class="comment"># 指明对该共享资源进行写操作后是否进行同步操作，Samba默认为异步写入。smbd写入内存缓冲区，稍后将缓冲区刷新到磁盘。</span></span><br><span class="line">    short preserve <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明是否区分文件名大小写</span></span><br><span class="line">    preserve <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明是否保持大小写</span></span><br><span class="line">    <span class="keyword">case</span> sensitive = <span class="built_in">yes</span>|no <span class="comment"># 指明是否对大小写敏感，一般选no，不然可能引起错误</span></span><br><span class="line">    mangle <span class="keyword">case</span> = <span class="built_in">yes</span>|no <span class="comment"># 指明混合大小写</span></span><br><span class="line">    default <span class="keyword">case</span> = upper|lower <span class="comment"># 指明缺省文件名是全部大写还是小写</span></span><br><span class="line">    force user = testuser <span class="comment"># 强制把建立文件的属主是谁。如果我有一个目录，让guest可以写那么它就可以删除，如果我用force user=testuser强制建立文件的属主是testuser,同时限制create mask = 0755，这样guest就不能删除了</span></span><br><span class="line">    wide links = <span class="built_in">yes</span>|no <span class="comment"># 指明是否允许共享外符号连接</span></span><br><span class="line">    max connections = 100 <span class="comment"># 设定最大同时连接数</span></span><br><span class="line">    delete <span class="built_in">readonly</span> <span class="comment"># 指明能否删除共享资源里面已经被定义为只读的文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>%S &#x3D; 当前服务名（如果有的话）<br>%P &#x3D; 当前服务的根目录（如果有的话）<br>%u &#x3D; 当前服务的用户名（如果有的话）<br>%g &#x3D; 当前用户说在的主工作组<br>%U &#x3D; 当前对话的用户名<br>%G &#x3D; 当前对话的用户的主工作组<br>%H &#x3D; 当前服务的用户的Home目录<br>%v &#x3D; Samba服务的版本号。<br>%h &#x3D; 运行Samba服务机器的主机名<br>%m &#x3D; 客户机的NETBIOS名称<br>%L &#x3D; 服务器的NETBIOS名称<br>%M &#x3D; 客户机的主机名<br>%N &#x3D; NIS服务器名<br>%p &#x3D; NIS服务的Home目录<br>%R &#x3D; 说采用的协议等级(值可以是CORE, COREPLUS, LANMAN1, LANMAN2，NT1)<br>%d &#x3D; 当前服务进程的ID<br>%a &#x3D; 客户机的结构（只能识别几项：Samba，WfWg，WinNT，Win95）<br>%I &#x3D; 客户机的IP<br>%T &#x3D; 当前日期和时间<br>hosts allow &#x3D; 网络或者主机</p>
-<h1 id="3-针对指定有权限的可用可见目录"><a href="#3-针对指定有权限的可用可见目录" class="headerlink" title="3. 针对指定有权限的可用可见目录"></a>3. 针对指定有权限的可用可见目录</h1><p>引用子配置文件，在引用子配置文件有二种方法：</p>
-<ul>
-<li>在[global]标签下加入参数：config file&#x3D;&#x2F;etc&#x2F;samba&#x2F;smb.conf.%U</li>
-<li>在[include]标签下加入参数：include&#x3D;&#x2F;etc&#x2F;samba&#x2F;smb.conf.%U</li>
-</ul>
-<p>他们的区别是：使用config file时，当以aa身份访问samba服务器，只能看到aa，其他在smb.conf中定义的共享资源都无法看到；使用include时，当以aa身份访问samba服务器，除了可以看到aa，其它在sam.conf中定义的共享也可以看到。</p>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue学习笔记</title>
     <url>/2023/01/05/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="指令：是带有v-前缀的特殊属性"><a href="#指令：是带有v-前缀的特殊属性" class="headerlink" title="指令：是带有v-前缀的特殊属性"></a>指令：是带有v-前缀的特殊属性</h1><ul>
@@ -2882,74 +2882,6 @@
       </tags>
   </entry>
   <entry>
-    <title>搭建HEXO平台+Next主题的相关问题汇总</title>
-    <url>/2017/08/16/hexo/</url>
-    <content><![CDATA[<h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
-<li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
-<li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
-<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
-<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用&#96;hexo new命令生成新文章时，会自动添加一个资源文件夹。</li>
-</ul>
-<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2><p>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</p>
-<ul>
-<li>在文章中使用<code>&lt;!-- more --&gt;</code>手动进行截断，Hexo提供的方式</li>
-<li>在文章的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</li>
-<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2><p>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings = Georgia, sans</span><br><span class="line"></span><br><span class="line">// 修改成你期望的字体族</span><br><span class="line">$font-family-base = &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">// 代码字体</span><br><span class="line">$code-font-family = &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">// 正文字体的大小</span><br><span class="line">$font-size-base = 16px</span><br><span class="line"></span><br><span class="line">// 代码字体的大小</span><br><span class="line">$code-font-size = 13px</span><br></pre></td></tr></table></figure>
-<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2><p>使用方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，class_name可以是以下列表中的一个值：</p>
-<ul>
-<li>dafault</li>
-<li>primary</li>
-<li>success</li>
-<li>info</li>
-<li>warning</li>
-<li>danger<br>效果如下<details class="note "><summary><p>dafault</p>
-</summary>
-<p>class_name值为default</p>
-
-</details>
-<div class="note primary"><p>class_name值为primary</p>
-</div>
-<div class="note success"><p>class_name值为success</p>
-</div>
-<div class="note info"><p>class_name值为info</p>
-</div>
-<div class="note warning"><p>class_name值为warning</p>
-</div>
-<div class="note danger"><p>class_name值为danger</p>
-</div></li>
-</ul>
-<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</p>
-<ul>
-<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
-<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
-效果如下：<div class="note "><blockquote class="blockquote-center">
-<p>大象无形，大音希声<p><b>出自《道德经》</b></p></p>
-
-</blockquote>
-出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。
-白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</div></li>
-</ul>
-<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2><p>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git管理</title>
     <url>/2017/09/11/git/</url>
     <content><![CDATA[<h1 id="1、版本库"><a href="#1、版本库" class="headerlink" title="1、版本库"></a>1、版本库</h1><p>可以理解为一个目录，这个目录里的所有文件都被git管理起来，每个文件的修改删除都能跟踪，以便任何时候可以追踪历史或将来某个时候可以还原。创建版本库：</p>
@@ -3053,6 +2985,74 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建HEXO平台+Next主题的相关问题汇总</title>
+    <url>/2017/08/16/hexo/</url>
+    <content><![CDATA[<h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
+<li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
+<li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
+<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
+<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用&#96;hexo new命令生成新文章时，会自动添加一个资源文件夹。</li>
+</ul>
+<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2><p>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</p>
+<ul>
+<li>在文章中使用<code>&lt;!-- more --&gt;</code>手动进行截断，Hexo提供的方式</li>
+<li>在文章的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</li>
+<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2><p>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings = Georgia, sans</span><br><span class="line"></span><br><span class="line">// 修改成你期望的字体族</span><br><span class="line">$font-family-base = &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">// 代码字体</span><br><span class="line">$code-font-family = &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">// 正文字体的大小</span><br><span class="line">$font-size-base = 16px</span><br><span class="line"></span><br><span class="line">// 代码字体的大小</span><br><span class="line">$code-font-size = 13px</span><br></pre></td></tr></table></figure>
+<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2><p>使用方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，class_name可以是以下列表中的一个值：</p>
+<ul>
+<li>dafault</li>
+<li>primary</li>
+<li>success</li>
+<li>info</li>
+<li>warning</li>
+<li>danger<br>效果如下<details class="note "><summary><p>dafault</p>
+</summary>
+<p>class_name值为default</p>
+
+</details>
+<div class="note primary"><p>class_name值为primary</p>
+</div>
+<div class="note success"><p>class_name值为success</p>
+</div>
+<div class="note info"><p>class_name值为info</p>
+</div>
+<div class="note warning"><p>class_name值为warning</p>
+</div>
+<div class="note danger"><p>class_name值为danger</p>
+</div></li>
+</ul>
+<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</p>
+<ul>
+<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
+<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
+效果如下：<div class="note "><blockquote class="blockquote-center">
+<p>大象无形，大音希声<p><b>出自《道德经》</b></p></p>
+
+</blockquote>
+出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。
+白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</div></li>
+</ul>
+<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2><p>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3461,45 +3461,6 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </tags>
   </entry>
   <entry>
-    <title>锋利的jquery</title>
-    <url>/2017/08/17/jquery/</url>
-    <content><![CDATA[<h1 id="1、认识jQuery"><a href="#1、认识jQuery" class="headerlink" title="1、认识jQuery"></a>1、认识jQuery</h1><h2 id="1-1、jQuery库类型说明"><a href="#1-1、jQuery库类型说明" class="headerlink" title="1.1、jQuery库类型说明"></a>1.1、jQuery库类型说明</h2><p>jQuery库的类型分为两种版本，如下：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>大小</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>jquery-1.3.1.js</td>
-<td>114KB</td>
-<td>完整无压缩版本，主要用于测试、学习和开发</td>
-</tr>
-<tr>
-<td>jquery-1.3.1.min.js</td>
-<td>54KB&#x2F;18KB</td>
-<td>经过JSMin等工具压缩后的版本，大小为54KB。如果服务器开启Gzip压缩后，大小将变为只有18KB，成为体积最小的版本。主要应用于产品和项目</td>
-</tr>
-</tbody></table>
-<span id="more"></span>
-<h2 id="1-2、DOM对象"><a href="#1-2、DOM对象" class="headerlink" title="1.2、DOM对象"></a>1.2、DOM对象</h2><p>DOM（Document Object Model，文档对象模型），每一份DOM都可以表示成一棵树。下面来构建一个非常基本的网页，网页代码如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!Document <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html;charset=utf-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>例子<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;你最喜欢的水果&quot;</span>&gt;</span>你最喜欢的水果是?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>菠萝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以把上面的HTML结构描述为一棵DOM树，如图1-14所示</p>
-<center><img src="1-14.png"  width="50%" height="50%" title="[图1-14]"></center>
-
-<p>在这棵DOM树中，<code>&lt;h3&gt;、&lt;p&gt;、&lt;ul&gt;以及&lt;ul&gt;的3个&lt;li&gt;</code>子节点都是DOM元素节点。可以通过javascript中的getElementsByTagName或者getElementByID来获取元素的节点。像这样得到的DOM元素就是DOM对象。DOM对象可以使用javascript中的方法，示例如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> domObj = <span class="variable language_">document</span>.<span class="title function_">getElementByID</span>(<span class="string">&quot;id&quot;</span>);  <span class="comment">//获得DOM对象</span></span><br><span class="line"><span class="keyword">var</span> dobHTML = domObj.<span class="property">innerHTML</span>;  <span class="comment">//使用javascript中的方法--innerHTML</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>jquery</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>lychee说明文档</title>
     <url>/2021/08/21/lychee/</url>
     <content><![CDATA[<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-服务器要求"><a href="#1-1-服务器要求" class="headerlink" title="1.1. 服务器要求"></a>1.1. 服务器要求</h3><ul>
@@ -3570,6 +3531,45 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </categories>
       <tags>
         <tag>Lychee</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>锋利的jquery</title>
+    <url>/2017/08/17/jquery/</url>
+    <content><![CDATA[<h1 id="1、认识jQuery"><a href="#1、认识jQuery" class="headerlink" title="1、认识jQuery"></a>1、认识jQuery</h1><h2 id="1-1、jQuery库类型说明"><a href="#1-1、jQuery库类型说明" class="headerlink" title="1.1、jQuery库类型说明"></a>1.1、jQuery库类型说明</h2><p>jQuery库的类型分为两种版本，如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>大小</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jquery-1.3.1.js</td>
+<td>114KB</td>
+<td>完整无压缩版本，主要用于测试、学习和开发</td>
+</tr>
+<tr>
+<td>jquery-1.3.1.min.js</td>
+<td>54KB&#x2F;18KB</td>
+<td>经过JSMin等工具压缩后的版本，大小为54KB。如果服务器开启Gzip压缩后，大小将变为只有18KB，成为体积最小的版本。主要应用于产品和项目</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h2 id="1-2、DOM对象"><a href="#1-2、DOM对象" class="headerlink" title="1.2、DOM对象"></a>1.2、DOM对象</h2><p>DOM（Document Object Model，文档对象模型），每一份DOM都可以表示成一棵树。下面来构建一个非常基本的网页，网页代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!Document <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html;charset=utf-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>例子<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;你最喜欢的水果&quot;</span>&gt;</span>你最喜欢的水果是?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>菠萝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以把上面的HTML结构描述为一棵DOM树，如图1-14所示</p>
+<center><img src="1-14.png"  width="50%" height="50%" title="[图1-14]"></center>
+
+<p>在这棵DOM树中，<code>&lt;h3&gt;、&lt;p&gt;、&lt;ul&gt;以及&lt;ul&gt;的3个&lt;li&gt;</code>子节点都是DOM元素节点。可以通过javascript中的getElementsByTagName或者getElementByID来获取元素的节点。像这样得到的DOM元素就是DOM对象。DOM对象可以使用javascript中的方法，示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> domObj = <span class="variable language_">document</span>.<span class="title function_">getElementByID</span>(<span class="string">&quot;id&quot;</span>);  <span class="comment">//获得DOM对象</span></span><br><span class="line"><span class="keyword">var</span> dobHTML = domObj.<span class="property">innerHTML</span>;  <span class="comment">//使用javascript中的方法--innerHTML</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>jquery</tag>
       </tags>
   </entry>
   <entry>
@@ -4064,6 +4064,112 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sudo进阶</title>
+    <url>/2021/08/25/sudo%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<h3 id="什么是sudo"><a href="#什么是sudo" class="headerlink" title="什么是sudo"></a>什么是sudo</h3><p>sudo是用来执行需要提升权限的命令。</p>
+<span id="more"></span>
+
+<h3 id="Sudo配置"><a href="#Sudo配置" class="headerlink" title="Sudo配置"></a>Sudo配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># visudo</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><h4 id="sudo执行命令的流程"><a href="#sudo执行命令的流程" class="headerlink" title="sudo执行命令的流程"></a>sudo执行命令的流程</h4><ul>
+<li>当用户执行sudo时，系统会主动寻找<code>/etc/sudoers</code>文件，判断该用户是否有执行sudo权限</li>
+<li>确认用户具有可执行的权限后，让用户输入自己的密码确认</li>
+<li>若密码输入成功，则开始执行sudo后续的命令</li>
+</ul>
+</li>
+<li><h4 id="不需要密码的情况"><a href="#不需要密码的情况" class="headerlink" title="不需要密码的情况"></a>不需要密码的情况</h4><ul>
+<li><p>root执行sudo时不需要输入密码（sudoers文件中有配置root ALL&#x3D;(ALL)ALL这样一条规则）</p>
+</li>
+<li><p>要切换的身份与执行者的身份相同，不需要输入密码</p>
+</li>
+<li><p><code>/etc/sudoers</code>文件设置为允许用户在不输入该用户密码的情况下使用所有命令</p>
+<p>如设置允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令</p>
+<p><code>%wheel ALL=(ALL) NOPASSWD:ALL</code></p>
+</li>
+</ul>
+</li>
+<li><h4 id="etc-sudoers文件解释"><a href="#etc-sudoers文件解释" class="headerlink" title="/etc/sudoers文件解释"></a><code>/etc/sudoers</code>文件解释</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## cat /etc/sudoers</span></span><br><span class="line"><span class="comment">## 下面是规则配置：什么用户在哪台服务器上可以执行哪些命令（sudoers文件可以在多个系统上共享）</span></span><br><span class="line"><span class="comment">## Syntax:</span></span><br><span class="line"><span class="comment">##语法</span></span><br><span class="line"><span class="comment">##      user    MACHINE=COMMANDS</span></span><br><span class="line"><span class="comment">##  用户 登录的主机=（可以变换的身份） 可以执行的命令 </span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## The COMMANDS section may have other options added to it.</span></span><br><span class="line"><span class="comment">## 命令部分可以附带一些其它的选项 </span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## Allow root to run any commands anywhere</span></span><br><span class="line"><span class="comment">## 允许root用户执行任意路径下的任意命令</span></span><br><span class="line">root    ALL=(ALL)       ALL</span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the &#x27;sys&#x27; group to run networking, software,</span></span><br><span class="line"><span class="comment">## service management apps and more.</span></span><br><span class="line"><span class="comment"># %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS</span></span><br><span class="line"><span class="comment">## 允许sys中户组中的用户使用NETWORKING等所有别名中配置的命令</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">## Allows people in group wheel to run all commands</span></span><br><span class="line"><span class="comment"># %wheel        ALL=(ALL)       ALL</span></span><br><span class="line"><span class="comment">## 允许wheel用户组中的用户执行所有命令 </span></span><br><span class="line"><span class="comment">## Same thing without a password</span></span><br><span class="line"><span class="comment">## 允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令</span></span><br><span class="line"><span class="comment"># %wheel        ALL=(ALL)       NOPASSWD: ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the users group to mount and unmount the</span></span><br><span class="line"><span class="comment">## cdrom as root</span></span><br><span class="line"><span class="comment">## 允许users用户组中的用户像root用户一样使用mount、unmount、chrom命令</span></span><br><span class="line"><span class="comment"># %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the users group to shutdown this system</span></span><br><span class="line"><span class="comment"># %users  localhost=/sbin/shutdown -h now</span></span><br><span class="line"><span class="comment">## 允许users用户组中的用户像root用户一样使用shutdown命令</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="sudo执行命令的流程-1"><a href="#sudo执行命令的流程-1" class="headerlink" title="sudo执行命令的流程"></a>sudo执行命令的流程</h4><h3 id="sudo会话"><a href="#sudo会话" class="headerlink" title="sudo会话"></a>sudo会话</h3><p>sudo默认在输入一次密码后15分钟内不会再次要求密码。15分钟后，你会再次被要求输入密码。</p>
+<h3 id="sudo重要的参数"><a href="#sudo重要的参数" class="headerlink" title="sudo重要的参数"></a>sudo重要的参数</h3><ol>
+<li><h4 id="k参数"><a href="#k参数" class="headerlink" title="-k参数"></a><code>-k</code>参数</h4></li>
+</ol>
+<p>考虑下这种情况：输入密码后你刚刚运行了几个sudo命令。现在，如你所知，sudo会话默认保持15分钟。假设在这会话期间，你需要让某些人访问你的终端，但你不想让他们可以使用sudo，你将会怎么做？</p>
+<p><code>-k</code>的参数，就是允许用户取消sudo权限。</p>
+<ol start="2">
+<li><h4 id="s参数"><a href="#s参数" class="headerlink" title="-s参数"></a><code>-s</code>参数</h4><p>有时你的工作要求你运行一堆需要root权限的命令，你不想每次都输入密码。你也不想通过改变&#x2F;etc&#x2F;sudoers文件调整sudo会话的过期时限。这种情况可以使用<code>sudo -s</code></p>
+<p><code>-s</code>命令行参数给你一个有root权限的shell，但那不是root环境，还是执行的你自己的<code>.bashrc</code></p>
+</li>
+<li><h4 id="i参数"><a href="#i参数" class="headerlink" title="-i参数"></a><code>-i</code>参数</h4><p><code>-i</code>参数跟我们讨论过的<code>-s</code>参数相像。然而，还是有点区别。一个重要的区别是<code>-i</code>给你的是root环境，意味着你的（用户的）<code>.bashrc</code>被忽略。这就像没有显式地用root登录也能成为root。此外，你也不用输入root用户密码。</p>
+</li>
+</ol>
+<blockquote>
+<p>重要：请注意su命令也能让你切换用户（默认切换到root)。这个命令需要你输入root密码。为了避免这一点，你可以使用sudo执行它（<code>sudo su</code>），这样你只需要输入你的登录密码。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为USBInjectAll.kext创建自定义SSDT</title>
+    <url>/2018/11/07/%E4%B8%BAUSBInjectAll-kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89SSDT/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在10.11版本中，Apple完全重写了USB驱动程序。新驱动程序似乎在很大程序上使用了ACPI，比以前的驱动程序更大。这给ACPI（DSDT)的正确性带来了更多的压力。如果不正确，存在的端口可能不会被新的驱动程序启用。</p>
+<p>事实上，即使是Apple自己的产品也被发现是不正确的，因此Apple公司发明了一种方法用来一个端口注入器来覆盖DSDT。在事件属性被注入来定义可用端口时，这些属性将被使用而不是ACPI。</p>
+<p>内置的端口注入器也可以干扰USB接口，因为一个给定型号的Mac的USB拓朴不太可能与你的PC相同。要解决这些问题，可能需要采取一些步骤。</p>
+<p>注意本指南适用于英特尔USB3。第三方USB3，例如Asmedia，NEC&#x2F;Renasas还是有问题的。这些控制器没有解决方案。对于不支持的USB3控制器（例如，不是英特尔生产的，不是睿思科技生产的）可以试试最新的<a href="https://github.com/RehabMan/OS-X-Generic-USB3">GenericUSBXHCI.kext</a></p>
+<span id="more"></span>
+
+<h2 id="工具-x2F-解决方案的概述"><a href="#工具-x2F-解决方案的概述" class="headerlink" title="工具&#x2F;解决方案的概述"></a>工具&#x2F;解决方案的概述</h2><ul>
+<li>选择正确的BIOS选项</li>
+<li>在DSDT中使用EHCx-&gt;EH0x重命名</li>
+<li>通过XHC到EHCI上，使用FakePCIID_XHCIMux路由（route）USB2设备</li>
+<li>用一个自定义的端口注入器或自定义SSDT为USBInjectAll.kext注入端口</li>
+<li>使用USBInjectAll.kext来注入端口</li>
+<li>在运行OSX时，给DSDT打补丁来模拟Windows的一个版本</li>
+</ul>
+<h2 id="BIOS选项"><a href="#BIOS选项" class="headerlink" title="BIOS选项"></a>BIOS选项</h2><p>USB选制器的配置通常依赖于BIOS设置。对于大多数个人电脑，你应该设置XHCI为“auto”或”和”smart auto”。这些设置通常会影响与XHCI控制器初始化、USB2路由、USB3端口启用。</p>
+<h2 id="禁用默认的注射器"><a href="#禁用默认的注射器" class="headerlink" title="禁用默认的注射器"></a>禁用默认的注射器</h2><p>第一步是确保默认的注入器没有效果。有这两类注入器：</p>
+<ul>
+<li>控制器（Controller）注入器：这些匹配Mac型号（SMBIOS)和ACPI中的控制器名称（EHC1&#x2F;EHC2&#x2F;XHC1）。</li>
+<li>集线器（Hub）端口注入器：这些匹配Mac型号和locationID（基于控制器和端口的地址）。</li>
+</ul>
+<p>第一类端口注入器很容易通过DSDT补丁来禁用。对于大多数个人电脑（PCs），XHCI控制器（USB3）被命名为“XHC”，因此它不会与使用“XHC1”的内置注入器匹配。EHC1和EHC2通常被mac电脑和个人电脑（PCs）用来识别这两个EHCI控制器（USB2）。通过将EHC1重命名为EH01和将EHC2重命名为EH02，您可以有效地禁用与您所使用的SMBIOS匹配的内置端口注入器。重命名可以通过你打了补丁的DSDT中的<code>find/replace</code>来完成，或者通过Clover的config.plist&#x2F;ACPI&#x2F;DSDT&#x2F;Patches。<br>此类方法可以有效地驱动USB端口，但是对于macOS的每次更新，可通需要创建新的端口限制补丁。</p>
+<p>因此，使用端口限制补丁不是一个长期的解决方案。对于可靠的USB，您必须为<a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectAll.kext</a>实现自定义SSDT，以便在XHC上配置端口。自定义SSDT方式使得不依赖于任何端口限制补丁，它不仅允许您避免端口限制补丁，而且禁用未使用的USB端口可以具有一定的省电属性，并且可以避免睡眠，重启或关闭时的错误。</p>
+<h1 id="自定义SSDT"><a href="#自定义SSDT" class="headerlink" title="自定义SSDT"></a>自定义SSDT</h1><p>自定义SSDT过程包括如下步骤：</p>
+<ol>
+<li>端口准备</li>
+<li>端口发现</li>
+<li>为USBInjectAll.kext创建自定义SSDT</li>
+<li>测试&#x2F;验证</li>
+</ol>
+<p><a href="https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/">MaciASL工具</a>，确保MaciASL-&gt;Preferences-&gt;iASL中选择了ACPI 6.2a</p>
+<h2 id="端口准备"><a href="#端口准备" class="headerlink" title="端口准备"></a>端口准备</h2><p>为了能够正确的为给定的PC配置正确的自定义SSDT，我们必须首先发现所启用的所有端口。一量我们知道了使用哪些端口，我们就可以关闭未使用的端口。首先，先用第一类注入方法也就是在Clover的config.plist&#x2F;ACPI&#x2F;DSDT&#x2F;Patches中注入补丁的方法，注入EXHCx重命名和端口限制补丁。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">    &lt;key&gt;ACPI&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;DSDT&lt;/key&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Patches&lt;/key&gt;</span><br><span class="line">            &lt;array&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change EHC1 to EH01&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUhDMQ==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUgwMQ==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change EHC2 to EH02&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUhDMg==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUgwMg==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change XHC1 to XHC&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;WEhDMQ==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;WEhDXw==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">            &lt;/array&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br><span class="line">    &lt;key&gt;KernelAndKextPatches&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;KextsToPatch&lt;/key&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.11.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g72M/v//EA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g72M/v//Gw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.12.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g710////EA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g710////Gw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.0,10.13.1,10.13.2,10.13.3&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32MEA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32MGw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit PMHeart)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.4,10.13.5&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UDw+DlwQAAA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UD5CQkJCQkA==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext (credit FredWst)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.4,10.13.5&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UDw+DlwQ=&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UGg+DlwQ=&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit RehabMan, based prior PMHeart patch)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.6&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32IDw+DpwQAAA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32ID5CQkJCQkA==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit PMHeart)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.14.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g/sPD4MDBQAA&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g/sPkJCQkJCQ&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
+<p>禁用了端口限制之后，您应该使用IORegistryExplorer检查端口是否在EHCI和XHCI控制器上为您的芯片组注入了所有预期端口。</p>
+<h2 id="端口发现"><a href="#端口发现" class="headerlink" title="端口发现"></a>端口发现</h2><p>为了发现SSDT中需要哪些端口，我们将使用IORegistryExplorer,利用测试USB2和USB3设备测试每个端口，IORegistryExplorer可以跟踪对IOKit对象的更改来确定实际使用的端口（现有对象为黑色，绿色为新对象，红色的为断开连接的对象）。<br><span style="font-weight: bolder;">注意：接下来的所有的测试都要在IOService中进行</span><br>通过插入USB2设备和USB3设备测试每个端口，如果在插入和删除设备时仔细查看，可以看到哪些端口分配给哪个物理端口。<br><span style="font-weight: bolder;">注意：如果您有USB3集线器，则可以更轻松地测试每个端口。由于USB3集线器连接USB3端口的USB2引脚（并且仅可以在USB2端口中使用），并且无需正确弹出操作，因些您会发现使用USB3的速度更快集线器而不是一组USB2&#x2F;USB3记忆棒。在下面的示例中，我使用USB3集线器来测试端口。</span></p>
+<p>不要使用IORegistryExplorer.app中的搜索框，只需在左侧窗格中查看ioreg树的正确部分（根据需要滚动以查找适用于您的硬件的EH01&#x2F;EH02&#x2F;XHC）。请注意，要正确测试每个端口，您可能需要将任何USB键盘或鼠标设备移动到不同的端口，以便您可以使用USB2和USB3(或USB3集线器)测试每个端口。</p>
+<h2 id="为USBInjectAll-kext创建自定义SSDT"><a href="#为USBInjectAll-kext创建自定义SSDT" class="headerlink" title="为USBInjectAll.kext创建自定义SSDT"></a>为USBInjectAll.kext创建自定义SSDT</h2><p>USBInjectAll.kext以数据驱动方式编码。在kext代码本身中没有任何硬编码。所有数据都包含在info.plist中。当USBInjectAll.kext启动，匹配EH01&#x2F;EH02&#x2F;XHC或连接到EH01&#x2F;EH02端口1的内部集线器时，它会查询info.plist中与其连接的设备相关的配置数据并注入它找到的数据那里。但是SSDT可用于覆盖info.plist中的数据。</p>
+<p>SSDT-UIAC-ALL.dsl中提供了一个模板，该模板覆盖了USBInjectAll.kext info.plist中已有的所有数据。您可以将SSDT-UIAC-ALL.dsl编译为SSDT-UIAC-ALL.aml（文件另存为，格式为MaciASL中的ACPI机器语言二进制文件）并将其置于ACPI&#x2F;patched中，尽管info.plist中的所有数据都可以将被SSDT覆盖，不会观察到任何净更改，因为SSDT-UIAC-ALL.dsl中的数据与USBInjectAll.kext info.plist中已有的数据相同。</p>
+<p>为了实现我们的更改，我们必须修改SSDT-UIAC-ALL.dsl，使其仅包含我们需要的端口</p>
+<p>步骤如下：</p>
+<ul>
+<li>使用<a href="https://github.com/RehabMan/OS-X-USB-Inject-All/raw/master/SSDT-UIAC-ALL.dsl">SSDT-UIAC-ALL.dsl</a>作为模板</li>
+<li>删除不适用于目标硬件的配置节点</li>
+<li>从不需要的各个部分中删除端口</li>
+<li>更改UsbConnector值以匹配物理硬件&#x2F;端口</li>
+</ul>
+<p>第一步是从SSDT-UIAC-ALL.dsl中删除不适用于目标硬件和USB配置的配置数据。<br>例如，如果EH01 &#x2F; EH02或相关USB集线器（在PR11 &#x2F; PR21上）没有活动端口，则可以取消EH01 &#x2F; EH02 &#x2F; HUB1 &#x2F; HUB2的配置数据。 在Skylake的情况下，它没有EHCI控制器，因此可以在不需要太多考虑的情况下移除EH01 &#x2F; EH02 &#x2F; HUB1 &#x2F; HUB2配置。 如果您通过BIOS或ACPI（稍后介绍）禁用EHCI，情况也是如此。 并且您可以消除任何与您的XHC设备ID不匹配的XHC配置。 在ioreg中查找您的XHC设备ID。I</p>
+]]></content>
+      <tags>
+        <tag>MacOS</tag>
       </tags>
   </entry>
   <entry>
@@ -7198,112 +7304,6 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sudo进阶</title>
-    <url>/2021/08/25/sudo%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<h3 id="什么是sudo"><a href="#什么是sudo" class="headerlink" title="什么是sudo"></a>什么是sudo</h3><p>sudo是用来执行需要提升权限的命令。</p>
-<span id="more"></span>
-
-<h3 id="Sudo配置"><a href="#Sudo配置" class="headerlink" title="Sudo配置"></a>Sudo配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># visudo</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><h4 id="sudo执行命令的流程"><a href="#sudo执行命令的流程" class="headerlink" title="sudo执行命令的流程"></a>sudo执行命令的流程</h4><ul>
-<li>当用户执行sudo时，系统会主动寻找<code>/etc/sudoers</code>文件，判断该用户是否有执行sudo权限</li>
-<li>确认用户具有可执行的权限后，让用户输入自己的密码确认</li>
-<li>若密码输入成功，则开始执行sudo后续的命令</li>
-</ul>
-</li>
-<li><h4 id="不需要密码的情况"><a href="#不需要密码的情况" class="headerlink" title="不需要密码的情况"></a>不需要密码的情况</h4><ul>
-<li><p>root执行sudo时不需要输入密码（sudoers文件中有配置root ALL&#x3D;(ALL)ALL这样一条规则）</p>
-</li>
-<li><p>要切换的身份与执行者的身份相同，不需要输入密码</p>
-</li>
-<li><p><code>/etc/sudoers</code>文件设置为允许用户在不输入该用户密码的情况下使用所有命令</p>
-<p>如设置允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令</p>
-<p><code>%wheel ALL=(ALL) NOPASSWD:ALL</code></p>
-</li>
-</ul>
-</li>
-<li><h4 id="etc-sudoers文件解释"><a href="#etc-sudoers文件解释" class="headerlink" title="/etc/sudoers文件解释"></a><code>/etc/sudoers</code>文件解释</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## cat /etc/sudoers</span></span><br><span class="line"><span class="comment">## 下面是规则配置：什么用户在哪台服务器上可以执行哪些命令（sudoers文件可以在多个系统上共享）</span></span><br><span class="line"><span class="comment">## Syntax:</span></span><br><span class="line"><span class="comment">##语法</span></span><br><span class="line"><span class="comment">##      user    MACHINE=COMMANDS</span></span><br><span class="line"><span class="comment">##  用户 登录的主机=（可以变换的身份） 可以执行的命令 </span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## The COMMANDS section may have other options added to it.</span></span><br><span class="line"><span class="comment">## 命令部分可以附带一些其它的选项 </span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## Allow root to run any commands anywhere</span></span><br><span class="line"><span class="comment">## 允许root用户执行任意路径下的任意命令</span></span><br><span class="line">root    ALL=(ALL)       ALL</span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the &#x27;sys&#x27; group to run networking, software,</span></span><br><span class="line"><span class="comment">## service management apps and more.</span></span><br><span class="line"><span class="comment"># %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS</span></span><br><span class="line"><span class="comment">## 允许sys中户组中的用户使用NETWORKING等所有别名中配置的命令</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">## Allows people in group wheel to run all commands</span></span><br><span class="line"><span class="comment"># %wheel        ALL=(ALL)       ALL</span></span><br><span class="line"><span class="comment">## 允许wheel用户组中的用户执行所有命令 </span></span><br><span class="line"><span class="comment">## Same thing without a password</span></span><br><span class="line"><span class="comment">## 允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令</span></span><br><span class="line"><span class="comment"># %wheel        ALL=(ALL)       NOPASSWD: ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the users group to mount and unmount the</span></span><br><span class="line"><span class="comment">## cdrom as root</span></span><br><span class="line"><span class="comment">## 允许users用户组中的用户像root用户一样使用mount、unmount、chrom命令</span></span><br><span class="line"><span class="comment"># %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Allows members of the users group to shutdown this system</span></span><br><span class="line"><span class="comment"># %users  localhost=/sbin/shutdown -h now</span></span><br><span class="line"><span class="comment">## 允许users用户组中的用户像root用户一样使用shutdown命令</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="sudo执行命令的流程-1"><a href="#sudo执行命令的流程-1" class="headerlink" title="sudo执行命令的流程"></a>sudo执行命令的流程</h4><h3 id="sudo会话"><a href="#sudo会话" class="headerlink" title="sudo会话"></a>sudo会话</h3><p>sudo默认在输入一次密码后15分钟内不会再次要求密码。15分钟后，你会再次被要求输入密码。</p>
-<h3 id="sudo重要的参数"><a href="#sudo重要的参数" class="headerlink" title="sudo重要的参数"></a>sudo重要的参数</h3><ol>
-<li><h4 id="k参数"><a href="#k参数" class="headerlink" title="-k参数"></a><code>-k</code>参数</h4></li>
-</ol>
-<p>考虑下这种情况：输入密码后你刚刚运行了几个sudo命令。现在，如你所知，sudo会话默认保持15分钟。假设在这会话期间，你需要让某些人访问你的终端，但你不想让他们可以使用sudo，你将会怎么做？</p>
-<p><code>-k</code>的参数，就是允许用户取消sudo权限。</p>
-<ol start="2">
-<li><h4 id="s参数"><a href="#s参数" class="headerlink" title="-s参数"></a><code>-s</code>参数</h4><p>有时你的工作要求你运行一堆需要root权限的命令，你不想每次都输入密码。你也不想通过改变&#x2F;etc&#x2F;sudoers文件调整sudo会话的过期时限。这种情况可以使用<code>sudo -s</code></p>
-<p><code>-s</code>命令行参数给你一个有root权限的shell，但那不是root环境，还是执行的你自己的<code>.bashrc</code></p>
-</li>
-<li><h4 id="i参数"><a href="#i参数" class="headerlink" title="-i参数"></a><code>-i</code>参数</h4><p><code>-i</code>参数跟我们讨论过的<code>-s</code>参数相像。然而，还是有点区别。一个重要的区别是<code>-i</code>给你的是root环境，意味着你的（用户的）<code>.bashrc</code>被忽略。这就像没有显式地用root登录也能成为root。此外，你也不用输入root用户密码。</p>
-</li>
-</ol>
-<blockquote>
-<p>重要：请注意su命令也能让你切换用户（默认切换到root)。这个命令需要你输入root密码。为了避免这一点，你可以使用sudo执行它（<code>sudo su</code>），这样你只需要输入你的登录密码。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为USBInjectAll.kext创建自定义SSDT</title>
-    <url>/2018/11/07/%E4%B8%BAUSBInjectAll-kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89SSDT/</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在10.11版本中，Apple完全重写了USB驱动程序。新驱动程序似乎在很大程序上使用了ACPI，比以前的驱动程序更大。这给ACPI（DSDT)的正确性带来了更多的压力。如果不正确，存在的端口可能不会被新的驱动程序启用。</p>
-<p>事实上，即使是Apple自己的产品也被发现是不正确的，因此Apple公司发明了一种方法用来一个端口注入器来覆盖DSDT。在事件属性被注入来定义可用端口时，这些属性将被使用而不是ACPI。</p>
-<p>内置的端口注入器也可以干扰USB接口，因为一个给定型号的Mac的USB拓朴不太可能与你的PC相同。要解决这些问题，可能需要采取一些步骤。</p>
-<p>注意本指南适用于英特尔USB3。第三方USB3，例如Asmedia，NEC&#x2F;Renasas还是有问题的。这些控制器没有解决方案。对于不支持的USB3控制器（例如，不是英特尔生产的，不是睿思科技生产的）可以试试最新的<a href="https://github.com/RehabMan/OS-X-Generic-USB3">GenericUSBXHCI.kext</a></p>
-<span id="more"></span>
-
-<h2 id="工具-x2F-解决方案的概述"><a href="#工具-x2F-解决方案的概述" class="headerlink" title="工具&#x2F;解决方案的概述"></a>工具&#x2F;解决方案的概述</h2><ul>
-<li>选择正确的BIOS选项</li>
-<li>在DSDT中使用EHCx-&gt;EH0x重命名</li>
-<li>通过XHC到EHCI上，使用FakePCIID_XHCIMux路由（route）USB2设备</li>
-<li>用一个自定义的端口注入器或自定义SSDT为USBInjectAll.kext注入端口</li>
-<li>使用USBInjectAll.kext来注入端口</li>
-<li>在运行OSX时，给DSDT打补丁来模拟Windows的一个版本</li>
-</ul>
-<h2 id="BIOS选项"><a href="#BIOS选项" class="headerlink" title="BIOS选项"></a>BIOS选项</h2><p>USB选制器的配置通常依赖于BIOS设置。对于大多数个人电脑，你应该设置XHCI为“auto”或”和”smart auto”。这些设置通常会影响与XHCI控制器初始化、USB2路由、USB3端口启用。</p>
-<h2 id="禁用默认的注射器"><a href="#禁用默认的注射器" class="headerlink" title="禁用默认的注射器"></a>禁用默认的注射器</h2><p>第一步是确保默认的注入器没有效果。有这两类注入器：</p>
-<ul>
-<li>控制器（Controller）注入器：这些匹配Mac型号（SMBIOS)和ACPI中的控制器名称（EHC1&#x2F;EHC2&#x2F;XHC1）。</li>
-<li>集线器（Hub）端口注入器：这些匹配Mac型号和locationID（基于控制器和端口的地址）。</li>
-</ul>
-<p>第一类端口注入器很容易通过DSDT补丁来禁用。对于大多数个人电脑（PCs），XHCI控制器（USB3）被命名为“XHC”，因此它不会与使用“XHC1”的内置注入器匹配。EHC1和EHC2通常被mac电脑和个人电脑（PCs）用来识别这两个EHCI控制器（USB2）。通过将EHC1重命名为EH01和将EHC2重命名为EH02，您可以有效地禁用与您所使用的SMBIOS匹配的内置端口注入器。重命名可以通过你打了补丁的DSDT中的<code>find/replace</code>来完成，或者通过Clover的config.plist&#x2F;ACPI&#x2F;DSDT&#x2F;Patches。<br>此类方法可以有效地驱动USB端口，但是对于macOS的每次更新，可通需要创建新的端口限制补丁。</p>
-<p>因此，使用端口限制补丁不是一个长期的解决方案。对于可靠的USB，您必须为<a href="https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/">USBInjectAll.kext</a>实现自定义SSDT，以便在XHC上配置端口。自定义SSDT方式使得不依赖于任何端口限制补丁，它不仅允许您避免端口限制补丁，而且禁用未使用的USB端口可以具有一定的省电属性，并且可以避免睡眠，重启或关闭时的错误。</p>
-<h1 id="自定义SSDT"><a href="#自定义SSDT" class="headerlink" title="自定义SSDT"></a>自定义SSDT</h1><p>自定义SSDT过程包括如下步骤：</p>
-<ol>
-<li>端口准备</li>
-<li>端口发现</li>
-<li>为USBInjectAll.kext创建自定义SSDT</li>
-<li>测试&#x2F;验证</li>
-</ol>
-<p><a href="https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/">MaciASL工具</a>，确保MaciASL-&gt;Preferences-&gt;iASL中选择了ACPI 6.2a</p>
-<h2 id="端口准备"><a href="#端口准备" class="headerlink" title="端口准备"></a>端口准备</h2><p>为了能够正确的为给定的PC配置正确的自定义SSDT，我们必须首先发现所启用的所有端口。一量我们知道了使用哪些端口，我们就可以关闭未使用的端口。首先，先用第一类注入方法也就是在Clover的config.plist&#x2F;ACPI&#x2F;DSDT&#x2F;Patches中注入补丁的方法，注入EXHCx重命名和端口限制补丁。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">    &lt;key&gt;ACPI&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;DSDT&lt;/key&gt;</span><br><span class="line">        &lt;dict&gt;</span><br><span class="line">            &lt;key&gt;Patches&lt;/key&gt;</span><br><span class="line">            &lt;array&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change EHC1 to EH01&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUhDMQ==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUgwMQ==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change EHC2 to EH02&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUhDMg==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;RUgwMg==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                    &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                    &lt;string&gt;change XHC1 to XHC&lt;/string&gt;</span><br><span class="line">                    &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;WEhDMQ==&lt;/data&gt;</span><br><span class="line">                    &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                    &lt;data&gt;WEhDXw==&lt;/data&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">            &lt;/array&gt;</span><br><span class="line">        &lt;/dict&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br><span class="line">    &lt;key&gt;KernelAndKextPatches&lt;/key&gt;</span><br><span class="line">    &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;KextsToPatch&lt;/key&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.11.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g72M/v//EA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g72M/v//Gw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.12.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g710////EA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g710////Gw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.0,10.13.1,10.13.2,10.13.3&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCIPCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32MEA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32MGw==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit PMHeart)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.4,10.13.5&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UDw+DlwQAAA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UD5CQkJCQkA==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;change 15 port limit to 26 in XHCI kext (credit FredWst)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.4,10.13.5&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UDw+DlwQ=&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32UGg+DlwQ=&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit RehabMan, based prior PMHeart patch)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.13.6&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32IDw+DpwQAAA==&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g32ID5CQkJCQkA==&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">            &lt;dict&gt;</span><br><span class="line">                &lt;key&gt;Comment&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;disable port limit in XHCI kext (credit PMHeart)&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;MatchOS&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;10.14.x&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Name&lt;/key&gt;</span><br><span class="line">                &lt;string&gt;com.apple.driver.usb.AppleUSBXHCI&lt;/string&gt;</span><br><span class="line">                &lt;key&gt;Find&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g/sPD4MDBQAA&lt;/data&gt;</span><br><span class="line">                &lt;key&gt;Replace&lt;/key&gt;</span><br><span class="line">                &lt;data&gt;g/sPkJCQkJCQ&lt;/data&gt;</span><br><span class="line">            &lt;/dict&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line">    &lt;/dict&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
-<p>禁用了端口限制之后，您应该使用IORegistryExplorer检查端口是否在EHCI和XHCI控制器上为您的芯片组注入了所有预期端口。</p>
-<h2 id="端口发现"><a href="#端口发现" class="headerlink" title="端口发现"></a>端口发现</h2><p>为了发现SSDT中需要哪些端口，我们将使用IORegistryExplorer,利用测试USB2和USB3设备测试每个端口，IORegistryExplorer可以跟踪对IOKit对象的更改来确定实际使用的端口（现有对象为黑色，绿色为新对象，红色的为断开连接的对象）。<br><span style="font-weight: bolder;">注意：接下来的所有的测试都要在IOService中进行</span><br>通过插入USB2设备和USB3设备测试每个端口，如果在插入和删除设备时仔细查看，可以看到哪些端口分配给哪个物理端口。<br><span style="font-weight: bolder;">注意：如果您有USB3集线器，则可以更轻松地测试每个端口。由于USB3集线器连接USB3端口的USB2引脚（并且仅可以在USB2端口中使用），并且无需正确弹出操作，因些您会发现使用USB3的速度更快集线器而不是一组USB2&#x2F;USB3记忆棒。在下面的示例中，我使用USB3集线器来测试端口。</span></p>
-<p>不要使用IORegistryExplorer.app中的搜索框，只需在左侧窗格中查看ioreg树的正确部分（根据需要滚动以查找适用于您的硬件的EH01&#x2F;EH02&#x2F;XHC）。请注意，要正确测试每个端口，您可能需要将任何USB键盘或鼠标设备移动到不同的端口，以便您可以使用USB2和USB3(或USB3集线器)测试每个端口。</p>
-<h2 id="为USBInjectAll-kext创建自定义SSDT"><a href="#为USBInjectAll-kext创建自定义SSDT" class="headerlink" title="为USBInjectAll.kext创建自定义SSDT"></a>为USBInjectAll.kext创建自定义SSDT</h2><p>USBInjectAll.kext以数据驱动方式编码。在kext代码本身中没有任何硬编码。所有数据都包含在info.plist中。当USBInjectAll.kext启动，匹配EH01&#x2F;EH02&#x2F;XHC或连接到EH01&#x2F;EH02端口1的内部集线器时，它会查询info.plist中与其连接的设备相关的配置数据并注入它找到的数据那里。但是SSDT可用于覆盖info.plist中的数据。</p>
-<p>SSDT-UIAC-ALL.dsl中提供了一个模板，该模板覆盖了USBInjectAll.kext info.plist中已有的所有数据。您可以将SSDT-UIAC-ALL.dsl编译为SSDT-UIAC-ALL.aml（文件另存为，格式为MaciASL中的ACPI机器语言二进制文件）并将其置于ACPI&#x2F;patched中，尽管info.plist中的所有数据都可以将被SSDT覆盖，不会观察到任何净更改，因为SSDT-UIAC-ALL.dsl中的数据与USBInjectAll.kext info.plist中已有的数据相同。</p>
-<p>为了实现我们的更改，我们必须修改SSDT-UIAC-ALL.dsl，使其仅包含我们需要的端口</p>
-<p>步骤如下：</p>
-<ul>
-<li>使用<a href="https://github.com/RehabMan/OS-X-USB-Inject-All/raw/master/SSDT-UIAC-ALL.dsl">SSDT-UIAC-ALL.dsl</a>作为模板</li>
-<li>删除不适用于目标硬件的配置节点</li>
-<li>从不需要的各个部分中删除端口</li>
-<li>更改UsbConnector值以匹配物理硬件&#x2F;端口</li>
-</ul>
-<p>第一步是从SSDT-UIAC-ALL.dsl中删除不适用于目标硬件和USB配置的配置数据。<br>例如，如果EH01 &#x2F; EH02或相关USB集线器（在PR11 &#x2F; PR21上）没有活动端口，则可以取消EH01 &#x2F; EH02 &#x2F; HUB1 &#x2F; HUB2的配置数据。 在Skylake的情况下，它没有EHCI控制器，因此可以在不需要太多考虑的情况下移除EH01 &#x2F; EH02 &#x2F; HUB1 &#x2F; HUB2配置。 如果您通过BIOS或ACPI（稍后介绍）禁用EHCI，情况也是如此。 并且您可以消除任何与您的XHC设备ID不匹配的XHC配置。 在ioreg中查找您的XHC设备ID。I</p>
-]]></content>
-      <tags>
-        <tag>MacOS</tag>
       </tags>
   </entry>
 </search>
