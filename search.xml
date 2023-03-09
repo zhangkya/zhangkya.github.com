@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI视频与图片修复</title>
+    <title>CodeFormer AI 开源视频、图片修复软件安装及设置</title>
     <url>/2023/02/20/AI%E8%A7%86%E9%A2%91%E4%B8%8E%E5%9B%BE%E7%89%87%E4%BF%AE%E5%A4%8D/</url>
-    <content><![CDATA[<h1 id="CodeFormer-AI-开源视频、图片修复软件安装及设置"><a href="#CodeFormer-AI-开源视频、图片修复软件安装及设置" class="headerlink" title="CodeFormer AI 开源视频、图片修复软件安装及设置"></a>CodeFormer AI 开源视频、图片修复软件安装及设置</h1><p>项目地址：<a href="https://github.com/sczhou/CodeFormer">CodeFormer项目</a></p>
+    <content><![CDATA[<p>项目地址：<a href="https://github.com/sczhou/CodeFormer">CodeFormer项目</a></p>
 <p>通过CodeFormer项目可以实现人像的面部修复（需要裁剪和对齐面部）、整体图像增强与视频增强，实现效果如下：</p>
-<img src="color_enhancement_result1.png" style="zoom:50%;" />
-
-
-
 <span id="more"></span> 
+
+<img src="color_enhancement_result1.png" style="zoom:50%;" />
 
 <h2 id="依赖关系安装"><a href="#依赖关系安装" class="headerlink" title="依赖关系安装"></a>依赖关系安装</h2><p>CodeFormer项目是以Python为编码的基础的开源项目，如果电脑没有安装Conda，那么先下载安装<a href="https://www.anaconda.com/products/distribution">官网链接</a>，anaconda环境可以帮助用户管理不同版本的Python和其他第三方库，以及提供一个独立的工作空间，以便在不影响其他环境的情况下进行开发与测试。</p>
 <p>需要如下依赖关系：</p>
@@ -239,55 +237,6 @@
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Daphile数播平台中文手册</title>
-    <url>/2021/09/07/Daphile/</url>
-    <content><![CDATA[<p><img src="/Daphile/1.png" alt="1"></p>
-<h3 id="快速入门指南"><a href="#快速入门指南" class="headerlink" title="快速入门指南"></a>快速入门指南</h3><ul>
-<li>下载Daphile ISO文件</li>
-<li>使用USBWriter或者类似工具将其写入U盘</li>
-<li>从U盘启动Daphile系统</li>
-<li>在其他PC浏览器输入地址：<ul>
-<li><a href="http://daphile.local/">http://daphile.local</a> 或者在Daphile系统设置的IP地址</li>
-</ul>
-</li>
-<li>进入Daphile系统，转到”Settings–&gt;System Firmware”中安装Daphile</li>
-</ul>
-<span id="more"></span>
-
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​    本文档描述了Daphile安装和一些基本系统设置，使系统可以用于听音乐。默认安装方法是假定将用于安装的硬盘或其它存储设置将完全用于Daphile，并且将从中删除所有现有数据。如果想要使用自定义驱动器分区或配置多启动，请阅读后面的相关章节。</p>
-<h3 id="运行Daphile主机配置要求"><a href="#运行Daphile主机配置要求" class="headerlink" title="运行Daphile主机配置要求"></a>运行Daphile主机配置要求</h3><ul>
-<li>处理器：基于x86架构，最低i486</li>
-<li>内存：512MB</li>
-<li>网络适配器：以太网或WIFI</li>
-<li>可启动存储设备：2GB（SATA、IDE或USB）</li>
-<li>音频设备：PCI声卡、USB声卡或USB解码器等</li>
-<li>第二台设置用于访问Daphile</li>
-</ul>
-<h3 id="下载Daphile"><a href="#下载Daphile" class="headerlink" title="下载Daphile"></a>下载Daphile</h3><p>从<a href="http://www.daphile.com下载daphile/">http://www.daphile.com下载Daphile</a> ISO文件</p>
-<p>X86_64版本为推荐版本</p>
-<h3 id="准备安装介质"><a href="#准备安装介质" class="headerlink" title="准备安装介质"></a>准备安装介质</h3><p>U盘是推荐安装盘。以下部分将介绍如何使用不同的操作系统（Windows、OS X和Linux）写入USB安装盘，此阶段只要准备安装盘，而不是最终的Daphile安装。Daphile安装盘仅用于进行最终目标的安装。这其中有许多工具（例如，unetbootin、Rufus等）。</p>
-<p>下面描术的所有方未予都将从设备中删除所有数据。您必须小心使用，否则您可能会遇到严重的数据丢失。</p>
-<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>使用USBWriter（<a href="https://sourceforge.net/projects/usbwriter%EF%BC%89">https://sourceforge.net/projects/usbwriter）</a></p>
-<p><img src="/Daphile/2.png" alt="2"></p>
-<h4 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h4><p>在MacOS系统中创建可启动USB媒体的最简单方法是使用Balena Etcher。您可以从<a href="http://www.balena.io/etcher/%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%B8%B8%E7%AE%80%E5%8D%95%E4%B8%89%E6%AD%A5%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%9A">http://www.balena.io/etcher/下载安装并使用，使用非常简单三步如下图：</a></p>
-<p><img src="/Daphile/3.png" alt="3"></p>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>运行以下命令，将&#x2F;dev&#x2F;sdx替换为您的驱动器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=/path/to/daphile.iso of=/dev/sdx bs=1M &amp;&amp; <span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
-
-<p>使用lsblk命令找出您的驱动器的名称，确保它没有安装</p>
-<h3 id="安装Daphile系统"><a href="#安装Daphile系统" class="headerlink" title="安装Daphile系统"></a>安装Daphile系统</h3><p>插入U盘，使用U盘启动</p>
-<p><img src="/Daphile/4.png" alt="4"></p>
-<p>按F1键执行初始设置，初始设置包括配置无线网络或配置有线网络，擦除另一个准备安装Daphile的硬盘或存储设备，一旦Daphile启动成功完成，您应该在屏幕上收到以下消息</p>
-<p><img src="/Daphile/5.png" alt="5"></p>
-]]></content>
-      <categories>
-        <category>文档手册</category>
-      </categories>
-      <tags>
-        <tag>Daphile</tag>
       </tags>
   </entry>
   <entry>
@@ -591,42 +540,52 @@
       </tags>
   </entry>
   <entry>
-    <title>Dell7080-布署ESXi</title>
-    <url>/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/</url>
-    <content><![CDATA[<p>本篇文章只在记录Dell小主机Optiplex 7080 micro上安装ESXi的过程，主机配置表如下：</p>
-<p>CPU：Intel Core i5-10500T</p>
-<p>显示：IntelUHD 630</p>
-<p>有线网卡：Intel i210</p>
-<p>无线网卡：Intel Wi-Fi AX201双频2*2 802.11.ax MU-MIMO +  蓝牙5.0含内置天线</p>
-<span id="more"></span> 
+    <title>Daphile数播平台中文手册</title>
+    <url>/2021/09/07/Daphile/</url>
+    <content><![CDATA[<p><img src="/Daphile/1.png" alt="1"></p>
+<h3 id="快速入门指南"><a href="#快速入门指南" class="headerlink" title="快速入门指南"></a>快速入门指南</h3><ul>
+<li>下载Daphile ISO文件</li>
+<li>使用USBWriter或者类似工具将其写入U盘</li>
+<li>从U盘启动Daphile系统</li>
+<li>在其他PC浏览器输入地址：<ul>
+<li><a href="http://daphile.local/">http://daphile.local</a> 或者在Daphile系统设置的IP地址</li>
+</ul>
+</li>
+<li>进入Daphile系统，转到”Settings–&gt;System Firmware”中安装Daphile</li>
+</ul>
+<span id="more"></span>
 
-<h2 id="难点一"><a href="#难点一" class="headerlink" title="难点一"></a>难点一</h2><h3 id="ESXi无法识别主机的以太网卡Intel-i210"><a href="#ESXi无法识别主机的以太网卡Intel-i210" class="headerlink" title="ESXi无法识别主机的以太网卡Intel i210"></a>ESXi无法识别主机的以太网卡Intel i210</h3><h4 id="首先到官网下载ESXi离线安装包"><a href="#首先到官网下载ESXi离线安装包" class="headerlink" title="首先到官网下载ESXi离线安装包"></a>首先到官网下载ESXi离线安装包</h4><p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/1.png" alt="1"></p>
-<h4 id="下载ESXi-Customizer-PS最新版本工具"><a href="#下载ESXi-Customizer-PS最新版本工具" class="headerlink" title="下载ESXi-Customizer-PS最新版本工具"></a>下载ESXi-Customizer-PS最新版本工具</h4><p>官网下载：<a href="https://www.v-front.de/p/exsi-customizer-ps.html">https://www.v-front.de/p/exsi-customizer-ps.html</a></p>
-<h4 id="下载需要的驱动"><a href="#下载需要的驱动" class="headerlink" title="下载需要的驱动"></a>下载需要的驱动</h4><p>i210驱动：igb-4.2.16.8-offline_bundle-1242301.zip</p>
-<h4 id="封装网卡驱动"><a href="#封装网卡驱动" class="headerlink" title="封装网卡驱动"></a>封装网卡驱动</h4><p>需要在Windows操作系统下完成，建立文件夹将网卡驱动放到pkg文件夹下</p>
-<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/2.png" alt="2"></p>
-<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/3.png" alt="3"></p>
-<p><strong>使用管理员权限运行Windows PowerShell</strong>，安装依赖</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> VMware.PowerCLI</span><br></pre></td></tr></table></figure>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​    本文档描述了Daphile安装和一些基本系统设置，使系统可以用于听音乐。默认安装方法是假定将用于安装的硬盘或其它存储设置将完全用于Daphile，并且将从中删除所有现有数据。如果想要使用自定义驱动器分区或配置多启动，请阅读后面的相关章节。</p>
+<h3 id="运行Daphile主机配置要求"><a href="#运行Daphile主机配置要求" class="headerlink" title="运行Daphile主机配置要求"></a>运行Daphile主机配置要求</h3><ul>
+<li>处理器：基于x86架构，最低i486</li>
+<li>内存：512MB</li>
+<li>网络适配器：以太网或WIFI</li>
+<li>可启动存储设备：2GB（SATA、IDE或USB）</li>
+<li>音频设备：PCI声卡、USB声卡或USB解码器等</li>
+<li>第二台设置用于访问Daphile</li>
+</ul>
+<h3 id="下载Daphile"><a href="#下载Daphile" class="headerlink" title="下载Daphile"></a>下载Daphile</h3><p>从<a href="http://www.daphile.com下载daphile/">http://www.daphile.com下载Daphile</a> ISO文件</p>
+<p>X86_64版本为推荐版本</p>
+<h3 id="准备安装介质"><a href="#准备安装介质" class="headerlink" title="准备安装介质"></a>准备安装介质</h3><p>U盘是推荐安装盘。以下部分将介绍如何使用不同的操作系统（Windows、OS X和Linux）写入USB安装盘，此阶段只要准备安装盘，而不是最终的Daphile安装。Daphile安装盘仅用于进行最终目标的安装。这其中有许多工具（例如，unetbootin、Rufus等）。</p>
+<p>下面描术的所有方未予都将从设备中删除所有数据。您必须小心使用，否则您可能会遇到严重的数据丢失。</p>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>使用USBWriter（<a href="https://sourceforge.net/projects/usbwriter%EF%BC%89">https://sourceforge.net/projects/usbwriter）</a></p>
+<p><img src="/Daphile/2.png" alt="2"></p>
+<h4 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h4><p>在MacOS系统中创建可启动USB媒体的最简单方法是使用Balena Etcher。您可以从<a href="http://www.balena.io/etcher/%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%B8%B8%E7%AE%80%E5%8D%95%E4%B8%89%E6%AD%A5%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%9A">http://www.balena.io/etcher/下载安装并使用，使用非常简单三步如下图：</a></p>
+<p><img src="/Daphile/3.png" alt="3"></p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>运行以下命令，将&#x2F;dev&#x2F;sdx替换为您的驱动器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=/path/to/daphile.iso of=/dev/sdx bs=1M &amp;&amp; <span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/4.png" alt="4"></p>
-<p>调整PowerShell的执行策略来让脚本可以正常运行。默认的执行策略无法运行脚本</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> Unrestricted</span><br></pre></td></tr></table></figure>
-
-<p>开始打驱动补丁并自动封装为ISO</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\ESXi<span class="literal">-Customizer-PS-v2</span>.<span class="number">6.0</span>.ps1 <span class="literal">-izip</span> .\VMware<span class="literal">-ESXi-7</span>.<span class="number">0</span>U3c<span class="literal">-19193900-depot</span>.zip <span class="literal">-pkgDir</span> D:\Dell7080\nic\pkg</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ESXi-Customizer-PS-v2.6.0.ps1：为最新的工具命令</span><br><span class="line">VMware-ESXi-7.0U3c-19193900-depot.zip：为最新的ESXI7.0的离线包</span><br><span class="line">D:\Dell7080\nic\pkg：为VIB驱动的路径</span><br></pre></td></tr></table></figure>
-
-
-
+<p>使用lsblk命令找出您的驱动器的名称，确保它没有安装</p>
+<h3 id="安装Daphile系统"><a href="#安装Daphile系统" class="headerlink" title="安装Daphile系统"></a>安装Daphile系统</h3><p>插入U盘，使用U盘启动</p>
+<p><img src="/Daphile/4.png" alt="4"></p>
+<p>按F1键执行初始设置，初始设置包括配置无线网络或配置有线网络，擦除另一个准备安装Daphile的硬盘或存储设备，一旦Daphile启动成功完成，您应该在屏幕上收到以下消息</p>
+<p><img src="/Daphile/5.png" alt="5"></p>
 ]]></content>
       <categories>
-        <category>技术积累</category>
+        <category>文档手册</category>
       </categories>
       <tags>
-        <tag>Dell7080</tag>
-        <tag>ESXi</tag>
+        <tag>Daphile</tag>
       </tags>
   </entry>
   <entry>
@@ -692,6 +651,45 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dell7080-布署ESXi</title>
+    <url>/2022/03/22/Dell7080%E5%B8%83%E7%BD%B2ESXi/</url>
+    <content><![CDATA[<p>本篇文章只在记录Dell小主机Optiplex 7080 micro上安装ESXi的过程，主机配置表如下：</p>
+<p>CPU：Intel Core i5-10500T</p>
+<p>显示：IntelUHD 630</p>
+<p>有线网卡：Intel i210</p>
+<p>无线网卡：Intel Wi-Fi AX201双频2*2 802.11.ax MU-MIMO +  蓝牙5.0含内置天线</p>
+<span id="more"></span> 
+
+<h2 id="难点一"><a href="#难点一" class="headerlink" title="难点一"></a>难点一</h2><h3 id="ESXi无法识别主机的以太网卡Intel-i210"><a href="#ESXi无法识别主机的以太网卡Intel-i210" class="headerlink" title="ESXi无法识别主机的以太网卡Intel i210"></a>ESXi无法识别主机的以太网卡Intel i210</h3><h4 id="首先到官网下载ESXi离线安装包"><a href="#首先到官网下载ESXi离线安装包" class="headerlink" title="首先到官网下载ESXi离线安装包"></a>首先到官网下载ESXi离线安装包</h4><p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/1.png" alt="1"></p>
+<h4 id="下载ESXi-Customizer-PS最新版本工具"><a href="#下载ESXi-Customizer-PS最新版本工具" class="headerlink" title="下载ESXi-Customizer-PS最新版本工具"></a>下载ESXi-Customizer-PS最新版本工具</h4><p>官网下载：<a href="https://www.v-front.de/p/exsi-customizer-ps.html">https://www.v-front.de/p/exsi-customizer-ps.html</a></p>
+<h4 id="下载需要的驱动"><a href="#下载需要的驱动" class="headerlink" title="下载需要的驱动"></a>下载需要的驱动</h4><p>i210驱动：igb-4.2.16.8-offline_bundle-1242301.zip</p>
+<h4 id="封装网卡驱动"><a href="#封装网卡驱动" class="headerlink" title="封装网卡驱动"></a>封装网卡驱动</h4><p>需要在Windows操作系统下完成，建立文件夹将网卡驱动放到pkg文件夹下</p>
+<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/2.png" alt="2"></p>
+<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/3.png" alt="3"></p>
+<p><strong>使用管理员权限运行Windows PowerShell</strong>，安装依赖</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> VMware.PowerCLI</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Dell7080%E5%B8%83%E7%BD%B2ESXi/4.png" alt="4"></p>
+<p>调整PowerShell的执行策略来让脚本可以正常运行。默认的执行策略无法运行脚本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> Unrestricted</span><br></pre></td></tr></table></figure>
+
+<p>开始打驱动补丁并自动封装为ISO</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\ESXi<span class="literal">-Customizer-PS-v2</span>.<span class="number">6.0</span>.ps1 <span class="literal">-izip</span> .\VMware<span class="literal">-ESXi-7</span>.<span class="number">0</span>U3c<span class="literal">-19193900-depot</span>.zip <span class="literal">-pkgDir</span> D:\Dell7080\nic\pkg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ESXi-Customizer-PS-v2.6.0.ps1：为最新的工具命令</span><br><span class="line">VMware-ESXi-7.0U3c-19193900-depot.zip：为最新的ESXI7.0的离线包</span><br><span class="line">D:\Dell7080\nic\pkg：为VIB驱动的路径</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>Dell7080</tag>
+        <tag>ESXi</tag>
       </tags>
   </entry>
   <entry>
@@ -884,163 +882,6 @@
       </categories>
       <tags>
         <tag>Jellyfin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LetsEncrypt证书申请</title>
-    <url>/2023/01/31/LetsEncrypt%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/</url>
-    <content><![CDATA[<h2 id="Let’s-Encrypt简介"><a href="#Let’s-Encrypt简介" class="headerlink" title="Let’s Encrypt简介"></a>Let’s Encrypt简介</h2><p>Let’s Encrypt 是 一个叫 ISRG （ Internet Security Research Group ，互联网安全研究小组）的组织推出的免费安全证书计划。参与这个计划的组织和公司可以说是互联网顶顶重要的先驱，除了前文提到的三个牛气哄哄的发起单位外，后来又有思科（全球网络设备制造商执牛耳者）、 Akamai 加入，甚至连 Linux 基金会也加入了合作，这些大牌组织的加入保证了这个项目的可信度和可持续性。<br>   部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。</p>
-<p>​        Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！！！也就是说签发证书不需要任何费用。<br>​        Let’s Encrypt 由于是非盈利性的组织，需要控制开支，他们搞了一个非常有创意的事情，设计了一个 ACME 协议，目前该协议的版本是 v1。<br>​        那为什么要创建 ACME 协议呢，传统的 CA 机构是人工受理证书申请、证书更新、证书撤销，完全是手动处理的。而 ACME 协议规范化了证书申请、更新、撤销等流程，只要一个客户端实现了该协议的功能，通过客户端就可以向 Let’s Encrypt 申请证书，也就是说 Let’s Encrypt CA 完全是自动化操作的。<br>​       任何人都可以基于 ACME 协议实现一个客户端，官方推荐的客户端是 Certbot 。</p>
-<span id="more"></span> 
-
-<h3 id="Let’s-Encrypt通配符证书"><a href="#Let’s-Encrypt通配符证书" class="headerlink" title="Let’s Encrypt通配符证书"></a>Let’s Encrypt通配符证书</h3><p>在没有出现通配符证书之前，Let’s Encrypt 支持两种证书。<br>1）<font style="color:red;"><strong>单域名证书</strong></font>：证书仅仅包含一个主机。<br>2）<font style="color:red;"><strong>SAN 证书</strong>：</font>一张证书可以包括多个主机（Let’s Encrypt 限制是 20），也就是证书可以包含下列的主机：<a href="http://www.example.com、www.example.cn、blog.example.com/">www.example.com、www.example.cn、blog.example.com</a> 等等。</p>
-<p>​       证书包含的主机可以不是同一个注册域，不要问我注册域是什么？注册域就是向域名注册商购买的域名。对于个人用户来说，由于主机并不是太多，所以使用 SAN 证书完全没有问题，但是对于大公司来说有一些问题：</p>
-<ul>
-<li>子域名非常多，而且过一段时间可能就要使用一个新的主机。</li>
-<li>注册域也非常多</li>
-</ul>
-<p>​        对于大企业来说，SAN 证书可能并不能满足需求，类似于 sina 这样的网站，所有的主机全部包含在一张证书中，而使用 Let’s Encrypt 证书是无法满足的。通配符证书就是证书中可以包含一个通配符，比如 .example.com、.example.cn，读者很快明白，大型企业也可以使用通配符证书了，一张证书可以用更多的主机了。这个功能可以说非常重要，从功能上看 Let’s Encrypt 和传统 CA 机构没有什么区别了，会不会触动传统 CA 机构的利益呢？</p>
-<h3 id="如何申请-Let’s-Encrypt-通配符证书"><a href="#如何申请-Let’s-Encrypt-通配符证书" class="headerlink" title="如何申请 Let’s Encrypt 通配符证书"></a>如何申请 Let’s Encrypt 通配符证书</h3><p>​        为了实现通配符证书，Let’s Encrypt 对 ACME 协议的实现进行了升级，只有 v2 协议才能支持通配符证书。也就是说任何客户端只要支持 ACME v2 版本，就可以申请通配符证书了，是不是很激动。在了解该协议之前有几个注意点：<br>​        客户在申请 Let’s Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：</p>
-<ul>
-<li>dns-01：给域名添加一个 DNS TXT 记录。（<strong>申请通配符证书，只能使用 dns-01 的方式</strong>）</li>
-<li>http-01：在域名对应的 Web 服务器下放置一个 HTTP well-known URL 资源文件。</li>
-<li>tls-sni-01：在域名对应的 Web 服务器下放置一个 HTTPS well-known URL 资源文件。</li>
-</ul>
-<h2 id="acme脚本工具"><a href="#acme脚本工具" class="headerlink" title="acme脚本工具"></a>acme脚本工具</h2><h3 id="acme-sh介绍"><a href="#acme-sh介绍" class="headerlink" title="acme.sh介绍"></a>acme.sh介绍</h3><p>​        acme.sh 实现了 acme 协议, 可以从 letsencrypt 生成免费的证书。一个纯粹用 Shell（Unix shell）语言编写的 ACME 协议客户端。完整的 ACME 协议实施。 支持 ACME v1 和 ACME v2 支持 ACME v2 通配符证书简单，功能强大且易于使用。你只需要 3 分钟就可以学习它。Let’s Encrypt 免费证书客户端最简单的 shell 脚本。纯粹用 Shell 编写，不依赖于 python 或官方的 Let’s Encrypt 客户端。只需一个脚本即可自动颁发，续订和安装证书。 不需要 root&#x2F;sudoer 访问权限。支持在 Docker 内使用，支持 IPv6。acme.sh 实现了 acme 协议支持的所有验证协议，一般有两种方式验证： http 和 dns 验证.</p>
-<h3 id="acme-sh获取与安装"><a href="#acme-sh获取与安装" class="headerlink" title="acme.sh获取与安装"></a>acme.sh获取与安装</h3><p>github地址：<a href="https://github.com/acmesh-official/acme.sh">https://github.com/acmesh-official/acme.sh</a></p>
-<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install openssl cron socat curl unzip vim</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装acme-sh"><a href="#安装acme-sh" class="headerlink" title="安装acme.sh"></a>安装acme.sh</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://get.acme.sh | sh -s email=my@example.com  <span class="comment">#后面输入邮箱，否则会报错</span></span><br><span class="line"><span class="built_in">ls</span> -s /root/.acme.sh/acme.sh usr/local/bin/acme.sh  <span class="comment">#添加软链接</span></span><br><span class="line"><span class="comment"># echo &#x27;alias acme.sh=~/.acme.sh/acme.sh&#x27; &gt;&gt; ~/.bashrc</span></span><br><span class="line"><span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="开放防火墙端口"><a href="#开放防火墙端口" class="headerlink" title="开放防火墙端口"></a>开放防火墙端口</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
-
-<h4 id="切换证书机构"><a href="#切换证书机构" class="headerlink" title="切换证书机构"></a>切换证书机构</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">acme.sh --set-default-ca --server letsencrypt  <span class="comment">#使用letsencrypt机构签发证书</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="申请且安装证书"><a href="#申请且安装证书" class="headerlink" title="申请且安装证书"></a>申请且安装证书</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 申请证书</span></span><br><span class="line">acme.sh --issue -d 你的域名 --standalone -k ec-256 <span class="comment">#使用standalone方式申请证书需要一个空闲的80端口</span></span><br><span class="line"><span class="comment"># 安装证书</span></span><br><span class="line">acme.sh --installcert -d 你的域名 --ecc --key-file 证书路径/XXX.key --fullchain-file 证书路径/XXX.crt</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-6-acme-sh自动保持更新"><a href="#2-2-6-acme-sh自动保持更新" class="headerlink" title="2.2.6 acme.sh自动保持更新"></a>2.2.6 acme.sh自动保持更新</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">acme.sh --upgrade --auto-upgrade <span class="comment">#由于acme协议与LetsetcryptCA都在频繁的更新，所以acme.sh工具也需保持同步</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="设置证书自动续签"><a href="#设置证书自动续签" class="headerlink" title="设置证书自动续签"></a>设置证书自动续签</h4><p>创建shell脚本：letsencryptUpdate.sh</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">acme.sh --install-cert -d 你的域名 --ecc --key-file 证书路径/XXX.key --fullchain-file 证书路径/XXX.crt</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Certficates Renewed&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> +r 证书路径/XXX.key</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Read Permission Granted for Private Key&quot;</span></span><br><span class="line"><span class="comment">#此处可添加使有其证书的其它服务</span></span><br><span class="line"><span class="comment">#systemctl restart XXXX.service</span></span><br><span class="line"><span class="comment">#echo &quot;XXX Restarted&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>保存后，添加可执行权限</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chomd +x letsencryptUpdate.sh</span><br></pre></td></tr></table></figure>
-
-<p>设置自动任务<code>crontab -e</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0 1 1 * * bash 路径/letsencryptUpdate.sh</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>cert</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux防火墙</title>
-    <url>/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/</url>
-    <content><![CDATA[<h2 id="Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙"><a href="#Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙" class="headerlink" title="Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙"></a>Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开放所有端口</span></span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment">#删除防火墙</span></span><br><span class="line">apt purge netfilter-persistent &amp;&amp; reboot</span><br><span class="line">或 <span class="built_in">rm</span> -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac双系统时间不同步的问题解决</title>
-    <url>/2017/11/06/Mac-Win-time/</url>
-    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。</p>
-<h3 id="解决方法：（修改Windows注册表）"><a href="#解决方法：（修改Windows注册表）" class="headerlink" title="解决方法：（修改Windows注册表）"></a>解决方法：（修改Windows注册表）</h3><p>将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致</p>
-<p>修改Windows的注册表，定位到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
-<p>添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。<br>这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。</p>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>Mac OS</tag>
-        <tag>排错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MacOS brew国内源</title>
-    <url>/2022/03/26/MacOSbrew%E5%9B%BD%E5%86%85%E6%BA%90/</url>
-    <content><![CDATA[<p>MacOS中更改为国内源</p>
-<ul>
-<li>清华大学源</li>
-<li>中科大源</li>
-<li>阿里云</li>
-<li>腾讯源</li>
-</ul>
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">brew</td>
-<td align="center">Homebew源代码仓库</td>
-</tr>
-<tr>
-<td align="center">home-brew-core</td>
-<td align="center">Homebrew核心软件仓库</td>
-</tr>
-<tr>
-<td align="center">homebrew-bottles</td>
-<td align="center">Homebre预编译二进制软件包</td>
-</tr>
-<tr>
-<td align="center">homebrew-cask</td>
-<td align="center">提供macOS应用和大型二进制文件</td>
-</tr>
-</tbody></table>
-<h1 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-<h1 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看 brew.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (push)</span><br><span class="line"></span><br><span class="line"># 查看 homebrew-core.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (push)</span><br><span class="line"></span><br><span class="line"># 修改 brew.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 修改 homebrew-core.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-<h1 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">替换brew.git:</span><br><span class="line">cd &quot;$(brew --repo)&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">替换homebrew-core.git:</span><br><span class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Homebrew-Bottles源"><a href="#Homebrew-Bottles源" class="headerlink" title="Homebrew Bottles源"></a>Homebrew Bottles源</h1><p>Homebrew预编译二进制软件包</p>
-<h2 id="临时替换"><a href="#临时替换" class="headerlink" title="临时替换"></a>临时替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="永久替换"><a href="#永久替换" class="headerlink" title="永久替换"></a>永久替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Homebrew-Cask源"><a href="#Homebrew-Cask源" class="headerlink" title="Homebrew Cask源"></a>Homebrew Cask源</h1><p> Homebrew cask软件仓库，提供MacOS应用和大型二进制文件，请先运行<code>brew update</code>将<code>brew</code>更新至3.2.17或以上版本</p>
-<h2 id="重置为官方地址"><a href="#重置为官方地址" class="headerlink" title="重置为官方地址"></a>重置为官方地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap --custom-remote --force-auto-update homebrew/cask https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="重置为官方源"><a href="#重置为官方源" class="headerlink" title="重置为官方源"></a>重置为官方源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重置 brew.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-core.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-cask.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br><span class="line"></span><br><span class="line"># zsh 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.zshrc</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># bash 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.bash_profile</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>brew</tag>
       </tags>
   </entry>
   <entry>
@@ -1458,6 +1299,163 @@
       </tags>
   </entry>
   <entry>
+    <title>LetsEncrypt证书申请</title>
+    <url>/2023/01/31/LetsEncrypt%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/</url>
+    <content><![CDATA[<h2 id="Let’s-Encrypt简介"><a href="#Let’s-Encrypt简介" class="headerlink" title="Let’s Encrypt简介"></a>Let’s Encrypt简介</h2><p>Let’s Encrypt 是 一个叫 ISRG （ Internet Security Research Group ，互联网安全研究小组）的组织推出的免费安全证书计划。参与这个计划的组织和公司可以说是互联网顶顶重要的先驱，除了前文提到的三个牛气哄哄的发起单位外，后来又有思科（全球网络设备制造商执牛耳者）、 Akamai 加入，甚至连 Linux 基金会也加入了合作，这些大牌组织的加入保证了这个项目的可信度和可持续性。<br>   部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。</p>
+<p>​        Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！！！也就是说签发证书不需要任何费用。<br>​        Let’s Encrypt 由于是非盈利性的组织，需要控制开支，他们搞了一个非常有创意的事情，设计了一个 ACME 协议，目前该协议的版本是 v1。<br>​        那为什么要创建 ACME 协议呢，传统的 CA 机构是人工受理证书申请、证书更新、证书撤销，完全是手动处理的。而 ACME 协议规范化了证书申请、更新、撤销等流程，只要一个客户端实现了该协议的功能，通过客户端就可以向 Let’s Encrypt 申请证书，也就是说 Let’s Encrypt CA 完全是自动化操作的。<br>​       任何人都可以基于 ACME 协议实现一个客户端，官方推荐的客户端是 Certbot 。</p>
+<span id="more"></span> 
+
+<h3 id="Let’s-Encrypt通配符证书"><a href="#Let’s-Encrypt通配符证书" class="headerlink" title="Let’s Encrypt通配符证书"></a>Let’s Encrypt通配符证书</h3><p>在没有出现通配符证书之前，Let’s Encrypt 支持两种证书。<br>1）<font style="color:red;"><strong>单域名证书</strong></font>：证书仅仅包含一个主机。<br>2）<font style="color:red;"><strong>SAN 证书</strong>：</font>一张证书可以包括多个主机（Let’s Encrypt 限制是 20），也就是证书可以包含下列的主机：<a href="http://www.example.com、www.example.cn、blog.example.com/">www.example.com、www.example.cn、blog.example.com</a> 等等。</p>
+<p>​       证书包含的主机可以不是同一个注册域，不要问我注册域是什么？注册域就是向域名注册商购买的域名。对于个人用户来说，由于主机并不是太多，所以使用 SAN 证书完全没有问题，但是对于大公司来说有一些问题：</p>
+<ul>
+<li>子域名非常多，而且过一段时间可能就要使用一个新的主机。</li>
+<li>注册域也非常多</li>
+</ul>
+<p>​        对于大企业来说，SAN 证书可能并不能满足需求，类似于 sina 这样的网站，所有的主机全部包含在一张证书中，而使用 Let’s Encrypt 证书是无法满足的。通配符证书就是证书中可以包含一个通配符，比如 .example.com、.example.cn，读者很快明白，大型企业也可以使用通配符证书了，一张证书可以用更多的主机了。这个功能可以说非常重要，从功能上看 Let’s Encrypt 和传统 CA 机构没有什么区别了，会不会触动传统 CA 机构的利益呢？</p>
+<h3 id="如何申请-Let’s-Encrypt-通配符证书"><a href="#如何申请-Let’s-Encrypt-通配符证书" class="headerlink" title="如何申请 Let’s Encrypt 通配符证书"></a>如何申请 Let’s Encrypt 通配符证书</h3><p>​        为了实现通配符证书，Let’s Encrypt 对 ACME 协议的实现进行了升级，只有 v2 协议才能支持通配符证书。也就是说任何客户端只要支持 ACME v2 版本，就可以申请通配符证书了，是不是很激动。在了解该协议之前有几个注意点：<br>​        客户在申请 Let’s Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：</p>
+<ul>
+<li>dns-01：给域名添加一个 DNS TXT 记录。（<strong>申请通配符证书，只能使用 dns-01 的方式</strong>）</li>
+<li>http-01：在域名对应的 Web 服务器下放置一个 HTTP well-known URL 资源文件。</li>
+<li>tls-sni-01：在域名对应的 Web 服务器下放置一个 HTTPS well-known URL 资源文件。</li>
+</ul>
+<h2 id="acme脚本工具"><a href="#acme脚本工具" class="headerlink" title="acme脚本工具"></a>acme脚本工具</h2><h3 id="acme-sh介绍"><a href="#acme-sh介绍" class="headerlink" title="acme.sh介绍"></a>acme.sh介绍</h3><p>​        acme.sh 实现了 acme 协议, 可以从 letsencrypt 生成免费的证书。一个纯粹用 Shell（Unix shell）语言编写的 ACME 协议客户端。完整的 ACME 协议实施。 支持 ACME v1 和 ACME v2 支持 ACME v2 通配符证书简单，功能强大且易于使用。你只需要 3 分钟就可以学习它。Let’s Encrypt 免费证书客户端最简单的 shell 脚本。纯粹用 Shell 编写，不依赖于 python 或官方的 Let’s Encrypt 客户端。只需一个脚本即可自动颁发，续订和安装证书。 不需要 root&#x2F;sudoer 访问权限。支持在 Docker 内使用，支持 IPv6。acme.sh 实现了 acme 协议支持的所有验证协议，一般有两种方式验证： http 和 dns 验证.</p>
+<h3 id="acme-sh获取与安装"><a href="#acme-sh获取与安装" class="headerlink" title="acme.sh获取与安装"></a>acme.sh获取与安装</h3><p>github地址：<a href="https://github.com/acmesh-official/acme.sh">https://github.com/acmesh-official/acme.sh</a></p>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install openssl cron socat curl unzip vim</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装acme-sh"><a href="#安装acme-sh" class="headerlink" title="安装acme.sh"></a>安装acme.sh</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://get.acme.sh | sh -s email=my@example.com  <span class="comment">#后面输入邮箱，否则会报错</span></span><br><span class="line"><span class="built_in">ls</span> -s /root/.acme.sh/acme.sh usr/local/bin/acme.sh  <span class="comment">#添加软链接</span></span><br><span class="line"><span class="comment"># echo &#x27;alias acme.sh=~/.acme.sh/acme.sh&#x27; &gt;&gt; ~/.bashrc</span></span><br><span class="line"><span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="开放防火墙端口"><a href="#开放防火墙端口" class="headerlink" title="开放防火墙端口"></a>开放防火墙端口</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换证书机构"><a href="#切换证书机构" class="headerlink" title="切换证书机构"></a>切换证书机构</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">acme.sh --set-default-ca --server letsencrypt  <span class="comment">#使用letsencrypt机构签发证书</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="申请且安装证书"><a href="#申请且安装证书" class="headerlink" title="申请且安装证书"></a>申请且安装证书</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 申请证书</span></span><br><span class="line">acme.sh --issue -d 你的域名 --standalone -k ec-256 <span class="comment">#使用standalone方式申请证书需要一个空闲的80端口</span></span><br><span class="line"><span class="comment"># 安装证书</span></span><br><span class="line">acme.sh --installcert -d 你的域名 --ecc --key-file 证书路径/XXX.key --fullchain-file 证书路径/XXX.crt</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-6-acme-sh自动保持更新"><a href="#2-2-6-acme-sh自动保持更新" class="headerlink" title="2.2.6 acme.sh自动保持更新"></a>2.2.6 acme.sh自动保持更新</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">acme.sh --upgrade --auto-upgrade <span class="comment">#由于acme协议与LetsetcryptCA都在频繁的更新，所以acme.sh工具也需保持同步</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置证书自动续签"><a href="#设置证书自动续签" class="headerlink" title="设置证书自动续签"></a>设置证书自动续签</h4><p>创建shell脚本：letsencryptUpdate.sh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">acme.sh --install-cert -d 你的域名 --ecc --key-file 证书路径/XXX.key --fullchain-file 证书路径/XXX.crt</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Certficates Renewed&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> +r 证书路径/XXX.key</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Read Permission Granted for Private Key&quot;</span></span><br><span class="line"><span class="comment">#此处可添加使有其证书的其它服务</span></span><br><span class="line"><span class="comment">#systemctl restart XXXX.service</span></span><br><span class="line"><span class="comment">#echo &quot;XXX Restarted&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存后，添加可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chomd +x letsencryptUpdate.sh</span><br></pre></td></tr></table></figure>
+
+<p>设置自动任务<code>crontab -e</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0 1 1 * * bash 路径/letsencryptUpdate.sh</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>cert</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux防火墙</title>
+    <url>/2022/11/04/Linux%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <content><![CDATA[<h2 id="Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙"><a href="#Oracle-Cloud-VPS开放所有端口并关闭Ubuntu防火墙" class="headerlink" title="Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙"></a>Oracle Cloud VPS开放所有端口并关闭Ubuntu防火墙</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开放所有端口</span></span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment">#删除防火墙</span></span><br><span class="line">apt purge netfilter-persistent &amp;&amp; reboot</span><br><span class="line">或 <span class="built_in">rm</span> -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac双系统时间不同步的问题解决</title>
+    <url>/2017/11/06/Mac-Win-time/</url>
+    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。</p>
+<h3 id="解决方法：（修改Windows注册表）"><a href="#解决方法：（修改Windows注册表）" class="headerlink" title="解决方法：（修改Windows注册表）"></a>解决方法：（修改Windows注册表）</h3><p>将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致</p>
+<p>修改Windows的注册表，定位到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</span><br></pre></td></tr></table></figure>
+<p>添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。<br>这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。</p>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>Mac OS</tag>
+        <tag>排错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacOS brew国内源</title>
+    <url>/2022/03/26/MacOSbrew%E5%9B%BD%E5%86%85%E6%BA%90/</url>
+    <content><![CDATA[<p>MacOS中更改为国内源</p>
+<ul>
+<li>清华大学源</li>
+<li>中科大源</li>
+<li>阿里云</li>
+<li>腾讯源</li>
+</ul>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">brew</td>
+<td align="center">Homebew源代码仓库</td>
+</tr>
+<tr>
+<td align="center">home-brew-core</td>
+<td align="center">Homebrew核心软件仓库</td>
+</tr>
+<tr>
+<td align="center">homebrew-bottles</td>
+<td align="center">Homebre预编译二进制软件包</td>
+</tr>
+<tr>
+<td align="center">homebrew-cask</td>
+<td align="center">提供macOS应用和大型二进制文件</td>
+</tr>
+</tbody></table>
+<h1 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+<h1 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 替换各个源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看 brew.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/brew.git (push)</span><br><span class="line"></span><br><span class="line"># 查看 homebrew-core.git 当前源</span><br><span class="line">$ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (fetch)</span><br><span class="line">origin    https://github.com/Homebrew/homebrew-core.git (push)</span><br><span class="line"></span><br><span class="line"># 修改 brew.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 修改 homebrew-core.git 为阿里源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># zsh 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br><span class="line">$ source ~/.zshrc</span><br><span class="line"></span><br><span class="line"># bash 替换 brew bintray 镜像</span><br><span class="line">$ echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line">$ source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+<h1 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">替换brew.git:</span><br><span class="line">cd &quot;$(brew --repo)&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">替换homebrew-core.git:</span><br><span class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</span><br><span class="line">git remote set-url origin https://mirrors.cloud.tencent.com/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Homebrew-Bottles源"><a href="#Homebrew-Bottles源" class="headerlink" title="Homebrew Bottles源"></a>Homebrew Bottles源</h1><p>Homebrew预编译二进制软件包</p>
+<h2 id="临时替换"><a href="#临时替换" class="headerlink" title="临时替换"></a>临时替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="永久替换"><a href="#永久替换" class="headerlink" title="永久替换"></a>永久替换</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Homebrew-Cask源"><a href="#Homebrew-Cask源" class="headerlink" title="Homebrew Cask源"></a>Homebrew Cask源</h1><p> Homebrew cask软件仓库，提供MacOS应用和大型二进制文件，请先运行<code>brew update</code>将<code>brew</code>更新至3.2.17或以上版本</p>
+<h2 id="重置为官方地址"><a href="#重置为官方地址" class="headerlink" title="重置为官方地址"></a>重置为官方地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap --custom-remote --force-auto-update homebrew/cask https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="重置为官方源"><a href="#重置为官方源" class="headerlink" title="重置为官方源"></a>重置为官方源</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重置 brew.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-core.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line"># 重置 homebrew-cask.git 为官方源</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br><span class="line"></span><br><span class="line"># zsh 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.zshrc</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># bash 注释掉 HOMEBREW_BOTTLE_DOMAIN 配置</span><br><span class="line">$ vi ~/.bash_profile</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br><span class="line"></span><br><span class="line"># 刷新源</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenWrt搭建OpenConnect VPN</title>
     <url>/2017/08/31/Openvpn-OpenConnect/</url>
     <content><![CDATA[<h1 id="1、安装Ocserv"><a href="#1、安装Ocserv" class="headerlink" title="1、安装Ocserv"></a>1、安装Ocserv</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ocserv luci-app-ocserv</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
@@ -1642,6 +1640,411 @@
       </categories>
       <tags>
         <tag>samba</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue学习笔记</title>
+    <url>/2023/01/05/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="指令：是带有v-前缀的特殊属性"><a href="#指令：是带有v-前缀的特殊属性" class="headerlink" title="指令：是带有v-前缀的特殊属性"></a>指令：是带有v-前缀的特殊属性</h1><ul>
+<li><p>v-bind动态绑定属性</p>
+</li>
+<li><p>v-if动态创建与删除</p>
+</li>
+<li><p>v-show动态显示隐藏</p>
+</li>
+<li><p>v-on:click绑定事件</p>
+</li>
+<li><p>v-for遍历</p>
+</li>
+<li><p>v-model双向绑定表单</p>
+</li>
+</ul>
+<h1 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h1><p>v-bind:src –&gt; :src</p>
+<p>v-bind:click–&gt;@click</p>
+<span id="more"></span>
+
+
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过阿里云实现DDNS解析</title>
+    <url>/2017/09/01/aliyunddns/</url>
+    <content><![CDATA[<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
+<li>Python 2.7</li>
+<li>curl</li>
+<li>Access Key ID</li>
+<li>Access Key Secret</li>
+<li>账号ID</li>
+<li>windows环境需要iconv<span id="more"></span></li>
+</ul>
+<h2 id="1-1、python安装"><a href="#1-1、python安装" class="headerlink" title="1.1、python安装"></a>1.1、python安装</h2><p>由于阿里云python SDK使用Python2.7编写。所以环境请准备Python2.7.X，使用Python3.0将会报错</p>
+<h3 id="1-1-1、Windows"><a href="#1-1-1、Windows" class="headerlink" title="1.1.1、Windows"></a>1.1.1、Windows</h3><p>至官网下载Python2.7.x版本<a href="https://www.python.org/ftp/python/2.7.13/python-2.7.13.amd64.msi" title="" target="">下载</a>安装即可。</p>
+<h2 id="1-2、阿里云SDK安装"><a href="#1-2、阿里云SDK安装" class="headerlink" title="1.2、阿里云SDK安装"></a>1.2、阿里云SDK安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install aliyun-python-sdk-alidns</span><br></pre></td></tr></table></figure>
+<h2 id="1-3、Windows环境下curl安装"><a href="#1-3、Windows环境下curl安装" class="headerlink" title="1.3、Windows环境下curl安装"></a>1.3、Windows环境下curl安装</h2><p>curl官网下载，windows版本<a href="https://curl.haxx.se/download/curl-7.55.1.zip" title="" target="">下载地址</a></p>
+<h3 id="1-3-1、解决Windows环境下curl乱码的问题"><a href="#1-3-1、解决Windows环境下curl乱码的问题" class="headerlink" title="1.3.1、解决Windows环境下curl乱码的问题"></a>1.3.1、解决Windows环境下curl乱码的问题</h3><p>如题，在Windows环境下控制台输出是乱码，解决方法是下载iconv<a href="http://gnuwin32.sourceforge.net/packages/libiconv.htm" title="" target="">下载地址</a><br><img src="1-1.PNG"  title='iconv for windows' ><br>接下来，需要安装并设置环境变量，最后输入命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cur -s ip.cn | iconv -f utf-8 -t gbk</span><br></pre></td></tr></table></figure>
+<h1 id="2、关键信息"><a href="#2、关键信息" class="headerlink" title="2、关键信息"></a>2、关键信息</h1><p>通过脚本更新DNS记录需要向个关键的信息，如下：</p>
+<ol>
+<li>一级域名（你的域名）</li>
+<li>主机记录（二级域名）</li>
+<li>记录类型 （你的本地IP地址）</li>
+<li>记录ID （这个解析记录的ID）</li>
+<li>记录TTL （记录有效生存时间）</li>
+</ol>
+<h2 id="2-1、完整脚本"><a href="#2-1、完整脚本" class="headerlink" title="2.1、完整脚本"></a>2.1、完整脚本</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> aliyunsdkalidns.request.v20150109 <span class="keyword">import</span> UpdateDomainRecordRequest, DescribeDomainRecordsRequest, \</span><br><span class="line">    DescribeDomainRecordInfoRequest</span><br><span class="line"><span class="keyword">from</span> aliyunsdkcore <span class="keyword">import</span> client</span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的Access Key ID，阿里云控制台获取</span></span><br><span class="line">access_key_id = <span class="string">&quot;XXXXXXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的Access Key Secret，阿里云控制台获取</span></span><br><span class="line">access_Key_secret = <span class="string">&quot;XXXXXXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的账号ID，阿里云控制台获取</span></span><br><span class="line">account_id = <span class="string">&quot;XXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如果选择yes，则运行程序后仅现实域名信息，并不会更新记录，用于获取解析记录ID。</span></span><br><span class="line"><span class="comment">#如果选择NO，则运行程序后不显示域名信息，仅更新记录</span></span><br><span class="line">i_dont_know_record_id = <span class="string">&#x27;no&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的一级域名</span></span><br><span class="line">rc_domain = <span class="string">&#x27;XXXXXX.XXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的主机记录</span></span><br><span class="line">rc_rr = <span class="string">&#x27;XXXXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的记录类型，DDNS请填写A，表示A记录</span></span><br><span class="line">rc_type = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写主机记录ID，需要通过解析记录来获取，也就是check_records返回值</span></span><br><span class="line">rc_record_id = <span class="string">&#x27;XXXXXXXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写解析有效生存时间TTL，单位：秒。</span></span><br><span class="line">rc_ttl = <span class="string">&#x27;600&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写返还内容格式，json，xml</span></span><br><span class="line">rc_format = <span class="string">&#x27;json&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_ip</span>():</span><br><span class="line">    get_ip_method = os.popen(<span class="string">&#x27;curl -s ip.cn | iconv -f utf-8 -t gbk&#x27;</span>)</span><br><span class="line">    get_ip_responses = get_ip_method.readlines()[<span class="number">0</span>]</span><br><span class="line">    get_ip_pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+\.\d+\.\d+\.\d+&#x27;</span>)</span><br><span class="line">    get_ip_value = get_ip_pattern.findall(get_ip_responses)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> get_ip_value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_records</span>(<span class="params">dns_domain</span>):</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = DescribeDomainRecordsRequest.DescribeDomainRecordsRequest()</span><br><span class="line">    request.set_DomainName(dns_domain)</span><br><span class="line">    request.set_accept_format(rc_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">old_ip</span>():</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = DescribeDomainRecordInfoRequest.DescribeDomainRecordInfoRequest()</span><br><span class="line">    request.set_RecordId(rc_record_id)</span><br><span class="line">    request.set_accept_format(rc_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    result = json.JSONDecoder().decode(result)</span><br><span class="line">    result = result[<span class="string">&#x27;Value&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update_dns</span>(<span class="params">dns_rr, dns_type, dns_value, dns_record_id, dns_ttl, dns_format</span>):</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = UpdateDomainRecordRequest.UpdateDomainRecordRequest()</span><br><span class="line">    request.set_RR(dns_rr)</span><br><span class="line">    request.set_Type(dns_type)</span><br><span class="line">    request.set_Value(dns_value)</span><br><span class="line">    request.set_RecordId(dns_record_id)</span><br><span class="line">    request.set_TTL(dns_ttl)</span><br><span class="line">    request.set_accept_format(dns_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write_to_file</span>():</span><br><span class="line">    time_now = datetime.now().strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span><br><span class="line">    current_script_path = sys.path[<span class="number">7</span>]</span><br><span class="line">    <span class="built_in">print</span> current_script_path</span><br><span class="line">    log_file = current_script_path + <span class="string">&#x27;/&#x27;</span> + <span class="string">&#x27;aliyun_ddns_log.txt&#x27;</span></span><br><span class="line">    write = <span class="built_in">open</span>(log_file, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    write.write(time_now + <span class="string">&#x27; &#x27;</span> + <span class="built_in">str</span>(rc_value_old) + <span class="string">&#x27;------&gt;&#x27;</span>  + <span class="built_in">str</span>(rc_value) + <span class="string">&#x27;\n&#x27;</span> )</span><br><span class="line">    write.close()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i_dont_know_record_id == <span class="string">&#x27;yes&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span> check_records(rc_domain)</span><br><span class="line"><span class="keyword">elif</span> i_dont_know_record_id == <span class="string">&#x27;no&#x27;</span>:</span><br><span class="line">    rc_value = my_ip()</span><br><span class="line">    rc_value_old = old_ip()</span><br><span class="line">    <span class="keyword">if</span> rc_value_old == rc_value:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;The specified value of parameter Value is the same as old&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> update_dns(rc_rr, rc_type, rc_value, rc_record_id, rc_ttl, rc_format)</span><br><span class="line">        write_to_file()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>OpenWrt</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AppleTV伪装证书</title>
+    <url>/2018/09/26/appletv-cert/</url>
+    <content><![CDATA[<h2 id="1-AppleTV伪装预告片证书"><a href="#1-AppleTV伪装预告片证书" class="headerlink" title="1. AppleTV伪装预告片证书"></a>1. AppleTV伪装预告片证书</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &quot;/C=US/CN=trailers.apple.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem</span><br></pre></td></tr></table></figure>
+<p>执行完上面的命令，您将得到3个证书文件</p>
+<span id="more"></span>
+
+<h2 id="2-使用Apple-Configuration创建项目"><a href="#2-使用Apple-Configuration创建项目" class="headerlink" title="2. 使用Apple Configuration创建项目"></a>2. 使用Apple Configuration创建项目</h2><p><img src="/1.png" alt="Alt text" title="Optional title"><br><img src="/2.png" alt="Alt text" title="Optional title"></p>
+]]></content>
+      <tags>
+        <tag>AppleTV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>clover</title>
+    <url>/2017/11/06/clover/</url>
+    <content><![CDATA[<h2 id="Clover中隐藏“Boot-Windows-From-EFI”启动项"><a href="#Clover中隐藏“Boot-Windows-From-EFI”启动项" class="headerlink" title="Clover中隐藏“Boot Windows From EFI”启动项"></a>Clover中隐藏“Boot Windows From EFI”启动项</h2><p>用Clover时经常能碰到Boot Windows From EFI或者Boot Grub From EFI等启动项，又启动不起来Windows或者Ubuntu。<br>经过小小的研究，修改Clover的config.plist文件，将GUI-&gt;Scan下的Legacy选项设为false即可隐藏。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;key&gt;Scan&lt;/key&gt;  </span><br><span class="line">&lt;dict&gt;  </span><br><span class="line">    &lt;key&gt;Entries&lt;/key&gt;  </span><br><span class="line">        &lt;true/&gt;  </span><br><span class="line">    &lt;key&gt;Legacy&lt;/key&gt;  </span><br><span class="line">        &lt;false/&gt;  </span><br><span class="line">    &lt;key&gt;Tool&lt;/key&gt;  </span><br><span class="line">        &lt;true/&gt;  </span><br><span class="line">&lt;/dict&gt;  </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>Mac OS</tag>
+        <tag>排错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7系统CUPS+SAMBA打印服务安装与配置</title>
+    <url>/2017/09/12/centos-cups/</url>
+    <content><![CDATA[<p>Samba除了提供文件共享之外，也可以像windows下的共享一样提供打印机共享。CUPS是Linux系统下管理打印的服务应用程序，其支持IPP、LPD、SMB和JetDirect接口。CUPS服务本身也可以实现打印共享，不过在windows下增加cups共享打印机的步骤相对麻烦，可以利用Samba先连接本地CUPS服务，再由Samba提供打印共享服务。</p>
+<span id="more"></span>
+
+<h2 id="1、CUPS服务配置"><a href="#1、CUPS服务配置" class="headerlink" title="1、CUPS服务配置"></a>1、CUPS服务配置</h2><h3 id="1-1、安装CUPS相关软件包"><a href="#1-1、安装CUPS相关软件包" class="headerlink" title="1.1、安装CUPS相关软件包"></a>1.1、安装CUPS相关软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install cups</span><br></pre></td></tr></table></figure>
+<h3 id="1-2、cups配置文件"><a href="#1-2、cups配置文件" class="headerlink" title="1.2、cups配置文件"></a>1.2、cups配置文件</h3><p>编辑cups配置文件<code>vi /etc/cups/cupsd.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将Listen localhost:631修改为</span></span><br><span class="line"></span><br><span class="line">Listen 0.0.0.0:631           //监听所有IP</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认是不允许远程主机浏览器打开访问的，这里将allow、deny顺序对调下，或者后面加allow from *</span></span><br><span class="line"></span><br><span class="line">&lt;Location /&gt;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#Order allow,deny   //默认配置部分</span></span><br><span class="line"></span><br><span class="line">  Order deny,allow     //修改后的内容</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置admin项只允许某台主机或某段主机访问</span></span><br><span class="line"></span><br><span class="line">&lt;Location /admin&gt;</span><br><span class="line"></span><br><span class="line">  Order deny,allow</span><br><span class="line"></span><br><span class="line">  deny from all</span><br><span class="line"></span><br><span class="line">  allow from  192.168.1.*</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3、防火墙设置"><a href="#1-3、防火墙设置" class="headerlink" title="1.3、防火墙设置"></a>1.3、防火墙设置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=631/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h3 id="1-4、浏览配置新增打印机"><a href="#1-4、浏览配置新增打印机" class="headerlink" title="1.4、浏览配置新增打印机"></a>1.4、浏览配置新增打印机</h3><p>可以通过lpadmin命令新增打印机，也可以通过浏览器输入<code>http://IP:631</code> 后访问，如下图：<br>通过add printer增加打印机后（增加时会让输入主机的root用户名和密码），可以通过最上面的prints项，查看当前打列机列表：</p>
+<h2 id="2、Samba服务配置"><a href="#2、Samba服务配置" class="headerlink" title="2、Samba服务配置"></a>2、Samba服务配置</h2><p>Samba除了可以分享文件系统外，也可以分享打印机。Samba这个文件系统是架构在NetBIOS这个通讯协议上面所开发出来的。既然如此，我们先了解一下NetBIOS</p>
+<h2 id="2-1-NetBIOS通讯协议"><a href="#2-1-NetBIOS通讯协议" class="headerlink" title="2.1 NetBIOS通讯协议"></a>2.1 NetBIOS通讯协议</h2><p>最早IBM发展出NetBIOS的目的仅是要让局域网络内少数计算机进行网络链接的一个通讯协议而已，所以考虑的角度并不是针对大型网络，因此，这个NetBIOS是无法跨路由的。这个NetBIOS在局域网络内实在是很好用，所以微软的网络架构就使用了它进行沟通。而Samba最早发展的时候，其实是想要让Linux系统可以加入Windows的系统当中来分享使用彼此的档案数据的，所以当然Samba就架构在NetBIOS发展出来。<br>&amp;emsp;&amp;emsp;不过NetBIOS是无法跨路由的，因此使用NetBIOS发展起来的服务器理论上也是无法跨越路由的。那么该服务器的使用范围就受限很多，好在出现了所谓的NetBIOS over TCP&#x2F;IP技术。它是个什么样的技术呢？举个例子，我们知道TCP&#x2F;IP是目前网络连接的基本协议，现在我们将NetBIOS想成是一封明信片，这个明信片只能让自己欣赏而已，如果今天我们要将这个明信片送到远方的朋友那边时！就需要透过邮件系统（例如邮局、快递等）来传送了！这个TCP&#x2F;IP就可以视为邮件传递系统了！透过NetBIOS over TCP&#x2F;IP的技术，我们就可以跨路由使用Samba服务器所提供的功能了！</p>
+<div class="note success"><p>提示：或许你会发现在Windows网络设定里面常常看到NetBEUI这个协议，那是什么呢？那是个NetBIOS Extened User Interface的简写，也是IBM在NetBIOS发展出来之后的改良版本。</p>
+</div>
+<h2 id="2-2-Samba使用的daemons（守护进程）"><a href="#2-2-Samba使用的daemons（守护进程）" class="headerlink" title="2.2 Samba使用的daemons（守护进程）"></a>2.2 Samba使用的daemons（守护进程）</h2><p>NetBIOS当初发展时就着眼在局域网络内的快速数据交流，而因为是定义在局域网络内，因此他并没有使用类似TCP&#x2F;IP之类的传输协议，也就不需要IP的设定。如此一来数据如何在两部主机之间交流呢？其实主机在NetBIOS协议中使用NetBIOS Name，每一部主机必须要有不同的NetBIOS Name才行，而档案数据就是在不同的NetBIOS Name之间沟通。<br>&amp;emsp;&amp;emsp;Windows环境下，如何实现两台计算机相互通信通常要做到两步：（1） Windows的工作组要一致，并且两台计算机的主机名不一致，因为它是架构在NetBIOS协议上的，我们可以简单的称呼他为NetBIOS Name。(2) 利用对方给予的权限存取可用资源<br>&amp;emsp;&amp;emsp;在Linux环境下Samba则是透过两支服务来控制这两个步骤，分别是：（1）<b>nmbd</b>，这个daemon是用来管理工作组、NetBIOS name等等解析的。主要利用UDP协议开启port 137、138来负责名称解析的任务；（2）<b>smbd</b>，这个daemon的主要功能就是用来管理samba主机分享的目录、档案与打印机等等。主要是利用可靠的TCP协议来传输数据，开放的端口为139及445。<br>&amp;emsp;&amp;emsp;所以，Samba每次启动至少都需要这两个daemon，这两个daemon启动时会启用137、138两个UDP端口和139一个TCP端口。后面设定防火墙的时候会用到这三个端口。</p>
+<h2 id="2-3-Samba所需软件及其软件结构"><a href="#2-3-Samba所需软件及其软件结构" class="headerlink" title="2.3 Samba所需软件及其软件结构"></a>2.3 Samba所需软件及其软件结构</h2><ul>
+<li>samba：这个软件主要提供了SMB服务器所需的各项服务程序（smbd和nmbd）等</li>
+<li>samba-client：这个软件则提供了当Linux做为Samba Client端时，所需要的工具指令，例如挂载SAMBA文件格式的mount.cifs、取得类似windows网络邻居树形图的smbtree等</li>
+<li>samba-common：这个软件堤供的则是服务器与客户端都会使用到的数据，包括SAMBA的主要配置文件（sab.conf）、语法检验指令（testparm）等</li>
+</ul>
+<p>相关配置文件有如下：</p>
+<ul>
+<li><code>/etc/samba/smb.conf</code>：这个Samba的主要配置文件</li>
+<li><code>/etc/samba/lmhosts</code>：早期的NetBIOS Name发额外设定，因此需要这个lmhosts的NetBIOS name对应IP地址。事实上它有点像是<code>/etc/hosts</code>的功能。目前Samba预设会去使用你的本机名称（hostname）作为你的NetBIOS name，因此这个档案不设定也无所谓</li>
+<li><code>/etc/sysconfig/samba</code>：提供启动smbd、nmbd时，你还想要加入的相关服务参数。</li>
+<li><code>/etc/samba/smbusers</code>：由于Windows与Linux在管理员与访客的账号名称不一致，例如：administrator(windows)及root(linux)，为了对应这两者这间的关系，可使用这个档案来设定</li>
+<li><code>/var/lib/samba/private/&#123;passdb.tdb,secrets.tdb&#125;</code>：管理Samba的用户账号与密码时，会用到的数据库档案</li>
+<li><code>/usr/share/doc/samba&lt;版本&gt;</code>：这个目录包含了SAMBA的所有相关的技术手册</li>
+</ul>
+<p>至于常用的脚本文件案方面，若分为服务器与客户端功能，则主要有底下几个数据：</p>
+<ul>
+<li><code>/usr/sbin/&#123;smbd,nmbd&#125;</code>：服务器功能，就是最重要的权限管理（smbd）以及NetBIOS Name查询（nmbd）两个重要的服务程序；</li>
+<li><code>/usr/bin/&#123;tdbdump,tdbtool&#125;</code>：服务器功能，在Samba 3.0以后的版本中，用户的账号与密码参数已经转为使用数据库了，Samba使用的数据库名称为TDB（Trivial Database）。tdbdump可以查看数据库的内容，tdbtool则可以进入数据库操作接口直接手动修改账密参数。不过，你得安装tdb-tool这个软件才可以。</li>
+<li><code>/usr/bin/smbstatus</code>：服务器功能，可以列出目前Samba的联机状况，包括每一条Samba联机的PID，分享资源，使用的用户来源等等，让你轻轮台管理Samba</li>
+<li><code>/usr/bin/&#123;smbpasswd,pdbedit&#125;</code>：服务器功能，在管理Samba的用户账号密码时，早期是使用smbpasswd这个指令，不过因为后来使用了TDB数据库了，因此建议使用新的pdbedit指令来管理用户数据</li>
+<li><code>/usr/bin/testparm</code>：服务器功能，这个指令主要在检验配置文件sam.conf的语法正确与否，当你编辑过smb.conf时，请务必使用这个指令来检查一次，避免因为打字错引起困扰！</li>
+<li><code>/sbin/mount.cifs</code>：客哀悼端功能，在 Windows 上面我们可以设定『网络驱动器机』来连接<br>到自己的主机上面。在 Linux 上面，我们则是透过 mount (mount.cifs) 来将远程主机分享<br>的档案与目录挂载到自己的 Linux 主机上面哪！</li>
+<li><code>/usr/bin/smbclient</code>：客户端功能，当你的 Linux 主机想要藉由『网络邻居』的功能来<br>查看别台计算机所分享出来的目录与装置时，就可以使用 smbclient 来查看啦！这个指令<br>也可以使用在自己的 SAMBA 主机上面，用来查看是否设定成功哩！</li>
+<li><code>/usr/bin/nmblookup</code>：客户端功能，有点类似nslookup，重点在查出NetBIOS name</li>
+<li><code>/usr/bin/smbtree</code>：客户端功能，能够查到工作组与计算机名称的树状目录分布图</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>cups</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg码率控制</title>
+    <url>/2021/11/25/ffmpeg%E7%A0%81%E7%8E%87%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<h1 id="什么是码率控制？"><a href="#什么是码率控制？" class="headerlink" title="什么是码率控制？"></a>什么是码率控制？</h1><p><b>它是编码器决定为每帧视频分配多少比特的工具</b></p>
+<span id="more"></span> 
+
+<h2 id="码率控制有多种方式"><a href="#码率控制有多种方式" class="headerlink" title="码率控制有多种方式"></a>码率控制有多种方式</h2><p>接下来会对“1-pass”、“2-pass”、“CBR”、“VBR”、“VBV Encoding”和“CRF”做相应的介绍</p>
+<h2 id="可变码率"><a href="#可变码率" class="headerlink" title="可变码率"></a>可变码率</h2><p>可变码率是在固定码率的基础上发展出来的，可变码率（Variable Bitate, VBR）可以确保在给定限制下使用最少的比特的情况下保持最高质量。也就是说在难编码的地方花费更多的比特，在简单的地方花费更少的比特。</p>
+<h1 id="码率的控制模式"><a href="#码率的控制模式" class="headerlink" title="码率的控制模式"></a>码率的控制模式</h1><p>以下基于ffmpeg中的x264、x265和libvpx编码器，介绍码率的控制方式</p>
+<h2 id="固定QP（Constant-QP-CQP）"><a href="#固定QP（Constant-QP-CQP）" class="headerlink" title="固定QP（Constant QP, CQP）"></a>固定QP（Constant QP, CQP）</h2><p>QP控制着文件压缩的大小，H.264与H.265中QP值在0-51之间的整数范围内，QP值越大压缩率越高同时质量越低，但有的编码器并没有QP值例如：libvpx编码器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -qp 20 &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -x265-params qp=20 &lt;output&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>非必要不要使用QP模式，采用QP模式会导致根据场景复杂度不同比特率的波动很大，你无法控制实际的比特率 </p>
+</div>
+
+<h2 id="平均比特率（Average-Bitrate-ABR）"><a href="#平均比特率（Average-Bitrate-ABR）" class="headerlink" title="平均比特率（Average Bitrate, ABR）"></a>平均比特率（Average Bitrate, ABR）</h2><p>给定编码器一个目标的码率，编码器计算如可达到这个码率：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libvpx-vp9 -b:v 1M &lt;output&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger"><p>ABR不是一种恒定码率模式，而是一种可变的码率模式。所以避免使用这个模式，因为它会在短时间内质量波动比较大 </p>
+</div>
+
+<h2 id="恒定码率（Constant-Bitrate-CBR）"><a href="#恒定码率（Constant-Bitrate-CBR）" class="headerlink" title="恒定码率（Constant Bitrate, CBR）"></a>恒定码率（Constant Bitrate, CBR）</h2><p>可以通过设置nal-hrd使编码器强制在特定码率</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 x264-params <span class="string">&quot;nal-hrd=cbr:force-cfr=1&quot;</span> -b:v 1M </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ffmpeg用法</title>
+    <url>/2018/09/13/ffmpeg/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>是一个非常快的视频和音频转换器，它可以抓取音频&#x2F;视频源。它还可以在任意采样率之间转换，并利用高质量多相滤波器实时调整视频大小。</p>
+<h1 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h1><p>FFmpeg项目由以下几部分组成：</p>
+<ul>
+<li>FFmpeg视频文件转换命令行工具,也支持经过实时电视卡抓取和编码成视频文件；</li>
+<li>ffserver基于HTTP、RTSP用于实时广播的多媒体服务器.也支持时间平移；</li>
+<li>ffplay用 SDL和FFmpeg库开发的一个简单的媒体播放器；</li>
+<li>libavcodec一个包含了所有FFmpeg音视频编解码器的库。为了保证最优性能和高可复用性，大多数编解码器从头开发的；</li>
+<li>libavformat一个包含了所有的普通音视格式的解析器和产生器的库。</li>
+</ul>
+<span id="more"></span>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h2 id="MKV转MP4，音频部分只提取第2路音轨"><a href="#MKV转MP4，音频部分只提取第2路音轨" class="headerlink" title="MKV转MP4，音频部分只提取第2路音轨"></a>MKV转MP4，音频部分只提取第2路音轨</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:v -vcodec copy -map 0:a:1 -acodec copy -strict -2 output.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>0:v：代表提取所有视频流</li>
+<li>0:a:1：代表如果有多路音轨，只提取第2路音轨</li>
+<li>-strict -2：使用ffmpeg自带的aac音频编码</li>
+</ul>
+<h2 id="MKV转MP4，转换多路ac3音轨"><a href="#MKV转MP4，转换多路ac3音轨" class="headerlink" title="MKV转MP4，转换多路ac3音轨"></a>MKV转MP4，转换多路ac3音轨</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:0 -map 0:1 -map 0:2 -vcodec copy -acodec ac3 -disposition:a:0 default -y output.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-disposition:a:0 default：默认第一音轨</li>
+</ul>
+<h2 id="视频切割"><a href="#视频切割" class="headerlink" title="视频切割"></a>视频切割</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 剪切的同时，格式不变，音视频参数不变：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，音视频参数不变，只转换格式：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.flv</span><br><span class="line"><span class="comment"># 剪切的同时，格式不变，只转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，既转换格式又转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.flv</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-y：表示覆盖输出文件</li>
+<li>-ab：设置音频码率</li>
+<li>-ar：设置音频采样率</li>
+<li>-b:v：设置视频比特率为2200千比特&#x2F;秒</li>
+<li>-r：设置帧频 缺省25</li>
+<li>-s：设置帧大小 格式为WXH 缺省160X128.下面的简写也可以直接使用：Sqcif 128X96 qcif 176X144 cif 252X288 4cif 704X576</li>
+<li>-ss：表示起始时间，格式为“小时:分钟:秒”</li>
+<li>-t：表示时长，格式为“小时：分钟：秒”</li>
+</ul>
+<h2 id="视频增加黑边"><a href="#视频增加黑边" class="headerlink" title="视频增加黑边"></a>视频增加黑边</h2><p>使用FFmpeg给视频增加黑边需要用到 pad 这个滤镜，具体用法如下：<br><code>-vf pad=1280:720:0:93:black</code><br>按照从左到右的顺序依次为:<br>​“宽”、“高”、“X坐标”和“Y坐标”，宽和高指的是输入视频尺寸（包含加黑边的尺寸），XY指的是视频所在位置。<br>​<br>比如一个输入视频尺寸是1280x534的源，想要加上黑边变成1280x720，那么用上边的语法可以实现，93是这样得来的，（720-534）&#x2F;2。<br>​<br>如果视频原始1920x800的话，完整的语法应该是：<br>   -vf ‘scale&#x3D;1280:534,pad&#x3D;1280:720:0:93:black’</p>
+<p>先将视频缩小到1280x534，然后在加入黑边变成1280x720，将1280x534的视频放置在x&#x3D;0，y&#x3D;93的地方，<br>​FFmpeg会自动在上下增加93像素的黑边。<br>注：black可以不写，默认是黑色</p>
+<h2 id="字幕"><a href="#字幕" class="headerlink" title="字幕"></a>字幕</h2><p>字幕流跟其他媒体流一样，有各种编码，常见的编码有SubRip（作为独立文件时后缀名为.srt）和ASS（作为独立文件时后缀名为.ass）</p>
+<p>因为字幕流也是媒体流，也有各种编码，所以，我们可以通过-scodec或-c:s选项来指定字幕流的编码。</p>
+<p>例：提出字幕流<br><code>ffmpeg -i output.mkv -an -vn -scodec copy sub3.ass</code></p>
+<p>例：转换字幕格式<br><code>ffmpeg -i subtitle.srt subtitle.ass</code></p>
+<p>例：而将字幕流转换为 ass 编码：<br><code>ffmpeg -i Tor_Animation_en.mp4 -i Tor_animation.zh-CN.srt -c:v copy -c:a copy -c:s ass Tor_Animation_subtitled.mkv</code></p>
+<p>例：将srt字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf subtitles=Tor_animation.zh-CN.srt -c:a copy Tor_Animation_subtitled.mp4</code></p>
+<p>例：将ass字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf &quot;ass=subtitle.ass&quot; -c:a copy Tor_Animation_subtitled.mp4</code></p>
+<h2 id="字幕参数设置"><a href="#字幕参数设置" class="headerlink" title="字幕参数设置"></a>字幕参数设置</h2><h3 id="srt字幕流"><a href="#srt字幕流" class="headerlink" title="srt字幕流"></a>srt字幕流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i **.mp4 -vf <span class="string">&quot;subtitles=**.src:force_style=&#x27;FontSize=20,Alignment=6&#x27;&quot;</span> output.mp4</span><br><span class="line"><span class="comment">#Alignment参数</span></span><br><span class="line">1： Bottom left</span><br><span class="line">2:  Bottom center</span><br><span class="line">3:  Bottom right</span><br><span class="line">5:  Top left</span><br><span class="line">6:  Top center</span><br><span class="line">7:  Top right</span><br><span class="line">9:  Middle left</span><br><span class="line">10: Middle center</span><br><span class="line">11: Middle right</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="ass字幕流"><a href="#ass字幕流" class="headerlink" title="ass字幕流"></a>ass字幕流</h3><p>最新版本的 ffmpeg 使用 ASS中的V4+ Styles</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;[V4+ Styles]\r\n&quot;</span><br><span class="line">/* ASSv4 header */</span><br><span class="line">&quot;Format: Name, &quot;</span><br><span class="line">&quot;Fontname, Fontsize, &quot;</span><br><span class="line">&quot;PrimaryColour, SecondaryColour, OutlineColour, BackColour, &quot;</span><br><span class="line">&quot;Bold, Italic, Underline, StrikeOut, &quot;</span><br><span class="line">&quot;ScaleX, ScaleY, &quot;</span><br><span class="line">&quot;Spacing, Angle, &quot;</span><br><span class="line">&quot;BorderStyle, Outline, Shadow, &quot;</span><br><span class="line">&quot;Alignment, MarginL, MarginR, MarginV, &quot;</span><br><span class="line">&quot;Encoding\r\n&quot;</span><br><span class="line"></span><br><span class="line">01.Name             风格(Style)的名称. 区分大小写. 不能包含逗号.</span><br><span class="line">02.Fontname         使用的字体名称, 区分大小写.</span><br><span class="line">03.Fontsize         字体的字号</span><br><span class="line">04.PrimaryColour    设置主要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 为字幕填充颜色</span><br><span class="line">05.SecondaryColour  设置次要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 在卡拉OK效果中由次要颜色变为主要颜色.</span><br><span class="line">06.OutlineColour    设置轮廓颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR.</span><br><span class="line">07.BackColour       设置阴影颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. ASS的这些字段还包含了alpha通道信息. (AABBGGRR), 注ASS的颜色代码要在前面加上&amp;H</span><br><span class="line">08.Bold             -1为粗体, 0为常规</span><br><span class="line">09.Italic           -1为斜体, 0为常规</span><br><span class="line">10.Underline       [-1 或者 0] 下划线</span><br><span class="line">11.Strikeout       [-1 或者 0] 中划线/删除线</span><br><span class="line">12.ScaleX          修改文字的宽度. 为百分数</span><br><span class="line">13.ScaleY          修改文字的高度. 为百分数</span><br><span class="line">14.Spacing         文字间的额外间隙. 为像素数</span><br><span class="line">15.Angle           按Z轴进行旋转的度数, 原点由alignment进行了定义. 可以为小数</span><br><span class="line">16.BorderStyle     1=边框+阴影, 3=纯色背景. 当值为3时, 文字下方为轮廓颜色的背景, 最下方为阴影颜色背景.</span><br><span class="line">17.Outline         当BorderStyle为1时, 该值定义文字轮廓宽度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">18.Shadow          当BorderStyle为1时, 该值定义阴影的深度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">19.Alignment       定义字幕的位置. 字幕在下方时, 1=左对齐, 2=居中, 3=右对齐. 1, 2, 3加上4后字幕出现在屏幕上方. 1, 2, 3加上8后字幕出现在屏幕中间. 例: 11=屏幕中间右对齐. Alignment对于ASS字幕而言, 字幕的位置与小键盘数字对应的位置相同.</span><br><span class="line">20.MarginL         字幕可出现区域与左边缘的距离, 为像素数</span><br><span class="line">21.MarginR         字幕可出现区域与右边缘的距离, 为像素数</span><br><span class="line">22.MarginV         垂直距离</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git管理</title>
+    <url>/2017/09/11/git/</url>
+    <content><![CDATA[<h1 id="1、版本库"><a href="#1、版本库" class="headerlink" title="1、版本库"></a>1、版本库</h1><p>可以理解为一个目录，这个目录里的所有文件都被git管理起来，每个文件的修改删除都能跟踪，以便任何时候可以追踪历史或将来某个时候可以还原。创建版本库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> aaaa</span><br><span class="line"><span class="built_in">cd</span> aaaa</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>创建完成后，目录下会多出“.git”隐藏目录。这个目录是Git来跟踪管理版本库的。版本控制系统只能跟踪用纯文本方式编写的文件。使用UTF-8编码</p>
+<span id="more"></span>
+<h2 id="1-1、命令解析"><a href="#1-1、命令解析" class="headerlink" title="1.1、命令解析"></a>1.1、命令解析</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git初始化</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 把文件添加至暂存区</span></span><br><span class="line">git add 文件名</span><br><span class="line"><span class="comment"># 把暂存区的所有内容提交到分支</span></span><br><span class="line">git commit -m <span class="string">&quot;说明改动&quot;</span>  <span class="comment">#因为在做仓库初始化的时候，git自动创建了一个master分支,所以git commit都提交到了master分支</span></span><br><span class="line"><span class="comment"># 查看当前仓库的状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="comment"># 查看仓库修改的内容</span></span><br><span class="line">git diff</span><br><span class="line"><span class="comment"># 显示仓库从近至远的提交日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># 显示仓库从近至远的提交日志，简化版本</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line"><span class="comment"># 回退至某一个版本</span></span><br><span class="line">git reset --hard HEAD^      <span class="comment">#git中HEAD表示当前版本，^表示上一版本，^^表示上两个版本,</span></span><br><span class="line">git reset --hard XXXXXXXX   <span class="comment">#XXXXXXXX为ID号</span></span><br><span class="line"><span class="comment"># 记录第一个命令</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="2、Git服务器搭建"><a href="#2、Git服务器搭建" class="headerlink" title="2、Git服务器搭建"></a>2、Git服务器搭建</h1><h2 id="2-1、安装Git"><a href="#2-1、安装Git" class="headerlink" title="2.1、安装Git"></a>2.1、安装Git</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br><span class="line">$ yum install git</span><br></pre></td></tr></table></figure>
+<p>接下来我们创建一个git用户组和用户，用来运行git服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ groupadd git</span><br><span class="line">$ adduser git -g git</span><br></pre></td></tr></table></figure>
+<h2 id="2-2、创建证书登录"><a href="#2-2、创建证书登录" class="headerlink" title="2.2、创建证书登录"></a>2.2、创建证书登录</h2><p>收集所有需要登录的用户和公钥，公钥位于id_rsa.pub文件中，把我们的公钥导入到&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys文件里，一行一个，如果没有创建它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 被登录的机器.ssh目录是700，authorized_keys权限600或644</span></span><br><span class="line"><span class="built_in">cd</span> /home/git</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"><span class="built_in">chmod</span> 700 .ssh</span><br><span class="line"><span class="built_in">touch</span> .ssh/authorized_keys</span><br><span class="line"><span class="built_in">chmod</span> 600 .ssh/autchorized_keys</span><br><span class="line"><span class="comment"># 将公钥传递给被登陆的机器</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub git@XXXX.XXXX.XXXX.XXXX</span><br></pre></td></tr></table></figure>
+<h2 id="2-3、初始化Git仓库"><a href="#2-3、初始化Git仓库" class="headerlink" title="2.3、初始化Git仓库"></a>2.3、初始化Git仓库</h2><p>首先我们选定一个目录作为Git仓库，假定是&#x2F;home&#x2F;gitrepo&#x2F;runoob.git，在&#x2F;home&#x2F;gitrepo目录输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home</span><br><span class="line">$ <span class="built_in">mkdir</span> gitrepo</span><br><span class="line">$ <span class="built_in">chown</span> git:git gitrepo/</span><br><span class="line">$ <span class="built_in">cd</span> gitrepo</span><br><span class="line">$ git init --bare runoob.git</span><br></pre></td></tr></table></figure>
+<p>以上命令Git创建一个空仓库，服务器上的Git仓库通常都以.git结尾。然后，把仓库所属用户改为git：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">chown</span> -R git:git runoob.git</span><br></pre></td></tr></table></figure>
+<h2 id="2-4、克隆Git仓库"><a href="#2-4、克隆Git仓库" class="headerlink" title="2.4、克隆Git仓库"></a>2.4、克隆Git仓库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@192.168.45.4:/home/gitrepo/runoob.git</span><br><span class="line">Cloning into <span class="string">&#x27;runoob&#x27;</span>...</span><br><span class="line">warning: You appear to have cloned an empty repository.</span><br><span class="line">Checking connectivity... <span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
+<p>192.168.45.4 为 Git 所在服务器 ip ，你需要将其修改为你自己的 Git 服务 ip。<br>这样我们的 Git 服务器安装就完成了，接下来我们可以禁用 git 用户通过shell登录，可以通过编辑&#x2F;etc&#x2F;passwd文件完成。找到类似下面的一行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git:x:503:503::/home/git:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git:x:503:503::/home/git:/usr/bin/git-shell</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5、Git远程操作详解"><a href="#2-5、Git远程操作详解" class="headerlink" title="2.5、Git远程操作详解"></a>2.5、Git远程操作详解</h2><p>Git有很多优势，其中之一就是远程操作非常方便，下面就逐一介绍以下5个Git命令<br><img src="1.jpg" style="margin : auto;"></p>
+<h3 id="2-5-1、git-clone"><a href="#2-5-1、git-clone" class="headerlink" title="2.5.1、git clone"></a>2.5.1、git clone</h3><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;版本库的网址&gt;</span><br></pre></td></tr></table></figure>
+<p>比如，克隆jQuery的版本库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/jquery/jquery.git</span><br></pre></td></tr></table></figure>
+<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为<code>git clone</code>命令的第二个参数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;版本库的网址&gt; &lt;本地目录名&gt;</span><br></pre></td></tr></table></figure>
+<p><code>git clone</code>支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协义等，下面是一些例子。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> http[s]://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> ssh://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> git://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> /opt/git/project.git</span><br><span class="line">$ git <span class="built_in">clone</span> file:///opt/git/project.git</span><br><span class="line">$ git <span class="built_in">clone</span> ftp[s]://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> rsync://example.com/path/to/repo.git/</span><br></pre></td></tr></table></figure>
+<p>SSH协议还有另一种写法。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [user@]example.com:path/to/repo.git/</span><br></pre></td></tr></table></figure>
+<p>通常来说，git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考<a href="http://git-scm.com/book/en/Git-on-the-Server-The-Protocols">官方文档</a></p>
+<h3 id="2-5-2、git-remote"><a href="#2-5-2、git-remote" class="headerlink" title="2.5.2、git remote"></a>2.5.2、git remote</h3><p>为了便于管理，Git要求第个远程主机都必须指定一个主机名。git remote命令就用于管理主机名。不带选项的时候，<code>git remote</code> 命令列出所有远程主机。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
+<p>使用<code>-v</code>选项，可以查看远程主机的网址</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin git@github.com:jquery/jquery.git(fetch)</span><br><span class="line">origin git@github.com:jquery/jquery.git(push)</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。<br>克隆版本库的时候，所使用的远程主机自动被Git命名为<code>origin</code>。如果想用其它的主机名，需要用<code>git clone</code>命令的<code>-o</code>选项指定。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> -o jQuery https://github.com/jquery/jquery.git</span><br><span class="line">$ git remote</span><br><span class="line">jQuery</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。<code>hit remote show</code>命令加上主机名，可以查看该主机的详细信息。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote show &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
+<p><code>git remote add</code>命令用于添加远程主机。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add &lt;主机名&gt;&lt;网址&gt;</span><br></pre></td></tr></table></figure>
+<p><code>git remote rm</code>命令用于删除远程主机</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote <span class="built_in">rm</span> &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
+<p><code>git remote rename</code>命令用于远程主机改名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote rename &lt;原主机名&gt;&lt;新主机名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-3-git-fetch"><a href="#2-5-3-git-fetch" class="headerlink" title="2.5.3 git fetch"></a>2.5.3 git fetch</h3><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用要<code>git fetch</code>命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt;</span><br></pre></td></tr></table></figure>
+<p>上面命令将某个远程主机的更新，全部取回本地。<br><code>git fetch</code>命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。默认情况下，<code>git fetch</code>取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>比如，取回<code>origin</code>主机的<code>master</code>分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin master</span><br></pre></td></tr></table></figure>
+<p>所取回的更新，在本地主机上要用“远程主机名&#x2F;分支名“的形式读取。比如<code>origin</code>主机的<code>master</code>，就要用<code>origin/master</code>读取。<br><code>git branch</code>的命令<code>-r</code>选项，可以用来查看远程分支，<code>-a</code>选项查看所有分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -r</span><br><span class="line">origin/master</span><br><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">remotes/origin/master</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，本地主机的当前分支是<code>master</code>，远程分支是<code>origin/master</code>。取回远程主机的更新以后，可以在它的基础上，使用<code>git checkout</code>命令创建一个新的分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b newBrach origin/master</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，在<code>origin/msater</code>的基础上，创建一个新分支。此外，也可以使用<code>git merge</code>命令或者<code>git rebase</code>命令，在本地分支上合并远程分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge origin/master</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git rebase origin/master</span><br></pre></td></tr></table></figure>
+<p>上面命令表示在当前分支上，合并<code>origin/master</code>。</p>
+<h3 id="2-5-4-git-pull"><a href="#2-5-4-git-pull" class="headerlink" title="2.5.4 git pull"></a>2.5.4 git pull</h3><p><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>比如，取回<code>origin</code>主机的<code>next</code>分支，与本地的<code>master</code>分支合并，需要写成下面这样。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin next:master</span><br></pre></td></tr></table></figure>
+<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin next</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，取回<code>origin/next</code>分支，再与当前分支合并。实质上，这等同于先做<code>git fetch</code>，再做<code>git merge</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">$ git merge origin/next</span><br></pre></td></tr></table></figure>
+<p>在某些场合，git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在<code>git clone</code>的时候，所有本地默认与远程主机的同名分支，建立追踪关系，也就是说本地的<code>master</code>分支自动“追踪”<code>origin/master</code>分支。<br>git也允许手动建立追踪关系。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch --set-upstream master origin/next</span><br></pre></td></tr></table></figure>
+<p>上面命令指定<code>master</code>分支追踪<code>origin/next</code>分支。如果当前分支与远程分支存在追踪关系，<code>git pull</code>就可以省略远程分支名。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，本地的当前分支自动与对应的<code>origin</code>主机“追踪分支”（remote-tracking branch）进行合并。如果当前分支只有一个追踪分支，连远程主机都可以省略。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。如果合并需要采用rebase模式，可以使用<code>--rebase</code>选项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>如果远程主机删除了某个分支，默认情况下，<code>git pull</code>不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致<code>git pull</code>不知不觉删除了本地分支。<br>但是，你可以改变这个行为，加上参数<code>-p</code>就会在本地删除远程已经删除的分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull -p</span><br><span class="line"><span class="comment"># 等同于下面的命令</span></span><br><span class="line">$ git fetch --prune origin</span><br><span class="line">$ git fetch -p</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-5-git-push"><a href="#2-5-5-git-push" class="headerlink" title="2.5.5 git push"></a>2.5.5 git push</h3><p><code>git push</code>命令用于将本地分支的更新，推送到远程主机。它的格式与<code>git pull</code>命令相仿。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt;　&lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;。如果省略远程分支名，则表示将本地分支推送与这存在“追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，将本地的<code>master</code>分支推送到<code>origin</code>主机的<code>master</code>分支。如果后者不存在，则会被新建。如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin :master</span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ git push origin --delete master</span><br></pre></td></tr></table></figure>
+<p>上同命令表示删除<code>origin</code>主机的<code>master</code>分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
+<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>上面命令将本地的<code>master</code>分支推送到<code>origin</code>主机，同时指定origin为默认主机，后面就可以不加任何参数使用<code>git push</code>了。<br>不带任何参数的<code>git push</code>，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用<code>git config</code>命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global push.default matching</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git config --global push.default simple</span><br></pre></td></tr></table></figure>
+<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push --all origin</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，将所有本地分支都推送到<code>origin</code>主机。<br>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做<code>git pull</code>合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用<code>--force</code>选项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push --force origin</span><br></pre></td></tr></table></figure>
+<p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。<br>最后，<code>git push</code>不会推送标签（tag），除非使用–tags选项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建HEXO平台+Next主题的相关问题汇总</title>
+    <url>/2017/08/16/hexo/</url>
+    <content><![CDATA[<h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
+<li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
+<li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
+<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
+<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用&#96;hexo new命令生成新文章时，会自动添加一个资源文件夹。</li>
+</ul>
+<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2><p>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</p>
+<ul>
+<li>在文章中使用<code>&lt;!-- more --&gt;</code>手动进行截断，Hexo提供的方式</li>
+<li>在文章的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</li>
+<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2><p>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings = Georgia, sans</span><br><span class="line"></span><br><span class="line">// 修改成你期望的字体族</span><br><span class="line">$font-family-base = &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">// 代码字体</span><br><span class="line">$code-font-family = &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">// 正文字体的大小</span><br><span class="line">$font-size-base = 16px</span><br><span class="line"></span><br><span class="line">// 代码字体的大小</span><br><span class="line">$code-font-size = 13px</span><br></pre></td></tr></table></figure>
+<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2><p>使用方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，class_name可以是以下列表中的一个值：</p>
+<ul>
+<li>dafault</li>
+<li>primary</li>
+<li>success</li>
+<li>info</li>
+<li>warning</li>
+<li>danger<br>效果如下<details class="note "><summary><p>dafault</p>
+</summary>
+<p>class_name值为default</p>
+
+</details>
+<div class="note primary"><p>class_name值为primary</p>
+</div>
+<div class="note success"><p>class_name值为success</p>
+</div>
+<div class="note info"><p>class_name值为info</p>
+</div>
+<div class="note warning"><p>class_name值为warning</p>
+</div>
+<div class="note danger"><p>class_name值为danger</p>
+</div></li>
+</ul>
+<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</p>
+<ul>
+<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
+<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
+效果如下：<div class="note "><blockquote class="blockquote-center">
+<p>大象无形，大音希声<p><b>出自《道德经》</b></p></p>
+
+</blockquote>
+出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。
+白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</div></li>
+</ul>
+<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2><p>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -2052,7 +2455,7 @@
 </tr>
 <tr>
 <td><code>\w+@\w+\.com</code></td>
-<td>以<a href="mailto:&#88;&#x58;&#88;&#x40;&#121;&#121;&#x79;&#x2e;&#99;&#111;&#x6d;">&#88;&#x58;&#88;&#x40;&#121;&#121;&#x79;&#x2e;&#99;&#111;&#x6d;</a>格式表示的简单电子邮件地址</td>
+<td>以<a href="mailto:&#88;&#x58;&#88;&#64;&#x79;&#121;&#121;&#x2e;&#x63;&#x6f;&#109;">&#88;&#x58;&#88;&#64;&#x79;&#121;&#121;&#x2e;&#x63;&#x6f;&#109;</a>格式表示的简单电子邮件地址</td>
 </tr>
 </tbody></table>
 <h3 id="1-2-8-使用圆括号指定分组"><a href="#1-2-8-使用圆括号指定分组" class="headerlink" title="1.2.8 使用圆括号指定分组"></a>1.2.8 使用圆括号指定分组</h3><p>现在，我们已经可以实现匹配某个字符串以及丢弃不匹配的字符串，但有些时候，我们可能会对之前匹配成功的数据更感兴趣。我们不仅想要知道整个字符串是否匹配我们的标准，而且想要知道能否提取任何已经成功匹配的特定字符串或者子字符串。答案是可以，要实现这个目标，只要用一对圆括号包裹任何正则表达式。</p>
@@ -2412,7 +2815,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+\d+-\d+-\d+&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group()</span><br><span class="line"><span class="string">&#x27;Thu Feb 15 17:46:04 2007::uzifzf@dpyivihw.gov::1171590364-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>该正则表达式效果非常好，但是我们只想要末尾的数字字段，而并不是整个字符串，因些不得不使用圆括号对想要的内容进行分组。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+(\d+-\d+-\d+)&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group()        <span class="comment"># subgroup 1</span></span><br><span class="line"><span class="string">&#x27;4-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>发生了什么？我们将提取1171590364－6－8，而不仅仅是4－6－8.第一个整数的其余部分在哪儿？问题在于正则表达式本质上实现贪婪匹配。这就意味说对于该通配符模式，将对正则表达式从左至右按顺序求值，而且试图获取匹配该模式的尽可能多的字符。在之前的示例中，使用“.+”获取从字符串起始位置开始的全部单个字符，包括所期望的每一个整数字段。\d＋仅本一个数字，因此将得到“4”，其中.+匹配了从字符串起始部分到所期望的第一个数字的全部内容：“Thu Feb 15 17:46:04 2007::<a href="mailto:&#x75;&#122;&#105;&#x66;&#x7a;&#x66;&#x40;&#100;&#x70;&#121;&#105;&#x76;&#105;&#x68;&#119;&#46;&#103;&#111;&#118;">&#x75;&#122;&#105;&#x66;&#x7a;&#x66;&#x40;&#100;&#x70;&#121;&#105;&#x76;&#105;&#x68;&#119;&#46;&#103;&#111;&#118;</a>:117159036”，如图1－2所示。<br><img src="/1-2.jpg" alt="图 1-2　为什么匹配出错了: +是一个贪婪操作符" title="图　1－2"><br>其中的一个方案是使用“非贪婪”操作符“？”。读者可以在“*”、“＋”或者“?”之后使用该操作符。该操作符将要求正则表达式引擎匹配尽可能少的字符。因此，如果在“.+”之后放置一个“？”，我们将获得所期望的结果，如图1-3所示。</p>
+<p>发生了什么？我们将提取1171590364－6－8，而不仅仅是4－6－8.第一个整数的其余部分在哪儿？问题在于正则表达式本质上实现贪婪匹配。这就意味说对于该通配符模式，将对正则表达式从左至右按顺序求值，而且试图获取匹配该模式的尽可能多的字符。在之前的示例中，使用“.+”获取从字符串起始位置开始的全部单个字符，包括所期望的每一个整数字段。\d＋仅本一个数字，因此将得到“4”，其中.+匹配了从字符串起始部分到所期望的第一个数字的全部内容：“Thu Feb 15 17:46:04 2007::<a href="mailto:&#117;&#122;&#x69;&#102;&#x7a;&#x66;&#x40;&#x64;&#112;&#x79;&#105;&#118;&#105;&#x68;&#119;&#46;&#x67;&#x6f;&#x76;">&#117;&#122;&#x69;&#102;&#x7a;&#x66;&#x40;&#x64;&#112;&#x79;&#105;&#118;&#105;&#x68;&#119;&#46;&#x67;&#x6f;&#x76;</a>:117159036”，如图1－2所示。<br><img src="/1-2.jpg" alt="图 1-2　为什么匹配出错了: +是一个贪婪操作符" title="图　1－2"><br>其中的一个方案是使用“非贪婪”操作符“？”。读者可以在“*”、“＋”或者“?”之后使用该操作符。该操作符将要求正则表达式引擎匹配尽可能少的字符。因此，如果在“.+”之后放置一个“？”，我们将获得所期望的结果，如图1-3所示。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patt = <span class="string">&#x27;.+?(\d+-\d+-\d+)&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.<span class="keyword">match</span>(patt, data).group(<span class="number">1</span>)        <span class="comment"># subgroup 1</span></span><br><span class="line"><span class="string">&#x27;1171590364-6-8&#x27;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/1-3.jpg" alt="图 1-3 解决贪婪匹配的问题：“?”表示非贪婪匹配" title="图 1-3"><br>另一个实际情况下更简单的方案，就是把“::”作为字段分隔符。读者可以仅仅使用正则字符串strip(‘::’)方法获取所有的部分，然后使用strip(‘-‘)作为另一个横线分隔符，就能够获取最初想要查询的三个整数。现在，我们不想先选择该方案，因为这就是我们如何将字符串放在一起，以使用gendata.py作为开始！</p>
 <p>最后一个示例：假定我们仅想取出三个整数字段中间的那个整数。如下所示，这就是实现的方法（使用一个搜索，这样就不必匹配整个字符串）: -(\d+)-。尝试该模式，将得到以下内容。</p>
@@ -2650,411 +3053,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue学习笔记</title>
-    <url>/2023/01/05/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="指令：是带有v-前缀的特殊属性"><a href="#指令：是带有v-前缀的特殊属性" class="headerlink" title="指令：是带有v-前缀的特殊属性"></a>指令：是带有v-前缀的特殊属性</h1><ul>
-<li><p>v-bind动态绑定属性</p>
-</li>
-<li><p>v-if动态创建与删除</p>
-</li>
-<li><p>v-show动态显示隐藏</p>
-</li>
-<li><p>v-on:click绑定事件</p>
-</li>
-<li><p>v-for遍历</p>
-</li>
-<li><p>v-model双向绑定表单</p>
-</li>
-</ul>
-<h1 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h1><p>v-bind:src –&gt; :src</p>
-<p>v-bind:click–&gt;@click</p>
-<span id="more"></span>
-
-
-
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通过阿里云实现DDNS解析</title>
-    <url>/2017/09/01/aliyunddns/</url>
-    <content><![CDATA[<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
-<li>Python 2.7</li>
-<li>curl</li>
-<li>Access Key ID</li>
-<li>Access Key Secret</li>
-<li>账号ID</li>
-<li>windows环境需要iconv<span id="more"></span></li>
-</ul>
-<h2 id="1-1、python安装"><a href="#1-1、python安装" class="headerlink" title="1.1、python安装"></a>1.1、python安装</h2><p>由于阿里云python SDK使用Python2.7编写。所以环境请准备Python2.7.X，使用Python3.0将会报错</p>
-<h3 id="1-1-1、Windows"><a href="#1-1-1、Windows" class="headerlink" title="1.1.1、Windows"></a>1.1.1、Windows</h3><p>至官网下载Python2.7.x版本<a href="https://www.python.org/ftp/python/2.7.13/python-2.7.13.amd64.msi" title="" target="">下载</a>安装即可。</p>
-<h2 id="1-2、阿里云SDK安装"><a href="#1-2、阿里云SDK安装" class="headerlink" title="1.2、阿里云SDK安装"></a>1.2、阿里云SDK安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install aliyun-python-sdk-alidns</span><br></pre></td></tr></table></figure>
-<h2 id="1-3、Windows环境下curl安装"><a href="#1-3、Windows环境下curl安装" class="headerlink" title="1.3、Windows环境下curl安装"></a>1.3、Windows环境下curl安装</h2><p>curl官网下载，windows版本<a href="https://curl.haxx.se/download/curl-7.55.1.zip" title="" target="">下载地址</a></p>
-<h3 id="1-3-1、解决Windows环境下curl乱码的问题"><a href="#1-3-1、解决Windows环境下curl乱码的问题" class="headerlink" title="1.3.1、解决Windows环境下curl乱码的问题"></a>1.3.1、解决Windows环境下curl乱码的问题</h3><p>如题，在Windows环境下控制台输出是乱码，解决方法是下载iconv<a href="http://gnuwin32.sourceforge.net/packages/libiconv.htm" title="" target="">下载地址</a><br><img src="1-1.PNG"  title='iconv for windows' ><br>接下来，需要安装并设置环境变量，最后输入命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cur -s ip.cn | iconv -f utf-8 -t gbk</span><br></pre></td></tr></table></figure>
-<h1 id="2、关键信息"><a href="#2、关键信息" class="headerlink" title="2、关键信息"></a>2、关键信息</h1><p>通过脚本更新DNS记录需要向个关键的信息，如下：</p>
-<ol>
-<li>一级域名（你的域名）</li>
-<li>主机记录（二级域名）</li>
-<li>记录类型 （你的本地IP地址）</li>
-<li>记录ID （这个解析记录的ID）</li>
-<li>记录TTL （记录有效生存时间）</li>
-</ol>
-<h2 id="2-1、完整脚本"><a href="#2-1、完整脚本" class="headerlink" title="2.1、完整脚本"></a>2.1、完整脚本</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> aliyunsdkalidns.request.v20150109 <span class="keyword">import</span> UpdateDomainRecordRequest, DescribeDomainRecordsRequest, \</span><br><span class="line">    DescribeDomainRecordInfoRequest</span><br><span class="line"><span class="keyword">from</span> aliyunsdkcore <span class="keyword">import</span> client</span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的Access Key ID，阿里云控制台获取</span></span><br><span class="line">access_key_id = <span class="string">&quot;XXXXXXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的Access Key Secret，阿里云控制台获取</span></span><br><span class="line">access_Key_secret = <span class="string">&quot;XXXXXXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的账号ID，阿里云控制台获取</span></span><br><span class="line">account_id = <span class="string">&quot;XXXXXXXX&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如果选择yes，则运行程序后仅现实域名信息，并不会更新记录，用于获取解析记录ID。</span></span><br><span class="line"><span class="comment">#如果选择NO，则运行程序后不显示域名信息，仅更新记录</span></span><br><span class="line">i_dont_know_record_id = <span class="string">&#x27;no&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的一级域名</span></span><br><span class="line">rc_domain = <span class="string">&#x27;XXXXXX.XXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的主机记录</span></span><br><span class="line">rc_rr = <span class="string">&#x27;XXXXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写你的记录类型，DDNS请填写A，表示A记录</span></span><br><span class="line">rc_type = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写主机记录ID，需要通过解析记录来获取，也就是check_records返回值</span></span><br><span class="line">rc_record_id = <span class="string">&#x27;XXXXXXXXXX&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写解析有效生存时间TTL，单位：秒。</span></span><br><span class="line">rc_ttl = <span class="string">&#x27;600&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#请填写返还内容格式，json，xml</span></span><br><span class="line">rc_format = <span class="string">&#x27;json&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_ip</span>():</span><br><span class="line">    get_ip_method = os.popen(<span class="string">&#x27;curl -s ip.cn | iconv -f utf-8 -t gbk&#x27;</span>)</span><br><span class="line">    get_ip_responses = get_ip_method.readlines()[<span class="number">0</span>]</span><br><span class="line">    get_ip_pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+\.\d+\.\d+\.\d+&#x27;</span>)</span><br><span class="line">    get_ip_value = get_ip_pattern.findall(get_ip_responses)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> get_ip_value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_records</span>(<span class="params">dns_domain</span>):</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = DescribeDomainRecordsRequest.DescribeDomainRecordsRequest()</span><br><span class="line">    request.set_DomainName(dns_domain)</span><br><span class="line">    request.set_accept_format(rc_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">old_ip</span>():</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = DescribeDomainRecordInfoRequest.DescribeDomainRecordInfoRequest()</span><br><span class="line">    request.set_RecordId(rc_record_id)</span><br><span class="line">    request.set_accept_format(rc_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    result = json.JSONDecoder().decode(result)</span><br><span class="line">    result = result[<span class="string">&#x27;Value&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update_dns</span>(<span class="params">dns_rr, dns_type, dns_value, dns_record_id, dns_ttl, dns_format</span>):</span><br><span class="line">    clt = client.AcsClient(access_key_id, access_Key_secret, <span class="string">&#x27;cn-hangzhou&#x27;</span>)</span><br><span class="line">    request = UpdateDomainRecordRequest.UpdateDomainRecordRequest()</span><br><span class="line">    request.set_RR(dns_rr)</span><br><span class="line">    request.set_Type(dns_type)</span><br><span class="line">    request.set_Value(dns_value)</span><br><span class="line">    request.set_RecordId(dns_record_id)</span><br><span class="line">    request.set_TTL(dns_ttl)</span><br><span class="line">    request.set_accept_format(dns_format)</span><br><span class="line">    result = clt.do_action(request)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write_to_file</span>():</span><br><span class="line">    time_now = datetime.now().strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span><br><span class="line">    current_script_path = sys.path[<span class="number">7</span>]</span><br><span class="line">    <span class="built_in">print</span> current_script_path</span><br><span class="line">    log_file = current_script_path + <span class="string">&#x27;/&#x27;</span> + <span class="string">&#x27;aliyun_ddns_log.txt&#x27;</span></span><br><span class="line">    write = <span class="built_in">open</span>(log_file, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    write.write(time_now + <span class="string">&#x27; &#x27;</span> + <span class="built_in">str</span>(rc_value_old) + <span class="string">&#x27;------&gt;&#x27;</span>  + <span class="built_in">str</span>(rc_value) + <span class="string">&#x27;\n&#x27;</span> )</span><br><span class="line">    write.close()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i_dont_know_record_id == <span class="string">&#x27;yes&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span> check_records(rc_domain)</span><br><span class="line"><span class="keyword">elif</span> i_dont_know_record_id == <span class="string">&#x27;no&#x27;</span>:</span><br><span class="line">    rc_value = my_ip()</span><br><span class="line">    rc_value_old = old_ip()</span><br><span class="line">    <span class="keyword">if</span> rc_value_old == rc_value:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;The specified value of parameter Value is the same as old&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> update_dns(rc_rr, rc_type, rc_value, rc_record_id, rc_ttl, rc_format)</span><br><span class="line">        write_to_file()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>OpenWrt</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AppleTV伪装证书</title>
-    <url>/2018/09/26/appletv-cert/</url>
-    <content><![CDATA[<h2 id="1-AppleTV伪装预告片证书"><a href="#1-AppleTV伪装预告片证书" class="headerlink" title="1. AppleTV伪装预告片证书"></a>1. AppleTV伪装预告片证书</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &quot;/C=US/CN=trailers.apple.com&quot;</span><br></pre></td></tr></table></figure>
-<p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem</span><br></pre></td></tr></table></figure>
-<p>执行完上面的命令，您将得到3个证书文件</p>
-<span id="more"></span>
-
-<h2 id="2-使用Apple-Configuration创建项目"><a href="#2-使用Apple-Configuration创建项目" class="headerlink" title="2. 使用Apple Configuration创建项目"></a>2. 使用Apple Configuration创建项目</h2><p><img src="/1.png" alt="Alt text" title="Optional title"><br><img src="/2.png" alt="Alt text" title="Optional title"></p>
-]]></content>
-      <tags>
-        <tag>AppleTV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Centos7系统CUPS+SAMBA打印服务安装与配置</title>
-    <url>/2017/09/12/centos-cups/</url>
-    <content><![CDATA[<p>Samba除了提供文件共享之外，也可以像windows下的共享一样提供打印机共享。CUPS是Linux系统下管理打印的服务应用程序，其支持IPP、LPD、SMB和JetDirect接口。CUPS服务本身也可以实现打印共享，不过在windows下增加cups共享打印机的步骤相对麻烦，可以利用Samba先连接本地CUPS服务，再由Samba提供打印共享服务。</p>
-<span id="more"></span>
-
-<h2 id="1、CUPS服务配置"><a href="#1、CUPS服务配置" class="headerlink" title="1、CUPS服务配置"></a>1、CUPS服务配置</h2><h3 id="1-1、安装CUPS相关软件包"><a href="#1-1、安装CUPS相关软件包" class="headerlink" title="1.1、安装CUPS相关软件包"></a>1.1、安装CUPS相关软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install cups</span><br></pre></td></tr></table></figure>
-<h3 id="1-2、cups配置文件"><a href="#1-2、cups配置文件" class="headerlink" title="1.2、cups配置文件"></a>1.2、cups配置文件</h3><p>编辑cups配置文件<code>vi /etc/cups/cupsd.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将Listen localhost:631修改为</span></span><br><span class="line"></span><br><span class="line">Listen 0.0.0.0:631           //监听所有IP</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认是不允许远程主机浏览器打开访问的，这里将allow、deny顺序对调下，或者后面加allow from *</span></span><br><span class="line"></span><br><span class="line">&lt;Location /&gt;</span><br><span class="line"></span><br><span class="line">  <span class="comment">#Order allow,deny   //默认配置部分</span></span><br><span class="line"></span><br><span class="line">  Order deny,allow     //修改后的内容</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置admin项只允许某台主机或某段主机访问</span></span><br><span class="line"></span><br><span class="line">&lt;Location /admin&gt;</span><br><span class="line"></span><br><span class="line">  Order deny,allow</span><br><span class="line"></span><br><span class="line">  deny from all</span><br><span class="line"></span><br><span class="line">  allow from  192.168.1.*</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="1-3、防火墙设置"><a href="#1-3、防火墙设置" class="headerlink" title="1.3、防火墙设置"></a>1.3、防火墙设置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=631/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<h3 id="1-4、浏览配置新增打印机"><a href="#1-4、浏览配置新增打印机" class="headerlink" title="1.4、浏览配置新增打印机"></a>1.4、浏览配置新增打印机</h3><p>可以通过lpadmin命令新增打印机，也可以通过浏览器输入<code>http://IP:631</code> 后访问，如下图：<br>通过add printer增加打印机后（增加时会让输入主机的root用户名和密码），可以通过最上面的prints项，查看当前打列机列表：</p>
-<h2 id="2、Samba服务配置"><a href="#2、Samba服务配置" class="headerlink" title="2、Samba服务配置"></a>2、Samba服务配置</h2><p>Samba除了可以分享文件系统外，也可以分享打印机。Samba这个文件系统是架构在NetBIOS这个通讯协议上面所开发出来的。既然如此，我们先了解一下NetBIOS</p>
-<h2 id="2-1-NetBIOS通讯协议"><a href="#2-1-NetBIOS通讯协议" class="headerlink" title="2.1 NetBIOS通讯协议"></a>2.1 NetBIOS通讯协议</h2><p>最早IBM发展出NetBIOS的目的仅是要让局域网络内少数计算机进行网络链接的一个通讯协议而已，所以考虑的角度并不是针对大型网络，因此，这个NetBIOS是无法跨路由的。这个NetBIOS在局域网络内实在是很好用，所以微软的网络架构就使用了它进行沟通。而Samba最早发展的时候，其实是想要让Linux系统可以加入Windows的系统当中来分享使用彼此的档案数据的，所以当然Samba就架构在NetBIOS发展出来。<br>&amp;emsp;&amp;emsp;不过NetBIOS是无法跨路由的，因此使用NetBIOS发展起来的服务器理论上也是无法跨越路由的。那么该服务器的使用范围就受限很多，好在出现了所谓的NetBIOS over TCP&#x2F;IP技术。它是个什么样的技术呢？举个例子，我们知道TCP&#x2F;IP是目前网络连接的基本协议，现在我们将NetBIOS想成是一封明信片，这个明信片只能让自己欣赏而已，如果今天我们要将这个明信片送到远方的朋友那边时！就需要透过邮件系统（例如邮局、快递等）来传送了！这个TCP&#x2F;IP就可以视为邮件传递系统了！透过NetBIOS over TCP&#x2F;IP的技术，我们就可以跨路由使用Samba服务器所提供的功能了！</p>
-<div class="note success"><p>提示：或许你会发现在Windows网络设定里面常常看到NetBEUI这个协议，那是什么呢？那是个NetBIOS Extened User Interface的简写，也是IBM在NetBIOS发展出来之后的改良版本。</p>
-</div>
-<h2 id="2-2-Samba使用的daemons（守护进程）"><a href="#2-2-Samba使用的daemons（守护进程）" class="headerlink" title="2.2 Samba使用的daemons（守护进程）"></a>2.2 Samba使用的daemons（守护进程）</h2><p>NetBIOS当初发展时就着眼在局域网络内的快速数据交流，而因为是定义在局域网络内，因此他并没有使用类似TCP&#x2F;IP之类的传输协议，也就不需要IP的设定。如此一来数据如何在两部主机之间交流呢？其实主机在NetBIOS协议中使用NetBIOS Name，每一部主机必须要有不同的NetBIOS Name才行，而档案数据就是在不同的NetBIOS Name之间沟通。<br>&amp;emsp;&amp;emsp;Windows环境下，如何实现两台计算机相互通信通常要做到两步：（1） Windows的工作组要一致，并且两台计算机的主机名不一致，因为它是架构在NetBIOS协议上的，我们可以简单的称呼他为NetBIOS Name。(2) 利用对方给予的权限存取可用资源<br>&amp;emsp;&amp;emsp;在Linux环境下Samba则是透过两支服务来控制这两个步骤，分别是：（1）<b>nmbd</b>，这个daemon是用来管理工作组、NetBIOS name等等解析的。主要利用UDP协议开启port 137、138来负责名称解析的任务；（2）<b>smbd</b>，这个daemon的主要功能就是用来管理samba主机分享的目录、档案与打印机等等。主要是利用可靠的TCP协议来传输数据，开放的端口为139及445。<br>&amp;emsp;&amp;emsp;所以，Samba每次启动至少都需要这两个daemon，这两个daemon启动时会启用137、138两个UDP端口和139一个TCP端口。后面设定防火墙的时候会用到这三个端口。</p>
-<h2 id="2-3-Samba所需软件及其软件结构"><a href="#2-3-Samba所需软件及其软件结构" class="headerlink" title="2.3 Samba所需软件及其软件结构"></a>2.3 Samba所需软件及其软件结构</h2><ul>
-<li>samba：这个软件主要提供了SMB服务器所需的各项服务程序（smbd和nmbd）等</li>
-<li>samba-client：这个软件则提供了当Linux做为Samba Client端时，所需要的工具指令，例如挂载SAMBA文件格式的mount.cifs、取得类似windows网络邻居树形图的smbtree等</li>
-<li>samba-common：这个软件堤供的则是服务器与客户端都会使用到的数据，包括SAMBA的主要配置文件（sab.conf）、语法检验指令（testparm）等</li>
-</ul>
-<p>相关配置文件有如下：</p>
-<ul>
-<li><code>/etc/samba/smb.conf</code>：这个Samba的主要配置文件</li>
-<li><code>/etc/samba/lmhosts</code>：早期的NetBIOS Name发额外设定，因此需要这个lmhosts的NetBIOS name对应IP地址。事实上它有点像是<code>/etc/hosts</code>的功能。目前Samba预设会去使用你的本机名称（hostname）作为你的NetBIOS name，因此这个档案不设定也无所谓</li>
-<li><code>/etc/sysconfig/samba</code>：提供启动smbd、nmbd时，你还想要加入的相关服务参数。</li>
-<li><code>/etc/samba/smbusers</code>：由于Windows与Linux在管理员与访客的账号名称不一致，例如：administrator(windows)及root(linux)，为了对应这两者这间的关系，可使用这个档案来设定</li>
-<li><code>/var/lib/samba/private/&#123;passdb.tdb,secrets.tdb&#125;</code>：管理Samba的用户账号与密码时，会用到的数据库档案</li>
-<li><code>/usr/share/doc/samba&lt;版本&gt;</code>：这个目录包含了SAMBA的所有相关的技术手册</li>
-</ul>
-<p>至于常用的脚本文件案方面，若分为服务器与客户端功能，则主要有底下几个数据：</p>
-<ul>
-<li><code>/usr/sbin/&#123;smbd,nmbd&#125;</code>：服务器功能，就是最重要的权限管理（smbd）以及NetBIOS Name查询（nmbd）两个重要的服务程序；</li>
-<li><code>/usr/bin/&#123;tdbdump,tdbtool&#125;</code>：服务器功能，在Samba 3.0以后的版本中，用户的账号与密码参数已经转为使用数据库了，Samba使用的数据库名称为TDB（Trivial Database）。tdbdump可以查看数据库的内容，tdbtool则可以进入数据库操作接口直接手动修改账密参数。不过，你得安装tdb-tool这个软件才可以。</li>
-<li><code>/usr/bin/smbstatus</code>：服务器功能，可以列出目前Samba的联机状况，包括每一条Samba联机的PID，分享资源，使用的用户来源等等，让你轻轮台管理Samba</li>
-<li><code>/usr/bin/&#123;smbpasswd,pdbedit&#125;</code>：服务器功能，在管理Samba的用户账号密码时，早期是使用smbpasswd这个指令，不过因为后来使用了TDB数据库了，因此建议使用新的pdbedit指令来管理用户数据</li>
-<li><code>/usr/bin/testparm</code>：服务器功能，这个指令主要在检验配置文件sam.conf的语法正确与否，当你编辑过smb.conf时，请务必使用这个指令来检查一次，避免因为打字错引起困扰！</li>
-<li><code>/sbin/mount.cifs</code>：客哀悼端功能，在 Windows 上面我们可以设定『网络驱动器机』来连接<br>到自己的主机上面。在 Linux 上面，我们则是透过 mount (mount.cifs) 来将远程主机分享<br>的档案与目录挂载到自己的 Linux 主机上面哪！</li>
-<li><code>/usr/bin/smbclient</code>：客户端功能，当你的 Linux 主机想要藉由『网络邻居』的功能来<br>查看别台计算机所分享出来的目录与装置时，就可以使用 smbclient 来查看啦！这个指令<br>也可以使用在自己的 SAMBA 主机上面，用来查看是否设定成功哩！</li>
-<li><code>/usr/bin/nmblookup</code>：客户端功能，有点类似nslookup，重点在查出NetBIOS name</li>
-<li><code>/usr/bin/smbtree</code>：客户端功能，能够查到工作组与计算机名称的树状目录分布图</li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>centos</tag>
-        <tag>cups</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>clover</title>
-    <url>/2017/11/06/clover/</url>
-    <content><![CDATA[<h2 id="Clover中隐藏“Boot-Windows-From-EFI”启动项"><a href="#Clover中隐藏“Boot-Windows-From-EFI”启动项" class="headerlink" title="Clover中隐藏“Boot Windows From EFI”启动项"></a>Clover中隐藏“Boot Windows From EFI”启动项</h2><p>用Clover时经常能碰到Boot Windows From EFI或者Boot Grub From EFI等启动项，又启动不起来Windows或者Ubuntu。<br>经过小小的研究，修改Clover的config.plist文件，将GUI-&gt;Scan下的Legacy选项设为false即可隐藏。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;key&gt;Scan&lt;/key&gt;  </span><br><span class="line">&lt;dict&gt;  </span><br><span class="line">    &lt;key&gt;Entries&lt;/key&gt;  </span><br><span class="line">        &lt;true/&gt;  </span><br><span class="line">    &lt;key&gt;Legacy&lt;/key&gt;  </span><br><span class="line">        &lt;false/&gt;  </span><br><span class="line">    &lt;key&gt;Tool&lt;/key&gt;  </span><br><span class="line">        &lt;true/&gt;  </span><br><span class="line">&lt;/dict&gt;  </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>Mac OS</tag>
-        <tag>排错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg用法</title>
-    <url>/2018/09/13/ffmpeg/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>是一个非常快的视频和音频转换器，它可以抓取音频&#x2F;视频源。它还可以在任意采样率之间转换，并利用高质量多相滤波器实时调整视频大小。</p>
-<h1 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h1><p>FFmpeg项目由以下几部分组成：</p>
-<ul>
-<li>FFmpeg视频文件转换命令行工具,也支持经过实时电视卡抓取和编码成视频文件；</li>
-<li>ffserver基于HTTP、RTSP用于实时广播的多媒体服务器.也支持时间平移；</li>
-<li>ffplay用 SDL和FFmpeg库开发的一个简单的媒体播放器；</li>
-<li>libavcodec一个包含了所有FFmpeg音视频编解码器的库。为了保证最优性能和高可复用性，大多数编解码器从头开发的；</li>
-<li>libavformat一个包含了所有的普通音视格式的解析器和产生器的库。</li>
-</ul>
-<span id="more"></span>
-<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h2 id="MKV转MP4，音频部分只提取第2路音轨"><a href="#MKV转MP4，音频部分只提取第2路音轨" class="headerlink" title="MKV转MP4，音频部分只提取第2路音轨"></a>MKV转MP4，音频部分只提取第2路音轨</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:v -vcodec copy -map 0:a:1 -acodec copy -strict -2 output.mp4</span><br></pre></td></tr></table></figure>
-<ul>
-<li>0:v：代表提取所有视频流</li>
-<li>0:a:1：代表如果有多路音轨，只提取第2路音轨</li>
-<li>-strict -2：使用ffmpeg自带的aac音频编码</li>
-</ul>
-<h2 id="MKV转MP4，转换多路ac3音轨"><a href="#MKV转MP4，转换多路ac3音轨" class="headerlink" title="MKV转MP4，转换多路ac3音轨"></a>MKV转MP4，转换多路ac3音轨</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:0 -map 0:1 -map 0:2 -vcodec copy -acodec ac3 -disposition:a:0 default -y output.mp4</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-disposition:a:0 default：默认第一音轨</li>
-</ul>
-<h2 id="视频切割"><a href="#视频切割" class="headerlink" title="视频切割"></a>视频切割</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 剪切的同时，格式不变，音视频参数不变：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，音视频参数不变，只转换格式：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -acodec copy -vcodec copy -async 1 output.flv</span><br><span class="line"><span class="comment"># 剪切的同时，格式不变，只转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.mp4</span><br><span class="line"><span class="comment"># 剪切的同时，既转换格式又转换音视频参数：</span></span><br><span class="line">ffmpeg -y -i input.mp4 -ss 00:00:00.0 -t 00:01:00.0 -ab 56k -ar 44100 -b:v 2200k -r 29.97 -s 640*360 output.flv</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-y：表示覆盖输出文件</li>
-<li>-ab：设置音频码率</li>
-<li>-ar：设置音频采样率</li>
-<li>-b:v：设置视频比特率为2200千比特&#x2F;秒</li>
-<li>-r：设置帧频 缺省25</li>
-<li>-s：设置帧大小 格式为WXH 缺省160X128.下面的简写也可以直接使用：Sqcif 128X96 qcif 176X144 cif 252X288 4cif 704X576</li>
-<li>-ss：表示起始时间，格式为“小时:分钟:秒”</li>
-<li>-t：表示时长，格式为“小时：分钟：秒”</li>
-</ul>
-<h2 id="视频增加黑边"><a href="#视频增加黑边" class="headerlink" title="视频增加黑边"></a>视频增加黑边</h2><p>使用FFmpeg给视频增加黑边需要用到 pad 这个滤镜，具体用法如下：<br><code>-vf pad=1280:720:0:93:black</code><br>按照从左到右的顺序依次为:<br>​“宽”、“高”、“X坐标”和“Y坐标”，宽和高指的是输入视频尺寸（包含加黑边的尺寸），XY指的是视频所在位置。<br>​<br>比如一个输入视频尺寸是1280x534的源，想要加上黑边变成1280x720，那么用上边的语法可以实现，93是这样得来的，（720-534）&#x2F;2。<br>​<br>如果视频原始1920x800的话，完整的语法应该是：<br>   -vf ‘scale&#x3D;1280:534,pad&#x3D;1280:720:0:93:black’</p>
-<p>先将视频缩小到1280x534，然后在加入黑边变成1280x720，将1280x534的视频放置在x&#x3D;0，y&#x3D;93的地方，<br>​FFmpeg会自动在上下增加93像素的黑边。<br>注：black可以不写，默认是黑色</p>
-<h2 id="字幕"><a href="#字幕" class="headerlink" title="字幕"></a>字幕</h2><p>字幕流跟其他媒体流一样，有各种编码，常见的编码有SubRip（作为独立文件时后缀名为.srt）和ASS（作为独立文件时后缀名为.ass）</p>
-<p>因为字幕流也是媒体流，也有各种编码，所以，我们可以通过-scodec或-c:s选项来指定字幕流的编码。</p>
-<p>例：提出字幕流<br><code>ffmpeg -i output.mkv -an -vn -scodec copy sub3.ass</code></p>
-<p>例：转换字幕格式<br><code>ffmpeg -i subtitle.srt subtitle.ass</code></p>
-<p>例：而将字幕流转换为 ass 编码：<br><code>ffmpeg -i Tor_Animation_en.mp4 -i Tor_animation.zh-CN.srt -c:v copy -c:a copy -c:s ass Tor_Animation_subtitled.mkv</code></p>
-<p>例：将srt字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf subtitles=Tor_animation.zh-CN.srt -c:a copy Tor_Animation_subtitled.mp4</code></p>
-<p>例：将ass字幕编入视频流<br><code>ffmpeg -i Tor_Animation_en.mp4 -vf &quot;ass=subtitle.ass&quot; -c:a copy Tor_Animation_subtitled.mp4</code></p>
-<h2 id="字幕参数设置"><a href="#字幕参数设置" class="headerlink" title="字幕参数设置"></a>字幕参数设置</h2><h3 id="srt字幕流"><a href="#srt字幕流" class="headerlink" title="srt字幕流"></a>srt字幕流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i **.mp4 -vf <span class="string">&quot;subtitles=**.src:force_style=&#x27;FontSize=20,Alignment=6&#x27;&quot;</span> output.mp4</span><br><span class="line"><span class="comment">#Alignment参数</span></span><br><span class="line">1： Bottom left</span><br><span class="line">2:  Bottom center</span><br><span class="line">3:  Bottom right</span><br><span class="line">5:  Top left</span><br><span class="line">6:  Top center</span><br><span class="line">7:  Top right</span><br><span class="line">9:  Middle left</span><br><span class="line">10: Middle center</span><br><span class="line">11: Middle right</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="ass字幕流"><a href="#ass字幕流" class="headerlink" title="ass字幕流"></a>ass字幕流</h3><p>最新版本的 ffmpeg 使用 ASS中的V4+ Styles</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;[V4+ Styles]\r\n&quot;</span><br><span class="line">/* ASSv4 header */</span><br><span class="line">&quot;Format: Name, &quot;</span><br><span class="line">&quot;Fontname, Fontsize, &quot;</span><br><span class="line">&quot;PrimaryColour, SecondaryColour, OutlineColour, BackColour, &quot;</span><br><span class="line">&quot;Bold, Italic, Underline, StrikeOut, &quot;</span><br><span class="line">&quot;ScaleX, ScaleY, &quot;</span><br><span class="line">&quot;Spacing, Angle, &quot;</span><br><span class="line">&quot;BorderStyle, Outline, Shadow, &quot;</span><br><span class="line">&quot;Alignment, MarginL, MarginR, MarginV, &quot;</span><br><span class="line">&quot;Encoding\r\n&quot;</span><br><span class="line"></span><br><span class="line">01.Name             风格(Style)的名称. 区分大小写. 不能包含逗号.</span><br><span class="line">02.Fontname         使用的字体名称, 区分大小写.</span><br><span class="line">03.Fontsize         字体的字号</span><br><span class="line">04.PrimaryColour    设置主要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 为字幕填充颜色</span><br><span class="line">05.SecondaryColour  设置次要颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. 在卡拉OK效果中由次要颜色变为主要颜色.</span><br><span class="line">06.OutlineColour    设置轮廓颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR.</span><br><span class="line">07.BackColour       设置阴影颜色, 为蓝-绿-红三色的十六进制代码相排列, BBGGRR. ASS的这些字段还包含了alpha通道信息. (AABBGGRR), 注ASS的颜色代码要在前面加上&amp;H</span><br><span class="line">08.Bold             -1为粗体, 0为常规</span><br><span class="line">09.Italic           -1为斜体, 0为常规</span><br><span class="line">10.Underline       [-1 或者 0] 下划线</span><br><span class="line">11.Strikeout       [-1 或者 0] 中划线/删除线</span><br><span class="line">12.ScaleX          修改文字的宽度. 为百分数</span><br><span class="line">13.ScaleY          修改文字的高度. 为百分数</span><br><span class="line">14.Spacing         文字间的额外间隙. 为像素数</span><br><span class="line">15.Angle           按Z轴进行旋转的度数, 原点由alignment进行了定义. 可以为小数</span><br><span class="line">16.BorderStyle     1=边框+阴影, 3=纯色背景. 当值为3时, 文字下方为轮廓颜色的背景, 最下方为阴影颜色背景.</span><br><span class="line">17.Outline         当BorderStyle为1时, 该值定义文字轮廓宽度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">18.Shadow          当BorderStyle为1时, 该值定义阴影的深度, 为像素数, 常见有0, 1, 2, 3, 4.</span><br><span class="line">19.Alignment       定义字幕的位置. 字幕在下方时, 1=左对齐, 2=居中, 3=右对齐. 1, 2, 3加上4后字幕出现在屏幕上方. 1, 2, 3加上8后字幕出现在屏幕中间. 例: 11=屏幕中间右对齐. Alignment对于ASS字幕而言, 字幕的位置与小键盘数字对应的位置相同.</span><br><span class="line">20.MarginL         字幕可出现区域与左边缘的距离, 为像素数</span><br><span class="line">21.MarginR         字幕可出现区域与右边缘的距离, 为像素数</span><br><span class="line">22.MarginV         垂直距离</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ffmpeg码率控制</title>
-    <url>/2021/11/25/ffmpeg%E7%A0%81%E7%8E%87%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<h1 id="什么是码率控制？"><a href="#什么是码率控制？" class="headerlink" title="什么是码率控制？"></a>什么是码率控制？</h1><p><b>它是编码器决定为每帧视频分配多少比特的工具</b></p>
-<span id="more"></span> 
-
-<h2 id="码率控制有多种方式"><a href="#码率控制有多种方式" class="headerlink" title="码率控制有多种方式"></a>码率控制有多种方式</h2><p>接下来会对“1-pass”、“2-pass”、“CBR”、“VBR”、“VBV Encoding”和“CRF”做相应的介绍</p>
-<h2 id="可变码率"><a href="#可变码率" class="headerlink" title="可变码率"></a>可变码率</h2><p>可变码率是在固定码率的基础上发展出来的，可变码率（Variable Bitate, VBR）可以确保在给定限制下使用最少的比特的情况下保持最高质量。也就是说在难编码的地方花费更多的比特，在简单的地方花费更少的比特。</p>
-<h1 id="码率的控制模式"><a href="#码率的控制模式" class="headerlink" title="码率的控制模式"></a>码率的控制模式</h1><p>以下基于ffmpeg中的x264、x265和libvpx编码器，介绍码率的控制方式</p>
-<h2 id="固定QP（Constant-QP-CQP）"><a href="#固定QP（Constant-QP-CQP）" class="headerlink" title="固定QP（Constant QP, CQP）"></a>固定QP（Constant QP, CQP）</h2><p>QP控制着文件压缩的大小，H.264与H.265中QP值在0-51之间的整数范围内，QP值越大压缩率越高同时质量越低，但有的编码器并没有QP值例如：libvpx编码器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -qp 20 &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -x265-params qp=20 &lt;output&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>非必要不要使用QP模式，采用QP模式会导致根据场景复杂度不同比特率的波动很大，你无法控制实际的比特率 </p>
-</div>
-
-<h2 id="平均比特率（Average-Bitrate-ABR）"><a href="#平均比特率（Average-Bitrate-ABR）" class="headerlink" title="平均比特率（Average Bitrate, ABR）"></a>平均比特率（Average Bitrate, ABR）</h2><p>给定编码器一个目标的码率，编码器计算如可达到这个码率：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libx265 -b:v 1M &lt;output&gt;</span><br><span class="line">ffmpeg -i &lt;input&gt; -c:v libvpx-vp9 -b:v 1M &lt;output&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note danger"><p>ABR不是一种恒定码率模式，而是一种可变的码率模式。所以避免使用这个模式，因为它会在短时间内质量波动比较大 </p>
-</div>
-
-<h2 id="恒定码率（Constant-Bitrate-CBR）"><a href="#恒定码率（Constant-Bitrate-CBR）" class="headerlink" title="恒定码率（Constant Bitrate, CBR）"></a>恒定码率（Constant Bitrate, CBR）</h2><p>可以通过设置nal-hrd使编码器强制在特定码率</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i &lt;input&gt; -c:v libx264 x264-params <span class="string">&quot;nal-hrd=cbr:force-cfr=1&quot;</span> -b:v 1M </span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git管理</title>
-    <url>/2017/09/11/git/</url>
-    <content><![CDATA[<h1 id="1、版本库"><a href="#1、版本库" class="headerlink" title="1、版本库"></a>1、版本库</h1><p>可以理解为一个目录，这个目录里的所有文件都被git管理起来，每个文件的修改删除都能跟踪，以便任何时候可以追踪历史或将来某个时候可以还原。创建版本库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> aaaa</span><br><span class="line"><span class="built_in">cd</span> aaaa</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>创建完成后，目录下会多出“.git”隐藏目录。这个目录是Git来跟踪管理版本库的。版本控制系统只能跟踪用纯文本方式编写的文件。使用UTF-8编码</p>
-<span id="more"></span>
-<h2 id="1-1、命令解析"><a href="#1-1、命令解析" class="headerlink" title="1.1、命令解析"></a>1.1、命令解析</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git初始化</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 把文件添加至暂存区</span></span><br><span class="line">git add 文件名</span><br><span class="line"><span class="comment"># 把暂存区的所有内容提交到分支</span></span><br><span class="line">git commit -m <span class="string">&quot;说明改动&quot;</span>  <span class="comment">#因为在做仓库初始化的时候，git自动创建了一个master分支,所以git commit都提交到了master分支</span></span><br><span class="line"><span class="comment"># 查看当前仓库的状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="comment"># 查看仓库修改的内容</span></span><br><span class="line">git diff</span><br><span class="line"><span class="comment"># 显示仓库从近至远的提交日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># 显示仓库从近至远的提交日志，简化版本</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line"><span class="comment"># 回退至某一个版本</span></span><br><span class="line">git reset --hard HEAD^      <span class="comment">#git中HEAD表示当前版本，^表示上一版本，^^表示上两个版本,</span></span><br><span class="line">git reset --hard XXXXXXXX   <span class="comment">#XXXXXXXX为ID号</span></span><br><span class="line"><span class="comment"># 记录第一个命令</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="2、Git服务器搭建"><a href="#2、Git服务器搭建" class="headerlink" title="2、Git服务器搭建"></a>2、Git服务器搭建</h1><h2 id="2-1、安装Git"><a href="#2-1、安装Git" class="headerlink" title="2.1、安装Git"></a>2.1、安装Git</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br><span class="line">$ yum install git</span><br></pre></td></tr></table></figure>
-<p>接下来我们创建一个git用户组和用户，用来运行git服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ groupadd git</span><br><span class="line">$ adduser git -g git</span><br></pre></td></tr></table></figure>
-<h2 id="2-2、创建证书登录"><a href="#2-2、创建证书登录" class="headerlink" title="2.2、创建证书登录"></a>2.2、创建证书登录</h2><p>收集所有需要登录的用户和公钥，公钥位于id_rsa.pub文件中，把我们的公钥导入到&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys文件里，一行一个，如果没有创建它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 被登录的机器.ssh目录是700，authorized_keys权限600或644</span></span><br><span class="line"><span class="built_in">cd</span> /home/git</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"><span class="built_in">chmod</span> 700 .ssh</span><br><span class="line"><span class="built_in">touch</span> .ssh/authorized_keys</span><br><span class="line"><span class="built_in">chmod</span> 600 .ssh/autchorized_keys</span><br><span class="line"><span class="comment"># 将公钥传递给被登陆的机器</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub git@XXXX.XXXX.XXXX.XXXX</span><br></pre></td></tr></table></figure>
-<h2 id="2-3、初始化Git仓库"><a href="#2-3、初始化Git仓库" class="headerlink" title="2.3、初始化Git仓库"></a>2.3、初始化Git仓库</h2><p>首先我们选定一个目录作为Git仓库，假定是&#x2F;home&#x2F;gitrepo&#x2F;runoob.git，在&#x2F;home&#x2F;gitrepo目录输入命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home</span><br><span class="line">$ <span class="built_in">mkdir</span> gitrepo</span><br><span class="line">$ <span class="built_in">chown</span> git:git gitrepo/</span><br><span class="line">$ <span class="built_in">cd</span> gitrepo</span><br><span class="line">$ git init --bare runoob.git</span><br></pre></td></tr></table></figure>
-<p>以上命令Git创建一个空仓库，服务器上的Git仓库通常都以.git结尾。然后，把仓库所属用户改为git：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">chown</span> -R git:git runoob.git</span><br></pre></td></tr></table></figure>
-<h2 id="2-4、克隆Git仓库"><a href="#2-4、克隆Git仓库" class="headerlink" title="2.4、克隆Git仓库"></a>2.4、克隆Git仓库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@192.168.45.4:/home/gitrepo/runoob.git</span><br><span class="line">Cloning into <span class="string">&#x27;runoob&#x27;</span>...</span><br><span class="line">warning: You appear to have cloned an empty repository.</span><br><span class="line">Checking connectivity... <span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
-<p>192.168.45.4 为 Git 所在服务器 ip ，你需要将其修改为你自己的 Git 服务 ip。<br>这样我们的 Git 服务器安装就完成了，接下来我们可以禁用 git 用户通过shell登录，可以通过编辑&#x2F;etc&#x2F;passwd文件完成。找到类似下面的一行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git:x:503:503::/home/git:/bin/bash</span><br></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git:x:503:503::/home/git:/usr/bin/git-shell</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-5、Git远程操作详解"><a href="#2-5、Git远程操作详解" class="headerlink" title="2.5、Git远程操作详解"></a>2.5、Git远程操作详解</h2><p>Git有很多优势，其中之一就是远程操作非常方便，下面就逐一介绍以下5个Git命令<br><img src="1.jpg" style="margin : auto;"></p>
-<h3 id="2-5-1、git-clone"><a href="#2-5-1、git-clone" class="headerlink" title="2.5.1、git clone"></a>2.5.1、git clone</h3><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;版本库的网址&gt;</span><br></pre></td></tr></table></figure>
-<p>比如，克隆jQuery的版本库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/jquery/jquery.git</span><br></pre></td></tr></table></figure>
-<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为<code>git clone</code>命令的第二个参数。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;版本库的网址&gt; &lt;本地目录名&gt;</span><br></pre></td></tr></table></figure>
-<p><code>git clone</code>支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协义等，下面是一些例子。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> http[s]://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> ssh://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> git://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> /opt/git/project.git</span><br><span class="line">$ git <span class="built_in">clone</span> file:///opt/git/project.git</span><br><span class="line">$ git <span class="built_in">clone</span> ftp[s]://example.com/path/to/repo.git/</span><br><span class="line">$ git <span class="built_in">clone</span> rsync://example.com/path/to/repo.git/</span><br></pre></td></tr></table></figure>
-<p>SSH协议还有另一种写法。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [user@]example.com:path/to/repo.git/</span><br></pre></td></tr></table></figure>
-<p>通常来说，git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考<a href="http://git-scm.com/book/en/Git-on-the-Server-The-Protocols">官方文档</a></p>
-<h3 id="2-5-2、git-remote"><a href="#2-5-2、git-remote" class="headerlink" title="2.5.2、git remote"></a>2.5.2、git remote</h3><p>为了便于管理，Git要求第个远程主机都必须指定一个主机名。git remote命令就用于管理主机名。不带选项的时候，<code>git remote</code> 命令列出所有远程主机。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
-<p>使用<code>-v</code>选项，可以查看远程主机的网址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin git@github.com:jquery/jquery.git(fetch)</span><br><span class="line">origin git@github.com:jquery/jquery.git(push)</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。<br>克隆版本库的时候，所使用的远程主机自动被Git命名为<code>origin</code>。如果想用其它的主机名，需要用<code>git clone</code>命令的<code>-o</code>选项指定。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> -o jQuery https://github.com/jquery/jquery.git</span><br><span class="line">$ git remote</span><br><span class="line">jQuery</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。<code>hit remote show</code>命令加上主机名，可以查看该主机的详细信息。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote show &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
-<p><code>git remote add</code>命令用于添加远程主机。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add &lt;主机名&gt;&lt;网址&gt;</span><br></pre></td></tr></table></figure>
-<p><code>git remote rm</code>命令用于删除远程主机</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote <span class="built_in">rm</span> &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
-<p><code>git remote rename</code>命令用于远程主机改名</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote rename &lt;原主机名&gt;&lt;新主机名&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-5-3-git-fetch"><a href="#2-5-3-git-fetch" class="headerlink" title="2.5.3 git fetch"></a>2.5.3 git fetch</h3><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用要<code>git fetch</code>命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt;</span><br></pre></td></tr></table></figure>
-<p>上面命令将某个远程主机的更新，全部取回本地。<br><code>git fetch</code>命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。默认情况下，<code>git fetch</code>取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-<p>比如，取回<code>origin</code>主机的<code>master</code>分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin master</span><br></pre></td></tr></table></figure>
-<p>所取回的更新，在本地主机上要用“远程主机名&#x2F;分支名“的形式读取。比如<code>origin</code>主机的<code>master</code>，就要用<code>origin/master</code>读取。<br><code>git branch</code>的命令<code>-r</code>选项，可以用来查看远程分支，<code>-a</code>选项查看所有分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -r</span><br><span class="line">origin/master</span><br><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">remotes/origin/master</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，本地主机的当前分支是<code>master</code>，远程分支是<code>origin/master</code>。取回远程主机的更新以后，可以在它的基础上，使用<code>git checkout</code>命令创建一个新的分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b newBrach origin/master</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，在<code>origin/msater</code>的基础上，创建一个新分支。此外，也可以使用<code>git merge</code>命令或者<code>git rebase</code>命令，在本地分支上合并远程分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge origin/master</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git rebase origin/master</span><br></pre></td></tr></table></figure>
-<p>上面命令表示在当前分支上，合并<code>origin/master</code>。</p>
-<h3 id="2-5-4-git-pull"><a href="#2-5-4-git-pull" class="headerlink" title="2.5.4 git pull"></a>2.5.4 git pull</h3><p><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-<p>比如，取回<code>origin</code>主机的<code>next</code>分支，与本地的<code>master</code>分支合并，需要写成下面这样。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin next:master</span><br></pre></td></tr></table></figure>
-<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin next</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，取回<code>origin/next</code>分支，再与当前分支合并。实质上，这等同于先做<code>git fetch</code>，再做<code>git merge</code>。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">$ git merge origin/next</span><br></pre></td></tr></table></figure>
-<p>在某些场合，git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在<code>git clone</code>的时候，所有本地默认与远程主机的同名分支，建立追踪关系，也就是说本地的<code>master</code>分支自动“追踪”<code>origin/master</code>分支。<br>git也允许手动建立追踪关系。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch --set-upstream master origin/next</span><br></pre></td></tr></table></figure>
-<p>上面命令指定<code>master</code>分支追踪<code>origin/next</code>分支。如果当前分支与远程分支存在追踪关系，<code>git pull</code>就可以省略远程分支名。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，本地的当前分支自动与对应的<code>origin</code>主机“追踪分支”（remote-tracking branch）进行合并。如果当前分支只有一个追踪分支，连远程主机都可以省略。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。如果合并需要采用rebase模式，可以使用<code>--rebase</code>选项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-<p>如果远程主机删除了某个分支，默认情况下，<code>git pull</code>不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致<code>git pull</code>不知不觉删除了本地分支。<br>但是，你可以改变这个行为，加上参数<code>-p</code>就会在本地删除远程已经删除的分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull -p</span><br><span class="line"><span class="comment"># 等同于下面的命令</span></span><br><span class="line">$ git fetch --prune origin</span><br><span class="line">$ git fetch -p</span><br></pre></td></tr></table></figure>
-<h3 id="2-5-5-git-push"><a href="#2-5-5-git-push" class="headerlink" title="2.5.5 git push"></a>2.5.5 git push</h3><p><code>git push</code>命令用于将本地分支的更新，推送到远程主机。它的格式与<code>git pull</code>命令相仿。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt;　&lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
-<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;。如果省略远程分支名，则表示将本地分支推送与这存在“追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，将本地的<code>master</code>分支推送到<code>origin</code>主机的<code>master</code>分支。如果后者不存在，则会被新建。如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin :master</span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ git push origin --delete master</span><br></pre></td></tr></table></figure>
-<p>上同命令表示删除<code>origin</code>主机的<code>master</code>分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>上面命令将本地的<code>master</code>分支推送到<code>origin</code>主机，同时指定origin为默认主机，后面就可以不加任何参数使用<code>git push</code>了。<br>不带任何参数的<code>git push</code>，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用<code>git config</code>命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global push.default matching</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git config --global push.default simple</span><br></pre></td></tr></table></figure>
-<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push --all origin</span><br></pre></td></tr></table></figure>
-<p>上面命令表示，将所有本地分支都推送到<code>origin</code>主机。<br>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做<code>git pull</code>合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用<code>--force</code>选项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push --force origin</span><br></pre></td></tr></table></figure>
-<p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。<br>最后，<code>git push</code>不会推送标签（tag），除非使用–tags选项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建HEXO平台+Next主题的相关问题汇总</title>
-    <url>/2017/08/16/hexo/</url>
-    <content><![CDATA[<h1 id="1、HEXO平台"><a href="#1、HEXO平台" class="headerlink" title="1、HEXO平台"></a>1、HEXO平台</h1><h2 id="1-1、目录结构及含义"><a href="#1-1、目录结构及含义" class="headerlink" title="1.1、目录结构及含义"></a>1.1、目录结构及含义</h2><ul>
-<li><code>scaffolds</code>是模板文件夹，它用于预先定义创建新文单所用的布局</li>
-<li><code>source</code>文件夹内<code>_drafts</code>文件夹用于放置草稿，使用<code>hexo --draft</code>可查看草稿文章</li>
-<li>资源文件夹：资源（Asset）代表<code>source</code>文件夹除了文章以外的所有文件，例如图片、CSS、JS文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source&#x2F;images 文件夹中。然后通过类似于 <code>![](/images/image.jpg) </code>的方法访问它们。</li>
-<li>文章资源文件夹: 将站点配置文件<code>config.yml</code>中的<code>post_asset_folder</code>选择设为true，这样当使用&#96;hexo new命令生成新文章时，会自动添加一个资源文件夹。</li>
-</ul>
-<h2 id="1-2、相对路径引用的标签插件"><a href="#1-2、相对路径引用的标签插件" class="headerlink" title="1.2、相对路径引用的标签插件"></a>1.2、相对路径引用的标签插件</h2><p>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。在Hexo 2时代，社区创建了很多插件来解决这个问题。但是，随着Hexo 3 的发布，许多新的标签插件被加入到了核心代码中。这使得你可以更简单地在文章中引用你的资源。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br><span class="line">#举例</span><br><span class="line">&#123;% asset_img example.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="2、Next主题"><a href="#2、Next主题" class="headerlink" title="2、Next主题"></a>2、Next主题</h1><h2 id="2-1、文字首行缩进"><a href="#2-1、文字首行缩进" class="headerlink" title="2.1、文字首行缩进"></a>2.1、文字首行缩进</h2><p>修改next主题目录下的<code>source/css/_custom/custom.styl</code>文件，新增</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> &#123; <span class="attribute">text-indent</span>: <span class="number">2em</span>; &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2、如何设置-阅读全文"><a href="#2-2、如何设置-阅读全文" class="headerlink" title="2.2、如何设置[阅读全文]"></a>2.2、如何设置[阅读全文]</h2><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。Next提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示<b>阅读全文</b>按钮，可以通过以下方式：</p>
-<ul>
-<li>在文章中使用<code>&lt;!-- more --&gt;</code>手动进行截断，Hexo提供的方式</li>
-<li>在文章的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</li>
-<li>自动形成摘要，在主题配置文件中添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="2-3、如何更改字体？"><a href="#2-3、如何更改字体？" class="headerlink" title="2.3、如何更改字体？"></a>2.3、如何更改字体？</h2><p>NexT从5.0.1版开始提供了一个字体定制特性，请先查看此特性是否能满足你的需求。以下的修改将覆盖字体定制的特性。编辑主题 下的<code>source/css/_variables/custom.styl</code>，新增两个变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 标题，修改成你期望的字体族</span><br><span class="line">$font-family-headings = Georgia, sans</span><br><span class="line"></span><br><span class="line">// 修改成你期望的字体族</span><br><span class="line">$font-family-base = &quot;Microsoft YaHei&quot;, Verdana, sans-serif</span><br><span class="line"></span><br><span class="line">// 代码字体</span><br><span class="line">$code-font-family = &quot;Input Mono&quot;, &quot;PT Mono&quot;, Consolas, Monaco, Menlo, monospace</span><br><span class="line"></span><br><span class="line">// 正文字体的大小</span><br><span class="line">$font-size-base = 16px</span><br><span class="line"></span><br><span class="line">// 代码字体的大小</span><br><span class="line">$code-font-size = 13px</span><br></pre></td></tr></table></figure>
-<h2 id="2-4、Bootstrap-Callout"><a href="#2-4、Bootstrap-Callout" class="headerlink" title="2.4、Bootstrap Callout"></a>2.4、Bootstrap Callout</h2><p>使用方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note class_name %&#125;Content(md partial supported)&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，class_name可以是以下列表中的一个值：</p>
-<ul>
-<li>dafault</li>
-<li>primary</li>
-<li>success</li>
-<li>info</li>
-<li>warning</li>
-<li>danger<br>效果如下<details class="note "><summary><p>dafault</p>
-</summary>
-<p>class_name值为default</p>
-
-</details>
-<div class="note primary"><p>class_name值为primary</p>
-</div>
-<div class="note success"><p>class_name值为success</p>
-</div>
-<div class="note info"><p>class_name值为info</p>
-</div>
-<div class="note warning"><p>class_name值为warning</p>
-</div>
-<div class="note danger"><p>class_name值为danger</p>
-</div></li>
-</ul>
-<h2 id="2-5、文本居中的引用"><a href="#2-5、文本居中的引用" class="headerlink" title="2.5、文本居中的引用"></a>2.5、文本居中的引用</h2><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。文本居中时，多行文本若长度不等，视觉上显得不对称，因此建义在引用单行文本的场景下使用。例如作为文单开篇引用或者结束语之前的总结引用。<br>使用方式：</p>
-<ul>
-<li>HTML方式：使用这种方式时，给img添加属性<code>class=&quot;blockquote-center&quot;</code>即可</li>
-<li>标签方式：使用<code>centerquote</code>或者简写<code>cq</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% centerquote %&#125;大象无形，大音希声&#123;% endcenterquote %&#125;</span><br></pre></td></tr></table></figure>
-效果如下：<div class="note "><blockquote class="blockquote-center">
-<p>大象无形，大音希声<p><b>出自《道德经》</b></p></p>
-
-</blockquote>
-出自道德经“大方无隅，大器晚成。大音希声，大象无形。”这是由老子提出的中国古代文学理论中的一种美学观念，意在推崇自然的、而非人为的美。
-白话翻译：越好的音乐越悠远潜低，越好的形象越飘渺宏远，越是大气度的往往越包容万物。</div></li>
-</ul>
-<h2 id="2-6、禁止文章目录自动编号"><a href="#2-6、禁止文章目录自动编号" class="headerlink" title="2.6、禁止文章目录自动编号"></a>2.6、禁止文章目录自动编号</h2><p>打开文章后，默认next主题右侧是文章目录列表且列表是自动编号的，往往我们在写文章的时候需要在文章中标明第几章第几节，所以我们需要自己手动指定编号，需要修改主题的配置文件<code>themes\next\_config.yml</code>，找到<code>toc:</code>修改<code>number:false</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># 侧栏中的目录是否启用</span></span><br><span class="line">  number: <span class="literal">false</span> <span class="comment"># 侧栏中的目录自动编号是否启用</span></span><br><span class="line">  wrap: <span class="literal">true</span> <span class="comment">#侧栏中的目录是否允许折行显示</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术积累</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3463,6 +3461,45 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </tags>
   </entry>
   <entry>
+    <title>锋利的jquery</title>
+    <url>/2017/08/17/jquery/</url>
+    <content><![CDATA[<h1 id="1、认识jQuery"><a href="#1、认识jQuery" class="headerlink" title="1、认识jQuery"></a>1、认识jQuery</h1><h2 id="1-1、jQuery库类型说明"><a href="#1-1、jQuery库类型说明" class="headerlink" title="1.1、jQuery库类型说明"></a>1.1、jQuery库类型说明</h2><p>jQuery库的类型分为两种版本，如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>大小</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jquery-1.3.1.js</td>
+<td>114KB</td>
+<td>完整无压缩版本，主要用于测试、学习和开发</td>
+</tr>
+<tr>
+<td>jquery-1.3.1.min.js</td>
+<td>54KB&#x2F;18KB</td>
+<td>经过JSMin等工具压缩后的版本，大小为54KB。如果服务器开启Gzip压缩后，大小将变为只有18KB，成为体积最小的版本。主要应用于产品和项目</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<h2 id="1-2、DOM对象"><a href="#1-2、DOM对象" class="headerlink" title="1.2、DOM对象"></a>1.2、DOM对象</h2><p>DOM（Document Object Model，文档对象模型），每一份DOM都可以表示成一棵树。下面来构建一个非常基本的网页，网页代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!Document <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html;charset=utf-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>例子<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;你最喜欢的水果&quot;</span>&gt;</span>你最喜欢的水果是?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>菠萝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以把上面的HTML结构描述为一棵DOM树，如图1-14所示</p>
+<center><img src="1-14.png"  width="50%" height="50%" title="[图1-14]"></center>
+
+<p>在这棵DOM树中，<code>&lt;h3&gt;、&lt;p&gt;、&lt;ul&gt;以及&lt;ul&gt;的3个&lt;li&gt;</code>子节点都是DOM元素节点。可以通过javascript中的getElementsByTagName或者getElementByID来获取元素的节点。像这样得到的DOM元素就是DOM对象。DOM对象可以使用javascript中的方法，示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> domObj = <span class="variable language_">document</span>.<span class="title function_">getElementByID</span>(<span class="string">&quot;id&quot;</span>);  <span class="comment">//获得DOM对象</span></span><br><span class="line"><span class="keyword">var</span> dobHTML = domObj.<span class="property">innerHTML</span>;  <span class="comment">//使用javascript中的方法--innerHTML</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>jquery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lychee说明文档</title>
     <url>/2021/08/21/lychee/</url>
     <content><![CDATA[<h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-服务器要求"><a href="#1-1-服务器要求" class="headerlink" title="1.1. 服务器要求"></a>1.1. 服务器要求</h3><ul>
@@ -3533,45 +3570,6 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </categories>
       <tags>
         <tag>Lychee</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>锋利的jquery</title>
-    <url>/2017/08/17/jquery/</url>
-    <content><![CDATA[<h1 id="1、认识jQuery"><a href="#1、认识jQuery" class="headerlink" title="1、认识jQuery"></a>1、认识jQuery</h1><h2 id="1-1、jQuery库类型说明"><a href="#1-1、jQuery库类型说明" class="headerlink" title="1.1、jQuery库类型说明"></a>1.1、jQuery库类型说明</h2><p>jQuery库的类型分为两种版本，如下：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>大小</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>jquery-1.3.1.js</td>
-<td>114KB</td>
-<td>完整无压缩版本，主要用于测试、学习和开发</td>
-</tr>
-<tr>
-<td>jquery-1.3.1.min.js</td>
-<td>54KB&#x2F;18KB</td>
-<td>经过JSMin等工具压缩后的版本，大小为54KB。如果服务器开启Gzip压缩后，大小将变为只有18KB，成为体积最小的版本。主要应用于产品和项目</td>
-</tr>
-</tbody></table>
-<span id="more"></span>
-<h2 id="1-2、DOM对象"><a href="#1-2、DOM对象" class="headerlink" title="1.2、DOM对象"></a>1.2、DOM对象</h2><p>DOM（Document Object Model，文档对象模型），每一份DOM都可以表示成一棵树。下面来构建一个非常基本的网页，网页代码如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!Document <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html;charset=utf-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>例子<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;你最喜欢的水果&quot;</span>&gt;</span>你最喜欢的水果是?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>菠萝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以把上面的HTML结构描述为一棵DOM树，如图1-14所示</p>
-<center><img src="1-14.png"  width="50%" height="50%" title="[图1-14]"></center>
-
-<p>在这棵DOM树中，<code>&lt;h3&gt;、&lt;p&gt;、&lt;ul&gt;以及&lt;ul&gt;的3个&lt;li&gt;</code>子节点都是DOM元素节点。可以通过javascript中的getElementsByTagName或者getElementByID来获取元素的节点。像这样得到的DOM元素就是DOM对象。DOM对象可以使用javascript中的方法，示例如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> domObj = <span class="variable language_">document</span>.<span class="title function_">getElementByID</span>(<span class="string">&quot;id&quot;</span>);  <span class="comment">//获得DOM对象</span></span><br><span class="line"><span class="keyword">var</span> dobHTML = domObj.<span class="property">innerHTML</span>;  <span class="comment">//使用javascript中的方法--innerHTML</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>jquery</tag>
       </tags>
   </entry>
   <entry>
@@ -7306,6 +7304,72 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ChatGPT接入telegram</title>
+    <url>/2023/03/10/ChatGPT%E6%8E%A5%E5%85%A5telegram/</url>
+    <content><![CDATA[<h2 id="获取apikey"><a href="#获取apikey" class="headerlink" title="获取apikey"></a>获取apikey</h2><p>获取地址：<a href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a></p>
+<h2 id="在Telegram上新建bot"><a href="#在Telegram上新建bot" class="headerlink" title="在Telegram上新建bot"></a>在Telegram上新建bot</h2><ol>
+<li>在电报上搜索BotFather，点击BotFather后，在对话框下方点开始与BotFather对话</li>
+<li>点击命令<code>/newbot</code>按照引导依次输入“机器人昵称”与“机器人用户名（用户名必须以_bot结尾）”</li>
+<li>获得机器人的Token</li>
+</ol>
+<span id="more"></span> 
+
+<h2 id="在VPS上布署chatgpt-bot-telegram"><a href="#在VPS上布署chatgpt-bot-telegram" class="headerlink" title="在VPS上布署chatgpt-bot-telegram"></a>在VPS上布署chatgpt-bot-telegram</h2><p>Chatgpt-bot-telegram<a href="https://github.com/harshitethic/chatgpt-bot-telegram.git">项目地址</a></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装nodejs</span></span><br><span class="line">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line"><span class="comment"># 安装pm2守护进程</span></span><br><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载并安装接入机器人"><a href="#下载并安装接入机器人" class="headerlink" title="下载并安装接入机器人"></a>下载并安装接入机器人</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/harshitethic/chatgpt-bot-telegram.git</span><br><span class="line"><span class="built_in">cd</span> chatgpt-bot-telegram</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>复制一个<code>.env</code>文件，然后修改配置文件，并编辑</p>
+<p>API&#x3D;openai官网上生成的apikey</p>
+<p>TG_API&#x3D;telegram机器人生成的token</p>
+<h3 id="启动并执行命令"><a href="#启动并执行命令" class="headerlink" title="启动并执行命令"></a>启动并执行命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start index.js</span><br></pre></td></tr></table></figure>
+
+<h3 id="后台守护进程运行"><a href="#后台守护进程运行" class="headerlink" title="后台守护进程运行"></a>后台守护进程运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install screen</span><br><span class="line">screen -S chatgpt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看运行情况</span></span><br><span class="line">screen -R chatgpt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>openai</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用OpenAI技术使用开源项目whisper为视频增加字幕</title>
+    <url>/2023/03/03/whisper/</url>
+    <content><![CDATA[<p>Whisper是2022年9月被OpenAI开源了的自动语音识别系统。它除了可以用于语音识别，还能实现多种语言的转录，以及将这些语言翻译成英语。 transcribe（转录）可以将语音转为文字，Whisper会为音视频生成带时间轴的字幕文件，支持99种语言AI字幕工具。</p>
+<p>Whisper项目地址：<a href="https://github.com/openai/whisper">https://github.com/openai/whisper</a></p>
+<span id="more"></span> 
+
+<h2 id="Whisper-安装"><a href="#Whisper-安装" class="headerlink" title="Whisper 安装"></a>Whisper 安装</h2><p>虽然Whisper与Stable Diffusion同样归属AI工具，但Whisper安装非常简单，两行代码即可开箱使用。使用python3.9.9和PyTorch 1.10.1来训练模型，代码与Python3.8-3.10版本兼容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install git+https://github.com/openai/whisper.git </span><br><span class="line">brew install ffmpeg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新至最新的版本</span></span><br><span class="line">pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="音频转录"><a href="#音频转录" class="headerlink" title="音频转录"></a>音频转录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whisper XXX.avi</span><br></pre></td></tr></table></figure>
+
+<h2 id="Whisper进阶命令"><a href="#Whisper进阶命令" class="headerlink" title="Whisper进阶命令"></a>Whisper进阶命令</h2><h3 id="task"><a href="#task" class="headerlink" title="task"></a>task</h3><p><code>--task</code> 分为 transcribe（语音转录）和 translate。Whisper 默认使用 <code>--task transcribe</code> 模式，将语音转录为对应的语言字幕。<code>--task translate</code> 是所有语言翻译为<strong>英文</strong>，目前尚未支持翻译为其他语言。</p>
+<h3 id="language"><a href="#language" class="headerlink" title="language"></a>language</h3><p><code>--language</code> 是设置语音转录的语种，支持语种范围查看 <a href="https://sspai.com/link?target=https://github.com/openai/whisper/blob/main/whisper/tokenizer.py">tokenizer.py</a>，比如指定日语 <code>--language japanese</code>。如果你没指定语种，Whisper 会截取音频的前 30 秒来判断语种。</p>
+<p>如果指定语种与文件中的语种并不相同，Whisper 会强制翻译，但 10 分钟以上的音视频会出现大量的重复无意义字幕。2假设你把日语视频的转录语言设为汉语，前 8 分钟 Whisper 会正确转录到中文，但 8 分钟后的转录字幕会一直重复，并与实际片段无关。</p>
+<h3 id="model"><a href="#model" class="headerlink" title="model"></a>model</h3><p><code>--model</code> 指 Whisper 的转录模型，转录效果为 tiny &lt; base &lt; small &lt; medium &lt; large，默认使用 small。添加参数 <code>--model medium</code> 或 <code>--model large</code> 可以切换到更大的模型，但转录时间也会变长。如果你是对英文视频进行转录，则在模型参数上添加后缀 <code>.en</code>，能提升转录速度。</p>
+<h3 id="幻听参数"><a href="#幻听参数" class="headerlink" title="幻听参数"></a>幻听参数</h3><p>非英语视频的转录有时会出现<strong>幻听</strong>，即静默片段被识别出语音，或是转录结果与该片段无关。这些问题是由语气停顿参数引起的。幻听的解决方案是引入 <a href="https://sspai.com/link?target=https://github.com/snakers4/silero-vad">VAD</a>，但 VAD 对动手能力要求较高。如果你的视频转录出现了严重幻听，建议先尝试调节参数阈值。</p>
+<ul>
+<li><code>--no_speech_threshold</code> 无声识别的阈值，默认为 0.6。当 no_speech_threshold 高于阈值且 logprob_threshold 低于预设时，该片段将被标记为静默。对于非英语长视频来说，建议将其调低，否则经常出现大段的重复识别。</li>
+<li><code>--logprob_threshold</code> 转录频次的阈值，默认为 -1.0。当 logprob_threshold 低于预设时，将不对该片段进行转录。建议修改为 None 或更低的值。</li>
+<li><code>--compression_ratio_threshold</code> 压缩比的阈值，默认为 2.4。当 compression_ratio_threshold 高于预设时，将不对该片段进行转录。</li>
+</ul>
+<p><code>--no_speech_threshold 0.5 --logprob_threshold None --compression_ratio_threshold 2.2</code> 是我常用的参数，你可以按视频情况来调节。</p>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>openai</tag>
       </tags>
   </entry>
 </search>
