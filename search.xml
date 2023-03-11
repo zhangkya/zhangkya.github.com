@@ -7384,12 +7384,17 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
 <h3 id="OpenWrt映像文件"><a href="#OpenWrt映像文件" class="headerlink" title="OpenWrt映像文件"></a>OpenWrt映像文件</h3><p><code>openwrt-x86-64-generic-squashfs-combined-efi.img.gz</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压缩映像文件</span></span><br><span class="line">gunzip openwrt-x86-64-generic-squashfs-combined-efi.img.gz </span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">openwrt-x86-64-generic-squashfs-combined-efi.img</span><br><span class="line"><span class="comment"># 对新建虚拟机引入磁盘(新建虚拟机如下)</span></span><br><span class="line">qm importdisk 101 openwrt-x86-64-generic-squashfs-combined-efi.img <span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="新建Proxmox虚拟机"><a href="#新建Proxmox虚拟机" class="headerlink" title="新建Proxmox虚拟机"></a>新建Proxmox虚拟机</h3><p><img src="/1.png" alt="1"></p>
-<p><img src="/2.png" alt="2"></p>
-<p><img src="/3.png" alt="3"></p>
-<p><img src="/4.png" alt="4"></p>
-<p><img src="/5.png" alt="5"></p>
-<p><img src="/6.png" alt="6"></p>
+<h3 id="新建Proxmox虚拟机"><a href="#新建Proxmox虚拟机" class="headerlink" title="新建Proxmox虚拟机"></a>新建Proxmox虚拟机</h3><img src="1.png" style="zoom:50%;" />
+
+<img src="2.png" style="zoom:50%;" />
+
+<img src="3.png" style="zoom:50%;" />
+
+<img src="4.png" style="zoom:50%;" />
+
+<img src="5.png" style="zoom:50%;" />
+
+<img src="6.png" style="zoom:50%;" />
 ]]></content>
       <categories>
         <category>技术积累</category>
