@@ -7403,4 +7403,47 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
         <tag>openwrt</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hyper-v安装OpenWrt</title>
+    <url>/2023/03/16/Hyper-v%E5%AE%89%E8%A3%85OpenWrt/</url>
+    <content><![CDATA[<h2 id="开启VT虚拟化"><a href="#开启VT虚拟化" class="headerlink" title="开启VT虚拟化"></a>开启VT虚拟化</h2><p>BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v</p>
+<p><img src="/./1.png" alt="1"></p>
+<span id="more"></span> 
+
+<h2 id="新建Hyper-V虚拟机"><a href="#新建Hyper-V虚拟机" class="headerlink" title="新建Hyper-V虚拟机"></a>新建Hyper-V虚拟机</h2><p>下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。</p>
+<p><img src="/./2.jpg" alt="2"></p>
+<p><img src="/./3.jpg" alt="3"></p>
+<p><img src="/./4.jpg" alt="4"></p>
+<p><img src="/./5.jpg" alt="5"></p>
+<p><img src="/./6.jpg" alt="6"></p>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>OpenWrt</tag>
+        <tag>Hyper-v</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hysteria的搭建与安装</title>
+    <url>/2023/03/13/hysteria/</url>
+    <content><![CDATA[<p>Hysteria项目地址：<a href="https://github.com/apernet/hysteria">apernet&#x2F;hysteria: Hysteria is a feature-packed proxy &amp; relay tool optimized for lossy, unstable connections (e.g. satellite networks, congested public Wi-Fi, connecting to foreign servers from China) (github.com)</a></p>
+<p>Hysteria项目文档：<a href="https://hysteria.network/zh/">主页 | Hysteria</a></p>
+<p>Hysteria官方一键布署脚本：<a href="https://raw.githubusercontent.com/apernet/hysteria/master/install_server.sh">https://raw.githubusercontent.com/apernet/hysteria/master/install_server.sh</a></p>
+<span id="more"></span> 分隔符不要忘了！！！！！！！！！
+
+<p>执行脚本自动安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">What<span class="string">&#x27;s next?</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	+ Check out the latest quick start guide at https://hysteria.network/docs/quick-start/</span></span><br><span class="line"><span class="string">	+ Edit server config file at /etc/hysteria/config.json</span></span><br><span class="line"><span class="string">	+ Start your hysteria server with systemctl start hysteria-server.service</span></span><br><span class="line"><span class="string">	+ Configure hysteria start on system boot with systemctl enable hysteria-server.service</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>hysteria</tag>
+      </tags>
+  </entry>
 </search>
