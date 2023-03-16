@@ -7407,15 +7407,15 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
     <title>Hyper-v安装OpenWrt</title>
     <url>/2023/03/16/Hyper-v%E5%AE%89%E8%A3%85OpenWrt/</url>
     <content><![CDATA[<h2 id="开启VT虚拟化"><a href="#开启VT虚拟化" class="headerlink" title="开启VT虚拟化"></a>开启VT虚拟化</h2><p>BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v</p>
-<p><img src="/./1.png" alt="1"></p>
+<p><img src="/1.png" alt="1"></p>
 <span id="more"></span> 
 
 <h2 id="新建Hyper-V虚拟机"><a href="#新建Hyper-V虚拟机" class="headerlink" title="新建Hyper-V虚拟机"></a>新建Hyper-V虚拟机</h2><p>下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。</p>
-<p><img src="/./2.jpg" alt="2"></p>
-<p><img src="/./3.jpg" alt="3"></p>
-<p><img src="/./4.jpg" alt="4"></p>
-<p><img src="/./5.jpg" alt="5"></p>
-<p><img src="/./6.jpg" alt="6"></p>
+<p><img src="/2.jpg" alt="2"></p>
+<p><img src="/3.jpg" alt="3"></p>
+<p><img src="/4.jpg" alt="4"></p>
+<p><img src="/5.jpg" alt="5"></p>
+<p><img src="/6.jpg" alt="6"></p>
 ]]></content>
       <categories>
         <category>技术积累</category>
