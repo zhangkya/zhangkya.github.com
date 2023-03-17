@@ -7414,8 +7414,6 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
 <h2 id="新建Hyper-V虚拟机"><a href="#新建Hyper-V虚拟机" class="headerlink" title="新建Hyper-V虚拟机"></a>新建Hyper-V虚拟机</h2><p>下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。</p>
 <img src="2.jpg" />
 
-<img src="1.png" style="zoom:50%;" />
-
 <img src="3.jpg" />
 
 <img src="4.jpg" />
