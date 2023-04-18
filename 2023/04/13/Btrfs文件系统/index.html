@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhangzr.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Btrfs（B-tree文件系统）是一种新型的Linux文件系统，它支持写时复制（Copy-on-Write，简称COW）功能。 在传统的文件系统中，如果多个进程并发读写同一个文件时，会产生数据竞争和文件损坏等问题。为了避免这种情况，通常需要使用锁机制来控制文件访问，但是这会降低文件系统的吞吐量和性能。 Btrfs采用了写时复制技术来解决这个问题。当有多个进程同时要修改同一个文件时，Btrfs会先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Btrfs文件系统">
+<meta property="og:url" content="http://zhangzr.com/2023/04/13/Btrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="大象无形，大音希声">
+<meta property="og:description" content="Btrfs（B-tree文件系统）是一种新型的Linux文件系统，它支持写时复制（Copy-on-Write，简称COW）功能。 在传统的文件系统中，如果多个进程并发读写同一个文件时，会产生数据竞争和文件损坏等问题。为了避免这种情况，通常需要使用锁机制来控制文件访问，但是这会降低文件系统的吞吐量和性能。 Btrfs采用了写时复制技术来解决这个问题。当有多个进程同时要修改同一个文件时，Btrfs会先">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-13T05:25:57.000Z">
+<meta property="article:modified_time" content="2023-04-13T16:23:09.000Z">
+<meta property="article:author" content="Tiki">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="btrfs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zhangzr.com/2023/04/13/Btrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhangzr.com/2023/04/13/Btrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","path":"2023/04/13/Btrfs文件系统/","title":"Btrfs文件系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Btrfs文件系统 | 大象无形，大音希声</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">大象无形，大音希声</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嘘......</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">如何安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Debian%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">Debian系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">MacOS系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81btrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">验证btrfs文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAbtrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">创建btrfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E5%9D%97%E7%A1%AC%E7%9B%98%E7%BB%84RAID0%E5%BB%BA%E7%AB%8Bbtrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.1.</span> <span class="nav-text">两块硬盘组RAID0建立btrfs文件系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%90%E5%8D%B7"><span class="nav-number">4.</span> <span class="nav-text">创建子卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%B0%E7%9A%84%E7%A1%AC%E7%9B%98%E6%89%A9%E5%B1%95%E5%88%B0%E5%BD%93%E5%89%8D%E7%9A%84btrfs%E7%B3%BB%E7%BB%9F%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text">如何将新的硬盘扩展到当前的btrfs系统中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E7%85%A7%E4%B8%8E%E5%AD%90%E5%8D%B7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">快照与子卷的区别</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiki"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Tiki</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2023/04/13/Btrfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Tiki">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大象无形，大音希声">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Btrfs文件系统 | 大象无形，大音希声">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Btrfs文件系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-13 13:25:57" itemprop="dateCreated datePublished" datetime="2023-04-13T13:25:57+08:00">2023-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-14 00:23:09" itemprop="dateModified" datetime="2023-04-14T00:23:09+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" itemprop="url" rel="index"><span itemprop="name">技术积累</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Btrfs（B-tree文件系统）是一种新型的Linux文件系统，它支持写时复制（Copy-on-Write，简称COW）功能。</p>
+<p>在传统的文件系统中，如果多个进程并发读写同一个文件时，会产生数据竞争和文件损坏等问题。为了避免这种情况，通常需要使用锁机制来控制文件访问，但是这会降低文件系统的吞吐量和性能。</p>
+<p>Btrfs采用了写时复制技术来解决这个问题。当有多个进程同时要修改同一个文件时，Btrfs会先将原始数据复制一份，然后在副本上进行修改。这样每个进程都拥有自己的文件副本，不会相互干扰，也不会对原始数据造成影响。</p>
+<p>具体来说，Btrfs的写时复制功能主要涉及到两个方面：</p>
+<ol>
+<li>快照</li>
+</ol>
+<p>Btrfs可以创建文件和目录的快照，每个快照都保存了一个磁盘区域的元数据和数据信息。当用户对文件或目录进行修改时，Btrfs会在快照之上创建新的副本，并将修改内容存储在新的副本上，不会影响原始数据和其他快照。</p>
+<ol>
+<li>子卷</li>
+</ol>
+<p>Btrfs可以将物理磁盘分为多个子卷，每个子卷支持独立的文件系统，并且可以动态地调整大小。当用户向某个子卷写入数据时，Btrfs会复制原始数据并在副本上进行操作，不会改变子卷中原有的数据内容。</p>
+<p>写时复制是Btrfs的一个重要特性，它提高了文件系统的可靠性和安全性，并且能够更好地支持多进程读写、数据共享和数据备份等应用场景。</p>
+<span id="more"></span> 
+
+<h2 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h2><h3 id="Debian系统"><a href="#Debian系统" class="headerlink" title="Debian系统"></a>Debian系统</h3><ol>
+<li><p>安装btrfs工具包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install btrfs-progs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建btrfs分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.btrfs /dev/sda1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载btrfs分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sda1 /mnt/btrfs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载btrfs分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/btrfs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动挂载Btrfs系统，编辑<code>/etc/fstab</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda1 /mnt/btrfs btrfs defaults 0 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证</p>
+</li>
+</ol>
+<h3 id="MacOS系统"><a href="#MacOS系统" class="headerlink" title="MacOS系统"></a>MacOS系统</h3><p>安装依赖项与btrfs工具包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install autoconf automake libtool gettext</span><br><span class="line">brew install btrfs-progs</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证btrfs文件系统"><a href="#验证btrfs文件系统" class="headerlink" title="验证btrfs文件系统"></a>验证btrfs文件系统</h2><ol>
+<li><p>验证文件系统类型：使用<code>lsblk</code>命令列出所有可用的块设备，查看需要验证的分区上挂载的文件系统类型。如果该分区上的文件系统类型为“btrfs”，则该分区使用了Btrfs文件系统。</p>
+</li>
+<li><p>验证文件系统一致性：使用<code>btrfs scrub</code> 命令来检查Btrfs文件系统的一致性。这个命令会扫描文件系统并报告任何错误和修复问题。例如，运行以下命令以检查名为&#x2F;dev&#x2F;sda1的Btrfs文件系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo btrfs scrub start /dev/sda1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证快照：使用<code>btrfs subvolume list</code> 命令来列出Btrfs文件系统中的快照。例如，运行以下命令以列出名为&#x2F;mydata的Btrfs子卷中的所有快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo btrfs subvolume list /mydata</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证压缩率：使用<code>btrfs filesystem df</code>命令来检查Btrfs文件系统中每个子卷或目录的压缩比。例如，运行以下命令以检查名为&#x2F;mydata的Btrfs子卷的压缩比：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo btrfs filesystem <span class="built_in">df</span> /mydata</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="创建btrfs文件系统"><a href="#创建btrfs文件系统" class="headerlink" title="创建btrfs文件系统"></a>创建btrfs文件系统</h2><h3 id="两块硬盘组RAID0建立btrfs文件系统"><a href="#两块硬盘组RAID0建立btrfs文件系统" class="headerlink" title="两块硬盘组RAID0建立btrfs文件系统"></a>两块硬盘组RAID0建立btrfs文件系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.btrfs -d raid0 /dev/sda /dev/sdb</span><br></pre></td></tr></table></figure>
+
+<p>此命令将在&#x2F;dev&#x2F;sda和&#x2F;dev&#x2F;sdb上创建一个RAID 0卷</p>
+<p><strong>报错”ERROR: use the -f option to force overwrite of &#x2F;dev&#x2F;sdd”</strong>这个错误通常是因为<code>/dev/sdd</code>设备上已经存在一个文件系统，而Btrfs工具不允许在没有覆盖现有文件系统的情况下创建RAID 0。</p>
+<p>解决这个问题的方法是使用<code>-f</code>选项来强制覆盖<code>/dev/sdd</code>上的现有文件系统。可以运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">复制代码mkfs.btrfs -f -d raid0 /dev/sda /dev/sdb</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>-f</code>选项将覆盖现有文件系统并创建新的Btrfs文件系统，即使该设备上已经存在数据或其他文件系统。请注意，在使用此选项时应谨慎操作，以确保不会丢失重要的数据。</p>
+<p>如果您确定要覆盖现有文件系统并创建新的Btrfs文件系统，则可以使用上面给出的命令。否则，请务必备份<code>/dev/sdd</code>上的所有数据，并检查是否有其他选项可用于创建Btrfs文件系统而无需强制覆盖现有文件系统。</p>
+<h2 id="创建子卷"><a href="#创建子卷" class="headerlink" title="创建子卷"></a>创建子卷</h2><p>首先，您需要确保已经安装了Btrfs文件系统工具，并且硬盘已经格式化并且在RAID 0组中。</p>
+<p>接下来，您可以按照以下步骤在&#x2F;mnt目录下挂载两个子卷：</p>
+<ol>
+<li>创建两个子卷</li>
+</ol>
+<p>使用以下命令创建两个子卷，即subvol1和subvol2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo btrfs subvolume create /mnt/subvol1</span><br><span class="line">sudo btrfs subvolume create /mnt/subvol2</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>挂载子卷</li>
+</ol>
+<p>使用以下命令将子卷挂载到&#x2F;mnt目录下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -o subvol=subvol1 /dev/sda /mnt/subvol1</span><br><span class="line">sudo mount -o subvol=subvol2 /dev/sda /mnt/subvol2</span><br></pre></td></tr></table></figure>
+
+<p>其中，&#x2F;dev&#x2F;sda是您的硬盘设备名称，您需要根据实际情况进行替换。</p>
+<ol>
+<li>自动挂载子卷</li>
+</ol>
+<p>如果您希望在启动时自动挂载子卷，可以编辑&#x2F;etc&#x2F;fstab文件并添加以下行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda  /mnt/subvol1  btrfs  subvol=subvol1  0  0</span><br><span class="line">/dev/sda  /mnt/subvol2  btrfs  subvol=subvol2  0  0</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何将新的硬盘扩展到当前的btrfs系统中"><a href="#如何将新的硬盘扩展到当前的btrfs系统中" class="headerlink" title="如何将新的硬盘扩展到当前的btrfs系统中"></a>如何将新的硬盘扩展到当前的btrfs系统中</h2><p>例如将3块2T硬盘扩展到目前的btrfs系统，需按如下操作：</p>
+<ol>
+<li>在服务器上安装新的2T硬盘，并确保它们已正确连接并检测到。</li>
+<li>将新的硬盘添加到RAID0阵列中。您可以使用命令如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># btrfs device add /dev/sdc /dev/sdd /dev/sde /mnt</span><br></pre></td></tr></table></figure>
+
+<p>这会将&#x2F;dev&#x2F;sdc、&#x2F;dev&#x2F;sdd和&#x2F;dev&#x2F;sde三个设备添加到&#x2F;mnt目录下的btrfs文件系统中。</p>
+<ol start="3">
+<li>现在，您可以使用以下命令将btrfs文件系统扩展到新的硬件设备：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># btrfs filesystem balance /mnt</span><br></pre></td></tr></table></figure>
+
+<p>这个命令将重新平衡数据并将其存储在新增加的硬盘上，以便您可以开始使用更多的空间。</p>
+<ol start="4">
+<li>您还可以运行以下命令来检查文件系统使用情况：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># btrfs filesystem df /mnt</span><br></pre></td></tr></table></figure>
+
+<p>此命令将显示关于文件系统的信息，如总大小、已用空间和可用空间等。</p>
+<ol start="5">
+<li>确定文件系统已经正确地扩展到新增加的硬盘，然后您可以开始使用额外的存储空间了。</li>
+</ol>
+<p>需要注意的是，在扩展&#x2F; btrfs文件系统时，请确保对数据进行备份，以免意外数据丢失。</p>
+<h2 id="快照与子卷的区别"><a href="#快照与子卷的区别" class="headerlink" title="快照与子卷的区别"></a>快照与子卷的区别</h2><ul>
+<li>子卷是Btrfs文件系统中的一个独立的分区或子目录。您可以将文件和目录存储在子卷中，并在需要时挂载该子卷。与子目录不同，子卷具有自己的磁盘配额和属性设置，可用于实现多个用户或应用程序之间的隔离。</li>
+<li>快照是一个当前文件系统状态的只读副本。它记录了特定时间点的文件系统状态，包括所有已创建的文件和目录。您可以使用快照来恢复文件系统状态，或者使用它作为备份，以便在需要时还原到以前的状态。Btrfs还支持递增式快照，这意味着每个新的快照只记录自上次快照以来所做的更改。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/btrfs/" rel="tag"># btrfs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/04/StableDiffusion%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" rel="prev" title="StableDiffusion安装指南">
+                  <i class="fa fa-chevron-left"></i> StableDiffusion安装指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/14/ControlNet/" rel="next" title="Stable Diffusion学习之ControlNet">
+                  Stable Diffusion学习之ControlNet <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiki</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
