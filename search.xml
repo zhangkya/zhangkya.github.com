@@ -7732,7 +7732,22 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda remove pandas</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>退出环境：完成任务后，可以使用以下命令来退出环境：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要查看已安装的 Conda 环境列表，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> list</span><br></pre></td></tr></table></figure>
+
+<p>这将列出当前系统中所有已安装的环境及其路径。</p>
+<p>如果想要显示更详细的环境信息，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda info --envs</span><br></pre></td></tr></table></figure>
+
+<p>这将显示所有已安装的环境以及它们的依赖项、安装日期等详细信息。</p>
+<p>另外，如果只想查看当前激活的环境名称，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda info --<span class="built_in">env</span></span><br></pre></td></tr></table></figure>
+
+<p>这将显示当前激活的环境名称和路径。</p>
+<p>需要注意的是，在查看环境时，确保已经激活了Conda。如果没有激活，可能会出现缺少权限或找不到环境的问题。因此，在执行任何与环境相关的操作之前，请先激活正确的环境，然后再执行命令。</p>
+</li>
 </ol>
 ]]></content>
       <categories>
