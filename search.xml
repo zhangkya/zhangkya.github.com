@@ -7697,4 +7697,50 @@ CSS样式在加载的时候，同样是需要去链接属性的，所以对CSS�
         <tag>netboot</tag>
       </tags>
   </entry>
+  <entry>
+    <title>conda包管理器</title>
+    <url>/2023/04/18/conda/</url>
+    <content><![CDATA[<p>Conda 是一个包管理器和环境管理器，用于安装、升级和管理数据科学和机器学习的各种软件包。</p>
+<p><a href="https://conda.io/">https://conda.io</a></p>
+<span id="more"></span> 
+
+<h3 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h3><ol>
+<li><p>安装 Conda：首先需要下载并安装 Conda，可以从官网上下载适合自己操作系统的版本，并按照安装向导进行安装。</p>
+</li>
+<li><p>创建环境：要使用 Conda 管理你的软件包，需要先创建环境。可以使用以下命令来创建一个名为 myenv 的环境，并指定 Python 版本:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create --name myenv python=3.8</span><br><span class="line"><span class="comment"># 此时将创建一个名为myenv的新环境，并安装Python3.8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>激活环境：在执行任何 Conda 命令之前，需要先激活你的环境。使用以下命令来激活名为 myenv 的环境：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda activate myenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装包：要安装包，请使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install package_name</span><br></pre></td></tr></table></figure>
+
+<p>其中 package_name 是要安装的软件包名称。例如，要安装 pandas 包，可以运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install pandas</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新包：要更新已安装的包，请使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update package_name</span><br></pre></td></tr></table></figure>
+
+<p>其中 package_name 是要更新的软件包名称。例如，要更新 pandas 包，可以运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update pandas</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除包：要删除已安装的包，请使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda remove package_name</span><br></pre></td></tr></table></figure>
+
+<p>其中 package_name 是要删除的软件包名称。例如，要删除 pandas 包，可以运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda remove pandas</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出环境：完成任务后，可以使用以下命令来退出环境：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>conda</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
 </search>
