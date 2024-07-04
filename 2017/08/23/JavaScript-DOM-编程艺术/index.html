@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,13 +13,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhangzr.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zhangzr.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="1、JavaScript简史 JavaScript的起源 浏览器战争 DOM的演变史   1.1、JavaScript的起源JavaScript是Netscape公司与Sun公司合作开发的。在JavaScript出现之前，WEB浏览器不过是一种能够显示超文本文档的简单的软件。而在JavaScript出现之后，网页的内容不再局限于枯燥的文本，它们的可交互性得到了显著的改善。JavaScript的第一">
+  <meta name="description" content="1、JavaScript简史 JavaScript的起源 浏览器战争 DOM的演变史   1.1、JavaScript的起源JavaScript是Netscape公司与Sun公司合作开发的。在JavaScript出现之前，WEB浏览器不过是一种能够显示超文本文档的简单的软件。而在JavaScript出现之后，网页的内容不再局限于枯燥的文本，它们的可交互性得到了显著的改善。JavaScript的第一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript_DOM_编程艺术">
 <meta property="og:url" content="http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/index.html">
@@ -40,23 +41,26 @@
 <meta property="og:image" content="http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/4-4.PNG">
 <meta property="article:published_time" content="2017-08-23T04:35:49.000Z">
 <meta property="article:modified_time" content="2021-11-25T02:49:13.000Z">
-<meta property="article:author" content="Tiki">
+<meta property="article:author" content="Tiki Maverick">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/2-3.png">
 
-
 <link rel="canonical" href="http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/","path":"2017/08/23/JavaScript-DOM-编程艺术/","title":"JavaScript_DOM_编程艺术"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>JavaScript_DOM_编程艺术 | 大象无形，大音希声</title>
+  <title>JavaScript_DOM_编程艺术 | 大象无形，大音希声</title>
   
-
-
 
 
 
@@ -64,198 +68,146 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">大象无形，大音希声</p>
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大象无形，大音希声</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">嘘......</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
+
 </div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</header>
-        
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81JavaScript%E7%AE%80%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">1、JavaScript简史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81JavaScript%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、JavaScript的起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E3%80%81DOM"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%98%E4%BA%89"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、浏览器战争</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1%E3%80%81DHTML"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1、DHTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2、浏览器之间的冲突</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4%E3%80%81%E5%88%B6%E5%AE%9A%E6%A0%87%E5%87%86"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、制定标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BB%A5%E5%A4%96%E7%9A%84%E8%80%83%E8%99%91"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1、浏览器以外的考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%98%E4%BA%89%E7%9A%84%E7%BB%93%E5%B1%80"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2、浏览器战争的结局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3%E3%80%81%E5%B4%AD%E6%96%B0%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">1.4.3.</span> <span class="nav-text">1.4.3、崭新的起点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81JavaScript%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">2、JavaScript语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E3%80%81%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1%E3%80%81%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1、语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2%E3%80%81%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2、注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3%E3%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3、变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">2.2.4.1、字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-2%E3%80%81%E6%95%B0%E5%80%BC"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">2.2.4.2、数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-3%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">2.2.4.3、布尔值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-4%E3%80%81%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.4.4.</span> <span class="nav-text">2.2.4.4、数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-4-4-1%E3%80%81%E5%85%B3%E8%81%94%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.4.4.1.</span> <span class="nav-text">2.2.4.4.1、关联数组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-5%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.4.5.</span> <span class="nav-text">2.2.4.5、对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E3%80%81%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1%E3%80%81%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1、算术操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4%E3%80%81%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">2.4、条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1%E3%80%81%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1、比较操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2%E3%80%81%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2、逻辑操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.5.</span> <span class="nav-text">2.5、循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1%E3%80%81while%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1、while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2%E3%80%81do%E2%80%A6while%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2、do…while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3%E3%80%81for%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3、for循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1、变量的作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.</span> <span class="nav-text">2.7、对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1%E3%80%81%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1、内建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2%E3%80%81%E5%AE%BF%E4%B8%BB%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2、宿主对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81DOM"><span class="nav-number">3.</span> <span class="nav-text">3、DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E3%80%81%E6%96%87%E6%A1%A3%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CD%E2%80%9D"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、文档：DOM中的“D”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E3%80%81%E5%AF%B9%E8%B1%A1%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CO%E2%80%9D"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、对象：DOM中的“O”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E3%80%81%E6%A8%A1%E5%9E%8B%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CM%E2%80%9D"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、模型：DOM中的“M”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4%E3%80%81%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1%E3%80%81%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1、元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2%E3%80%81%E6%96%87%E6%9C%AC%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2、文本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3%E3%80%81%E5%B1%9E%E6%80%A7%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3、属性节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4%E3%80%81CSS"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.4.4、CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-1%E3%80%81class%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">3.4.4.1、class属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-2%E3%80%81id%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">3.4.4.2、id属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-5%E3%80%81%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.4.5、获取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-1%E3%80%81getElementByID"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">3.4.5.1、getElementByID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-2%E3%80%81getElementsByTagName"><span class="nav-number">3.4.5.2.</span> <span class="nav-text">3.4.5.2、getElementsByTagName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-3%E3%80%81getElementsByClassName"><span class="nav-number">3.4.5.3.</span> <span class="nav-text">3.4.5.3、getElementsByClassName</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-6%E3%80%81%E7%9B%98%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">3.4.6.</span> <span class="nav-text">3.4.6、盘点知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5%E3%80%81%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、获取和设置属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1%E3%80%81getAttribute"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1、getAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2%E3%80%81setAttribute"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2、setAttribute</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6%EF%BC%9AJavaScript%E5%9B%BE%E7%89%87%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4、案例研究：JavaScript图片库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E3%80%81%E6%A0%87%E8%AE%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2%E3%80%81JavaScript"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1%E3%80%81%E9%9D%9EDOM%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1、非DOM解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2%E3%80%81%E6%9C%80%E7%BB%88%E7%9A%84%E5%87%BD%E6%95%B0%E4%BB%A3%E7%A0%81%E6%B8%85%E5%8D%95"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2、最终的函数代码清单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3%E3%80%81%E5%BA%94%E7%94%A8%E8%BF%99%E4%B8%AAJavaScript%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.</span> <span class="nav-text">4.3、应用这个JavaScript函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1、事件处理函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4%E3%80%81%E5%AF%B9%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%B1%95"><span class="nav-number">4.4.</span> <span class="nav-text">4.4、对这个函数进行扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1%E3%80%81childNodes%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1、childNodes属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2%E3%80%81nodeType%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2、nodeType属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-3%E3%80%81%E5%9C%A8%E6%A0%87%E8%AE%B0%E9%87%8C%E5%A2%9E%E5%8A%A0%E4%B8%80%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.3.</span> <span class="nav-text">4.4.3、在标记里增加一段描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-4%E3%80%81%E7%94%A8JavaScript%E6%94%B9%E5%8F%98%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.4.</span> <span class="nav-text">4.4.4、用JavaScript改变这段描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-5%E3%80%81nodeValue%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.5.</span> <span class="nav-text">4.4.5、nodeValue属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-6%E3%80%81firstChild%E5%92%8ClastChild%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.6.</span> <span class="nav-text">4.4.6、firstChild和lastChild属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-7%E3%80%81%E5%88%A9%E7%94%A8nodeValue%E5%B1%9E%E6%80%A7%E5%88%B7%E6%96%B0%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.7.</span> <span class="nav-text">4.4.7、利用nodeValue属性刷新这段描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5%E3%80%81%E5%B0%8F%E7%BB%93"><span class="nav-number">4.5.</span> <span class="nav-text">4.5、小结</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Tiki"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Tiki</p>
-  <div class="site-description" itemprop="description">个人技术博客</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">48</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">44</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
+    </header>
 
     
-  </aside>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    </div>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <div class="main-inner post posts-expand">
+          <div class="content post posts-expand">
+            
 
-
+    
   
-
-
-<div class="post-block">
   
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zhangzr.com/2017/08/23/JavaScript-DOM-%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Tiki">
+      <meta itemprop="image" content="/images/tikiface.png">
+      <meta itemprop="name" content="Tiki Maverick">
+      <meta itemprop="description" content="个人技术博客">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="大象无形，大音希声">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="JavaScript_DOM_编程艺术 | 大象无形，大音希声">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           JavaScript_DOM_编程艺术
         </h1>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2017-08-23 12:35:49" itemprop="dateCreated datePublished" datetime="2017-08-23T12:35:49+08:00">2017-08-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-11-25 10:49:13" itemprop="dateModified" datetime="2021-11-25T10:49:13+08:00">2021-11-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
+              <time title="创建时间：2017-08-23 12:35:49" itemprop="dateCreated datePublished" datetime="2017-08-23T12:35:49+08:00">2017-08-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 10:49:13" itemprop="dateModified" datetime="2021-11-25T10:49:13+08:00">2021-11-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -264,6 +216,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
         <h1 id="1、JavaScript简史"><a href="#1、JavaScript简史" class="headerlink" title="1、JavaScript简史"></a>1、JavaScript简史</h1><div class="note success"><ul>
 <li>JavaScript的起源</li>
 <li>浏览器战争</li>
@@ -674,78 +628,187 @@
     
     
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2017/08/17/jquery/" rel="prev" title="锋利的jquery">
-                  <i class="fa fa-chevron-left"></i> 锋利的jquery
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2017/08/31/Openvpn-OpenConnect/" rel="next" title="OpenWrt搭建OpenConnect VPN">
-                  OpenWrt搭建OpenConnect VPN <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/17/jquery/" rel="prev" title="锋利的jquery">
+      <i class="fa fa-chevron-left"></i> 锋利的jquery
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/31/Openvpn-OpenConnect/" rel="next" title="OpenWrt搭建OpenConnect VPN">
+      OpenWrt搭建OpenConnect VPN <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81JavaScript%E7%AE%80%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">1、JavaScript简史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81JavaScript%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、JavaScript的起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E3%80%81DOM"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%98%E4%BA%89"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、浏览器战争</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1%E3%80%81DHTML"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1、DHTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2、浏览器之间的冲突</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4%E3%80%81%E5%88%B6%E5%AE%9A%E6%A0%87%E5%87%86"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、制定标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BB%A5%E5%A4%96%E7%9A%84%E8%80%83%E8%99%91"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1、浏览器以外的考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%98%E4%BA%89%E7%9A%84%E7%BB%93%E5%B1%80"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2、浏览器战争的结局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3%E3%80%81%E5%B4%AD%E6%96%B0%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">1.4.3.</span> <span class="nav-text">1.4.3、崭新的起点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81JavaScript%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">2、JavaScript语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E3%80%81%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1%E3%80%81%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1、语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2%E3%80%81%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2、注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3%E3%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3、变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">2.2.4.1、字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-2%E3%80%81%E6%95%B0%E5%80%BC"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">2.2.4.2、数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-3%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">2.2.4.3、布尔值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-4%E3%80%81%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.4.4.</span> <span class="nav-text">2.2.4.4、数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-4-4-1%E3%80%81%E5%85%B3%E8%81%94%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.4.4.1.</span> <span class="nav-text">2.2.4.4.1、关联数组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-5%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.4.5.</span> <span class="nav-text">2.2.4.5、对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E3%80%81%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1%E3%80%81%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1、算术操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4%E3%80%81%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">2.4、条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1%E3%80%81%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1、比较操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2%E3%80%81%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2、逻辑操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.5.</span> <span class="nav-text">2.5、循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1%E3%80%81while%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1、while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2%E3%80%81do%E2%80%A6while%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2、do…while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3%E3%80%81for%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3、for循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1、变量的作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.</span> <span class="nav-text">2.7、对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1%E3%80%81%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1、内建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2%E3%80%81%E5%AE%BF%E4%B8%BB%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2、宿主对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81DOM"><span class="nav-number">3.</span> <span class="nav-text">3、DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E3%80%81%E6%96%87%E6%A1%A3%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CD%E2%80%9D"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、文档：DOM中的“D”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E3%80%81%E5%AF%B9%E8%B1%A1%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CO%E2%80%9D"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、对象：DOM中的“O”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E3%80%81%E6%A8%A1%E5%9E%8B%EF%BC%9ADOM%E4%B8%AD%E7%9A%84%E2%80%9CM%E2%80%9D"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、模型：DOM中的“M”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4%E3%80%81%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1%E3%80%81%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1、元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2%E3%80%81%E6%96%87%E6%9C%AC%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2、文本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3%E3%80%81%E5%B1%9E%E6%80%A7%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3、属性节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4%E3%80%81CSS"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.4.4、CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-1%E3%80%81class%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">3.4.4.1、class属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-2%E3%80%81id%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">3.4.4.2、id属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-5%E3%80%81%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.4.5、获取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-1%E3%80%81getElementByID"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">3.4.5.1、getElementByID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-2%E3%80%81getElementsByTagName"><span class="nav-number">3.4.5.2.</span> <span class="nav-text">3.4.5.2、getElementsByTagName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-3%E3%80%81getElementsByClassName"><span class="nav-number">3.4.5.3.</span> <span class="nav-text">3.4.5.3、getElementsByClassName</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-6%E3%80%81%E7%9B%98%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">3.4.6.</span> <span class="nav-text">3.4.6、盘点知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5%E3%80%81%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、获取和设置属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1%E3%80%81getAttribute"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1、getAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2%E3%80%81setAttribute"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2、setAttribute</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6%EF%BC%9AJavaScript%E5%9B%BE%E7%89%87%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4、案例研究：JavaScript图片库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E3%80%81%E6%A0%87%E8%AE%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2%E3%80%81JavaScript"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1%E3%80%81%E9%9D%9EDOM%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1、非DOM解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2%E3%80%81%E6%9C%80%E7%BB%88%E7%9A%84%E5%87%BD%E6%95%B0%E4%BB%A3%E7%A0%81%E6%B8%85%E5%8D%95"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2、最终的函数代码清单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3%E3%80%81%E5%BA%94%E7%94%A8%E8%BF%99%E4%B8%AAJavaScript%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.</span> <span class="nav-text">4.3、应用这个JavaScript函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1、事件处理函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4%E3%80%81%E5%AF%B9%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%B1%95"><span class="nav-number">4.4.</span> <span class="nav-text">4.4、对这个函数进行扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1%E3%80%81childNodes%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1、childNodes属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2%E3%80%81nodeType%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2、nodeType属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-3%E3%80%81%E5%9C%A8%E6%A0%87%E8%AE%B0%E9%87%8C%E5%A2%9E%E5%8A%A0%E4%B8%80%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.3.</span> <span class="nav-text">4.4.3、在标记里增加一段描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-4%E3%80%81%E7%94%A8JavaScript%E6%94%B9%E5%8F%98%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.4.</span> <span class="nav-text">4.4.4、用JavaScript改变这段描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-5%E3%80%81nodeValue%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.5.</span> <span class="nav-text">4.4.5、nodeValue属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-6%E3%80%81firstChild%E5%92%8ClastChild%E5%B1%9E%E6%80%A7"><span class="nav-number">4.4.6.</span> <span class="nav-text">4.4.6、firstChild和lastChild属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-7%E3%80%81%E5%88%A9%E7%94%A8nodeValue%E5%B1%9E%E6%80%A7%E5%88%B7%E6%96%B0%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.4.7.</span> <span class="nav-text">4.4.7、利用nodeValue属性刷新这段描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5%E3%80%81%E5%B0%8F%E7%BB%93"><span class="nav-number">4.5.</span> <span class="nav-text">4.5、小结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiki Maverick"
+      src="/images/tikiface.png">
+  <p class="site-author-name" itemprop="name">Tiki Maverick</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
 
 
 
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
 
+      </div>
+    </main>
 
-</div>
-  </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
-  <footer class="footer">
-    <div class="footer-inner">
-
+        
 
 <div class="copyright">
+  
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Tiki</span>
+  <span class="author" itemprop="copyrightHolder">Tiki Maverick</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
-    </div>
-  </footer>
+        
 
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
+
+
+
+
+
+
+
+      </div>
+    </footer>
   </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -753,9 +816,7 @@
 
   
 
-
-
-
+  
 
 </body>
 </html>
