@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>MacOS on Tiki's Blog</title><link>https://zhangzr.com/tags/macos/</link><description>Recent content in MacOS on Tiki's Blog</description><generator>Hugo -- 0.155.1</generator><language>zh-cn</language><lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhangzr.com/tags/macos/index.xml" rel="self" type="application/rss+xml"/><item><title>为USBInjectAll.kext创建自定义SSDT</title><link>https://zhangzr.com/posts/%E4%B8%BAusbinjectall.kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89ssdt/</link><pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/%E4%B8%BAusbinjectall.kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89ssdt/</guid><description>&lt;h1 id="概述"&gt;概述&lt;/h1&gt;
+&lt;p&gt;在10.11版本中，Apple完全重写了USB驱动程序。新驱动程序似乎在很大程序上使用了ACPI，比以前的驱动程序更大。这给ACPI（DSDT)的正确性带来了更多的压力。如果不正确，存在的端口可能不会被新的驱动程序启用。&lt;/p&gt;
+&lt;p&gt;事实上，即使是Apple自己的产品也被发现是不正确的，因此Apple公司发明了一种方法用来一个端口注入器来覆盖DSDT。在事件属性被注入来定义可用端口时，这些属性将被使用而不是ACPI。&lt;/p&gt;
+&lt;p&gt;内置的端口注入器也可以干扰USB接口，因为一个给定型号的Mac的USB拓朴不太可能与你的PC相同。要解决这些问题，可能需要采取一些步骤。&lt;/p&gt;
+&lt;p&gt;注意本指南适用于英特尔USB3。第三方USB3，例如Asmedia，NEC/Renasas还是有问题的。这些控制器没有解决方案。对于不支持的USB3控制器（例如，不是英特尔生产的，不是睿思科技生产的）可以试试最新的&lt;a href="https://github.com/RehabMan/OS-X-Generic-USB3"&gt;GenericUSBXHCI.kext&lt;/a&gt;&lt;/p&gt;</description></item><item><title>AppleHDA声卡修补</title><link>https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/</link><pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/</guid><description>&lt;h1 id="1-计算编解码器命令和路径"&gt;1 计算编解码器命令和路径&lt;/h1&gt;
+&lt;h2 id="11-获取解码器"&gt;1.1 获取解码器&lt;/h2&gt;
+&lt;p&gt;首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;2
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;3
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;4
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /proc/asound/card0/codec#0 &amp;gt; ~/Desktop/codec_dump.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 或者&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /proc/asound/card0/codec#1 &amp;gt; ~/Desktop/codec_dump.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 或者&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat /proc/asound/card0/codec#2 &amp;gt; ~/Desktop/codec_dump.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Mac双系统时间不同步的问题解决</title><link>https://zhangzr.com/posts/mac%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link><pubDate>Mon, 06 Nov 2017 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/mac%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid><description>&lt;h3 id="原因"&gt;原因&lt;/h3&gt;
+&lt;p&gt;在安装了Mac与Windws双系统后，发现两套系统的时间不一致两者相差8小时，这是为什么呢？这是因为Windows与Mac系统对于CMOS记录的时钟采取了不同的定义。Windows将CMOS时钟作为本地时间来看待，而Mac系统将CMOS时钟作为UTC标准时间来看待，也就是格林威志时间。&lt;/p&gt;
+&lt;h3 id="解决方法修改windows注册表"&gt;解决方法：（修改Windows注册表）&lt;/h3&gt;
+&lt;p&gt;将Windows的缺省对待CMOS的方式改成UTC，也就是和MacOSX一致&lt;/p&gt;
+&lt;p&gt;修改Windows的注册表，定位到&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;　　HKEY_LOCAL_MACHINE&lt;span style="color:#ae81ff"&gt;\S&lt;/span&gt;YSTEM&lt;span style="color:#ae81ff"&gt;\C&lt;/span&gt;urrentControlSet&lt;span style="color:#ae81ff"&gt;\C&lt;/span&gt;ontrol&lt;span style="color:#ae81ff"&gt;\T&lt;/span&gt;imeZoneInformation&lt;span style="color:#ae81ff"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;添加一个名为”RealTimeIsUniversal”的DWORD项，把值设为1。&lt;br&gt;
+这样你在Windows和Mac OSX下将本地时区都设到北京时间，不论是Windows还是MacOSX同步过时间后，都不会影响到另一边。&lt;/p&gt;</description></item></channel></rss>

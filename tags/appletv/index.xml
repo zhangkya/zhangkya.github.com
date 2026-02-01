@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AppleTv on Tiki's Blog</title><link>https://zhangzr.com/tags/appletv/</link><description>Recent content in AppleTv on Tiki's Blog</description><generator>Hugo -- 0.155.1</generator><language>zh-cn</language><lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhangzr.com/tags/appletv/index.xml" rel="self" type="application/rss+xml"/><item><title>AppleTV伪装证书</title><link>https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/</guid><description>&lt;h2 id="1-appletv伪装预告片证书"&gt;1. AppleTV伪装预告片证书&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days &lt;span style="color:#ae81ff"&gt;7300&lt;/span&gt; -subj &lt;span style="color:#e6db74"&gt;&amp;#34;/C=US/CN=trailers.apple.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;amp;&amp;amp; cat ~/Desktop/trailers.key &amp;gt;&amp;gt; ~/Desktop/trailers.pem
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行完上面的命令，您将得到3个证书文件&lt;/p&gt;
+&lt;h2 id="2-使用apple-configuration创建项目"&gt;2. 使用Apple Configuration创建项目&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="|299x225" loading="lazy" src="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/1.png"&gt;
+&lt;img alt="|298x184" loading="lazy" src="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/2.png"&gt;&lt;/p&gt;</description></item></channel></rss>

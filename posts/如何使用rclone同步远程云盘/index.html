@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>如何使用rclone同步远程云盘 | Tiki&#39;s Blog</title>
+<meta name="keywords" content="linux, Windows, MacOS">
+<meta name="description" content="1. 概述
+rclone是一个命令行程序，用于同步文件和目录，并支持网盘同步，可同步网盘包括如下：
+
+Amazon Drive
+Amazon S3
+Backblaze B2
+Box
+Ceph
+DigitalOcean Spaces
+Dreamhost
+Dropbox
+FTP
+Google Cloud Storage
+Google Drive
+HTTP
+Hubic
+Jottacloud
+IBM COS S3
+Memset Memstore
+Mega
+Microsoft Azure Blob Storage
+Microsoft OneDrive
+Minio
+Nextcloud
+OVH
+OpenDrive
+Openstack Swift
+Oracle Cloud Storage
+ownCloud
+pCloud
+put.io
+QingStor
+Rackspace Cloud Files
+SFTP
+Wasabi
+WebDAV
+Yandex Disk
+The local filesystem
+
+2. 常用的rclone命令
+
+rclone config : 配置会话；
+rclone copy : 将文件从原文件夹复制至目标文件夹，跳过已复制的文件；
+rclone sync : 将文件从原文件夹同步至目标文件夹，只修改目的地；
+rclone move : 将文件从原文件夹移动至目标文件夹；
+rclone delete : 删除路径中的内容；
+rclone purge : 清空指定路径下的所有文件数据；
+rclone mkdir : 创建一个新目录；
+rclone rmdir : 删除一个空目录；
+rclone rmdirs : 删除路径下的所有空目录；
+rclone check : 检查源和目标的数据是否匹配；
+rclone ls : 列出指定路径下所有的文件包含文件的大小及路径；
+rclone lsd : 列出路径中的所有目录containers和buckets；
+rclone lsl : 列出具有大小、修改时间和路径中的所有对象；
+rclone md5sum : 为路径中的所有对象生成一个md5sum文件；
+rclone sha1sum : 为路径中的所有对象生成一个sha1sum文件；
+rclone size : 返回远程路径中对象的总大小和数量；
+rclone version : 显示版本号；
+rclone cleanup : 如果可能的话，清理remote；
+rclone dedupe : 交互式查找重复文件并删除重命名它们；
+rclone authorize : 远程认证；
+rclone cat : 连接文件并将它们发送到stdout；
+rclone copyto : 将文件从源复制到目标，跳过已复制的文件；
+rclone genautocomplete : rclone输出完成脚本；
+rclone gendocs : rclone将markdown文档输出到所提供的目录；
+rclone listremotes : 列出所有远程的配置文件；
+rclone mount : 将远程目标挂载至本地；
+rclone moveto : 将文件或目录从源移动至目标；
+rclone obscure : 在rclone.conf文件中使用模糊密码；
+rclone cryptcheck : 检验远程认证；
+rclone about : 获取配额信息；
+
+3. 选项
+3.1 &ndash;backup-dir=DIR
+当使用sync、copy or move时，所有涉及到覆盖或删除的文件变动，原始文件会被移动到--backup-dir=DIR选项所设置的目录中，如果设置了后缀选项--suffix，则在文件后缀附加指定字符串，例如原文件&rsquo;abc.txt&rsquo;，如果指定--suffix 20181101，则备份后的文件名全称为&quot;abc.txt20181101&quot;">
+<meta name="author" content="tiki">
+<link rel="canonical" href="http://localhost:1313/posts/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8rclone%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BA%91%E7%9B%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8a665b856a8755bd0ec24ffe92c13ac09076571c7bbb8d0e120760b0f983f8aa.css" integrity="sha256-imZbhWqHVb0Owk/&#43;ksE6wJB2Vxx7u40OEgdgsPmD&#43;Ko=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8rclone%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BA%91%E7%9B%98/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">🏠主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      如何使用rclone同步远程云盘
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2018-11-08 ｜</span>&nbsp;&nbsp;<span class='post-meta-item post-meta-update'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+  <circle cx="16" cy="16" r="3"/>
+  <line x1="16" y1="15" x2="16" y2="16.5"/>
+  <line x1="16" y1="16" x2="17.5" y2="16"/>
+</svg> 更新于: 2018-11-20 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 3 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-%e6%a6%82%e8%bf%b0" aria-label="1. 概述">1. 概述</a></li>
+                <li>
+                    <a href="#2-%e5%b8%b8%e7%94%a8%e7%9a%84rclone%e5%91%bd%e4%bb%a4" aria-label="2. 常用的rclone命令">2. 常用的rclone命令</a></li>
+                <li>
+                    <a href="#3-%e9%80%89%e9%a1%b9" aria-label="3. 选项">3. 选项</a><ul>
+                        
+                <li>
+                    <a href="#31-backup-dirdir" aria-label="3.1 &ndash;backup-dir=DIR">3.1 &ndash;backup-dir=DIR</a></li>
+                <li>
+                    <a href="#32-bind-string" aria-label="3.2 &ndash;bind string">3.2 &ndash;bind string</a></li>
+                <li>
+                    <a href="#33-bwlimitbandwidth_spec" aria-label="3.3 &ndash;bwlimit=BANDWIDTH_SPEC">3.3 &ndash;bwlimit=BANDWIDTH_SPEC</a></li>
+                <li>
+                    <a href="#34-buffer-sizesize" aria-label="3.4 &ndash;buffer-size=SIZE">3.4 &ndash;buffer-size=SIZE</a></li>
+                <li>
+                    <a href="#35-checkersn" aria-label="3.5 &ndash;checkers=N">3.5 &ndash;checkers=N</a></li>
+                <li>
+                    <a href="#36--c-checksum" aria-label="3.6 -c, &ndash;checksum">3.6 -c, &ndash;checksum</a></li>
+                <li>
+                    <a href="#37-configconfig_file" aria-label="3.7 &ndash;config=CONFIG_FILE">3.7 &ndash;config=CONFIG_FILE</a></li>
+                <li>
+                    <a href="#38-contimeouttime" aria-label="3.8 &ndash;contimeout=TIME">3.8 &ndash;contimeout=TIME</a></li>
+                <li>
+                    <a href="#39-dedupe-mode-mode" aria-label="3.9 &ndash;dedupe-mode MODE">3.9 &ndash;dedupe-mode MODE</a></li>
+                <li>
+                    <a href="#310-disable-feature-feature-" aria-label="3.10 &ndash;disable FEATURE, FEATURE, &hellip;">3.10 &ndash;disable FEATURE, FEATURE, &hellip;</a></li>
+                <li>
+                    <a href="#311--n-dry-run" aria-label="3.11 -n, &ndash;dry-run">3.11 -n, &ndash;dry-run</a></li>
+                <li>
+                    <a href="#312-ignore-checksum" aria-label="3.12 &ndash;ignore-checksum">3.12 &ndash;ignore-checksum</a></li>
+                <li>
+                    <a href="#313-ignore-existing" aria-label="3.13 &ndash;ignore-existing">3.13 &ndash;ignore-existing</a></li>
+                <li>
+                    <a href="#314-ignore-size" aria-label="3.14 &ndash;ignore-size">3.14 &ndash;ignore-size</a></li>
+                <li>
+                    <a href="#315--i-ignore-times" aria-label="3.15 -i, &ndash;ignore-times">3.15 -i, &ndash;ignore-times</a></li>
+                <li>
+                    <a href="#316-immutable" aria-label="3.16 &ndash;immutable">3.16 &ndash;immutable</a></li>
+                <li>
+                    <a href="#317-leave-root" aria-label="3.17 &ndash;leave-root">3.17 &ndash;leave-root</a></li>
+                <li>
+                    <a href="#318-log-filefile" aria-label="3.18 &ndash;log-file=FILE">3.18 &ndash;log-file=FILE</a></li>
+                <li>
+                    <a href="#319-log-format-list" aria-label="3.19 &ndash;log-format LIST">3.19 &ndash;log-format LIST</a></li>
+                <li>
+                    <a href="#320-log-level-level" aria-label="3.20 &ndash;log-level LEVEL">3.20 &ndash;log-level LEVEL</a></li>
+                <li>
+                    <a href="#321-low-level-retries-numbner" aria-label="3.21 &ndash;low-level-retries NUMBNER">3.21 &ndash;low-level-retries NUMBNER</a></li>
+                <li>
+                    <a href="#322-max-backlogn" aria-label="3.22 &ndash;max-backlog=N">3.22 &ndash;max-backlog=N</a></li>
+                <li>
+                    <a href="#323-max-deleten" aria-label="3.23 &ndash;max-delete=N">3.23 &ndash;max-delete=N</a></li>
+                <li>
+                    <a href="#324-max-depthn" aria-label="3.24 &ndash;max-depth=N">3.24 &ndash;max-depth=N</a></li>
+                <li>
+                    <a href="#325-max-transfersize" aria-label="3.25 &ndash;max-transfer=SIZE">3.25 &ndash;max-transfer=SIZE</a></li>
+                <li>
+                    <a href="#326-modify-windowtime" aria-label="3.26 &ndash;modify-window=TIME">3.26 &ndash;modify-window=TIME</a></li>
+                <li>
+                    <a href="#327-no-gzip-encoding" aria-label="3.27 &ndash;no-gzip-encoding">3.27 &ndash;no-gzip-encoding</a></li>
+                <li>
+                    <a href="#328-no-update-modtime" aria-label="3.28 &ndash;no-update-modtime">3.28 &ndash;no-update-modtime</a></li>
+                <li>
+                    <a href="#329--p-progress" aria-label="3.29 -P, &ndash;progress">3.29 -P, &ndash;progress</a></li>
+                <li>
+                    <a href="#330--q-quiet" aria-label="3.30 -q, &ndash;quiet">3.30 -q, &ndash;quiet</a></li>
+                <li>
+                    <a href="#331-retries-int" aria-label="3.31 &ndash;retries int">3.31 &ndash;retries int</a></li>
+                <li>
+                    <a href="#332-retries-sleeptime" aria-label="3.32 &ndash;retries-sleep=time">3.32 &ndash;retries-sleep=time</a></li>
+                <li>
+                    <a href="#333-size-only" aria-label="3.33 &ndash;size-only">3.33 &ndash;size-only</a></li>
+                <li>
+                    <a href="#334-statstime" aria-label="3.34 &ndash;stats=TIME">3.34 &ndash;stats=TIME</a></li>
+                <li>
+                    <a href="#335-stats-file-name-length-integer" aria-label="3.35 &ndash;stats-file-name-length integer">3.35 &ndash;stats-file-name-length integer</a></li>
+                <li>
+                    <a href="#336-stats-log-level-string" aria-label="3.36 &ndash;stats-log-level string">3.36 &ndash;stats-log-level string</a></li>
+                <li>
+                    <a href="#337-stats-one-line" aria-label="3.37 &ndash;stats-one-line">3.37 &ndash;stats-one-line</a></li>
+                <li>
+                    <a href="#338-stats-unitbitsbytes" aria-label="3.38 &ndash;stats-unit=bits|bytes">3.38 &ndash;stats-unit=bits|bytes</a></li>
+                <li>
+                    <a href="#339-suffixsuffix" aria-label="3.39 &ndash;suffix=SUFFIX">3.39 &ndash;suffix=SUFFIX</a></li>
+                <li>
+                    <a href="#340-syslog" aria-label="3.40 &ndash;syslog">3.40 &ndash;syslog</a></li>
+                <li>
+                    <a href="#341-syslog-facility-string" aria-label="3.41 &ndash;syslog-facility string">3.41 &ndash;syslog-facility string</a></li>
+                <li>
+                    <a href="#342-tpslimit-float" aria-label="3.42 &ndash;tpslimit float">3.42 &ndash;tpslimit float</a></li>
+                <li>
+                    <a href="#343-tpslimit-burst-int" aria-label="3.43 &ndash;tpslimit-burst int">3.43 &ndash;tpslimit-burst int</a></li>
+                <li>
+                    <a href="#344-track-renames" aria-label="3.44 &ndash;track-renames">3.44 &ndash;track-renames</a></li>
+                <li>
+                    <a href="#345-delete-before-during-after" aria-label="3.45 &ndash;delete-(before, during, after)">3.45 &ndash;delete-(before, during, after)</a></li>
+                <li>
+                    <a href="#346-fast-list" aria-label="3.46 &ndash;fast-list">3.46 &ndash;fast-list</a></li>
+                <li>
+                    <a href="#347-timeouttime" aria-label="3.47 &ndash;timeout=TIME">3.47 &ndash;timeout=TIME</a></li>
+                <li>
+                    <a href="#348-transfersn" aria-label="3.48 &ndash;transfers=N">3.48 &ndash;transfers=N</a></li>
+                <li>
+                    <a href="#349--u-update" aria-label="3.49 -u, &ndash;update">3.49 -u, &ndash;update</a></li>
+                <li>
+                    <a href="#350-use-server-modtime" aria-label="3.50 &ndash;use-server-modtime">3.50 &ndash;use-server-modtime</a></li>
+                <li>
+                    <a href="#351--v--w-verbose" aria-label="3.51 -v, -w, &ndash;verbose">3.51 -v, -w, &ndash;verbose</a></li>
+                <li>
+                    <a href="#352--v-version" aria-label="3.52 -V, &ndash;VERSION">3.52 -V, &ndash;VERSION</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%97%a5%e5%bf%97%e8%ae%b0%e5%bd%95" aria-label="日志记录">日志记录</a></li>
+                <li>
+                    <a href="#4-rclone-mount" aria-label="4. rclone mount">4. rclone mount</a><ul>
+                        
+                <li>
+                    <a href="#41-onedrive%e6%98%a0%e5%b0%84%e8%87%b3%e6%9c%ac%e5%9c%b0" aria-label="4.1 OneDrive映射至本地">4.1 OneDrive映射至本地</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="1-概述">1. 概述<a hidden class="anchor" aria-hidden="true" href="#1-概述">#</a></h1>
+<p>rclone是一个命令行程序，用于同步文件和目录，并支持网盘同步，可同步网盘包括如下：</p>
+<ul>
+<li>Amazon Drive</li>
+<li>Amazon S3</li>
+<li>Backblaze B2</li>
+<li>Box</li>
+<li>Ceph</li>
+<li>DigitalOcean Spaces</li>
+<li>Dreamhost</li>
+<li>Dropbox</li>
+<li>FTP</li>
+<li>Google Cloud Storage</li>
+<li>Google Drive</li>
+<li>HTTP</li>
+<li>Hubic</li>
+<li>Jottacloud</li>
+<li>IBM COS S3</li>
+<li>Memset Memstore</li>
+<li>Mega</li>
+<li>Microsoft Azure Blob Storage</li>
+<li>Microsoft OneDrive</li>
+<li>Minio</li>
+<li>Nextcloud</li>
+<li>OVH</li>
+<li>OpenDrive</li>
+<li>Openstack Swift</li>
+<li>Oracle Cloud Storage</li>
+<li>ownCloud</li>
+<li>pCloud</li>
+<li>put.io</li>
+<li>QingStor</li>
+<li>Rackspace Cloud Files</li>
+<li>SFTP</li>
+<li>Wasabi</li>
+<li>WebDAV</li>
+<li>Yandex Disk</li>
+<li>The local filesystem</li>
+</ul>
+<h1 id="2-常用的rclone命令">2. 常用的rclone命令<a hidden class="anchor" aria-hidden="true" href="#2-常用的rclone命令">#</a></h1>
+<ol>
+<li>rclone config : 配置会话；</li>
+<li>rclone copy : 将文件从原文件夹复制至目标文件夹，跳过已复制的文件；</li>
+<li>rclone sync : 将文件从原文件夹同步至目标文件夹，只修改目的地；</li>
+<li>rclone move : 将文件从原文件夹移动至目标文件夹；</li>
+<li>rclone delete : 删除路径中的内容；</li>
+<li>rclone purge : 清空指定路径下的所有文件数据；</li>
+<li>rclone mkdir : 创建一个新目录；</li>
+<li>rclone rmdir : 删除一个空目录；</li>
+<li>rclone rmdirs : 删除路径下的所有空目录；</li>
+<li>rclone check : 检查源和目标的数据是否匹配；</li>
+<li>rclone ls : 列出指定路径下所有的文件包含文件的大小及路径；</li>
+<li>rclone lsd : 列出路径中的所有目录containers和buckets；</li>
+<li>rclone lsl : 列出具有大小、修改时间和路径中的所有对象；</li>
+<li>rclone md5sum : 为路径中的所有对象生成一个md5sum文件；</li>
+<li>rclone sha1sum : 为路径中的所有对象生成一个sha1sum文件；</li>
+<li>rclone size : 返回远程路径中对象的总大小和数量；</li>
+<li>rclone version : 显示版本号；</li>
+<li>rclone cleanup : 如果可能的话，清理remote；</li>
+<li>rclone dedupe : 交互式查找重复文件并删除重命名它们；</li>
+<li>rclone authorize : 远程认证；</li>
+<li>rclone cat : 连接文件并将它们发送到stdout；</li>
+<li>rclone copyto : 将文件从源复制到目标，跳过已复制的文件；</li>
+<li>rclone genautocomplete : rclone输出完成脚本；</li>
+<li>rclone gendocs : rclone将markdown文档输出到所提供的目录；</li>
+<li>rclone listremotes : 列出所有远程的配置文件；</li>
+<li>rclone mount : 将远程目标挂载至本地；</li>
+<li>rclone moveto : 将文件或目录从源移动至目标；</li>
+<li>rclone obscure : 在rclone.conf文件中使用模糊密码；</li>
+<li>rclone cryptcheck : 检验远程认证；</li>
+<li>rclone about : 获取配额信息；</li>
+</ol>
+<h1 id="3-选项">3. 选项<a hidden class="anchor" aria-hidden="true" href="#3-选项">#</a></h1>
+<h2 id="31-backup-dirdir">3.1 &ndash;backup-dir=DIR<a hidden class="anchor" aria-hidden="true" href="#31-backup-dirdir">#</a></h2>
+<p>当使用<code>sync、copy or move</code>时，所有涉及到覆盖或删除的文件变动，原始文件会被移动到<code>--backup-dir=DIR</code>选项所设置的目录中，如果设置了后缀选项<code>--suffix</code>，则在文件后缀附加指定字符串，例如原文件&rsquo;abc.txt&rsquo;，如果指定<code>--suffix 20181101</code>，则备份后的文件名全称为&quot;abc.txt20181101&quot;</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 同步本地目录至远程目录current的文件，并且备份已经覆盖或删除文件至远程old文件夹中</span>
+</span></span><span style="display:flex;"><span>$ rclone sync /path/to/local remote:current --backup-dir remote:old
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 同步本地目录“./&#34;至远程”test“目录，覆盖或删除的文件移动至远程old文件夹中，并将后缀名后附加”20181108“</span>
+</span></span><span style="display:flex;"><span>$ sudo rclone sync ./ One:test --backup-dir One:old --suffix <span style="color:#ae81ff">20181108</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="32-bind-string">3.2 &ndash;bind string<a hidden class="anchor" aria-hidden="true" href="#32-bind-string">#</a></h2>
+<p>要绑定到输出连接的本地地址。这可以是IPv4地址、IPv6地址或主机名。如果主机名没有解析或解析为多个IP地址，则会出错。</p>
+<h2 id="33-bwlimitbandwidth_spec">3.3 &ndash;bwlimit=BANDWIDTH_SPEC<a hidden class="anchor" aria-hidden="true" href="#33-bwlimitbandwidth_spec">#</a></h2>
+<p>此选项控制带宽限制。限制可以通过两种方式指定：单个限制或依据时间表限制。指定带宽限制单位为kBytes/s，或使用后缀b、k、M、G，默认值为0，表示不限制带宽。例如，要将带宽限制为10MB/s，则使用&ndash;bwlimit 10M。</p>
+<p>还可以指定限制的”时间表“，这将导致在某些时间应用某些限制。要指定时间表，请将条目格式设置为”WEEKDAY-HH:MM, BANDWIDTH WEEKDAY-HH:MM, BANDWIDTH&hellip;“，其中：WEEKDAY是可选元素。它可以写成整个世界或仅使用3个第一个字符。HH:MM从00：00到23：59是一小时。</p>
+<p>例1：如下时间表避免白天工作时间，早8:00限制带宽512kBytes/sec，12:00限制提升至10M，下午13:00降至512kBytes/sec，18:00提升至30M，在23:00开始完全禁用，网络全速运行。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--bwlimit <span style="color:#e6db74">&#34;08:00,512 12:00,10M 13:00,512 18:00,30M 23:00,off&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例2：周一带宽限制为512kBytes/sec，周五结束前提升至10Mbytes/s。周日10:00，它将设置为1Mbyte/s。从周日的20：00起将是无限的。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--bwlimit <span style="color:#e6db74">&#34;Mon-00:00,512 Fri-23:59,10M Sat-10:00,1M Sun-20:00,off&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例3：等价于例4</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--bwlimit <span style="color:#e6db74">&#34;Mon-00:00,512 12:00,1M Sun-20:00,off&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例4：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--bwlimit <span style="color:#e6db74">&#34;Mon-00:00,512 Mon-12:00,1M Tue-12:00,1M Wed-12:00,1M Thu-12:00,1M Fri-12:00,1M Sat-12:00,1M Sun-12:00,1M Sun-20:00,off&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>带宽限制仅适用于数据传输。它们不适用于目录列表的带宽。注意，这些单位是字节/秒,而不是比特/秒。通常连接是以比特/秒来测量的，转换时需要除以8。例如10Mbit/s连接，那么在指定参数时需要计算10/8=1.25Mbyte/s，即”&ndash;bwlimit 1.25M“</p>
+<p>在Unix系统（Linux, MacOS, &hellip;）上，可以通过向rclone发送SIGUSR2信号来切换带宽限制器。它允许消除长时间运行的rclone传输的限制，并在需要时将其恢复为使用<code>--bwlimit</code>指定的值。假设只有一个rclone实例在运行，你可以像这样切换限制器：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill -SIGUSR2 <span style="color:#66d9ef">$(</span>pidof rclone<span style="color:#66d9ef">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过如下配置可以动态更改bwlimit</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rclone rc core/bwlimit rate<span style="color:#f92672">=</span>1M
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="34-buffer-sizesize">3.4 &ndash;buffer-size=SIZE<a hidden class="anchor" aria-hidden="true" href="#34-buffer-sizesize">#</a></h2>
+<p>设置缓冲区大小来加速文件传输。每个-transfer都会使用这么多内存来缓冲。当使用mount或cmount时，每个打开的文件描述符将使用设置的缓冲区大小的内存进行缓冲。设置为0可禁用最小内存使用的缓冲。</p>
+<h2 id="35-checkersn">3.5 &ndash;checkers=N<a hidden class="anchor" aria-hidden="true" href="#35-checkersn">#</a></h2>
+<p>并行运行的检查器数量。检查程序在同步期间对文件进行等同性检查。对于某些存储系统（例如S3, Swift, Dropbox），这可能需要很长时间才能并行运行。默认是并行运行8个检查程序。</p>
+<h2 id="36--c-checksum">3.6 -c, &ndash;checksum<a hidden class="anchor" aria-hidden="true" href="#36--c-checksum">#</a></h2>
+<p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将检查文件哈希和大小以确定文件是否相等。当远程不支持设置修改时间并且需要比仅检查文件大小更准确的同步时，这非常有用。</p>
+<p>当在对象上存储相同散列类型的远程之间进行传输时，这非常有用，例如Drive和Swift。有关哪些远程控制支持哪种散列类型的详细信息，<a href="https://rclone.org/overview/">请参阅概述部分中的表</a>。</p>
+<p>例如<code>rclone --checksum sync s3:/bucket swift:/bucket</code>比没有&ndash;checksum标志的运行得快的多。使用些标志时，如果远程文件不正常，rclone将不会更新远程文件的mtimes。</p>
+<h2 id="37-configconfig_file">3.7 &ndash;config=CONFIG_FILE<a hidden class="anchor" aria-hidden="true" href="#37-configconfig_file">#</a></h2>
+<p>指定rclone配置文件的位置。通常配置文件位于主目录中<code>.config/rclone/rclone.conf</code>，如果设置了$XDG_CONFIG_HOME，它将位于$XDG_CONFIG_HOME/rclone/rclone.conf</p>
+<p>如果您运行rclone -h并查看&ndash;config选项帮助，您将看到默认位置的位置。使用此标志可覆盖配置位置，例如<code>rclone --config='.myconfig&quot;</code></p>
+<h2 id="38-contimeouttime">3.8 &ndash;contimeout=TIME<a hidden class="anchor" aria-hidden="true" href="#38-contimeouttime">#</a></h2>
+<p>设置连接超时时间。TIME为时间格式，5秒参数为5s，10分钟为10m或3h30m。连接超时是rclone等待连接进入远程对象存储系统的时间。默认为1m（1分钟）</p>
+<h2 id="39-dedupe-mode-mode">3.9 &ndash;dedupe-mode MODE<a hidden class="anchor" aria-hidden="true" href="#39-dedupe-mode-mode">#</a></h2>
+<p>运行重复数据删除命令模式。模式分为interactive, skip, first, newest, oldest, rename。缺省为interactive（交互式）</p>
+<h2 id="310-disable-feature-feature-">3.10 &ndash;disable FEATURE, FEATURE, &hellip;<a hidden class="anchor" aria-hidden="true" href="#310-disable-feature-feature-">#</a></h2>
+<p>禁用以逗号分隔的可选功能列表。例如：禁用服务器端move和服务器copy的使用：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>--disable move, copy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看可以禁用哪些功能的列表：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>--disable help
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请<a href="https://rclone.org/overview/#features">参阅概览功能</a>和<a href="https://rclone.org/overview/#optional-features">可选功能</a>，了解哪个功能能做到什么。
+此标志可用于调试和特殊情况（例如Google Drive将服务器端copy总量限制为100GB/天）</p>
+<h2 id="311--n-dry-run">3.11 -n, &ndash;dry-run<a hidden class="anchor" aria-hidden="true" href="#311--n-dry-run">#</a></h2>
+<p>进行试运行而不进行永久性更改。使用它来查看rclone在没有实际操作的情况下会做什么。设置同步命令以删除目标中的文件时很有用。</p>
+<h2 id="312-ignore-checksum">3.12 &ndash;ignore-checksum<a hidden class="anchor" aria-hidden="true" href="#312-ignore-checksum">#</a></h2>
+<p>通常，rclone会检查传输文件的校验和是否匹配，如果没有，则会在传输时出现”损坏“错误。您可以使用些选项跳过该检查。您应该只在遇到”传输损坏“错误消息时才使用它，并且您确定可能要传输可能已损坏的数据。</p>
+<h2 id="313-ignore-existing">3.13 &ndash;ignore-existing<a hidden class="anchor" aria-hidden="true" href="#313-ignore-existing">#</a></h2>
+<p>使用此选项将使rclone无条件地跳过目标上存在的所有文件，无论这些文件的内容如何。虽然这不是一般推荐的选项，但在文件因加密而发生变化的情况下，它可能很有用。但是，如果传输中断，则无法纠正部分传输。</p>
+<h2 id="314-ignore-size">3.14 &ndash;ignore-size<a hidden class="anchor" aria-hidden="true" href="#314-ignore-size">#</a></h2>
+<p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将仅检查修改时间。如果设置&ndash;checksum，那么它只检查checksum。它还会导致rclone跳过验证传输后大小相同。</p>
+<p>这对于向OneDrive传输文件和从OneDrive传输文件非常有用，OneDrive偶尔会误报图像文件的大小([有关详细信息，请参阅#399])[https://github.com/ncw/rclone/issues/399]</p>
+<h2 id="315--i-ignore-times">3.15 -i, &ndash;ignore-times<a hidden class="anchor" aria-hidden="true" href="#315--i-ignore-times">#</a></h2>
+<p>使用此选项将导致rclone无条件地上载所有文件，而不管目标上的文件状态如何。通常，rclone会跳过任何具有相同修改时间且大小相同的文件（如果使用&ndash;checksum，则具有相同的checksum）。</p>
+<h2 id="316-immutable">3.16 &ndash;immutable<a hidden class="anchor" aria-hidden="true" href="#316-immutable">#</a></h2>
+<p>将源文件和目标文件视为不可变并禁止修改。设置此选项后，将根据请求创建和删除文件，但永远不会更新现有文件。如果源和目标之间的现有文件不匹配，则rclone将给出错误源和目标存在但不匹配：修改了不可变文件。</p>
+<p>请注意，只有传输文件的命令（例如sync、copy、move）才会受到此行为影响，并且只允许修改。文件仍然可以被明确删除（例如delete、purge）或隐式删除（例如sync、move）。如果需要避免删除和修改，请使用copy -immutable。</p>
+<p>这用作不可变或仅附加数据集（特别是备份存档）的附加保护层，其中修改意味着损坏并且不应传播。</p>
+<h2 id="317-leave-root">3.17 &ndash;leave-root<a hidden class="anchor" aria-hidden="true" href="#317-leave-root">#</a></h2>
+<p>在rmdirs中，即使它是空的，它也不会删除根目录。</p>
+<h2 id="318-log-filefile">3.18 &ndash;log-file=FILE<a hidden class="anchor" aria-hidden="true" href="#318-log-filefile">#</a></h2>
+<p>将输出记录输出至FILE。默认情况下，此选项无效。这对于跟踪同步和-v标志的问题非常有用。有关详细信息，请参阅<a href="https://rclone.org/docs/#logging">“日志记录部分”</a>。</p>
+<p>请注意，如果您使用logrotate程序来管理rclone的日志，那么您应该使用copytruncate选项，因为rclone没有旋转日志的信号。</p>
+<h2 id="319-log-format-list">3.19 &ndash;log-format LIST<a hidden class="anchor" aria-hidden="true" href="#319-log-format-list">#</a></h2>
+<p>日志格式选项是以逗号来分隔的列表。date, time, microseconds, longfile, shortfile, UTC。默认为“date,time”</p>
+<h2 id="320-log-level-level">3.20 &ndash;log-level LEVEL<a hidden class="anchor" aria-hidden="true" href="#320-log-level-level">#</a></h2>
+<p>设置rclone的日志级别：默认的日志级别为NOTICE（警告）</p>
+<ol>
+<li>DEBUG（调试）：等效于-vv。它输出大量的调试信息及有用的bug报告，并真正打出rclone正在做什么。</li>
+<li>INFO（信息）：等效于-v。它全出差于每个传输的信息，默认情况下每分钟打印一次STATS。</li>
+<li>NOTICE（警告）：如果没有提供日志标志，则为默认日志级别。当工作时它输出的信息有限，只输出警告及重要的信息。</li>
+<li>ERROR（错误）：等效于-q。它只输出错误消息。</li>
+</ol>
+<h2 id="321-low-level-retries-numbner">3.21 &ndash;low-level-retries NUMBNER<a hidden class="anchor" aria-hidden="true" href="#321-low-level-retries-numbner">#</a></h2>
+<p>这个选项可以控制rclone的低级重试次数，它用于重试失败的操作，通常是一个HTTP请求。例如，这可能是上传大文件的一部分。你将在日志中看到带有-v标志的低级重试。
+这不应该从正常操作中的默认值更改。但是，如果您进行了大量的低级重试，则可能希望减小该值，以便rclone更快的进行高级重试，请参阅&ndash;retries标志。</p>
+<p>禁用低次重试，使用命令<code>--low-level-retries 1</code></p>
+<h2 id="322-max-backlogn">3.22 &ndash;max-backlog=N<a hidden class="anchor" aria-hidden="true" href="#322-max-backlogn">#</a></h2>
+<p>设定检测或传输用于sync、copy或move的最大的的排队等候的文件积压。你可以任意设定它，它只会在队列使用的时候占用内存。需要注意的是，当使用积压时，它将以数字N单位kb的内存顺序完成。</p>
+<p>设置N的值越大则rclone可以能够更准确地计算待处理文件的数量，并能够更精准地预估完成时间。N值越小则rclone同步至远程列表的越快。</p>
+<h2 id="323-max-deleten">3.23 &ndash;max-delete=N<a hidden class="anchor" aria-hidden="true" href="#323-max-deleten">#</a></h2>
+<p>设置rclone不要删除超过N个文件。如果超出限制，那么返回错误信息并且rclone将停止正在进行的操作。</p>
+<h2 id="324-max-depthn">3.24 &ndash;max-depth=N<a hidden class="anchor" aria-hidden="true" href="#324-max-depthn">#</a></h2>
+<p>设置除了purge（清空）命令之外所有命令的递归深度。例如：<code>rclone --max-depth 1 ls remote:path</code>命令，它只能看到远程设定目录中的顶级目录文件，使用<code>--max-depth 2</code>则意味着您将看到两层目录级别中的所有文件，依次类推。</p>
+<p>由于历史的原因，lsd命令默认使用<code>--max-depth</code>为1，您可以使用命令行标志覆盖它。也可以使用<code>--max-depth 1</code>命令来禁用递归操作。需要注意的是，如果与sync并使用&ndash;delete-excluded一起使用，则会将未递归的文件视为已经排除，并将在目标上删除。如果你不确定会发生什么，请先使用&ndash;dry-run进行测试。</p>
+<h2 id="325-max-transfersize">3.25 &ndash;max-transfer=SIZE<a hidden class="anchor" aria-hidden="true" href="#325-max-transfersize">#</a></h2>
+<p>设定传输的最大值，rclone当达到指定的大小时，它将停止传输，并将退出代码标记为8。默认为关闭。</p>
+<h2 id="326-modify-windowtime">3.26 &ndash;modify-window=TIME<a hidden class="anchor" aria-hidden="true" href="#326-modify-windowtime">#</a></h2>
+<p>检查文件是否已被修改时，这是文件可以具有的最大允许时间差，仍然被视为等效。默认值为1ns，除非被远程控制覆盖。 例如，OS X仅将修改时间存储到最近的秒，因此如果您正在读取和写入OSX文件系统，则默认情况下这将是1秒。此命令行标志允许您覆盖该计算的默认值。</p>
+<h2 id="327-no-gzip-encoding">3.27 &ndash;no-gzip-encoding<a hidden class="anchor" aria-hidden="true" href="#327-no-gzip-encoding">#</a></h2>
+<p>不要设置Accept-Encoding：gzip。 这意味着rclone不会自动向服务器请求压缩文件。如果您已将服务器设置为使用Content-Encoding返回文件：gzip但您上传了压缩文件，则非常有用。没有必要在正常操作中设置它，这样做会降低rclone的网络传输效率。</p>
+<h2 id="328-no-update-modtime">3.28 &ndash;no-update-modtime<a hidden class="anchor" aria-hidden="true" href="#328-no-update-modtime">#</a></h2>
+<p>使用此标志时，如果远程文件不正常，rclone将不会更新远程文件的修改时间。如果远程与其他工具同步（例如Google Drive客户端），则可以使用此功能。</p>
+<h2 id="329--p-progress">3.29 -P, &ndash;progress<a hidden class="anchor" aria-hidden="true" href="#329--p-progress">#</a></h2>
+<p>此标志使rclone更新终端中静态块中的统计信息，提供传输的实时概述。任何日志消息都将在静态块上方滚动。 日志消息会将静态块向下推到终端的底部。通常每500mS更新一次，但可以使用&ndash;stats标志覆盖此期间。这可以与&ndash;stats-one-line标志一起使用，以实现更简单的显示。注意：在Windows上，在修复此错误之前，所有非ASCII字符都将替换为。 当&ndash;progress正在使用时。</p>
+<h2 id="330--q-quiet">3.30 -q, &ndash;quiet<a hidden class="anchor" aria-hidden="true" href="#330--q-quiet">#</a></h2>
+<p>通常，rclone输出统计信息和完成消息。 如果设置此标志，它将尽可能少地输出。</p>
+<h2 id="331-retries-int">3.31 &ndash;retries int<a hidden class="anchor" aria-hidden="true" href="#331-retries-int">#</a></h2>
+<p>如果失败多次失败，则重试整个同步（默认值为3）。一些遥控器可能不可靠，一些重试有助于获取由于错误而未被转移的文件。使用&ndash;retries 1禁用重试。</p>
+<h2 id="332-retries-sleeptime">3.32 &ndash;retries-sleep=time<a hidden class="anchor" aria-hidden="true" href="#332-retries-sleeptime">#</a></h2>
+<p>这将设置&ndash;retries指定的每次重试之间的间隔默认值为0.使用0禁用。</p>
+<h2 id="333-size-only">3.33 &ndash;size-only<a hidden class="anchor" aria-hidden="true" href="#333-size-only">#</a></h2>
+<p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。 如果设置此标志，则rclone将仅检查大小。这可以用于从Dropbox传输文件，这些文件已经被桌面同步客户端修改，该客户端没有像rclone那样设置修改时间的校验和。</p>
+<h2 id="334-statstime">3.34 &ndash;stats=TIME<a hidden class="anchor" aria-hidden="true" href="#334-statstime">#</a></h2>
+<p>传输数据（sync, copy, copyto, move, moveto）的命令将定期打印数据传输统计信息以显示其进度。默认值为1m，使用0禁用。如果设置统计间隔，则所有命令都可以显示统计信息。这在运行其他命令，检查或安装时非常有用。</p>
+<p>默认情况下，统计信息记录在INFO级别，这意味着它们不会以默认日志级别显示NOTICE。使用&ndash;stats-log-level NOTICE或-v使它们显示。有关日志级别的详细信息，请参阅<a href="https://rclone.org/docs/#logging">“日志记录”</a>部分。</p>
+<p>请注意，在macOS上，你可以发送SIGINFO(通常是终端中的ctrl-T)以立即打印统计信息。</p>
+<h2 id="335-stats-file-name-length-integer">3.35 &ndash;stats-file-name-length integer<a hidden class="anchor" aria-hidden="true" href="#335-stats-file-name-length-integer">#</a></h2>
+<p>默认情况下，-stats输出将截断超过40个字符的文件名和路径。 这相当于提供&ndash;stats-file-name-length 40.使用&ndash;stats-file-name-length 0禁用由stats打印的文件名截断。</p>
+<h2 id="336-stats-log-level-string">3.36 &ndash;stats-log-level string<a hidden class="anchor" aria-hidden="true" href="#336-stats-log-level-string">#</a></h2>
+<p>日志级别显示&ndash;stats输出。 这可以是DEBUG，INFO，NOTICE或ERROR。 默认值为INFO。 这意味着在默认的日志记录级别，即注意，统计信息将不会显示 - 如果您希望它们使用&ndash;stats-log-level NOTICE。 有关日志级别的详细信息，请参阅<a href="https://rclone.org/docs/#logging">“日志记录”</a>部分。</p>
+<h2 id="337-stats-one-line">3.37 &ndash;stats-one-line<a hidden class="anchor" aria-hidden="true" href="#337-stats-one-line">#</a></h2>
+<p>指定此值后，rclone会将统计信息压缩为一行，仅显示最重要的统计信息。</p>
+<h2 id="338-stats-unitbitsbytes">3.38 &ndash;stats-unit=bits|bytes<a hidden class="anchor" aria-hidden="true" href="#338-stats-unitbitsbytes">#</a></h2>
+<p>默认情况下，数据传输速率将以bytes/s打印。此选项允许以bit/s打印数据速率</p>
+<h2 id="339-suffixsuffix">3.39 &ndash;suffix=SUFFIX<a hidden class="anchor" aria-hidden="true" href="#339-suffixsuffix">#</a></h2>
+<p>这仅适用于&ndash;backup-dir。 如果未设置，则&ndash;backup-dir将使用其原始名称移动文件。 如果已设置，则文件将添加SUFFIX。有关详细信息，请参阅&ndash;backup-dir。</p>
+<h2 id="340-syslog">3.40 &ndash;syslog<a hidden class="anchor" aria-hidden="true" href="#340-syslog">#</a></h2>
+<p>在功能强大的操作系统（不是Windows或Plan9）上，将所有日志输出发送到syslog。这对于在脚本或rclone挂载中运行rclone非常有用。</p>
+<h2 id="341-syslog-facility-string">3.41 &ndash;syslog-facility string<a hidden class="anchor" aria-hidden="true" href="#341-syslog-facility-string">#</a></h2>
+<p>如果使用&ndash;syslog，则设置syslog工具（例如KERN，USER）。 请参阅man syslog以获取可能的设施列表。 默认设施是DAEMON。</p>
+<h2 id="342-tpslimit-float">3.42 &ndash;tpslimit float<a hidden class="anchor" aria-hidden="true" href="#342-tpslimit-float">#</a></h2>
+<p>每秒限制HTTP事务。 默认值为0，用于表示每秒无限制的事务数。例如，要将rclone限制为每秒10个HTTP事务使用&ndash;tpslimit 10，或者每2秒限制1个事务使用&ndash;tpslimit 0.5。当rclone每秒的事务数导致云存储提供程序出现问题时（例如，禁止您或限制速率），请使用此选项。这对于rclone mount来控制使用它的应用程序的行为非常有用。另见&ndash;tpslimit-burst。</p>
+<h2 id="343-tpslimit-burst-int">3.43 &ndash;tpslimit-burst int<a hidden class="anchor" aria-hidden="true" href="#343-tpslimit-burst-int">#</a></h2>
+<p>&ndash;tpslimit的最大交易次数。 （默认1）
+通常&ndash;tpslimit将完成指定的每秒事务数。 但是，如果你提供&ndash;tps-burst，那么rclone可以在空闲时保存一些事务，从而提供一个高达所提供参数的突发。例如，如果你提供&ndash;tpslimit-burst 10那么如果rclone已经空闲超过10 *  -tpslimit那么它可以在它们再次受限之前非常快地完成10个事务。
+这可用于提高&ndash;tpslimit的性能，而不会更改每秒的长期平均事务数。</p>
+<h2 id="344-track-renames">3.44 &ndash;track-renames<a hidden class="anchor" aria-hidden="true" href="#344-track-renames">#</a></h2>
+<p>默认情况下，rclone不会跟踪重命名的文件，因此如果您在本地重命名文件然后将其同步到远程文件，rclone将删除远程文件上的旧文件并上传新副本。</p>
+<p>如果您使用些标志，并且远程支持服务器端副本或服务器端移动，并且源和目标具有兼容的哈希，则这将在同步操作期间跟踪重命名并执行服务器端重命名。文件将按大小和哈希匹配，如果两者都不匹配，则将考虑重命名。</p>
+<p>如果目标不支持服务器端复制或移动，则rclone将回退到默认行为并将错误级别消息记录到控制台。注意：&ndash;track-renames不支持加密。</p>
+<h2 id="345-delete-before-during-after">3.45 &ndash;delete-(before, during, after)<a hidden class="anchor" aria-hidden="true" href="#345-delete-before-during-after">#</a></h2>
+<p>此选项允许您指定在同步文件夹时删除目标上的文件时间。在开始传输任何新文件或更新文件之前，指定值&ndash;delete-before将删除目标上存在的所有文件，但不删除源文件。这使用两次通过文件系统，一次用于删除，一次用于复制。</p>
+<p>指定&ndash;delete-during将在检查和上载文件时删除文件。这是最快的选项，使用的内存最少。</p>
+<p>指定&ndash;delete-after（默认值）将延迟删除文件，直到成功传输所有新的/更新的文件。要删除的文件将在复制传递中收集，然后在复制传递成功完成后删除。要删除的文件保存在内存中，因此此模式可能会占用更多内存。这是最安全的模式，因为如果之后没有错误，它只会删除文件。如果在删除开始之前出现错误，那么由于存在IO错误，您将收不到删除文件的消息。</p>
+<h2 id="346-fast-list">3.46 &ndash;fast-list<a hidden class="anchor" aria-hidden="true" href="#346-fast-list">#</a></h2>
+<p>任何涉及目录列表的事件（例如sync, copy, ls ）时，rclone通常会列出一个目录并在使用更多目录列表处理任何子目录之前对其进行处理。这可以并行化，前且使用最少的内存可以非常快速地工作。</p>
+<p>但是，某些云存储可以在一个（或少量）事务中列出目录下的所有文件。它些往往是基于bucket的云存储（例如S3, B2, GCS, Swift, Hubic）。</p>
+<p>如果使用&ndash;fast-list标志，则rclone将使用些方法列出目录。这将对列表产生以下影响：</p>
+<ul>
+<li>它将使用更少的交易</li>
+<li>它将使用更多内存，rclone必须将整个列表加载到内存中</li>
+<li>它可能更快，因为它使用更少的事务</li>
+<li>它可能会更慢，因为它无法并行化</li>
+<li>rclone应始终使用和不使用&ndash;fast-list提供相同的结果</li>
+</ul>
+<p>如果您为交易付费并且可以将整个同步列表放入内存中，则建议使用&ndash;fast-list。如果你有一个非常大的同步，那么不要使用&ndash;fast-list否则你将耗尽内存。如果你在不支持的的云存储上使用&ndash;fast-list，那么rclone将忽略它。</p>
+<h2 id="347-timeouttime">3.47 &ndash;timeout=TIME<a hidden class="anchor" aria-hidden="true" href="#347-timeouttime">#</a></h2>
+<p>此参数将设置IO空闲超过。如果传输已经开始但是在这么长时间内变为空闲，则认为它已断开并断开连接。默认为5分钟，设置0为禁用。</p>
+<h2 id="348-transfersn">3.48 &ndash;transfers=N<a hidden class="anchor" aria-hidden="true" href="#348-transfersn">#</a></h2>
+<p>并行运行的文件传输数。如果云存储提供大量超时，或者如果你有足够的带宽和快速的云存储，那么将它设置为较小的数字有时会很有用。默认设置是并行运行4个文件传输。</p>
+<h2 id="349--u-update">3.49 -u, &ndash;update<a hidden class="anchor" aria-hidden="true" href="#349--u-update">#</a></h2>
+<p>该参数会强制rclone跳过目标上存在的任何文件，并且修改时间比源文件更新。如果现有目标文件的修改时间与源文件的修改时间相等，则在大小不同时将更新。不支持MOD时间的云存储上，检查的时间将是上传的时间。这意味着如果上传到其中一个云存储，rclone将跳过目标上存在的任何文件，并且上传的时间比源文件的修改时间更新。当转移到不直接支持MOD时间的云存储时，这很有用，因为它比&ndash;size-only检查更准确，比使用&ndash;checksum更快。</p>
+<h2 id="350-use-server-modtime">3.50 &ndash;use-server-modtime<a hidden class="anchor" aria-hidden="true" href="#350-use-server-modtime">#</a></h2>
+<p>一些云存储是不保留文件修改时间的（例如：Swift, S3）。在此类的云存储上，rclone将原始的modtime存储为对象的附加元数据。默认情况下，当操作modtime时，它将进行API调用以检索元数据。
+使用此参数，可以禁用额外的API调有用，而是依赖服务器的修改时间。通常情况下，本地同步远程数据，只要知道本地文件比服务器文件的时间更新就足够了，因此它可以加快进程并减少所需的API调用次数。</p>
+<h2 id="351--v--w-verbose">3.51 -v, -w, &ndash;verbose<a hidden class="anchor" aria-hidden="true" href="#351--v--w-verbose">#</a></h2>
+<p>使用参数-v，则rclone会返回每个传输文件的少量重要事件；</p>
+<p>使用参数-vv，则rclone会返回每个传输文件执行每一步的详细的信息。</p>
+<h2 id="352--v-version">3.52 -V, &ndash;VERSION<a hidden class="anchor" aria-hidden="true" href="#352--v-version">#</a></h2>
+<p>显示rclone版本信息</p>
+<h1 id="日志记录">日志记录<a hidden class="anchor" aria-hidden="true" href="#日志记录">#</a></h1>
+<p>rclone有4个级别的日志记录，ERROR、NOTICE、INFO和DEBUG。默认情况下，rclone会记录到标准错误。这意味着您可以重定向标准错误并仍然可以看到rclone命令的正常 输出（例如rclone ls）。</p>
+<ul>
+<li>增加-q标志，则rclone将仅生成错误消息</li>
+<li>增加-v标志，rclone将成生错误，通知和信息消息</li>
+<li>增加-vv标志，rclone将生成错误，通知，信息和调试消息
+您还可以使用&ndash;log-level标志控制日志级别。如果使用&ndash;log-file=FILE选项，rclone会将Error，info和Debug消息以及标准错误重定向到FILE。</li>
+</ul>
+<p>如果使用&ndash;syslog标志，则rclone将登录到syslog，而&ndash;syslog-facility控制它使用的设施。</p>
+<p>Rclone将所有日志消息的前缀加上大写字母的前缀，例如INFO，这样可以轻松地为不同类型的信息grep日志文件。</p>
+<h1 id="4-rclone-mount">4. rclone mount<a hidden class="anchor" aria-hidden="true" href="#4-rclone-mount">#</a></h1>
+<h2 id="41-onedrive映射至本地">4.1 OneDrive映射至本地<a hidden class="anchor" aria-hidden="true" href="#41-onedrive映射至本地">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rclone mount One:XXX /volumes/XXX --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask <span style="color:#ae81ff">000</span> --daemon
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/windows/">Windows</a></li>
+      <li><a href="http://localhost:1313/tags/macos/">MacOS</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Vmware ESXi连接iSCSI</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/%E4%B8%BAusbinjectall.kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89ssdt/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>为USBInjectAll.kext创建自定义SSDT</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

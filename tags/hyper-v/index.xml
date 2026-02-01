@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hyper-V on Tiki&#39;s Blog</title>
+    <link>http://localhost:1313/tags/hyper-v/</link>
+    <description>Recent content in Hyper-V on Tiki&#39;s Blog</description>
+    <generator>Hugo -- 0.155.1</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 16 Mar 2023 23:27:07 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hyper-v安装OpenWrt</title>
+      <link>http://localhost:1313/posts/%E6%9C%AA%E5%91%BD%E5%90%8D/</link>
+      <pubDate>Thu, 16 Mar 2023 23:27:07 +0000</pubDate>
+      <guid>http://localhost:1313/posts/%E6%9C%AA%E5%91%BD%E5%90%8D/</guid>
+      <description>&lt;h2 id=&#34;开启vt虚拟化&#34;&gt;开启VT虚拟化&lt;/h2&gt;
+&lt;p&gt;BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;新建hyper-v虚拟机&#34;&gt;新建Hyper-V虚拟机&lt;/h2&gt;
+&lt;p&gt;下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+  </channel>
+</rss>

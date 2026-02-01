@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>OpenVPN on Tiki's Blog</title><link>https://zhangzr.com/tags/openvpn/</link><description>Recent content in OpenVPN on Tiki's Blog</description><generator>Hugo -- 0.155.1</generator><language>zh-cn</language><lastBuildDate>Fri, 31 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zhangzr.com/tags/openvpn/index.xml" rel="self" type="application/rss+xml"/><item><title>openvpn安装与配置</title><link>https://zhangzr.com/posts/openvpn%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/openvpn%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="openvpn安装与配置"&gt;OpenVPN安装与配置&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!note] 文档概述
+本文档详细介绍了OpenVPN的安装与配置方法，包括在Linux环境（Ubuntu）和DD-WRT路由器环境下的配置步骤。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
+&lt;p&gt;OpenVPN是一个用于创建虚拟专用网络加密通道的软件包，最早由James Yonan编写。OpenVPN允许创建的VPN使用公开密钥、电子证书、或者用户名／密码来进行身份验证。&lt;/p&gt;
+&lt;p&gt;它大量使用了OpenSSL加密库中的SSLv3/TLSv1协议函数库。&lt;/p&gt;
+&lt;p&gt;目前OpenVPN能在Solaris、Linux、OpenBSD、FreeBSD、NetBSD、Mac OS X与Microsoft Windows以及Android和iOS上运行，并包含了许多安全性的功能。它并不是一个基于Web的VPN软件，也不与IPsec及其他VPN软件包兼容。&lt;/p&gt;
+&lt;h2 id="基础知识点"&gt;基础知识点&lt;/h2&gt;
+&lt;h3 id="为什么使用pki而不是静态密码呢"&gt;为什么使用PKI而不是静态密码呢？&lt;/h3&gt;
+&lt;p&gt;静态加密使用的是静态密钥，它容易设置，但是缺点是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一次只能有一个客户端使用服务器&lt;/li&gt;
+&lt;li&gt;如果密钥遭到丢失，将带来不可挽回的损失&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用PKI允许一次使用多个客户端，每个客户端都有自己的密钥。服务器不必具有客户端的任何特殊知识。OpenVPN只需要提供我们即将设置的OpenVPN CA签署的证书。反之，客户端也会验证服务器的证书&lt;/p&gt;
+&lt;p&gt;OpenVPN CA密钥不应放在OpenVPN服务器上。它仅用于签署客户端的证书，因此应该存储在可以执行操作的地方，但不能被盗。一旦CA密码被盗，你将无法再信任该CA颁发的任何证书。&lt;/p&gt;
+&lt;h2 id="什么是certificate-authorityca"&gt;什么是Certificate Authority(CA)？&lt;/h2&gt;
+&lt;p&gt;你可能在应用中遇到过TLS网站证书，通常证书在WEB上下文中有两个作用&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;加密浏览器与服务器之间的数据&lt;/li&gt;
+&lt;li&gt;确保流览器连接到目标网站&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;只有当浏览器信任某个证书颁发机构颁发的证书时，才可以执行第二个任务。任何人都可以制作证书，但它并不能保证证书是合法的拥有者。因为证书颁发机构可以带来可靠的额外保证，因此CA证书分为收费与免费，创建自己的CA以签署OpenVPN客户端证书是一种可以控制谁可以连接到OpenVpn服务器的有效方法。这样您的Openvpn服务器只会信任你要创建的CA签署的客户端证书。同样如果一个政府机构在互联网提供一些便民服务，那么如何有效的避免钓鱼网站的信息套取呢，注册收费的CA证书是个有效的方法。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!tip] CA证书的作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提供身份验证和信任链&lt;/li&gt;
+&lt;li&gt;防止中间人攻击&lt;/li&gt;
+&lt;li&gt;控制VPN接入权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="完美前向保密pfsperfect-forward-secrecy"&gt;完美前向保密PFS（perfect forward secrecy）&lt;/h3&gt;
+&lt;p&gt;“perfect forward secrecy”则是由Christoph G. Günther在EUROCRYPT ’89提出的，其最初用于定义会话密钥交换协议的一种安全性。它的作用是保证密钥丢失之前的消息案全性或签名的不可伪造性。一般而言公钥是固定的，而密钥则随着时间进行更新。这个更新过程是单向的，因引也就保证了拿到当前的密钥，是无法恢复出以前的密钥，从而保证了前向安全。&lt;/p&gt;
+&lt;p&gt;Openvpn服务器配置我们将使用“perfect forward secrecy”，也就是说，加密的数据即使在前进的进候也会是秘密的。用于连接的证书和密钥不用于加密您的通讯数据。它们在传递数据时使用临时的加密密钥。默认情况下，这个临时密钥随着时间的推移每小时旋转一次。以这种方式，如果来不法份子收集了VPN数据包要想获得临时密钥那是不可能的，它允其量能够解密你最后一小时的数据。&lt;/p&gt;
+&lt;p&gt;在Openvpn服务器上配置了perfect forward secrecy你会在日志中看到每小时数据重置的情况。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;2
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;3
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;4
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;5
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;6
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;7
+&lt;/span&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 TLS: soft reset sec=0 bytes=51538/0 pkts=255/0
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=1, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=Happy Go Lucky Toys CA, name=EasyRSA, emailAddress=ca@happygoluckytoys.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=0, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=client, name=EasyRSA, emailAddress=noreply@happygoluckytoys.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Cipher &amp;#39;AES-256-CBC&amp;#39; initialized with 256 bit key
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Using 512 bit message hash &amp;#39;SHA512&amp;#39; for HMAC authentication
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Cipher &amp;#39;AES-256-CBC&amp;#39; initialized with 256 bit key
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Using 512 bit message hash &amp;#39;SHA512&amp;#39; for HMAC authentication
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tue Jun 13 01:51:21 2017 client/142.68.135.226:53504 Control Channel: TLSv1.2, cipher TLSv1/SSLv3 DHE-RSA-AES256-SHA256, 2048 bit RSA
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Openvpn允许您控制旋转周期以匹配偏执狂级别。在server.conf文件中配置&lt;code&gt;reneg-sec xx&lt;/code&gt;控制关键周期是多少秒。&lt;/p&gt;</description></item></channel></rss>
