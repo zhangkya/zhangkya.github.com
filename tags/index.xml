@@ -1,1 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tags on Tiki's Blog</title><link>https://zhangzr.com/tags/</link><description>Recent content in Tags on Tiki's Blog</description><generator>Hugo -- 0.155.1</generator><language>zh-cn</language><lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zhangzr.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenWrt</title><link>https://zhangzr.com/tags/openwrt/</link><pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/openwrt/</guid><description/></item><item><title>Windows</title><link>https://zhangzr.com/tags/windows/</link><pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/windows/</guid><description/></item><item><title>Proxmox</title><link>https://zhangzr.com/tags/proxmox/</link><pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/proxmox/</guid><description/></item><item><title>Linux</title><link>https://zhangzr.com/tags/linux/</link><pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/linux/</guid><description/></item><item><title>Vmware</title><link>https://zhangzr.com/tags/vmware/</link><pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/vmware/</guid><description/></item><item><title>MacOS</title><link>https://zhangzr.com/tags/macos/</link><pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/macos/</guid><description/></item><item><title>AppleTv</title><link>https://zhangzr.com/tags/appletv/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/appletv/</guid><description/></item><item><title>DD-WRT</title><link>https://zhangzr.com/tags/dd-wrt/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/dd-wrt/</guid><description/></item><item><title>OpenVPN</title><link>https://zhangzr.com/tags/openvpn/</link><pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/openvpn/</guid><description/></item><item><title>Python</title><link>https://zhangzr.com/tags/python/</link><pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate><guid>https://zhangzr.com/tags/python/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Tiki&#39;s Blog</title>
+    <link>https://zhangzr.com/tags/</link>
+    <description>Recent content in Tags on Tiki&#39;s Blog</description>
+    <generator>Hugo -- 0.155.1</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zhangzr.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenWrt</title>
+      <link>https://zhangzr.com/tags/openwrt/</link>
+      <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/openwrt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://zhangzr.com/tags/windows/</link>
+      <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proxmox</title>
+      <link>https://zhangzr.com/tags/proxmox/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/proxmox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://zhangzr.com/tags/linux/</link>
+      <pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vmware</title>
+      <link>https://zhangzr.com/tags/vmware/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/vmware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MacOS</title>
+      <link>https://zhangzr.com/tags/macos/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/macos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AppleTv</title>
+      <link>https://zhangzr.com/tags/appletv/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/appletv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DD-WRT</title>
+      <link>https://zhangzr.com/tags/dd-wrt/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/dd-wrt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenVPN</title>
+      <link>https://zhangzr.com/tags/openvpn/</link>
+      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/openvpn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://zhangzr.com/tags/python/</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/python/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

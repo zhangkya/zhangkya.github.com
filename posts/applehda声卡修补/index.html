@@ -1,4 +1,13 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AppleHDA声卡修补 | Tiki's Blog</title><meta name=keywords content="MacOS"><meta name=description content="1 计算编解码器命令和路径
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AppleHDA声卡修补 | Tiki&#39;s Blog</title>
+<meta name="keywords" content="MacOS">
+<meta name="description" content="1 计算编解码器命令和路径
 1.1 获取解码器
 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。
 
@@ -10,15 +19,90 @@
 5
 
 
-cat /proc/asound/card0/codec#0 > ~/Desktop/codec_dump.txt
+cat /proc/asound/card0/codec#0 &gt; ~/Desktop/codec_dump.txt
 # 或者
-cat /proc/asound/card0/codec#1 > ~/Desktop/codec_dump.txt
+cat /proc/asound/card0/codec#1 &gt; ~/Desktop/codec_dump.txt
 # 或者
-cat /proc/asound/card0/codec#2 > ~/Desktop/codec_dump.txt 
+cat /proc/asound/card0/codec#2 &gt; ~/Desktop/codec_dump.txt 
 
 
-"><meta name=author content="tiki"><link rel=canonical href=https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/><link crossorigin=anonymous href=/assets/css/stylesheet.8a665b856a8755bd0ec24ffe92c13ac09076571c7bbb8d0e120760b0f983f8aa.css integrity="sha256-imZbhWqHVb0Owk/+ksE6wJB2Vxx7u40OEgdgsPmD+Ko=" rel="preload stylesheet" as=style><link rel=icon href=https://zhangzr.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://zhangzr.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://zhangzr.com/favicon-32x32.png><link rel=apple-touch-icon href=https://zhangzr.com/apple-touch-icon.png><link rel=mask-icon href=https://zhangzr.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/"><meta property="og:site_name" content="Tiki's Blog"><meta property="og:title" content="AppleHDA声卡修补"><meta property="og:description" content="1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。
-1 2 3 4 5 cat /proc/asound/card0/codec#0 > ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 > ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 > ~/Desktop/codec_dump.txt "><meta property="og:locale" content="zh-cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-11-05T00:00:00+00:00"><meta property="article:modified_time" content="2018-11-05T00:00:00+00:00"><meta property="article:tag" content="MacOS"><meta name=twitter:card content="summary"><meta name=twitter:title content="AppleHDA声卡修补"><meta name=twitter:description content="1 计算编解码器命令和路径
+">
+<meta name="author" content="tiki">
+<link rel="canonical" href="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://zhangzr.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://zhangzr.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://zhangzr.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
+  <meta property="og:site_name" content="Tiki&#39;s Blog">
+  <meta property="og:title" content="AppleHDA声卡修补">
+  <meta property="og:description" content="1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。
+1 2 3 4 5 cat /proc/asound/card0/codec#0 &gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 &gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 &gt; ~/Desktop/codec_dump.txt ">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-11-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-11-05T00:00:00+00:00">
+    <meta property="article:tag" content="MacOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AppleHDA声卡修补">
+<meta name="twitter:description" content="1 计算编解码器命令和路径
 1.1 获取解码器
 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。
 
@@ -30,114 +114,508 @@ cat /proc/asound/card0/codec#2 > ~/Desktop/codec_dump.txt
 5
 
 
-cat /proc/asound/card0/codec#0 > ~/Desktop/codec_dump.txt
+cat /proc/asound/card0/codec#0 &gt; ~/Desktop/codec_dump.txt
 # 或者
-cat /proc/asound/card0/codec#1 > ~/Desktop/codec_dump.txt
+cat /proc/asound/card0/codec#1 &gt; ~/Desktop/codec_dump.txt
 # 或者
-cat /proc/asound/card0/codec#2 > ~/Desktop/codec_dump.txt 
+cat /proc/asound/card0/codec#2 &gt; ~/Desktop/codec_dump.txt 
 
 
-"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://zhangzr.com/posts/"},{"@type":"ListItem","position":2,"name":"AppleHDA声卡修补","item":"https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AppleHDA声卡修补","name":"AppleHDA声卡修补","description":"1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。\n1 2 3 4 5 cat /proc/asound/card0/codec#0 \u0026gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 \u0026gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 \u0026gt; ~/Desktop/codec_dump.txt ","keywords":["MacOS"],"articleBody":"1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。\n1 2 3 4 5 cat /proc/asound/card0/codec#0 \u003e ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 \u003e ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 \u003e ~/Desktop/codec_dump.txt 1.2 分析编解码器转储并提取相关信息 我们需要从编码器转储以下细节：\nCodec Address Vendor ID（Convert this hex value into decimal value） Pin Complex Nodes with Control Name Audio Mixer/Selector Nodes Audio Output Nodes Audio Input Nodes 2 修补XML（平台和布局）文件 2.1 从Pin复杂节点中提取值’Pin Default’、‘EAPD’、‘Node ID’ 我们已经从第1部分的编解码器转储中分析并获得了相关的详细信息。现在，我们尝试从上面提取的控制名称的Pin Complex节点获取Pin Default、EAPD和Node ID的值 举例：ACL269 Pin Complex Nodes with Control Name\n1 2 3 4 Node 14 : Pin Default 0x99130110, EAPD: 0x02 Node 18 : Pin Default 0x04a11820 Node 19 : Pin Default 0x99a3092f Node 21 : Pin Default 0x0421101f 2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 Node 14: Pin Default value: 0x99130110 Extracted verb data: \"10 01 13 99\" Node 18: Pin Default value: 0x04a11820 Extracted verb data: \"20 18 a1 04\" Node 19: Pin Default value: 0x99a3092f Extracted verb data: \"2f 09 a3 99\" Node 21: Pin Default value: 0x0421101f Extracted verb data: \"1f 10 21 04\" 现在，我们需要根据第二篇文章中解释的动词信息来纠正上面的verb数据。\n1 2 3 4 5 6 7 8 9 10 11 12 13 at Node 14: 10 01 13 99 [ Correction 99-\u003e90(Note 1)] at Node 18: 20 18 a1 04 [ Correction 18-\u003e10(Note 2)] at Node 19: 2f 09 a3 99 [ Correction 2f-\u003e20(Note 3) 09-\u003e01(Note 2) 99-\u003e90(Note 1)] at Node 21: 1f 10 21 04 [ Correction 1f-\u003e10(Note 3)] at Node 14 EAPD : 02 (Note 5) Corrected Verb Data: Code: at Node 14: 10 01 13 90 at Node 18: 20 10 a1 04 at Node 19: 20 01 a3 90 at Node 21: 10 10 21 04 at Node 14 EAPD : 02 默认关联修正后的Verb数据：注释4\n1 2 3 4 5 at Node 14: 10 01 13 90 at Node 18: 20 10 a1 04 at Node 19: 30 01 a3 90 at Node 21: 40 10 21 04 at Node 14 EAPD : 02 MIC修正后的最终Verb数据：注释6和注释7\n1 2 3 4 5 Node 14: 10 01 13 90 Node 18: 20 10 81 04 Node 19: 30 01 a0 90 Node 21: 40 10 21 04 Node 14 EAPD : 02 ","wordCount":"353","inLanguage":"en","datePublished":"2018-11-05T00:00:00Z","dateModified":"2018-11-05T00:00:00Z","author":{"@type":"Person","name":"tiki"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/"},"publisher":{"@type":"Organization","name":"Tiki's Blog","logo":{"@type":"ImageObject","url":"https://zhangzr.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://zhangzr.com/ accesskey=h title="Tiki's Blog (Alt + H)">Tiki's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://zhangzr.com/categories/ title="🗂️ 分类"><span>🗂️ 分类</span></a></li><li><a href=https://zhangzr.com/tags/ title="🏷️ 标签"><span>🏷️ 标签</span></a></li><li><a href=https://zhangzr.com/archives/ title="🗓️ 时间轴"><span>🗓️ 时间轴</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://zhangzr.com/>🏠主页</a>&nbsp;»&nbsp;<a href=https://zhangzr.com/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">AppleHDA声卡修补</h1><div class=post-meta><div class=post-meta><span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 发表于: 2018-11-05 ｜</span>&nbsp;&nbsp;<span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 6 12 6 12 12S6 20 6 26"/></svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class=post-meta-item>｜ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-6 8-6s8 2 8 6"/></svg> 作者: tiki</span></div></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#1-%e8%ae%a1%e7%ae%97%e7%bc%96%e8%a7%a3%e7%a0%81%e5%99%a8%e5%91%bd%e4%bb%a4%e5%92%8c%e8%b7%af%e5%be%84 aria-label="1 计算编解码器命令和路径">1 计算编解码器命令和路径</a><ul><li><a href=#11-%e8%8e%b7%e5%8f%96%e8%a7%a3%e7%a0%81%e5%99%a8 aria-label="1.1 获取解码器">1.1 获取解码器</a></li><li><a href=#12-%e5%88%86%e6%9e%90%e7%bc%96%e8%a7%a3%e7%a0%81%e5%99%a8%e8%bd%ac%e5%82%a8%e5%b9%b6%e6%8f%90%e5%8f%96%e7%9b%b8%e5%85%b3%e4%bf%a1%e6%81%af aria-label="1.2 分析编解码器转储并提取相关信息">1.2 分析编解码器转储并提取相关信息</a></li></ul></li><li><a href=#2-%e4%bf%ae%e8%a1%a5xml%e5%b9%b3%e5%8f%b0%e5%92%8c%e5%b8%83%e5%b1%80%e6%96%87%e4%bb%b6 aria-label="2 修补XML（平台和布局）文件">2 修补XML（平台和布局）文件</a><ul><li><a href=#21-%e4%bb%8epin%e5%a4%8d%e6%9d%82%e8%8a%82%e7%82%b9%e4%b8%ad%e6%8f%90%e5%8f%96%e5%80%bcpin-defaulteapdnode-id aria-label="2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;">2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;</a></li><li><a href=#22-pin%e9%bb%98%e8%ae%a4%e5%80%bc%e5%bf%85%e9%a1%bb%e4%bb%8e%e5%8f%b3%e5%90%91%e5%b7%a6%e8%af%bb%e5%8f%96%e6%88%91%e4%bb%ac%e5%b0%86%e4%bb%8e%e5%85%b6%e4%b8%ad%e5%8f%96%e4%b8%a4%e4%b8%aa%e6%95%b0%e5%ad%97%e7%84%b6%e5%90%8e%e4%bb%8e%e5%b7%a6%e5%88%b0%e5%8f%b3%e5%86%99%e4%b8%8b%e6%9d%a5%e5%a6%82%e4%b8%8b%e9%9d%a2%e8%a7%a3%e9%87%8a%e7%9a%84alc269 aria-label="2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269">2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269</a></li></ul></li></ul></div></details></div><div class=post-content><h1 id=1-计算编解码器命令和路径>1 计算编解码器命令和路径<a hidden class=anchor aria-hidden=true href=#1-计算编解码器命令和路径>#</a></h1><h2 id=11-获取解码器>1.1 获取解码器<a hidden class=anchor aria-hidden=true href=#11-获取解码器>#</a></h2><p>首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cat /proc/asound/card0/codec#0 &gt; ~/Desktop/codec_dump.txt
-</span></span><span style=display:flex><span><span style=color:#75715e># 或者</span>
-</span></span><span style=display:flex><span>cat /proc/asound/card0/codec#1 &gt; ~/Desktop/codec_dump.txt
-</span></span><span style=display:flex><span><span style=color:#75715e># 或者</span>
-</span></span><span style=display:flex><span>cat /proc/asound/card0/codec#2 &gt; ~/Desktop/codec_dump.txt 
-</span></span></code></pre></td></tr></table></div></div><h2 id=12-分析编解码器转储并提取相关信息>1.2 分析编解码器转储并提取相关信息<a hidden class=anchor aria-hidden=true href=#12-分析编解码器转储并提取相关信息>#</a></h2><p>我们需要从编码器转储以下细节：</p><ol><li>Codec</li><li>Address</li><li>Vendor ID（Convert this hex value into decimal value）</li><li>Pin Complex Nodes with Control Name</li><li>Audio Mixer/Selector Nodes</li><li>Audio Output Nodes</li><li>Audio Input Nodes</li></ol><h1 id=2-修补xml平台和布局文件>2 修补XML（平台和布局）文件<a hidden class=anchor aria-hidden=true href=#2-修补xml平台和布局文件>#</a></h1><h2 id=21-从pin复杂节点中提取值pin-defaulteapdnode-id>2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;<a hidden class=anchor aria-hidden=true href=#21-从pin复杂节点中提取值pin-defaulteapdnode-id>#</a></h2><p>我们已经从第1部分的编解码器转储中分析并获得了相关的详细信息。现在，我们尝试从上面提取的控制名称的Pin Complex节点获取Pin Default、EAPD和Node ID的值
+">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://zhangzr.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AppleHDA声卡修补",
+      "item": "https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AppleHDA声卡修补",
+  "name": "AppleHDA声卡修补",
+  "description": "1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。\n1 2 3 4 5 cat /proc/asound/card0/codec#0 \u0026gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 \u0026gt; ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 \u0026gt; ~/Desktop/codec_dump.txt ",
+  "keywords": [
+    "MacOS"
+  ],
+  "articleBody": "1 计算编解码器命令和路径 1.1 获取解码器 首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。\n1 2 3 4 5 cat /proc/asound/card0/codec#0 \u003e ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#1 \u003e ~/Desktop/codec_dump.txt # 或者 cat /proc/asound/card0/codec#2 \u003e ~/Desktop/codec_dump.txt 1.2 分析编解码器转储并提取相关信息 我们需要从编码器转储以下细节：\nCodec Address Vendor ID（Convert this hex value into decimal value） Pin Complex Nodes with Control Name Audio Mixer/Selector Nodes Audio Output Nodes Audio Input Nodes 2 修补XML（平台和布局）文件 2.1 从Pin复杂节点中提取值’Pin Default’、‘EAPD’、‘Node ID’ 我们已经从第1部分的编解码器转储中分析并获得了相关的详细信息。现在，我们尝试从上面提取的控制名称的Pin Complex节点获取Pin Default、EAPD和Node ID的值 举例：ACL269 Pin Complex Nodes with Control Name\n1 2 3 4 Node 14 : Pin Default 0x99130110, EAPD: 0x02 Node 18 : Pin Default 0x04a11820 Node 19 : Pin Default 0x99a3092f Node 21 : Pin Default 0x0421101f 2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 Node 14: Pin Default value: 0x99130110 Extracted verb data: \"10 01 13 99\" Node 18: Pin Default value: 0x04a11820 Extracted verb data: \"20 18 a1 04\" Node 19: Pin Default value: 0x99a3092f Extracted verb data: \"2f 09 a3 99\" Node 21: Pin Default value: 0x0421101f Extracted verb data: \"1f 10 21 04\" 现在，我们需要根据第二篇文章中解释的动词信息来纠正上面的verb数据。\n1 2 3 4 5 6 7 8 9 10 11 12 13 at Node 14: 10 01 13 99 [ Correction 99-\u003e90(Note 1)] at Node 18: 20 18 a1 04 [ Correction 18-\u003e10(Note 2)] at Node 19: 2f 09 a3 99 [ Correction 2f-\u003e20(Note 3) 09-\u003e01(Note 2) 99-\u003e90(Note 1)] at Node 21: 1f 10 21 04 [ Correction 1f-\u003e10(Note 3)] at Node 14 EAPD : 02 (Note 5) Corrected Verb Data: Code: at Node 14: 10 01 13 90 at Node 18: 20 10 a1 04 at Node 19: 20 01 a3 90 at Node 21: 10 10 21 04 at Node 14 EAPD : 02 默认关联修正后的Verb数据：注释4\n1 2 3 4 5 at Node 14: 10 01 13 90 at Node 18: 20 10 a1 04 at Node 19: 30 01 a3 90 at Node 21: 40 10 21 04 at Node 14 EAPD : 02 MIC修正后的最终Verb数据：注释6和注释7\n1 2 3 4 5 Node 14: 10 01 13 90 Node 18: 20 10 81 04 Node 19: 30 01 a0 90 Node 21: 40 10 21 04 Node 14 EAPD : 02 ",
+  "wordCount" : "353",
+  "inLanguage": "en",
+  "datePublished": "2018-11-05T00:00:00Z",
+  "dateModified": "2018-11-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "tiki"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tiki's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zhangzr.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://zhangzr.com/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://zhangzr.com/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      AppleHDA声卡修补
+    </h1>
+    <div class="post-meta"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2018-11-05 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-%e8%ae%a1%e7%ae%97%e7%bc%96%e8%a7%a3%e7%a0%81%e5%99%a8%e5%91%bd%e4%bb%a4%e5%92%8c%e8%b7%af%e5%be%84" aria-label="1 计算编解码器命令和路径">1 计算编解码器命令和路径</a><ul>
+                        
+                <li>
+                    <a href="#11-%e8%8e%b7%e5%8f%96%e8%a7%a3%e7%a0%81%e5%99%a8" aria-label="1.1 获取解码器">1.1 获取解码器</a></li>
+                <li>
+                    <a href="#12-%e5%88%86%e6%9e%90%e7%bc%96%e8%a7%a3%e7%a0%81%e5%99%a8%e8%bd%ac%e5%82%a8%e5%b9%b6%e6%8f%90%e5%8f%96%e7%9b%b8%e5%85%b3%e4%bf%a1%e6%81%af" aria-label="1.2 分析编解码器转储并提取相关信息">1.2 分析编解码器转储并提取相关信息</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-%e4%bf%ae%e8%a1%a5xml%e5%b9%b3%e5%8f%b0%e5%92%8c%e5%b8%83%e5%b1%80%e6%96%87%e4%bb%b6" aria-label="2 修补XML（平台和布局）文件">2 修补XML（平台和布局）文件</a><ul>
+                        
+                <li>
+                    <a href="#21-%e4%bb%8epin%e5%a4%8d%e6%9d%82%e8%8a%82%e7%82%b9%e4%b8%ad%e6%8f%90%e5%8f%96%e5%80%bcpin-defaulteapdnode-id" aria-label="2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;">2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;</a></li>
+                <li>
+                    <a href="#22-pin%e9%bb%98%e8%ae%a4%e5%80%bc%e5%bf%85%e9%a1%bb%e4%bb%8e%e5%8f%b3%e5%90%91%e5%b7%a6%e8%af%bb%e5%8f%96%e6%88%91%e4%bb%ac%e5%b0%86%e4%bb%8e%e5%85%b6%e4%b8%ad%e5%8f%96%e4%b8%a4%e4%b8%aa%e6%95%b0%e5%ad%97%e7%84%b6%e5%90%8e%e4%bb%8e%e5%b7%a6%e5%88%b0%e5%8f%b3%e5%86%99%e4%b8%8b%e6%9d%a5%e5%a6%82%e4%b8%8b%e9%9d%a2%e8%a7%a3%e9%87%8a%e7%9a%84alc269" aria-label="2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269">2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="1-计算编解码器命令和路径">1 计算编解码器命令和路径<a hidden class="anchor" aria-hidden="true" href="#1-计算编解码器命令和路径">#</a></h1>
+<h2 id="11-获取解码器">1.1 获取解码器<a hidden class="anchor" aria-hidden="true" href="#11-获取解码器">#</a></h2>
+<p>首先，我们需要从linux获取音频编码器的转储。因此，进入USB/CD（或）完全安装的任何Linux发行版。并在终端中输入以下命令以在桌面上以文本格式获取转储。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /proc/asound/card0/codec#0 &gt; ~/Desktop/codec_dump.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者</span>
+</span></span><span style="display:flex;"><span>cat /proc/asound/card0/codec#1 &gt; ~/Desktop/codec_dump.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者</span>
+</span></span><span style="display:flex;"><span>cat /proc/asound/card0/codec#2 &gt; ~/Desktop/codec_dump.txt 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="12-分析编解码器转储并提取相关信息">1.2 分析编解码器转储并提取相关信息<a hidden class="anchor" aria-hidden="true" href="#12-分析编解码器转储并提取相关信息">#</a></h2>
+<p>我们需要从编码器转储以下细节：</p>
+<ol>
+<li>Codec</li>
+<li>Address</li>
+<li>Vendor ID（Convert this hex value into decimal value）</li>
+<li>Pin Complex Nodes with Control Name</li>
+<li>Audio Mixer/Selector Nodes</li>
+<li>Audio Output Nodes</li>
+<li>Audio Input Nodes</li>
+</ol>
+<h1 id="2-修补xml平台和布局文件">2 修补XML（平台和布局）文件<a hidden class="anchor" aria-hidden="true" href="#2-修补xml平台和布局文件">#</a></h1>
+<h2 id="21-从pin复杂节点中提取值pin-defaulteapdnode-id">2.1 从Pin复杂节点中提取值&rsquo;Pin Default&rsquo;、&lsquo;EAPD&rsquo;、&lsquo;Node ID&rsquo;<a hidden class="anchor" aria-hidden="true" href="#21-从pin复杂节点中提取值pin-defaulteapdnode-id">#</a></h2>
+<p>我们已经从第1部分的编解码器转储中分析并获得了相关的详细信息。现在，我们尝试从上面提取的控制名称的Pin Complex节点获取Pin Default、EAPD和Node ID的值
 举例：ACL269
-Pin Complex Nodes with Control Name</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>Node <span style=color:#ae81ff>14</span> : Pin Default 0x99130110, EAPD: 0x02
-</span></span><span style=display:flex><span>Node <span style=color:#ae81ff>18</span> : Pin Default 0x04a11820
-</span></span><span style=display:flex><span>Node <span style=color:#ae81ff>19</span> : Pin Default 0x99a3092f
-</span></span><span style=display:flex><span>Node <span style=color:#ae81ff>21</span> : Pin Default 0x0421101f
-</span></span></code></pre></td></tr></table></div></div><h2 id=22-pin默认值必须从右向左读取我们将从其中取两个数字然后从左到右写下来如下面解释的alc269>2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269<a hidden class=anchor aria-hidden=true href=#22-pin默认值必须从右向左读取我们将从其中取两个数字然后从左到右写下来如下面解释的alc269>#</a></h2><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>Node 14:
-</span></span><span style=display:flex><span>Pin Default value: 0x99130110
-</span></span><span style=display:flex><span>Extracted verb data: <span style=color:#e6db74>&#34;10 01 13 99&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Node 18:
-</span></span><span style=display:flex><span>Pin Default value: 0x04a11820
-</span></span><span style=display:flex><span>Extracted verb data: <span style=color:#e6db74>&#34;20 18 a1 04&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Node 19:
-</span></span><span style=display:flex><span>Pin Default value: 0x99a3092f
-</span></span><span style=display:flex><span>Extracted verb data: <span style=color:#e6db74>&#34;2f 09 a3 99&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Node 21:
-</span></span><span style=display:flex><span>Pin Default value: 0x0421101f
-</span></span><span style=display:flex><span>Extracted verb data: <span style=color:#e6db74>&#34;1f 10 21 04&#34;</span>
-</span></span></code></pre></td></tr></table></div></div><p>现在，我们需要根据第二篇文章中解释的动词信息来纠正上面的verb数据。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>at Node 14: <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>01</span> <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>99</span> <span style=color:#f92672>[</span> Correction 99-&gt;90<span style=color:#f92672>(</span>Note 1<span style=color:#f92672>)]</span>
-</span></span><span style=display:flex><span>at Node 18: <span style=color:#ae81ff>20</span> <span style=color:#ae81ff>18</span> a1 <span style=color:#ae81ff>04</span> <span style=color:#f92672>[</span> Correction 18-&gt;10<span style=color:#f92672>(</span>Note 2<span style=color:#f92672>)]</span>
-</span></span><span style=display:flex><span>at Node 19: 2f <span style=color:#ae81ff>09</span> a3 <span style=color:#ae81ff>99</span> <span style=color:#f92672>[</span> Correction 2f-&gt;20<span style=color:#f92672>(</span>Note 3<span style=color:#f92672>)</span> 09-&gt;01<span style=color:#f92672>(</span>Note 2<span style=color:#f92672>)</span> 99-&gt;90<span style=color:#f92672>(</span>Note 1<span style=color:#f92672>)]</span>
-</span></span><span style=display:flex><span>at Node 21: 1f <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>21</span> <span style=color:#ae81ff>04</span> <span style=color:#f92672>[</span> Correction 1f-&gt;10<span style=color:#f92672>(</span>Note 3<span style=color:#f92672>)]</span>
-</span></span><span style=display:flex><span>at Node <span style=color:#ae81ff>14</span> EAPD : <span style=color:#ae81ff>02</span> <span style=color:#f92672>(</span>Note 5<span style=color:#f92672>)</span> 
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Corrected Verb Data:
-</span></span><span style=display:flex><span>Code:
-</span></span><span style=display:flex><span>at Node 14: <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>01</span> <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>at Node 18: <span style=color:#ae81ff>20</span> <span style=color:#ae81ff>10</span> a1 <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>at Node 19: <span style=color:#ae81ff>20</span> <span style=color:#ae81ff>01</span> a3 <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>at Node 21: <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>21</span> <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>at Node <span style=color:#ae81ff>14</span> EAPD : <span style=color:#ae81ff>02</span>
-</span></span></code></pre></td></tr></table></div></div><p>默认关联修正后的Verb数据：注释4</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>at Node 14: <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>01</span> <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>at Node 18: <span style=color:#ae81ff>20</span> <span style=color:#ae81ff>10</span> a1 <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>at Node 19: <span style=color:#ae81ff>30</span> <span style=color:#ae81ff>01</span> a3 <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>at Node 21: <span style=color:#ae81ff>40</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>21</span> <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>at Node <span style=color:#ae81ff>14</span> EAPD : <span style=color:#ae81ff>02</span>
-</span></span></code></pre></td></tr></table></div></div><p>MIC修正后的最终Verb数据：注释6和注释7</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>Node 14: <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>01</span> <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>Node 18: <span style=color:#ae81ff>20</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>81</span> <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>Node 19: <span style=color:#ae81ff>30</span> <span style=color:#ae81ff>01</span> a0 <span style=color:#ae81ff>90</span>
-</span></span><span style=display:flex><span>Node 21: <span style=color:#ae81ff>40</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>21</span> <span style=color:#ae81ff>04</span>
-</span></span><span style=display:flex><span>Node <span style=color:#ae81ff>14</span> EAPD : <span style=color:#ae81ff>02</span>
-</span></span></code></pre></td></tr></table></div></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://zhangzr.com/tags/macos/>MacOS</a></li></ul><nav class=paginav><a class=prev href=https://zhangzr.com/posts/%E4%B8%BAusbinjectall.kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89ssdt/><span class=title>« 上一页</span><br><span>为USBInjectAll.kext创建自定义SSDT</span>
-</a><a class=next href=https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/><span class=title>下一页 »</span><br><span>AppleTV伪装证书</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://zhangzr.com/>Tiki's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script>document.addEventListener("DOMContentLoaded",function(){const e=Array.from(document.querySelectorAll(".post-content img"));mediumZoom(e,{margin:24,background:"rgba(0, 0, 0, 0.8)",scrollOffset:0})})</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="复制";function s(){t.innerHTML="已复制！",setTimeout(()=>{t.innerHTML="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+Pin Complex Nodes with Control Name</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Node <span style="color:#ae81ff">14</span> : Pin Default 0x99130110, EAPD: 0x02
+</span></span><span style="display:flex;"><span>Node <span style="color:#ae81ff">18</span> : Pin Default 0x04a11820
+</span></span><span style="display:flex;"><span>Node <span style="color:#ae81ff">19</span> : Pin Default 0x99a3092f
+</span></span><span style="display:flex;"><span>Node <span style="color:#ae81ff">21</span> : Pin Default 0x0421101f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="22-pin默认值必须从右向左读取我们将从其中取两个数字然后从左到右写下来如下面解释的alc269">2.2 PIN默认值必须从右向左读取。我们将从其中取两个数字，然后从左到右写下来，如下面解释的ALC269<a hidden class="anchor" aria-hidden="true" href="#22-pin默认值必须从右向左读取我们将从其中取两个数字然后从左到右写下来如下面解释的alc269">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Node 14:
+</span></span><span style="display:flex;"><span>Pin Default value: 0x99130110
+</span></span><span style="display:flex;"><span>Extracted verb data: <span style="color:#e6db74">&#34;10 01 13 99&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node 18:
+</span></span><span style="display:flex;"><span>Pin Default value: 0x04a11820
+</span></span><span style="display:flex;"><span>Extracted verb data: <span style="color:#e6db74">&#34;20 18 a1 04&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node 19:
+</span></span><span style="display:flex;"><span>Pin Default value: 0x99a3092f
+</span></span><span style="display:flex;"><span>Extracted verb data: <span style="color:#e6db74">&#34;2f 09 a3 99&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node 21:
+</span></span><span style="display:flex;"><span>Pin Default value: 0x0421101f
+</span></span><span style="display:flex;"><span>Extracted verb data: <span style="color:#e6db74">&#34;1f 10 21 04&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在，我们需要根据第二篇文章中解释的动词信息来纠正上面的verb数据。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>at Node 14: <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">99</span> <span style="color:#f92672">[</span> Correction 99-&gt;90<span style="color:#f92672">(</span>Note 1<span style="color:#f92672">)]</span>
+</span></span><span style="display:flex;"><span>at Node 18: <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">18</span> a1 <span style="color:#ae81ff">04</span> <span style="color:#f92672">[</span> Correction 18-&gt;10<span style="color:#f92672">(</span>Note 2<span style="color:#f92672">)]</span>
+</span></span><span style="display:flex;"><span>at Node 19: 2f <span style="color:#ae81ff">09</span> a3 <span style="color:#ae81ff">99</span> <span style="color:#f92672">[</span> Correction 2f-&gt;20<span style="color:#f92672">(</span>Note 3<span style="color:#f92672">)</span> 09-&gt;01<span style="color:#f92672">(</span>Note 2<span style="color:#f92672">)</span> 99-&gt;90<span style="color:#f92672">(</span>Note 1<span style="color:#f92672">)]</span>
+</span></span><span style="display:flex;"><span>at Node 21: 1f <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">04</span> <span style="color:#f92672">[</span> Correction 1f-&gt;10<span style="color:#f92672">(</span>Note 3<span style="color:#f92672">)]</span>
+</span></span><span style="display:flex;"><span>at Node <span style="color:#ae81ff">14</span> EAPD : <span style="color:#ae81ff">02</span> <span style="color:#f92672">(</span>Note 5<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Corrected Verb Data:
+</span></span><span style="display:flex;"><span>Code:
+</span></span><span style="display:flex;"><span>at Node 14: <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>at Node 18: <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">10</span> a1 <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>at Node 19: <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">01</span> a3 <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>at Node 21: <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>at Node <span style="color:#ae81ff">14</span> EAPD : <span style="color:#ae81ff">02</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认关联修正后的Verb数据：注释4</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>at Node 14: <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>at Node 18: <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">10</span> a1 <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>at Node 19: <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">01</span> a3 <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>at Node 21: <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>at Node <span style="color:#ae81ff">14</span> EAPD : <span style="color:#ae81ff">02</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>MIC修正后的最终Verb数据：注释6和注释7</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Node 14: <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>Node 18: <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">81</span> <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>Node 19: <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">01</span> a0 <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>Node 21: <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>Node <span style="color:#ae81ff">14</span> EAPD : <span style="color:#ae81ff">02</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://zhangzr.com/tags/macos/">MacOS</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://zhangzr.com/posts/%E4%B8%BAusbinjectall.kext%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89ssdt/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>为USBInjectAll.kext创建自定义SSDT</span>
+  </a>
+  <a class="next" href="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>AppleTV伪装证书</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://zhangzr.com/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

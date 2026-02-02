@@ -1,10 +1,19 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AppleTV伪装证书 | Tiki's Blog</title><meta name=keywords content="AppleTv"><meta name=description content='1. AppleTV伪装预告片证书
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AppleTV伪装证书 | Tiki&#39;s Blog</title>
+<meta name="keywords" content="AppleTv">
+<meta name="description" content="1. AppleTV伪装预告片证书
 
 
 1
 
 
-openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com"
+openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34;
 
 
 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
@@ -13,21 +22,96 @@ openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/D
 1
 
 
-$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer && cat ~/Desktop/trailers.key >> ~/Desktop/trailers.pem
+$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
 
 
 执行完上面的命令，您将得到3个证书文件
 2. 使用Apple Configuration创建项目
 
-'><meta name=author content="tiki"><link rel=canonical href=https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/><link crossorigin=anonymous href=/assets/css/stylesheet.8a665b856a8755bd0ec24ffe92c13ac09076571c7bbb8d0e120760b0f983f8aa.css integrity="sha256-imZbhWqHVb0Owk/+ksE6wJB2Vxx7u40OEgdgsPmD+Ko=" rel="preload stylesheet" as=style><link rel=icon href=https://zhangzr.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://zhangzr.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://zhangzr.com/favicon-32x32.png><link rel=apple-touch-icon href=https://zhangzr.com/apple-touch-icon.png><link rel=mask-icon href=https://zhangzr.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"><meta property="og:site_name" content="Tiki's Blog"><meta property="og:title" content="AppleTV伪装证书"><meta property="og:description" content='1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com" 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
-1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer && cat ~/Desktop/trailers.key >> ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件
-2. 使用Apple Configuration创建项目 '><meta property="og:locale" content="zh-cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-09-26T00:00:00+00:00"><meta property="article:modified_time" content="2018-09-26T00:00:00+00:00"><meta property="article:tag" content="AppleTv"><meta name=twitter:card content="summary"><meta name=twitter:title content="AppleTV伪装证书"><meta name=twitter:description content='1. AppleTV伪装预告片证书
+">
+<meta name="author" content="tiki">
+<link rel="canonical" href="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://zhangzr.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://zhangzr.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://zhangzr.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
+  <meta property="og:site_name" content="Tiki&#39;s Blog">
+  <meta property="og:title" content="AppleTV伪装证书">
+  <meta property="og:description" content="1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34; 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
+1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件
+2. 使用Apple Configuration创建项目 ">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-09-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-09-26T00:00:00+00:00">
+    <meta property="article:tag" content="AppleTv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AppleTV伪装证书">
+<meta name="twitter:description" content="1. AppleTV伪装预告片证书
 
 
 1
 
 
-openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com"
+openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34;
 
 
 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
@@ -36,22 +120,363 @@ openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/D
 1
 
 
-$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer && cat ~/Desktop/trailers.key >> ~/Desktop/trailers.pem
+$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
 
 
 执行完上面的命令，您将得到3个证书文件
 2. 使用Apple Configuration创建项目
 
-'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://zhangzr.com/posts/"},{"@type":"ListItem","position":2,"name":"AppleTV伪装证书","item":"https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AppleTV伪装证书","name":"AppleTV伪装证书","description":"1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \u0026#34;/C=US/CN=trailers.apple.com\u0026#34; 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026amp;\u0026amp; cat ~/Desktop/trailers.key \u0026gt;\u0026gt; ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ","keywords":["AppleTv"],"articleBody":"1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \"/C=US/CN=trailers.apple.com\" 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026\u0026 cat ~/Desktop/trailers.key \u003e\u003e ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ","wordCount":"38","inLanguage":"en","datePublished":"2018-09-26T00:00:00Z","dateModified":"2018-09-26T00:00:00Z","author":{"@type":"Person","name":"tiki"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"},"publisher":{"@type":"Organization","name":"Tiki's Blog","logo":{"@type":"ImageObject","url":"https://zhangzr.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://zhangzr.com/ accesskey=h title="Tiki's Blog (Alt + H)">Tiki's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://zhangzr.com/categories/ title="🗂️ 分类"><span>🗂️ 分类</span></a></li><li><a href=https://zhangzr.com/tags/ title="🏷️ 标签"><span>🏷️ 标签</span></a></li><li><a href=https://zhangzr.com/archives/ title="🗓️ 时间轴"><span>🗓️ 时间轴</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://zhangzr.com/>🏠主页</a>&nbsp;»&nbsp;<a href=https://zhangzr.com/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">AppleTV伪装证书</h1><div class=post-meta><div class=post-meta><span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 发表于: 2018-09-26 ｜</span>&nbsp;&nbsp;<span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 6 12 6 12 12S6 20 6 26"/></svg> 阅读时间: 1 min</span>&nbsp;&nbsp;<span class=post-meta-item>｜ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-6 8-6s8 2 8 6"/></svg> 作者: tiki</span></div></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#1-appletv%e4%bc%aa%e8%a3%85%e9%a2%84%e5%91%8a%e7%89%87%e8%af%81%e4%b9%a6 aria-label="1. AppleTV伪装预告片证书">1. AppleTV伪装预告片证书</a></li><li><a href=#2-%e4%bd%bf%e7%94%a8apple-configuration%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae aria-label="2. 使用Apple Configuration创建项目">2. 使用Apple Configuration创建项目</a></li></ul></div></details></div><div class=post-content><h2 id=1-appletv伪装预告片证书>1. AppleTV伪装预告片证书<a hidden class=anchor aria-hidden=true href=#1-appletv伪装预告片证书>#</a></h2><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days <span style=color:#ae81ff>7300</span> -subj <span style=color:#e6db74>&#34;/C=US/CN=trailers.apple.com&#34;</span>
-</span></span></code></pre></td></tr></table></div></div><p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
-</span></span></code></pre></td></tr></table></div></div><p>执行完上面的命令，您将得到3个证书文件</p><h2 id=2-使用apple-configuration创建项目>2. 使用Apple Configuration创建项目<a hidden class=anchor aria-hidden=true href=#2-使用apple-configuration创建项目>#</a></h2><p><img alt=|299x225 loading=lazy src=/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/1.png>
-<img alt=|298x184 loading=lazy src=/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/2.png></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://zhangzr.com/tags/appletv/>AppleTv</a></li></ul><nav class=paginav><a class=prev href=https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/><span class=title>« 上一页</span><br><span>AppleHDA声卡修补</span>
-</a><a class=next href=https://zhangzr.com/posts/dd-wrt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/><span class=title>下一页 »</span><br><span>DD-WRT安装与配置</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://zhangzr.com/>Tiki's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script>document.addEventListener("DOMContentLoaded",function(){const e=Array.from(document.querySelectorAll(".post-content img"));mediumZoom(e,{margin:24,background:"rgba(0, 0, 0, 0.8)",scrollOffset:0})})</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="复制";function s(){t.innerHTML="已复制！",setTimeout(()=>{t.innerHTML="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://zhangzr.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AppleTV伪装证书",
+      "item": "https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AppleTV伪装证书",
+  "name": "AppleTV伪装证书",
+  "description": "1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \u0026#34;/C=US/CN=trailers.apple.com\u0026#34; 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026amp;\u0026amp; cat ~/Desktop/trailers.key \u0026gt;\u0026gt; ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ",
+  "keywords": [
+    "AppleTv"
+  ],
+  "articleBody": "1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \"/C=US/CN=trailers.apple.com\" 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026\u0026 cat ~/Desktop/trailers.key \u003e\u003e ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ",
+  "wordCount" : "38",
+  "inLanguage": "en",
+  "datePublished": "2018-09-26T00:00:00Z",
+  "dateModified": "2018-09-26T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "tiki"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tiki's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zhangzr.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://zhangzr.com/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://zhangzr.com/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      AppleTV伪装证书
+    </h1>
+    <div class="post-meta"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2018-09-26 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 1 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#1-appletv%e4%bc%aa%e8%a3%85%e9%a2%84%e5%91%8a%e7%89%87%e8%af%81%e4%b9%a6" aria-label="1. AppleTV伪装预告片证书">1. AppleTV伪装预告片证书</a></li>
+                <li>
+                    <a href="#2-%e4%bd%bf%e7%94%a8apple-configuration%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae" aria-label="2. 使用Apple Configuration创建项目">2. 使用Apple Configuration创建项目</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="1-appletv伪装预告片证书">1. AppleTV伪装预告片证书<a hidden class="anchor" aria-hidden="true" href="#1-appletv伪装预告片证书">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days <span style="color:#ae81ff">7300</span> -subj <span style="color:#e6db74">&#34;/C=US/CN=trailers.apple.com&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行完上面的命令，您将得到3个证书文件</p>
+<h2 id="2-使用apple-configuration创建项目">2. 使用Apple Configuration创建项目<a hidden class="anchor" aria-hidden="true" href="#2-使用apple-configuration创建项目">#</a></h2>
+<p><img alt="|299x225" loading="lazy" src="/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/1.png">
+<img alt="|298x184" loading="lazy" src="/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/2.png"></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://zhangzr.com/tags/appletv/">AppleTv</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>AppleHDA声卡修补</span>
+  </a>
+  <a class="next" href="https://zhangzr.com/posts/dd-wrt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>DD-WRT安装与配置</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://zhangzr.com/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

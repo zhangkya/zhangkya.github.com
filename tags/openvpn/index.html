@@ -1,6 +1,147 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>OpenVPN | Tiki's Blog</title><meta name=keywords content><meta name=description content><meta name=author content="tiki"><link rel=canonical href=https://zhangzr.com/tags/openvpn/><link crossorigin=anonymous href=/assets/css/stylesheet.8a665b856a8755bd0ec24ffe92c13ac09076571c7bbb8d0e120760b0f983f8aa.css integrity="sha256-imZbhWqHVb0Owk/+ksE6wJB2Vxx7u40OEgdgsPmD+Ko=" rel="preload stylesheet" as=style><link rel=icon href=https://zhangzr.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://zhangzr.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://zhangzr.com/favicon-32x32.png><link rel=apple-touch-icon href=https://zhangzr.com/apple-touch-icon.png><link rel=mask-icon href=https://zhangzr.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://zhangzr.com/tags/openvpn/index.xml title=rss><link rel=alternate hreflang=en href=https://zhangzr.com/tags/openvpn/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://zhangzr.com/tags/openvpn/"><meta property="og:site_name" content="Tiki's Blog"><meta property="og:title" content="OpenVPN"><meta property="og:locale" content="zh-cn"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenVPN"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://zhangzr.com/ accesskey=h title="Tiki's Blog (Alt + H)">Tiki's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://zhangzr.com/categories/ title="🗂️ 分类"><span>🗂️ 分类</span></a></li><li><a href=https://zhangzr.com/tags/ title="🏷️ 标签"><span>🏷️ 标签</span></a></li><li><a href=https://zhangzr.com/archives/ title="🗓️ 时间轴"><span>🗓️ 时间轴</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://zhangzr.com/>🏠主页</a>&nbsp;»&nbsp;<a href=https://zhangzr.com/tags/>Tags</a></div><h1>OpenVPN</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>openvpn安装与配置</h2></header><div class=entry-content><p>OpenVPN安装与配置 [!note] 文档概述 本文档详细介绍了OpenVPN的安装与配置方法，包括在Linux环境（Ubuntu）和DD-WRT路由器环境下的配置步骤。
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenVPN | Tiki&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="tiki">
+<link rel="canonical" href="https://zhangzr.com/tags/openvpn/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://zhangzr.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://zhangzr.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://zhangzr.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://zhangzr.com/tags/openvpn/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/tags/openvpn/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://zhangzr.com/tags/openvpn/">
+  <meta property="og:site_name" content="Tiki&#39;s Blog">
+  <meta property="og:title" content="OpenVPN">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenVPN">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://zhangzr.com/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://zhangzr.com/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/tags/">Tags</a></div>
+  <h1>
+    OpenVPN
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">openvpn安装与配置
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenVPN安装与配置 文档概述 本文档详细介绍了OpenVPN的安装与配置方法，包括在Linux环境（Ubuntu）和DD-WRT路由器环境下的配置步骤。
 简介 OpenVPN是一个用于创建虚拟专用网络加密通道的软件包，最早由James Yonan编写。OpenVPN允许创建的VPN使用公开密钥、电子证书、或者用户名／密码来进行身份验证。
 它大量使用了OpenSSL加密库中的SSLv3/TLSv1协议函数库。
 目前OpenVPN能在Solaris、Linux、OpenBSD、FreeBSD、NetBSD、Mac OS X与Microsoft Windows以及Android和iOS上运行，并包含了许多安全性的功能。它并不是一个基于Web的VPN软件，也不与IPsec及其他VPN软件包兼容。
@@ -9,13 +150,142 @@
 OpenVPN CA密钥不应放在OpenVPN服务器上。它仅用于签署客户端的证书，因此应该存储在可以执行操作的地方，但不能被盗。一旦CA密码被盗，你将无法再信任该CA颁发的任何证书。
 什么是Certificate Authority(CA)？ 你可能在应用中遇到过TLS网站证书，通常证书在WEB上下文中有两个作用
 加密浏览器与服务器之间的数据 确保流览器连接到目标网站 只有当浏览器信任某个证书颁发机构颁发的证书时，才可以执行第二个任务。任何人都可以制作证书，但它并不能保证证书是合法的拥有者。因为证书颁发机构可以带来可靠的额外保证，因此CA证书分为收费与免费，创建自己的CA以签署OpenVPN客户端证书是一种可以控制谁可以连接到OpenVpn服务器的有效方法。这样您的Openvpn服务器只会信任你要创建的CA签署的客户端证书。同样如果一个政府机构在互联网提供一些便民服务，那么如何有效的避免钓鱼网站的信息套取呢，注册收费的CA证书是个有效的方法。
-[!tip] CA证书的作用
-提供身份验证和信任链 防止中间人攻击 控制VPN接入权限 完美前向保密PFS（perfect forward secrecy） “perfect forward secrecy”则是由Christoph G. Günther在EUROCRYPT ’89提出的，其最初用于定义会话密钥交换协议的一种安全性。它的作用是保证密钥丢失之前的消息案全性或签名的不可伪造性。一般而言公钥是固定的，而密钥则随着时间进行更新。这个更新过程是单向的，因引也就保证了拿到当前的密钥，是无法恢复出以前的密钥，从而保证了前向安全。
+CA证书的作用 提供身份验证和信任链 防止中间人攻击 控制VPN接入权限 完美前向保密PFS（perfect forward secrecy） “perfect forward secrecy”则是由Christoph G. Günther在EUROCRYPT ’89提出的，其最初用于定义会话密钥交换协议的一种安全性。它的作用是保证密钥丢失之前的消息案全性或签名的不可伪造性。一般而言公钥是固定的，而密钥则随着时间进行更新。这个更新过程是单向的，因引也就保证了拿到当前的密钥，是无法恢复出以前的密钥，从而保证了前向安全。
 Openvpn服务器配置我们将使用“perfect forward secrecy”，也就是说，加密的数据即使在前进的进候也会是秘密的。用于连接的证书和密钥不用于加密您的通讯数据。它们在传递数据时使用临时的加密密钥。默认情况下，这个临时密钥随着时间的推移每小时旋转一次。以这种方式，如果来不法份子收集了VPN数据包要想获得临时密钥那是不可能的，它允其量能够解密你最后一小时的数据。
 在Openvpn服务器上配置了perfect forward secrecy你会在日志中看到每小时数据重置的情况。
-1 2 3 4 5 6 7 8 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 TLS: soft reset sec=0 bytes=51538/0 pkts=255/0 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=1, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=Happy Go Lucky Toys CA, name=EasyRSA, emailAddress=ca@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=0, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=client, name=EasyRSA, emailAddress=noreply@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Cipher 'AES-256-CBC' initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Using 512 bit message hash 'SHA512' for HMAC authentication Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Cipher 'AES-256-CBC' initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Using 512 bit message hash 'SHA512' for HMAC authentication Tue Jun 13 01:51:21 2017 client/142.68.135.226:53504 Control Channel: TLSv1.2, cipher TLSv1/SSLv3 DHE-RSA-AES256-SHA256, 2048 bit RSA Openvpn允许您控制旋转周期以匹配偏执狂级别。在server.conf文件中配置reneg-sec xx控制关键周期是多少秒。
-...</p></div><footer class=entry-footer><div class=post-meta><span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 发表于: 2018-08-31 ｜</span>&nbsp;&nbsp;<span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 6 12 6 12 12S6 20 6 26"/></svg> 阅读时间: 6 min</span>&nbsp;&nbsp;<span class=post-meta-item>｜ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-6 8-6s8 2 8 6"/></svg> 作者: tiki</span></div></footer><a class=entry-link aria-label="post link to openvpn安装与配置" href=https://zhangzr.com/posts/openvpn%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://zhangzr.com/>Tiki's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script>document.addEventListener("DOMContentLoaded",function(){const e=Array.from(document.querySelectorAll(".post-content img"));mediumZoom(e,{margin:24,background:"rgba(0, 0, 0, 0.8)",scrollOffset:0})})</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+1 2 3 4 5 6 7 8 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 TLS: soft reset sec=0 bytes=51538/0 pkts=255/0 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=1, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=Happy Go Lucky Toys CA, name=EasyRSA, emailAddress=ca@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=0, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=client, name=EasyRSA, emailAddress=noreply@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Cipher &#39;AES-256-CBC&#39; initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Using 512 bit message hash &#39;SHA512&#39; for HMAC authentication Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Cipher &#39;AES-256-CBC&#39; initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Using 512 bit message hash &#39;SHA512&#39; for HMAC authentication Tue Jun 13 01:51:21 2017 client/142.68.135.226:53504 Control Channel: TLSv1.2, cipher TLSv1/SSLv3 DHE-RSA-AES256-SHA256, 2048 bit RSA Openvpn允许您控制旋转周期以匹配偏执狂级别。在server.conf文件中配置reneg-sec xx控制关键周期是多少秒。
+...</p>
+  </div>
+  <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2018-08-31 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 6 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+</footer>
+  <a class="entry-link" aria-label="post link to openvpn安装与配置" href="https://zhangzr.com/posts/openvpn%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://zhangzr.com/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

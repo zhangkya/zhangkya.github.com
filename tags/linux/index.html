@@ -1,17 +1,335 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Linux | Tiki's Blog</title><meta name=keywords content><meta name=description content><meta name=author content="tiki"><link rel=canonical href=https://zhangzr.com/tags/linux/><link crossorigin=anonymous href=/assets/css/stylesheet.8a665b856a8755bd0ec24ffe92c13ac09076571c7bbb8d0e120760b0f983f8aa.css integrity="sha256-imZbhWqHVb0Owk/+ksE6wJB2Vxx7u40OEgdgsPmD+Ko=" rel="preload stylesheet" as=style><link rel=icon href=https://zhangzr.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://zhangzr.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://zhangzr.com/favicon-32x32.png><link rel=apple-touch-icon href=https://zhangzr.com/apple-touch-icon.png><link rel=mask-icon href=https://zhangzr.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://zhangzr.com/tags/linux/index.xml title=rss><link rel=alternate hreflang=en href=https://zhangzr.com/tags/linux/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://zhangzr.com/tags/linux/"><meta property="og:site_name" content="Tiki's Blog"><meta property="og:title" content="Linux"><meta property="og:locale" content="zh-cn"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Linux"><meta name=twitter:description content></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://zhangzr.com/ accesskey=h title="Tiki's Blog (Alt + H)">Tiki's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://zhangzr.com/categories/ title="🗂️ 分类"><span>🗂️ 分类</span></a></li><li><a href=https://zhangzr.com/tags/ title="🏷️ 标签"><span>🏷️ 标签</span></a></li><li><a href=https://zhangzr.com/archives/ title="🗓️ 时间轴"><span>🗓️ 时间轴</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://zhangzr.com/>🏠主页</a>&nbsp;»&nbsp;<a href=https://zhangzr.com/tags/>Tags</a></div><h1>Linux</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>LetsEncrypt证书申请</h2></header><div class=entry-content><p>Let’s Encrypt简介 Let’s Encrypt 是 一个叫 ISRG （ Internet Security Research Group ，互联网安全研究小组）的组织推出的免费安全证书计划。参与这个计划的组织和公司可以说是互联网顶顶重要的先驱，除了前文提到的三个牛气哄哄的发起单位外，后来又有思科（全球网络设备制造商执牛耳者）、 Akamai 加入，甚至连 Linux 基金会也加入了合作，这些大牌组织的加入保证了这个项目的可信度和可持续性。 部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux | Tiki&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="tiki">
+<link rel="canonical" href="https://zhangzr.com/tags/linux/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://zhangzr.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://zhangzr.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://zhangzr.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://zhangzr.com/tags/linux/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/tags/linux/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://zhangzr.com/tags/linux/">
+  <meta property="og:site_name" content="Tiki&#39;s Blog">
+  <meta property="og:title" content="Linux">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://zhangzr.com/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://zhangzr.com/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/tags/">Tags</a></div>
+  <h1>
+    Linux
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">LetsEncrypt证书申请
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s Encrypt简介 Let’s Encrypt 是 一个叫 ISRG （ Internet Security Research Group ，互联网安全研究小组）的组织推出的免费安全证书计划。参与这个计划的组织和公司可以说是互联网顶顶重要的先驱，除了前文提到的三个牛气哄哄的发起单位外，后来又有思科（全球网络设备制造商执牛耳者）、 Akamai 加入，甚至连 Linux 基金会也加入了合作，这些大牌组织的加入保证了这个项目的可信度和可持续性。 部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。
 ​ Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！！！也就是说签发证书不需要任何费用。 ​ Let’s Encrypt 由于是非盈利性的组织，需要控制开支，他们搞了一个非常有创意的事情，设计了一个 ACME 协议，目前该协议的版本是 v1。 ​ 那为什么要创建 ACME 协议呢，传统的 CA 机构是人工受理证书申请、证书更新、证书撤销，完全是手动处理的。而 ACME 协议规范化了证书申请、更新、撤销等流程，只要一个客户端实现了该协议的功能，通过客户端就可以向 Let’s Encrypt 申请证书，也就是说 Let’s Encrypt CA 完全是自动化操作的。 ​ 任何人都可以基于 ACME 协议实现一个客户端，官方推荐的客户端是 Certbot 。
 Let’s Encrypt通配符证书 在没有出现通配符证书之前，Let’s Encrypt 支持两种证书。 1）单域名证书：证书仅仅包含一个主机。 2）SAN 证书：一张证书可以包括多个主机（Let’s Encrypt 限制是 20），也就是证书可以包含下列的主机：www.example.com、www.example.cn、blog.example.com 等等。
-...</p></div><footer class=entry-footer><div class=post-meta><span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 发表于: 2023-01-31 ｜</span>&nbsp;&nbsp;<span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 6 12 6 12 12S6 20 6 26"/></svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class=post-meta-item>｜ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-6 8-6s8 2 8 6"/></svg> 作者: tiki</span></div></footer><a class=entry-link aria-label="post link to LetsEncrypt证书申请" href=https://zhangzr.com/posts/letsencrypt%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>sudo配置与说明</h2></header><div class=entry-content><p>什么是sudo sudo是用来执行需要提升权限的命令。
+...</p>
+  </div>
+  <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2023-01-31 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+</footer>
+  <a class="entry-link" aria-label="post link to LetsEncrypt证书申请" href="https://zhangzr.com/posts/letsencrypt%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">sudo配置与说明
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>什么是sudo sudo是用来执行需要提升权限的命令。
 Sudo配置 1 # visudo sudo执行命令的流程 当用户执行sudo时，系统会主动寻找/etc/sudoers文件，判断该用户是否有执行sudo权限 确认用户具有可执行的权限后，让用户输入自己的密码确认 若密码输入成功，则开始执行sudo后续的命令 不需要密码的情况 root执行sudo时不需要输入密码（sudoers文件中有配置root ALL=(ALL)ALL这样一条规则）
 要切换的身份与执行者的身份相同，不需要输入密码
 /etc/sudoers文件设置为允许用户在不输入该用户密码的情况下使用所有命令
 如设置允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令
 %wheel ALL=(ALL) NOPASSWD:ALL
-/etc/sudoers文件解释 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 ## cat /etc/sudoers ## 下面是规则配置：什么用户在哪台服务器上可以执行哪些命令（sudoers文件可以在多个系统上共享） ## Syntax: ##语法 ## user MACHINE=COMMANDS ## 用户 登录的主机=（可以变换的身份） 可以执行的命令 ## ## The COMMANDS section may have other options added to it. ## 命令部分可以附带一些其它的选项 ## ## Allow root to run any commands anywhere ## 允许root用户执行任意路径下的任意命令 root ALL=(ALL) ALL ## Allows members of the 'sys' group to run networking, software, ## service management apps and more. # %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS ## 允许sys中户组中的用户使用NETWORKING等所有别名中配置的命令 ## Allows people in group wheel to run all commands # %wheel ALL=(ALL) ALL ## 允许wheel用户组中的用户执行所有命令 ## Same thing without a password ## 允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令 # %wheel ALL=(ALL) NOPASSWD: ALL ## Allows members of the users group to mount and unmount the ## cdrom as root ## 允许users用户组中的用户像root用户一样使用mount、unmount、chrom命令 # %users ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom ## Allows members of the users group to shutdown this system # %users localhost=/sbin/shutdown -h now ## 允许users用户组中的用户像root用户一样使用shutdown命令 sudo执行命令的流程 sudo会话 sudo默认在输入一次密码后15分钟内不会再次要求密码。15分钟后，你会再次被要求输入密码。
-...</p></div><footer class=entry-footer><div class=post-meta><span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 发表于: 2021-08-25 ｜</span>&nbsp;&nbsp;<span class=post-meta-item><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 6 12 6 12 12S6 20 6 26"/></svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class=post-meta-item>｜ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4 4-6 8-6s8 2 8 6"/></svg> 作者: tiki</span></div></footer><a class=entry-link aria-label="post link to sudo配置与说明" href=https://zhangzr.com/posts/sudo%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%AF%B4%E6%98%8E/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://zhangzr.com/>Tiki's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script src=https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js></script><script>document.addEventListener("DOMContentLoaded",function(){const e=Array.from(document.querySelectorAll(".post-content img"));mediumZoom(e,{margin:24,background:"rgba(0, 0, 0, 0.8)",scrollOffset:0})})</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+/etc/sudoers文件解释 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 ## cat /etc/sudoers ## 下面是规则配置：什么用户在哪台服务器上可以执行哪些命令（sudoers文件可以在多个系统上共享） ## Syntax: ##语法 ## user MACHINE=COMMANDS ## 用户 登录的主机=（可以变换的身份） 可以执行的命令 ## ## The COMMANDS section may have other options added to it. ## 命令部分可以附带一些其它的选项 ## ## Allow root to run any commands anywhere ## 允许root用户执行任意路径下的任意命令 root ALL=(ALL) ALL ## Allows members of the &#39;sys&#39; group to run networking, software, ## service management apps and more. # %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS ## 允许sys中户组中的用户使用NETWORKING等所有别名中配置的命令 ## Allows people in group wheel to run all commands # %wheel ALL=(ALL) ALL ## 允许wheel用户组中的用户执行所有命令 ## Same thing without a password ## 允许wheel用户组中的用户在不输入该用户的密码的情况下使用所有命令 # %wheel ALL=(ALL) NOPASSWD: ALL ## Allows members of the users group to mount and unmount the ## cdrom as root ## 允许users用户组中的用户像root用户一样使用mount、unmount、chrom命令 # %users ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom ## Allows members of the users group to shutdown this system # %users localhost=/sbin/shutdown -h now ## 允许users用户组中的用户像root用户一样使用shutdown命令 sudo执行命令的流程 sudo会话 sudo默认在输入一次密码后15分钟内不会再次要求密码。15分钟后，你会再次被要求输入密码。
+...</p>
+  </div>
+  <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2021-08-25 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+</footer>
+  <a class="entry-link" aria-label="post link to sudo配置与说明" href="https://zhangzr.com/posts/sudo%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%AF%B4%E6%98%8E/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://zhangzr.com/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

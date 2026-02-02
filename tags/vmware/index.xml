@@ -1,22 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Vmware on Tiki's Blog</title><link>https://zhangzr.com/tags/vmware/</link><description>Recent content in Vmware on Tiki's Blog</description><generator>Hugo -- 0.155.1</generator><language>zh-cn</language><lastBuildDate>Fri, 06 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhangzr.com/tags/vmware/index.xml" rel="self" type="application/rss+xml"/><item><title>Vmware ESXi连接iSCSI</title><link>https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/</link><pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/</guid><description>&lt;h1 id="一-设定vmkernal-nic"&gt;一、 设定VMkernal NIC&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vmware on Tiki&#39;s Blog</title>
+    <link>https://zhangzr.com/tags/vmware/</link>
+    <description>Recent content in Vmware on Tiki&#39;s Blog</description>
+    <generator>Hugo -- 0.155.1</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zhangzr.com/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vmware ESXi连接iSCSI</title>
+      <link>https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/</guid>
+      <description>&lt;h1 id=&#34;一-设定vmkernal-nic&#34;&gt;一、 设定VMkernal NIC&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;登陆VMware ESXi&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;导航器&amp;ndash;&amp;gt;网络&amp;ndash;&amp;gt;虚拟交换机&amp;ndash;&amp;gt;添加标准虚拟交换机
-&lt;img alt="|300x153" loading="lazy" src="https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/1-1.png"&gt;
-&lt;img alt="|300x170" loading="lazy" src="https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/2-1.png"&gt;&lt;/p&gt;
+&lt;img alt=&#34;|300x153&#34; loading=&#34;lazy&#34; src=&#34;https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/1-1.png&#34;&gt;
+&lt;img alt=&#34;|300x170&#34; loading=&#34;lazy&#34; src=&#34;https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/2-1.png&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;前往导航器&amp;ndash;&amp;gt;网络&amp;ndash;&amp;gt;VMkernel 网卡&amp;ndash;&amp;gt;添加VMkernel网卡
-&lt;img alt="|296x175" loading="lazy" src="https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/3-1.png"&gt;&lt;/p&gt;
+&lt;img alt=&#34;|296x175&#34; loading=&#34;lazy&#34; src=&#34;https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/3-1.png&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id="二在vmware-esxi上挂载iscsi-target"&gt;二、在Vmware ESXi上挂载iSCSI Target&lt;/h1&gt;
+&lt;h1 id=&#34;二在vmware-esxi上挂载iscsi-target&#34;&gt;二、在Vmware ESXi上挂载iSCSI Target&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;挂载iSCSI Target，前往导航器&amp;ndash;&amp;gt;存储&amp;ndash;&amp;gt;适配器&amp;ndash;&amp;gt;配置iSCSI
-&lt;img alt="|287x142" loading="lazy" src="https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/4.png"&gt;&lt;/li&gt;
+&lt;img alt=&#34;|287x142&#34; loading=&#34;lazy&#34; src=&#34;https://zhangzr.com/posts/vmware-esxi%E8%BF%9E%E6%8E%A5iscsi/image/4.png&#34;&gt;&lt;/li&gt;
 &lt;li&gt;启动iSCSI&lt;/li&gt;
 &lt;li&gt;添加端口绑定，绑定上步添加VMkernel网卡端口&lt;/li&gt;
 &lt;li&gt;保存配置&lt;/li&gt;
@@ -25,4 +40,7 @@
 6.1 LoginTimeout：将数值从5修改到60
 6.2 NoopTimeout：将数值从10修改到30
 6.3 DelayedAck：取消勾选以关闭DelayedACK&lt;/li&gt;
-&lt;/ol&gt;</description></item></channel></rss>
+&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>
