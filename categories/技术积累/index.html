@@ -142,9 +142,11 @@
   </header>
   <div class="entry-content">
     <p>OpenCode 学习指南 概述 OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。
-目录 [[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]] [[#配置文件|配置文件]] [[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]] [[#MCP服务器|MCP 服务器]] [[#Agent Skills|Agent Skills]] OpenCode调用外部编辑器 OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
+OpenCode调用外部编辑器 OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
 配置默认编辑器 在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：
 1 2 3 4 export EDITOR=&#34;code --wait&#34; # Vim: export EDITOR=&#34;vim&#34; # Nano: export EDITOR=&#34;nano&#34; source ~/.zshrc 推荐配置 推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。
+配置文件 可以使用 JSON 配置文件配置 OpenCode，同时支持 JSON 与 JSONC（带注释的JSON）格式：
+1 2 3 4 5 6 { &#34;$schema&#34;: &#34;https://opencode.ai/config.json&#34;, &#34;theme&#34;: &#34;opencode&#34;, &#34;model&#34;: &#34;anthropic/claude-sonnet-4-5&#34;, &#34;autoupdate&#34;: true } 配置文件的优先顺序 配置合并规则 配置文件会合并，而不是替换。后续配置仅对冲突的键值覆盖先前配置。所有配置中不冲突的设置将被保留。
 ...</p>
   </div>
   <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
