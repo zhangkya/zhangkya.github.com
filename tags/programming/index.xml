@@ -13,8 +13,7 @@
       <link>https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</guid>
-      <description>&lt;h1 id=&#34;opencode-学习指南&#34;&gt;OpenCode 学习指南&lt;/h1&gt;
-&lt;div class=&#34;callout callout-info&#34;&gt;
+      <description>&lt;div class=&#34;callout callout-info&#34;&gt;
   &lt;div class=&#34;callout-title&#34;&gt;概述&lt;/div&gt;
   &lt;div class=&#34;callout-content&#34;&gt;
     &lt;p&gt;OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。&lt;/p&gt;
