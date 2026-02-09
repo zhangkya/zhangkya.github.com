@@ -5,20 +5,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Hyper-v安装OpenWrt | Tiki&#39;s Blog</title>
-<meta name="keywords" content="Windows, OpenWrt">
-<meta name="description" content="开启VT虚拟化
-BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
-
-新建Hyper-V虚拟机
-下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。
+<title>AppleTV伪装证书 | Tiki&#39;s Blog</title>
+<meta name="keywords" content="AppleTv">
+<meta name="description" content="1. AppleTV伪装预告片证书
 
 
+1
 
+
+openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34;
+
+
+这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
+
+
+1
+
+
+$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
+
+
+执行完上面的命令，您将得到3个证书文件
+2. 使用Apple Configuration创建项目
 
 ">
 <meta name="author" content="tiki">
-<link rel="canonical" href="https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/">
+<link rel="canonical" href="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://zhangzr.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
@@ -27,7 +39,7 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
 <link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,27 +91,40 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/">
+</script><meta property="og:url" content="https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/">
   <meta property="og:site_name" content="Tiki&#39;s Blog">
-  <meta property="og:title" content="Hyper-v安装OpenWrt">
-  <meta property="og:description" content="开启VT虚拟化 BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v 新建Hyper-V虚拟机 下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。 ">
+  <meta property="og:title" content="AppleTV伪装证书">
+  <meta property="og:description" content="1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34; 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
+1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件
+2. 使用Apple Configuration创建项目 ">
   <meta property="og:locale" content="zh-cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-03-16T00:00:00+00:00">
-    <meta property="article:modified_time" content="2023-03-16T00:00:00+00:00">
-    <meta property="article:tag" content="Windows">
-    <meta property="article:tag" content="OpenWrt">
+    <meta property="article:published_time" content="2018-09-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-09-26T00:00:00+00:00">
+    <meta property="article:tag" content="AppleTv">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hyper-v安装OpenWrt">
-<meta name="twitter:description" content="开启VT虚拟化
-BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
-
-新建Hyper-V虚拟机
-下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。
+<meta name="twitter:title" content="AppleTV伪装证书">
+<meta name="twitter:description" content="1. AppleTV伪装预告片证书
 
 
+1
 
+
+openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj &#34;/C=US/CN=trailers.apple.com&#34;
+
+
+这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：
+
+
+1
+
+
+$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
+
+
+执行完上面的命令，您将得到3个证书文件
+2. 使用Apple Configuration创建项目
 
 ">
 
@@ -118,8 +143,8 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Hyper-v安装OpenWrt",
-      "item": "https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/"
+      "name": "AppleTV伪装证书",
+      "item": "https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"
     }
   ]
 }
@@ -128,24 +153,24 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Hyper-v安装OpenWrt",
-  "name": "Hyper-v安装OpenWrt",
-  "description": "开启VT虚拟化 BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v 新建Hyper-V虚拟机 下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。 ",
+  "headline": "AppleTV伪装证书",
+  "name": "AppleTV伪装证书",
+  "description": "1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \u0026#34;/C=US/CN=trailers.apple.com\u0026#34; 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026amp;\u0026amp; cat ~/Desktop/trailers.key \u0026gt;\u0026gt; ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ",
   "keywords": [
-    "Windows", "OpenWrt"
+    "AppleTv"
   ],
-  "articleBody": "开启VT虚拟化 BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v 新建Hyper-V虚拟机 下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。 ",
-  "wordCount" : "7",
+  "articleBody": "1. AppleTV伪装预告片证书 1 openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days 7300 -subj \"/C=US/CN=trailers.apple.com\" 这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：\n1 $ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer \u0026\u0026 cat ~/Desktop/trailers.key \u003e\u003e ~/Desktop/trailers.pem 执行完上面的命令，您将得到3个证书文件\n2. 使用Apple Configuration创建项目 ",
+  "wordCount" : "38",
   "inLanguage": "en",
-  "datePublished": "2023-03-16T00:00:00Z",
-  "dateModified": "2023-03-16T00:00:00Z",
+  "datePublished": "2018-09-26T00:00:00Z",
+  "dateModified": "2018-09-26T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "tiki"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/"
+    "@id": "https://zhangzr.com/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/"
   },
   "publisher": {
     "@type": "Organization",
@@ -211,7 +236,7 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Hyper-v安装OpenWrt
+      AppleTV伪装证书
     </h1>
     <div class="post-meta"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 24 24"
@@ -225,7 +250,7 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
   <line x1="16" y1="2" x2="16" y2="6"/>
   <line x1="8" y1="2" x2="8" y2="6"/>
   <line x1="3" y1="10" x2="21" y2="10"/>
-</svg> 发表于: 2023-03-16 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+</svg> 发表于: 2018-09-26 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 24 24"
      width="16" height="16"
      fill="none"
@@ -259,44 +284,55 @@ BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#%e5%bc%80%e5%90%afvt%e8%99%9a%e6%8b%9f%e5%8c%96" aria-label="开启VT虚拟化">开启VT虚拟化</a></li>
+                    <a href="#1-appletv%e4%bc%aa%e8%a3%85%e9%a2%84%e5%91%8a%e7%89%87%e8%af%81%e4%b9%a6" aria-label="1. AppleTV伪装预告片证书">1. AppleTV伪装预告片证书</a></li>
                 <li>
-                    <a href="#%e6%96%b0%e5%bb%bahyper-v%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="新建Hyper-V虚拟机">新建Hyper-V虚拟机</a>
+                    <a href="#2-%e4%bd%bf%e7%94%a8apple-configuration%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae" aria-label="2. 使用Apple Configuration创建项目">2. 使用Apple Configuration创建项目</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h2 id="开启vt虚拟化">开启VT虚拟化<a hidden class="anchor" aria-hidden="true" href="#开启vt虚拟化">#</a></h2>
-<p>BIOS开启VT虚拟化技术，在Windows系统中开启自带的Hyper-v
-<img alt="|300x305" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/1.png"></p>
-<h2 id="新建hyper-v虚拟机">新建Hyper-V虚拟机<a hidden class="anchor" aria-hidden="true" href="#新建hyper-v虚拟机">#</a></h2>
-<p>下载OpenWrt映像文件openwrt.img，使用StarWind V2V Image Converter软件将img文件转化为vhdx虚拟机硬盘文件。
-<img alt="|300x245" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/2.jpg"></p>
-<p><img alt="|300x245" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/3.jpg"></p>
-<p><img alt="|301x231" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/4.jpg"></p>
-<p><img alt="|301x182" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/5.jpg"></p>
-<p><img alt="|299x91" loading="lazy" src="/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/image/6.jpg"></p>
+  <div class="post-content"><h2 id="1-appletv伪装预告片证书">1. AppleTV伪装预告片证书<a hidden class="anchor" aria-hidden="true" href="#1-appletv伪装预告片证书">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -new -nodes -newkey rsa:2048 -out ~/Desktop/trailers.pem -keyout ~/Desktop/trailers.key -x509 -days <span style="color:#ae81ff">7300</span> -subj <span style="color:#e6db74">&#34;/C=US/CN=trailers.apple.com&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将在桌面上创建两个文件：trailers.key和trailers.pem。下一步运行：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ openssl x509 -in ~/Desktop/trailers.pem -outform der -out ~/Desktop/trailers.cer &amp;&amp; cat ~/Desktop/trailers.key &gt;&gt; ~/Desktop/trailers.pem
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行完上面的命令，您将得到3个证书文件</p>
+<h2 id="2-使用apple-configuration创建项目">2. 使用Apple Configuration创建项目<a hidden class="anchor" aria-hidden="true" href="#2-使用apple-configuration创建项目">#</a></h2>
+<p><img alt="|299x225" loading="lazy" src="/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/1.png">
+<img alt="|298x184" loading="lazy" src="/posts/appletv%E4%BC%AA%E8%A3%85%E8%AF%81%E4%B9%A6/image/2.png"></p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://zhangzr.com/tags/windows/">Windows</a></li>
-      <li><a href="https://zhangzr.com/tags/openwrt/">OpenWrt</a></li>
+      <li><a href="https://zhangzr.com/tags/appletv/">AppleTv</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">
+  <a class="prev" href="https://zhangzr.com/posts/applehda%E5%A3%B0%E5%8D%A1%E4%BF%AE%E8%A1%A5/">
     <span class="title">« 上一页</span>
     <br>
-    <span>OpenCode 学习指南</span>
+    <span>AppleHDA声卡修补</span>
   </a>
-  <a class="next" href="https://zhangzr.com/posts/proxmox%E5%AE%89%E8%A3%85openwrt/">
+  <a class="next" href="https://zhangzr.com/posts/dd-wrt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
     <span class="title">下一页 »</span>
     <br>
-    <span>Proxmox安装OpenWrt</span>
+    <span>DD-WRT安装与配置</span>
   </a>
 </nav>
 

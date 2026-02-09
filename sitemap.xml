@@ -2,8 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zhangzr.com/tags/ai-assistant/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://zhangzr.com/categories/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/tags/opencode/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/posts/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/tags/programming/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/tags/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://zhangzr.com/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/</loc>
+    <lastmod>2026-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
@@ -11,19 +35,7 @@
     <loc>https://zhangzr.com/tags/openwrt/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhangzr.com/posts/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhangzr.com/tags/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhangzr.com/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://zhangzr.com/tags/windows/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://zhangzr.com/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://zhangzr.com/tags/proxmox/</loc>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenCode 学习指南 | Tiki&#39;s Blog</title>
+<meta name="keywords" content="opencode, ai-assistant, programming">
+<meta name="description" content="OpenCode 学习指南
+
+  概述
+  
+    OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。
+  
+目录
+
+[[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]]
+[[#配置文件|配置文件]]
+[[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]]
+[[#MCP服务器|MCP 服务器]]
+[[#Agent Skills|Agent Skills]]
+
+OpenCode调用外部编辑器
+OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
+配置默认编辑器
+在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：
+
+
+1
+2
+3
+4
+
+
+export EDITOR=&#34;code --wait&#34;
+# Vim: export EDITOR=&#34;vim&#34;
+# Nano: export EDITOR=&#34;nano&#34;
+source ~/.zshrc
+
+
+
+  推荐配置
+  
+    推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。">
+<meta name="author" content="tiki">
+<link rel="canonical" href="https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.551e2d5263db2bbff81995d9d4062e86ecc5cab69be58a22fc8f3a5eba82ecad.css" integrity="sha256-VR4tUmPbK7/4GZXZ1AYuhuzFyrab5Yoi/I86XrqC7K0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://zhangzr.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://zhangzr.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://zhangzr.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://zhangzr.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://zhangzr.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="Tiki&#39;s Blog">
+  <meta property="og:title" content="OpenCode 学习指南">
+  <meta property="og:description" content="OpenCode 学习指南 概述 OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。
+目录 [[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]] [[#配置文件|配置文件]] [[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]] [[#MCP服务器|MCP 服务器]] [[#Agent Skills|Agent Skills]] OpenCode调用外部编辑器 OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
+配置默认编辑器 在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：
+1 2 3 4 export EDITOR=&#34;code --wait&#34; # Vim: export EDITOR=&#34;vim&#34; # Nano: export EDITOR=&#34;nano&#34; source ~/.zshrc 推荐配置 推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-09T00:00:00+00:00">
+    <meta property="article:tag" content="Opencode">
+    <meta property="article:tag" content="Ai-Assistant">
+    <meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenCode 学习指南">
+<meta name="twitter:description" content="OpenCode 学习指南
+
+  概述
+  
+    OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。
+  
+目录
+
+[[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]]
+[[#配置文件|配置文件]]
+[[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]]
+[[#MCP服务器|MCP 服务器]]
+[[#Agent Skills|Agent Skills]]
+
+OpenCode调用外部编辑器
+OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
+配置默认编辑器
+在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：
+
+
+1
+2
+3
+4
+
+
+export EDITOR=&#34;code --wait&#34;
+# Vim: export EDITOR=&#34;vim&#34;
+# Nano: export EDITOR=&#34;nano&#34;
+source ~/.zshrc
+
+
+
+  推荐配置
+  
+    推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://zhangzr.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OpenCode 学习指南",
+      "item": "https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenCode 学习指南",
+  "name": "OpenCode 学习指南",
+  "description": "OpenCode 学习指南 概述 OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。\n目录 [[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]] [[#配置文件|配置文件]] [[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]] [[#MCP服务器|MCP 服务器]] [[#Agent Skills|Agent Skills]] OpenCode调用外部编辑器 OpenCode 使用 Ctrl+X 然后按 E 来调用外部编辑器来编辑 Prompt。\n配置默认编辑器 在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：\n1 2 3 4 export EDITOR=\u0026#34;code --wait\u0026#34; # Vim: export EDITOR=\u0026#34;vim\u0026#34; # Nano: export EDITOR=\u0026#34;nano\u0026#34; source ~/.zshrc 推荐配置 推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。\n",
+  "keywords": [
+    "opencode", "ai-assistant", "programming"
+  ],
+  "articleBody": "OpenCode 学习指南 概述 OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。\n目录 [[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]] [[#配置文件|配置文件]] [[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]] [[#MCP服务器|MCP 服务器]] [[#Agent Skills|Agent Skills]] OpenCode调用外部编辑器 OpenCode 使用 Ctrl+X 然后按 E 来调用外部编辑器来编辑 Prompt。\n配置默认编辑器 在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：\n1 2 3 4 export EDITOR=\"code --wait\" # Vim: export EDITOR=\"vim\" # Nano: export EDITOR=\"nano\" source ~/.zshrc 推荐配置 推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。\n配置文件 可以使用 JSON 配置文件配置 OpenCode，同时支持 JSON 与 JSONC（带注释的JSON）格式：\n1 2 3 4 5 6 { \"$schema\": \"https://opencode.ai/config.json\", \"theme\": \"opencode\", \"model\": \"anthropic/claude-sonnet-4-5\", \"autoupdate\": true } 配置文件的优先顺序 配置合并规则 配置文件会合并，而不是替换。后续配置仅对冲突的键值覆盖先前配置。所有配置中不冲突的设置将被保留。\n优先级 类型 路径 说明 1 Remote config .well-known/opencode 组织默认，全公司统一标准 2 Global config ~/.config/opencode/opencode.json 用户偏好，个人习惯配置 3 Custom config OPENCODE_CONFIG 环境变量 用户自定义，临时指定配置 4 Project config .opencode/opencode.json 项目特定设置 5 Inline config OPENCODE_CONFIG_CONTENT 环境变量 运行时覆盖，紧急临时修改 从外到内，权限递增 公司定规矩 → 你调习惯 → 项目加专属 → 环境变量临时换 → 命令行里说了算\n配置示例 1 2 3 4 { \"agents\": [\"代码审查专家\", \"数据库助手\"], \"plugins\": [\"github插件\", \"jira插件\"] } 临时调试配置 1 export OPENCODE_CONFIG_CONTENT='{\"debug\": true, \"verbose\": true}' OpenCode配置Nvidia云端API OpenCode 支持 OpenAI 兼容协议，核心思路是添加一个 OpenAI 兼容的 Provider。\n配置步骤 找到或创建 OpenCode 配置文件 ~/.config/opencode/opencode.json 在 provider 字段中添加 NVIDIA 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 { \"$schema\": \"https://opencode.ai/config.json\", \"provider\": { \"nvidia\": { \"npm\": \"@ai-sdk/openai-compatible\", \"name\": \"NVIDIA NIM\", \"options\": { \"baseURL\": \"https://integrate.api.nvidia.com/v1\" }, \"models\": { \"nvidia/llama-3.1-nemotron-70b-instruct\": { \"name\": \"Nemotron 70B\" }, \"meta/llama-3.1-405b-instruct\": { \"name\": \"Llama 3.1 405B\" } } } } } 终端运行 opencode 输入 /connect 选择刚才添加的 provider 名字 粘贴你的 nvapi-XXX Key 使用 /model 命令切换到相应的模型 MCP服务器 使用 MCP 协议向 OpenCode 添加外部工具。OpenCode 同时支持本地服务器和远程服务器。添加后，MCP 工具将与内置工具一起自动提供给 LLM 使用。\n请慎选 MCP 服务器 在使用 MCP 服务器时，它的\"工具\"和\"数据\"会被添加到 AI 的上下文里。如果启用了太多、或者其中的某些服务器非常庞大，很容易把 AI 的\"记忆空间\"撑满，导致它无法正常工作。\n配置 MCP 服务器 在 OpenCode 配置文件 opencode.jsonc 中定义 MCP 服务器：\n1 2 3 4 5 6 7 8 9 10 11 { \"$schema\": \"https://opencode.ai/config.json\", \"mcp\": { \"name-of-mcp-server\": { \"enabled\": true }, \"name-of-other-mcp-server\": { \"enabled\": false } } } 性能优化 通过 enabled 属性来启用或禁用 MCP 服务器，不用时建议禁用以节省上下文空间。\nAgent Skills Agent Skills（智能体技能）功能能让 OpenCode 从你的代码库或电脑里自动发现可重复使用的指令。这些技能是通过原生工具按需加载的——智能体能看见有哪些可用技能，并在需要时加载完整内容。\n文件位置 OpenCode 会搜索以下位置：\n级别 路径 项目级 .opencode/skills//SKILL.md 全局级 ~/.config/opencode/skills//SKILL.md 兼容 Project Claude .claude/skills//SKILL.md 兼容全局 Claude ~/.claude/skills//SKILL.md 兼容 Project Agents .agents/skills//SKILL.md 兼容全局 Agents ~/.agents/skills//SKILL.md %% 内部笔记：\n后续可以添加更多配置示例 考虑添加视频教程链接 %% ",
+  "wordCount" : "332",
+  "inLanguage": "en",
+  "datePublished": "2024-01-15T00:00:00Z",
+  "dateModified": "2026-02-09T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "tiki"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tiki's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zhangzr.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://zhangzr.com/" accesskey="h" title="Tiki&#39;s Blog (Alt + H)">Tiki&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://zhangzr.com/categories/" title="🗂️ 分类">
+                    <span>🗂️ 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/tags/" title="🏷️ 标签">
+                    <span>🏷️ 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://zhangzr.com/archives/" title="🗓️ 时间轴">
+                    <span>🗓️ 时间轴</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://zhangzr.com/">🏠主页</a>&nbsp;»&nbsp;<a href="https://zhangzr.com/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      OpenCode 学习指南
+    </h1>
+    <div class="post-meta"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2024-01-15 ｜</span>&nbsp;&nbsp;<span class='post-meta-item post-meta-update'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+  <circle cx="16" cy="16" r="3"/>
+  <line x1="16" y1="15" x2="16" y2="16.5"/>
+  <line x1="16" y1="16" x2="17.5" y2="16"/>
+</svg> 更新于: 2026-02-09 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#opencode-%e5%ad%a6%e4%b9%a0%e6%8c%87%e5%8d%97" aria-label="OpenCode 学习指南">OpenCode 学习指南</a><ul>
+                        
+                <li>
+                    <a href="#%e7%9b%ae%e5%bd%95" aria-label="目录">目录</a></li>
+                <li>
+                    <a href="#opencode%e8%b0%83%e7%94%a8%e5%a4%96%e9%83%a8%e7%bc%96%e8%be%91%e5%99%a8" aria-label="OpenCode调用外部编辑器">OpenCode调用外部编辑器</a><ul>
+                        
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e9%bb%98%e8%ae%a4%e7%bc%96%e8%be%91%e5%99%a8" aria-label="配置默认编辑器">配置默认编辑器</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" aria-label="配置文件">配置文件</a><ul>
+                        
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e7%9a%84%e4%bc%98%e5%85%88%e9%a1%ba%e5%ba%8f" aria-label="配置文件的优先顺序">配置文件的优先顺序</a></li>
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e7%a4%ba%e4%be%8b" aria-label="配置示例">配置示例</a></li>
+                <li>
+                    <a href="#%e4%b8%b4%e6%97%b6%e8%b0%83%e8%af%95%e9%85%8d%e7%bd%ae" aria-label="临时调试配置">临时调试配置</a></li></ul>
+                </li>
+                <li>
+                    <a href="#opencode%e9%85%8d%e7%bd%aenvidia%e4%ba%91%e7%ab%afapi" aria-label="OpenCode配置Nvidia云端API">OpenCode配置Nvidia云端API</a><ul>
+                        
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae%e6%ad%a5%e9%aa%a4" aria-label="配置步骤">配置步骤</a></li></ul>
+                </li>
+                <li>
+                    <a href="#mcp%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="MCP服务器">MCP服务器</a><ul>
+                        
+                <li>
+                    <a href="#%e9%85%8d%e7%bd%ae-mcp-%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="配置 MCP 服务器">配置 MCP 服务器</a></li></ul>
+                </li>
+                <li>
+                    <a href="#agent-skills" aria-label="Agent Skills">Agent Skills</a><ul>
+                        
+                <li>
+                    <a href="#%e6%96%87%e4%bb%b6%e4%bd%8d%e7%bd%ae" aria-label="文件位置">文件位置</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="opencode-学习指南">OpenCode 学习指南<a hidden class="anchor" aria-hidden="true" href="#opencode-学习指南">#</a></h1>
+<div class="callout callout-info">
+  <div class="callout-title">概述</div>
+  <div class="callout-content">
+    <p>OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。</p>
+  </div>
+</div><h2 id="目录">目录<a hidden class="anchor" aria-hidden="true" href="#目录">#</a></h2>
+<ul>
+<li>[[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]]</li>
+<li>[[#配置文件|配置文件]]</li>
+<li>[[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]]</li>
+<li>[[#MCP服务器|MCP 服务器]]</li>
+<li>[[#Agent Skills|Agent Skills]]</li>
+</ul>
+<h2 id="opencode调用外部编辑器">OpenCode调用外部编辑器<a hidden class="anchor" aria-hidden="true" href="#opencode调用外部编辑器">#</a></h2>
+<p>OpenCode 使用 <code>Ctrl+X</code> 然后按 <code>E</code> 来调用外部编辑器来编辑 Prompt。</p>
+<h3 id="配置默认编辑器">配置默认编辑器<a hidden class="anchor" aria-hidden="true" href="#配置默认编辑器">#</a></h3>
+<p>在终端配置文件（如 <code>.bashrc</code> 或 <code>.zshrc</code>）中添加以下行：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export EDITOR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;code --wait&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Vim: export EDITOR=&#34;vim&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Nano: export EDITOR=&#34;nano&#34;</span>
+</span></span><span style="display:flex;"><span>source ~/.zshrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="callout callout-tip">
+  <div class="callout-title">推荐配置</div>
+  <div class="callout-content">
+    <p>推荐使用 VS Code (<code>code --wait</code>) 作为默认编辑器，提供更好的代码体验。</p>
+  </div>
+</div><h2 id="配置文件">配置文件<a hidden class="anchor" aria-hidden="true" href="#配置文件">#</a></h2>
+<p>可以使用 JSON 配置文件配置 OpenCode，同时支持 JSON 与 JSONC（带注释的JSON）格式：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://opencode.ai/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;theme&#34;</span>: <span style="color:#e6db74">&#34;opencode&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;model&#34;</span>: <span style="color:#e6db74">&#34;anthropic/claude-sonnet-4-5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;autoupdate&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置文件的优先顺序">配置文件的优先顺序<a hidden class="anchor" aria-hidden="true" href="#配置文件的优先顺序">#</a></h3>
+<div class="callout callout-important">
+  <div class="callout-title">配置合并规则</div>
+  <div class="callout-content">
+    <p>配置文件会<strong>合并</strong>，而不是替换。后续配置仅对<strong>冲突的键值覆盖</strong>先前配置。所有配置中不冲突的设置将被保留。</p>
+  </div>
+</div><table>
+  <thead>
+      <tr>
+          <th>优先级</th>
+          <th>类型</th>
+          <th>路径</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Remote config</td>
+          <td><code>.well-known/opencode</code></td>
+          <td>组织默认，全公司统一标准</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Global config</td>
+          <td><code>~/.config/opencode/opencode.json</code></td>
+          <td>用户偏好，个人习惯配置</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Custom config</td>
+          <td><code>OPENCODE_CONFIG</code> 环境变量</td>
+          <td>用户自定义，临时指定配置</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Project config</td>
+          <td><code>.opencode/opencode.json</code></td>
+          <td>项目特定设置</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Inline config</td>
+          <td><code>OPENCODE_CONFIG_CONTENT</code> 环境变量</td>
+          <td>运行时覆盖，紧急临时修改</td>
+      </tr>
+  </tbody>
+</table>
+<div class="callout callout-note">
+  <div class="callout-title">从外到内，权限递增</div>
+  <div class="callout-content">
+    <p>公司定规矩 → 你调习惯 → 项目加专属 → 环境变量临时换 → 命令行里说了算</p>
+  </div>
+</div><h3 id="配置示例">配置示例<a hidden class="anchor" aria-hidden="true" href="#配置示例">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;agents&#34;</span>: [<span style="color:#e6db74">&#34;代码审查专家&#34;</span>, <span style="color:#e6db74">&#34;数据库助手&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;plugins&#34;</span>: [<span style="color:#e6db74">&#34;github插件&#34;</span>, <span style="color:#e6db74">&#34;jira插件&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="临时调试配置">临时调试配置<a hidden class="anchor" aria-hidden="true" href="#临时调试配置">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export OPENCODE_CONFIG_CONTENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;debug&#34;: true, &#34;verbose&#34;: true}&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="opencode配置nvidia云端api">OpenCode配置Nvidia云端API<a hidden class="anchor" aria-hidden="true" href="#opencode配置nvidia云端api">#</a></h2>
+<p>OpenCode 支持 OpenAI 兼容协议，核心思路是添加一个 OpenAI 兼容的 Provider。</p>
+<h3 id="配置步骤">配置步骤<a hidden class="anchor" aria-hidden="true" href="#配置步骤">#</a></h3>
+<ol>
+<li>找到或创建 OpenCode 配置文件 <code>~/.config/opencode/opencode.json</code></li>
+<li>在 <code>provider</code> 字段中添加 NVIDIA 配置</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://opencode.ai/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;provider&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;nvidia&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;NVIDIA NIM&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;https://integrate.api.nvidia.com/v1&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;nvidia/llama-3.1-nemotron-70b-instruct&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Nemotron 70B&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;meta/llama-3.1-405b-instruct&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Llama 3.1 405B&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>终端运行 <code>opencode</code></li>
+<li>输入 <code>/connect</code></li>
+<li>选择刚才添加的 provider 名字</li>
+<li>粘贴你的 <code>nvapi-XXX</code> Key</li>
+<li>使用 <code>/model</code> 命令切换到相应的模型</li>
+</ol>
+<h2 id="mcp服务器">MCP服务器<a hidden class="anchor" aria-hidden="true" href="#mcp服务器">#</a></h2>
+<p>使用 MCP 协议向 OpenCode 添加外部工具。OpenCode 同时支持本地服务器和远程服务器。添加后，MCP 工具将与内置工具一起自动提供给 LLM 使用。</p>
+<div class="callout callout-warning">
+  <div class="callout-title">请慎选 MCP 服务器</div>
+  <div class="callout-content">
+    <p>在使用 MCP 服务器时，它的&quot;工具&quot;和&quot;数据&quot;会被添加到 AI 的上下文里。如果启用了太多、或者其中的某些服务器非常庞大，很容易把 AI 的&quot;记忆空间&quot;撑满，导致它无法正常工作。</p>
+  </div>
+</div><h3 id="配置-mcp-服务器">配置 MCP 服务器<a hidden class="anchor" aria-hidden="true" href="#配置-mcp-服务器">#</a></h3>
+<p>在 OpenCode 配置文件 <code>opencode.jsonc</code> 中定义 MCP 服务器：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://opencode.ai/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mcp&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name-of-mcp-server&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;enabled&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name-of-other-mcp-server&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;enabled&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="callout callout-tip">
+  <div class="callout-title">性能优化</div>
+  <div class="callout-content">
+    <p>通过 <code>enabled</code> 属性来启用或禁用 MCP 服务器，不用时建议禁用以节省上下文空间。</p>
+  </div>
+</div><h2 id="agent-skills">Agent Skills<a hidden class="anchor" aria-hidden="true" href="#agent-skills">#</a></h2>
+<p>Agent Skills（智能体技能）功能能让 OpenCode 从你的代码库或电脑里自动发现可重复使用的指令。这些技能是通过原生工具按需加载的——智能体能看见有哪些可用技能，并在需要时加载完整内容。</p>
+<h3 id="文件位置">文件位置<a hidden class="anchor" aria-hidden="true" href="#文件位置">#</a></h3>
+<p>OpenCode 会搜索以下位置：</p>
+<table>
+  <thead>
+      <tr>
+          <th>级别</th>
+          <th>路径</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>项目级</td>
+          <td><code>.opencode/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+      <tr>
+          <td>全局级</td>
+          <td><code>~/.config/opencode/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+      <tr>
+          <td>兼容 Project Claude</td>
+          <td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+      <tr>
+          <td>兼容全局 Claude</td>
+          <td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+      <tr>
+          <td>兼容 Project Agents</td>
+          <td><code>.agents/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+      <tr>
+          <td>兼容全局 Agents</td>
+          <td><code>~/.agents/skills/&lt;name&gt;/SKILL.md</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>%%
+内部笔记：</p>
+<ul>
+<li>后续可以添加更多配置示例</li>
+<li>考虑添加视频教程链接
+%%</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://zhangzr.com/tags/opencode/">Opencode</a></li>
+      <li><a href="https://zhangzr.com/tags/ai-assistant/">Ai-Assistant</a></li>
+      <li><a href="https://zhangzr.com/tags/programming/">Programming</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://zhangzr.com/posts/hyper-v%E5%AE%89%E8%A3%85openwrt/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Hyper-v安装OpenWrt</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://zhangzr.com/">Tiki&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    const images = Array.from(document.querySelectorAll(".post-content img"));    
+    
+    mediumZoom(images, {
+      margin: 24,       
+      background: 'rgba(0, 0, 0, 0.8)', 
+      scrollOffset: 0,  
+    });
+  });
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

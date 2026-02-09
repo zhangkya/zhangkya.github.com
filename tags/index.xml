@@ -4,10 +4,31 @@
     <title>Tags on Tiki&#39;s Blog</title>
     <link>https://zhangzr.com/tags/</link>
     <description>Recent content in Tags on Tiki&#39;s Blog</description>
-    <generator>Hugo -- 0.155.1</generator>
+    <generator>Hugo -- 0.155.2</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://zhangzr.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai-Assistant</title>
+      <link>https://zhangzr.com/tags/ai-assistant/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/ai-assistant/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Opencode</title>
+      <link>https://zhangzr.com/tags/opencode/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/opencode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://zhangzr.com/tags/programming/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/tags/programming/</guid>
+      <description></description>
+    </item>
     <item>
       <title>OpenWrt</title>
       <link>https://zhangzr.com/tags/openwrt/</link>

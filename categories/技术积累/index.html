@@ -137,6 +137,74 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenCode 学习指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>OpenCode 学习指南 概述 OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。
+目录 [[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]] [[#配置文件|配置文件]] [[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]] [[#MCP服务器|MCP 服务器]] [[#Agent Skills|Agent Skills]] OpenCode调用外部编辑器 OpenCode 使用 Ctrl&#43;X 然后按 E 来调用外部编辑器来编辑 Prompt。
+配置默认编辑器 在终端配置文件（如 .bashrc 或 .zshrc）中添加以下行：
+1 2 3 4 export EDITOR=&#34;code --wait&#34; # Vim: export EDITOR=&#34;vim&#34; # Nano: export EDITOR=&#34;nano&#34; source ~/.zshrc 推荐配置 推荐使用 VS Code (code --wait) 作为默认编辑器，提供更好的代码体验。
+...</p>
+  </div>
+  <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+</svg> 发表于: 2024-01-15 ｜</span>&nbsp;&nbsp;<span class='post-meta-item post-meta-update'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  
+  <rect x="3" y="4" width="18" height="18" rx="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+  <circle cx="16" cy="16" r="3"/>
+  <line x1="16" y1="15" x2="16" y2="16.5"/>
+  <line x1="16" y1="16" x2="17.5" y2="16"/>
+</svg> 更新于: 2026-02-09 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 2h12"/>
+  <path d="M6 22h12"/>
+  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
+</svg> 阅读时间: 2 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="16" height="16"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="8" r="4"/>
+  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
+</svg> 作者: tiki</span></div>
+
+</footer>
+  <a class="entry-link" aria-label="post link to OpenCode 学习指南" href="https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hyper-v安装OpenWrt
     </h2>
   </header>
@@ -584,66 +652,6 @@ Sudo配置 1 # visudo sudo执行命令的流程 当用户执行sudo时，系统�
 
 </footer>
   <a class="entry-link" aria-label="post link to DD-WRT安装与配置" href="https://zhangzr.com/posts/dd-wrt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">openvpn安装与配置
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>OpenVPN安装与配置 文档概述 本文档详细介绍了OpenVPN的安装与配置方法，包括在Linux环境（Ubuntu）和DD-WRT路由器环境下的配置步骤。
-简介 OpenVPN是一个用于创建虚拟专用网络加密通道的软件包，最早由James Yonan编写。OpenVPN允许创建的VPN使用公开密钥、电子证书、或者用户名／密码来进行身份验证。
-它大量使用了OpenSSL加密库中的SSLv3/TLSv1协议函数库。
-目前OpenVPN能在Solaris、Linux、OpenBSD、FreeBSD、NetBSD、Mac OS X与Microsoft Windows以及Android和iOS上运行，并包含了许多安全性的功能。它并不是一个基于Web的VPN软件，也不与IPsec及其他VPN软件包兼容。
-基础知识点 为什么使用PKI而不是静态密码呢？ 静态加密使用的是静态密钥，它容易设置，但是缺点是：
-一次只能有一个客户端使用服务器 如果密钥遭到丢失，将带来不可挽回的损失 使用PKI允许一次使用多个客户端，每个客户端都有自己的密钥。服务器不必具有客户端的任何特殊知识。OpenVPN只需要提供我们即将设置的OpenVPN CA签署的证书。反之，客户端也会验证服务器的证书
-OpenVPN CA密钥不应放在OpenVPN服务器上。它仅用于签署客户端的证书，因此应该存储在可以执行操作的地方，但不能被盗。一旦CA密码被盗，你将无法再信任该CA颁发的任何证书。
-什么是Certificate Authority(CA)？ 你可能在应用中遇到过TLS网站证书，通常证书在WEB上下文中有两个作用
-加密浏览器与服务器之间的数据 确保流览器连接到目标网站 只有当浏览器信任某个证书颁发机构颁发的证书时，才可以执行第二个任务。任何人都可以制作证书，但它并不能保证证书是合法的拥有者。因为证书颁发机构可以带来可靠的额外保证，因此CA证书分为收费与免费，创建自己的CA以签署OpenVPN客户端证书是一种可以控制谁可以连接到OpenVpn服务器的有效方法。这样您的Openvpn服务器只会信任你要创建的CA签署的客户端证书。同样如果一个政府机构在互联网提供一些便民服务，那么如何有效的避免钓鱼网站的信息套取呢，注册收费的CA证书是个有效的方法。
-CA证书的作用 提供身份验证和信任链 防止中间人攻击 控制VPN接入权限 完美前向保密PFS（perfect forward secrecy） “perfect forward secrecy”则是由Christoph G. Günther在EUROCRYPT ’89提出的，其最初用于定义会话密钥交换协议的一种安全性。它的作用是保证密钥丢失之前的消息案全性或签名的不可伪造性。一般而言公钥是固定的，而密钥则随着时间进行更新。这个更新过程是单向的，因引也就保证了拿到当前的密钥，是无法恢复出以前的密钥，从而保证了前向安全。
-Openvpn服务器配置我们将使用“perfect forward secrecy”，也就是说，加密的数据即使在前进的进候也会是秘密的。用于连接的证书和密钥不用于加密您的通讯数据。它们在传递数据时使用临时的加密密钥。默认情况下，这个临时密钥随着时间的推移每小时旋转一次。以这种方式，如果来不法份子收集了VPN数据包要想获得临时密钥那是不可能的，它允其量能够解密你最后一小时的数据。
-在Openvpn服务器上配置了perfect forward secrecy你会在日志中看到每小时数据重置的情况。
-1 2 3 4 5 6 7 8 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 TLS: soft reset sec=0 bytes=51538/0 pkts=255/0 Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=1, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=Happy Go Lucky Toys CA, name=EasyRSA, emailAddress=ca@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 VERIFY OK: depth=0, C=US, ST=RI, L=Quahog, O=Happy Go Lucky Toys, OU=inspections, CN=client, name=EasyRSA, emailAddress=noreply@happygoluckytoys.com Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Cipher &#39;AES-256-CBC&#39; initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Encrypt: Using 512 bit message hash &#39;SHA512&#39; for HMAC authentication Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Cipher &#39;AES-256-CBC&#39; initialized with 256 bit key Tue Jun 13 01:51:20 2017 client/142.68.135.226:53504 Data Channel Decrypt: Using 512 bit message hash &#39;SHA512&#39; for HMAC authentication Tue Jun 13 01:51:21 2017 client/142.68.135.226:53504 Control Channel: TLSv1.2, cipher TLSv1/SSLv3 DHE-RSA-AES256-SHA256, 2048 bit RSA Openvpn允许您控制旋转周期以匹配偏执狂级别。在server.conf文件中配置reneg-sec xx控制关键周期是多少秒。
-...</p>
-  </div>
-  <footer class="entry-footer"><div class="post-meta"><span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 24 24"
-     width="16" height="16"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <rect x="3" y="4" width="18" height="18" rx="2"/>
-  <line x1="16" y1="2" x2="16" y2="6"/>
-  <line x1="8" y1="2" x2="8" y2="6"/>
-  <line x1="3" y1="10" x2="21" y2="10"/>
-</svg> 发表于: 2018-08-31 ｜</span>&nbsp;&nbsp;<span class='post-meta-item'><svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 24 24"
-     width="16" height="16"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <path d="M6 2h12"/>
-  <path d="M6 22h12"/>
-  <path d="M6 2c0 6 12 6 12 12s-12 6-12 12"/>
-</svg> 阅读时间: 6 min</span>&nbsp;&nbsp;<span class='post-meta-item'>｜ <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 24 24"
-     width="16" height="16"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-  <circle cx="12" cy="8" r="4"/>
-  <path d="M4 22c0-4 4-6 8-6s8 2 8 6"/>
-</svg> 作者: tiki</span></div>
-
-</footer>
-  <a class="entry-link" aria-label="post link to openvpn安装与配置" href="https://zhangzr.com/posts/openvpn%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

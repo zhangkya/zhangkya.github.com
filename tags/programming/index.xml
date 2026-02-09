@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Programming on Tiki&#39;s Blog</title>
+    <link>https://zhangzr.com/tags/programming/</link>
+    <description>Recent content in Programming on Tiki&#39;s Blog</description>
+    <generator>Hugo -- 0.155.2</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zhangzr.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenCode 学习指南</title>
+      <link>https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://zhangzr.com/posts/opencode%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;h1 id=&#34;opencode-学习指南&#34;&gt;OpenCode 学习指南&lt;/h1&gt;
+&lt;div class=&#34;callout callout-info&#34;&gt;
+  &lt;div class=&#34;callout-title&#34;&gt;概述&lt;/div&gt;
+  &lt;div class=&#34;callout-content&#34;&gt;
+    &lt;p&gt;OpenCode 是一个 AI 驱动的代码编辑器，支持外部编辑器集成、多层配置管理、MCP 服务器扩展等功能。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[[#OpenCode调用外部编辑器|OpenCode 调用外部编辑器]]&lt;/li&gt;
+&lt;li&gt;[[#配置文件|配置文件]]&lt;/li&gt;
+&lt;li&gt;[[#OpenCode配置Nvidia云端API|OpenCode 配置 Nvidia 云端 API]]&lt;/li&gt;
+&lt;li&gt;[[#MCP服务器|MCP 服务器]]&lt;/li&gt;
+&lt;li&gt;[[#Agent Skills|Agent Skills]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;opencode调用外部编辑器&#34;&gt;OpenCode调用外部编辑器&lt;/h2&gt;
+&lt;p&gt;OpenCode 使用 &lt;code&gt;Ctrl+X&lt;/code&gt; 然后按 &lt;code&gt;E&lt;/code&gt; 来调用外部编辑器来编辑 Prompt。&lt;/p&gt;
+&lt;h3 id=&#34;配置默认编辑器&#34;&gt;配置默认编辑器&lt;/h3&gt;
+&lt;p&gt;在终端配置文件（如 &lt;code&gt;.bashrc&lt;/code&gt; 或 &lt;code&gt;.zshrc&lt;/code&gt;）中添加以下行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export EDITOR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;code --wait&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Vim: export EDITOR=&amp;#34;vim&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Nano: export EDITOR=&amp;#34;nano&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source ~/.zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;callout callout-tip&#34;&gt;
+  &lt;div class=&#34;callout-title&#34;&gt;推荐配置&lt;/div&gt;
+  &lt;div class=&#34;callout-content&#34;&gt;
+    &lt;p&gt;推荐使用 VS Code (&lt;code&gt;code --wait&lt;/code&gt;) 作为默认编辑器，提供更好的代码体验。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
